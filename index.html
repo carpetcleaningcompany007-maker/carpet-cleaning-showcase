@@ -12,26 +12,28 @@
   --accent-1: #38bdf8;
   --accent-2: #a855f7;
   --accent-3: #22c55e;
-  --card-bg: rgba(15,23,42,0.96);
-  --card-border: rgba(148,163,184,0.7);
+  --card-bg: #02091b;
+  --card-border: rgba(148,163,184,0.35);
   --text-main: #e5e7eb;
   --text-soft: #9ca3af;
   --highlight: #facc15;
 }
 
+/* base */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top left, #0f172a 0%, #020617 55%, #000000 100%);
+  background: radial-gradient(circle at top left,#0f172a 0%,#020617 55%,#000000 100%);
   color: var(--text-main);
   min-height: 100vh;
 }
 
+/* floating orbs background */
 .background-orbit {
   position: fixed;
   inset: 0;
@@ -43,531 +45,531 @@ body {
 .orb {
   position: absolute;
   border-radius: 999px;
-  filter: blur(60px);
+  filter: blur(70px);
   opacity: 0.9;
   mix-blend-mode: screen;
 }
 
 .orb.one {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle,#38bdf8 0%,transparent 70%);
   top: -80px;
   left: -40px;
   animation: floatOne 18s ease-in-out infinite;
 }
 
 .orb.two {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
-  bottom: -120px;
-  right: -40px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle,#a855f7 0%,transparent 70%);
+  bottom: -140px;
+  right: -60px;
   animation: floatTwo 22s ease-in-out infinite;
 }
 
 .orb.three {
-  width: 260px;
-  height: 260px;
-  background: radial-gradient(circle, #22c55e 0%, transparent 70%);
-  top: 25%;
-  right: 25%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle,#22c55e 0%,transparent 70%);
+  top: 30%;
+  right: 22%;
   opacity: 0.7;
   animation: floatThree 26s ease-in-out infinite;
 }
 
 @keyframes floatOne {
-  0%   { transform: translate3d(0,0,0); }
-  50%  { transform: translate3d(40px,30px,0); }
+  0% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(40px,30px,0); }
   100% { transform: translate3d(0,0,0); }
 }
 @keyframes floatTwo {
-  0%   { transform: translate3d(0,0,0); }
-  50%  { transform: translate3d(-30px,-40px,0); }
+  0% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(-30px,-40px,0); }
   100% { transform: translate3d(0,0,0); }
 }
 @keyframes floatThree {
-  0%   { transform: translate3d(0,0,0); }
-  50%  { transform: translate3d(20px,-30px,0); }
+  0% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(20px,-30px,0); }
   100% { transform: translate3d(0,0,0); }
 }
 
-/* back button inside hero */
-.hero-back-btn {
-  display:inline-block;
-  margin-bottom:16px;
-  padding:8px 14px;
-  border-radius:12px;
-  background:rgba(15,23,42,0.9);
-  border:1px solid rgba(148,163,184,0.7);
-  color:#e5e7eb;
-  text-decoration:none;
-  font-size:14px;
-}
-.hero-back-btn:hover {
-  background:rgba(30,41,59,0.95);
-}
-
+/* layout helpers */
 .page {
   position: relative;
   z-index: 1;
   max-width: 1120px;
-  margin: 32px auto 60px;
-  padding: 0 18px;
+  margin: 0 auto 70px;
+  padding: 0 18px 40px;
 }
 
+.section {
+  padding: 40px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.9rem,3vw,2.3rem);
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+}
+
+/* hero */
 .hero {
-  border-radius: 28px;
-  padding: 26px 24px 26px;
+  padding: 90px 20px 70px;
+  text-align: center;
   background:
-    radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 60%),
-    radial-gradient(circle at top right, rgba(168,85,247,0.25), transparent 60%),
-    linear-gradient(140deg, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
-  border: 1px solid rgba(148,163,184,0.6);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.75);
+    radial-gradient(circle at top left,rgba(56,189,248,0.25),transparent 55%),
+    radial-gradient(circle at top right,rgba(59,130,246,0.25),transparent 55%);
 }
 
-.hero-kicker {
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 20px 32px;
+  border-radius: 26px;
+  border: 1px solid rgba(148,163,184,0.5);
+  background: radial-gradient(circle at top left,rgba(15,23,42,0.96),rgba(2,6,23,0.98));
+  box-shadow:
+    0 0 40px rgba(15,23,42,0.95),
+    0 0 80px rgba(56,189,248,0.28);
+}
+
+.hero-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(15,23,42,0.85);
-  border: 1px solid rgba(148,163,184,0.7);
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-soft);
+  background: radial-gradient(circle at left,rgba(56,189,248,0.35),transparent 65%);
+  border: 1px solid rgba(148,163,184,0.5);
+  font-size: 0.92rem;
+  color: var(--text-main);
+  margin-bottom: 14px;
 }
 
-.hero-dot {
-  width: 9px;
-  height: 9px;
+.hero-pill-dot {
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   background: #22c55e;
   box-shadow: 0 0 10px rgba(34,197,94,0.9);
 }
 
-.hero-main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 18px;
-  align-items: flex-end;
-}
-
-.hero-text {
-  flex: 1.4;
-}
-
-.hero h1 {
-  font-size: clamp(34px, 5vw, 46px);
-  line-height: 1.05;
-  font-weight: 900;
+.hero-title {
+  font-size: clamp(2.4rem,4vw,3rem);
+  margin-bottom: 12px;
 }
 
 .hero-sub {
-  margin-top: 10px;
-  color: var(--text-soft);
-  font-size: 16px;
-  max-width: 620px;
+  max-width: 640px;
+  margin: 0 auto 16px;
+  font-size: 1.05rem;
+  color: var(--text-main);
 }
 
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.hero-pill {
-  padding: 5px 11px;
-  border-radius: 999px;
-  background: rgba(15,23,42,0.9);
-  border: 1px solid rgba(148,163,184,0.7);
-  font-size: 13px;
+.hero-note {
+  font-size: 0.92rem;
   color: var(--text-soft);
 }
 
-.hero-pill strong {
-  color: #e5e7eb;
-}
-
-.hero-side {
-  flex: 1;
-  min-width: 220px;
-  padding: 12px 16px 14px;
-  border-radius: 20px;
-  background:
-    radial-gradient(circle at top left, rgba(56,189,248,0.38), transparent 65%),
-    radial-gradient(circle at bottom right, rgba(251,191,36,0.28), transparent 60%),
-    rgba(15,23,42,0.9);
-  border: 1px solid rgba(148,163,184,0.7);
-}
-
-.hero-side-title {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #e5e7eb;
-  opacity: 0.85;
-}
-
-.hero-side-main {
-  margin-top: 6px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.hero-side-note {
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--text-soft);
+/* three tier cards */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 22px;
 }
 
 .card {
-  border-radius: 24px;
-  padding: 22px;
-  background: var(--card-bg);
+  position: relative;
+  background: radial-gradient(circle at top left,#020617,#020617 40%,#030712 100%);
+  padding: 24px 22px;
+  border-radius: 20px;
   border: 1px solid var(--card-border);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  box-shadow:
+    0 18px 40px rgba(15,23,42,0.95),
+    0 0 36px rgba(15,23,42,0.9);
+  overflow: hidden;
 }
 
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
+.card-inner { position: relative; z-index: 1; }
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  opacity: 0.25;
+  background:
+    radial-gradient(circle at top,rgba(56,189,248,0.16) 0,transparent 55%),
+    radial-gradient(circle at bottom,rgba(56,189,248,0.12) 0,transparent 55%);
+}
+
+.tier-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-1);
+  margin-bottom: 6px;
 }
 
 .card-title {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 8px;
 }
 
-.card-subtitle {
-  font-size: 13px;
-  color: var(--text-soft);
-}
-
-.badge-label {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  background: rgba(56,189,248,0.1);
-  border: 1px solid rgba(56,189,248,0.5);
-  color: #bae6fd;
-}
-
-.section-intro {
-  font-size: 14px;
+.card-price-line {
+  font-size: 0.92rem;
   color: var(--text-soft);
   margin-bottom: 10px;
 }
 
-.main-row {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-  gap: 20px;
+.card-text {
+  font-size: 0.97rem;
+  color: var(--text-main);
+  line-height: 1.7;
 }
 
-@media (max-width: 900px) {
-  .main-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.tier {
-  margin-top: 16px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(31,41,55,0.8);
-  border-radius: 18px;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-}
-
-.tier:first-of-type {
-  border-top: none;
-  padding-top: 4px;
-}
-
-.tier-headline {
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 6px 4px;
-  cursor: pointer;
-}
-
-.tier-headline-main {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.tier-name {
-  font-weight: 700;
-  font-size: 22px;
-}
-
-.tier-tag {
-  padding: 3px 9px;
-  border-radius: 999px;
-  font-size: 14px;
-  background: rgba(56,189,248,0.15);
-  border: 1px solid rgba(56,189,248,0.4);
-  color: #bae6fd;
-}
-
-.tier-toggle-label {
-  font-size: 11px;
-  color: var(--text-soft);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.tier-toggle-chevron {
-  font-size: 10px;
-}
-
-.tier-content {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.25s ease, opacity 0.22s ease;
-}
-
-.tier-body {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #cbd5e1;
-  line-height: 1.55;
-}
-
-.tier-body h4 {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.tier-body p {
+.card-text p + p {
   margin-top: 6px;
 }
 
-.tier-bullets {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #9ca3af;
-  line-height: 1.5;
+.tier-badge {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.6);
+  background: radial-gradient(circle at top,rgba(56,189,248,0.2),rgba(15,23,42,0.98));
+  color: var(--text-main);
 }
 
-.tier-bullets li {
-  margin-left: 18px;
-  margin-bottom: 4px;
+.card-highlight {
+  border-color: rgba(56,189,248,0.35);
+  box-shadow:
+    0 0 0 1px rgba(56,189,248,0.25),
+    0 20px 55px rgba(8,47,73,0.95),
+    0 0 55px rgba(56,189,248,0.3);
 }
 
-.selector-row {
-  margin-top: 10px;
+.card-highlight .tier-badge {
+  border-color: var(--accent-1);
+  color: var(--accent-1);
+}
+
+/* basic button */
+.button {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: radial-gradient(circle at top left,#38bdf8,#0ea5e9);
+  color: white;
+  text-decoration: none;
+  font-size: 1.02rem;
+  margin-top: 24px;
+  box-shadow:
+    0 14px 30px rgba(8,47,73,0.9),
+    0 0 40px rgba(56,189,248,0.35);
+  border: none;
+  cursor: pointer;
+}
+
+.button-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(148,163,184,0.7);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.center-text { text-align: center; }
+
+/* comparison table */
+.comparison-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(3,7,18,0.96);
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(148,163,184,0.4);
+  box-shadow:
+    0 18px 40px rgba(15,23,42,0.95),
+    0 0 40px rgba(15,23,42,0.9);
+}
+
+.comparison-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.comparison-wrap th,
+.comparison-wrap td {
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.comparison-wrap th {
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  font-weight: 600;
+}
+
+.comparison-wrap .feature {
+  text-align: left;
+}
+
+.tick {
+  color: #22c55e;
+  font-size: 1.3rem;
+}
+
+.empty {
+  color: rgba(255,255,255,0.15);
+}
+
+/* calculator */
+.calc-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(3,7,18,0.96);
+  padding: 22px 18px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(148,163,184,0.45);
+  box-shadow:
+    0 18px 40px rgba(15,23,42,0.95),
+    0 0 40px rgba(15,23,42,0.9);
+}
+
+.calc-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.calc-sub {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+
+.calc-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.calc-option-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.95);
+  border: 1px solid rgba(148,163,184,0.7);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.calc-option-pill input {
+  accent-color: #22c55e;
+}
+
+.room-list {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.room-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  background: rgba(15,23,42,0.98);
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(31,41,55,0.9);
 }
 
-.selector-controls {
-  display: flex;
+.room-label {
+  font-size: 0.95rem;
+}
+
+.room-controls {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
 .btn-step {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   border: 1px solid rgba(148,163,184,0.8);
-  background: rgba(15,23,42,0.9);
+  background: rgba(15,23,42,0.98);
   color: var(--text-main);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
-}
-
-.btn-step:hover {
-  background: rgba(56,189,248,0.22);
-  box-shadow: 0 0 12px rgba(56,189,248,0.55);
 }
 
 .btn-step:active {
   transform: translateY(1px);
-  box-shadow: none;
 }
 
-.count-badge {
-  min-width: 30px;
-  padding: 4px 8px;
+.room-count-badge {
+  min-width: 32px;
+  text-align: center;
+  font-size: 0.98rem;
+  padding: 3px 6px;
   border-radius: 999px;
   border: 1px solid rgba(148,163,184,0.8);
-  text-align: center;
-  font-size: 13px;
 }
 
-.tier.tier-open .tier-content {
-  max-height: 520px;
-  opacity: 1;
+/* totals */
+.calc-total-box {
   margin-top: 4px;
+  padding: 12px 10px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top left,rgba(56,189,248,0.16),transparent 60%),
+    radial-gradient(circle at bottom right,rgba(250,204,21,0.18),transparent 60%),
+    rgba(15,23,42,0.98);
+  border: 1px solid rgba(148,163,184,0.8);
 }
 
-.tier.tier-active {
-  background: radial-gradient(circle at top left, rgba(56,189,248,0.14), transparent 60%);
-  border-color: rgba(56,189,248,0.75);
-  box-shadow: 0 16px 40px rgba(15,23,42,0.9);
-  transform: translateY(-1px);
-}
-
-.calculator-title {
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.calculator-sub {
-  font-size: 13px;
+.calc-total-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
   color: var(--text-soft);
+}
+
+.calc-total-amount {
+  font-size: 1.4rem;
+  font-weight: 800;
   margin-top: 4px;
+}
+
+.calc-breakdown {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.calc-note {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+/* example three bedroom */
+.example-box {
+  margin-top: 12px;
+  padding: 10px 10px;
+  border-radius: 14px;
+  border: 1px dashed rgba(148,163,184,0.7);
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* video */
+.video-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 10px;
+  background:
+    radial-gradient(circle at top,rgba(56,189,248,0.45),transparent 65%),
+    radial-gradient(circle at bottom,rgba(15,23,42,0.95),rgba(15,23,42,0.98));
+  border: 1px solid rgba(148,163,184,0.6);
+  box-shadow:
+    0 22px 60px rgba(15,23,42,1),
+    0 0 75px rgba(56,189,248,0.3);
+}
+
+.video-box iframe {
+  width: 100%;
+  border-radius: 16px;
+  border: none;
+}
+
+/* reviews */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 22px;
+}
+
+.review-card {
+  background: radial-gradient(circle at top,#020617,#020617 40%,#020617 100%);
+  padding: 22px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(148,163,184,0.5);
+  box-shadow:
+    0 16px 36px rgba(15,23,42,1),
+    0 0 30px rgba(15,23,42,0.9);
+}
+
+.review-stars {
+  color: #facc15;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.7;
   margin-bottom: 10px;
 }
 
-.addon-block {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px dashed rgba(55,65,81,0.9);
-}
-
-.addon-label {
-  font-size: 13px;
+.review-name {
+  font-size: 0.9rem;
   color: var(--text-soft);
 }
 
-.total-box {
-  margin-top: 18px;
-  padding: 14px 12px;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(250,204,21,0.18), transparent 60%),
-    rgba(15,23,42,0.9);
-  border: 1px solid rgba(148,163,184,0.8);
+/* show more google reviews */
+.google-reviews-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.total-label {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text-soft);
+.google-reviews-wrap .review-card.extra-review {
+  display: none;
 }
 
-.total-amount {
-  font-size: 24px;
-  font-weight: 900;
-  margin-top: 4px;
+.google-reviews-wrap.reviews-expanded .review-card.extra-review {
+  display: block;
 }
 
-.total-amount span {
-  color: #ffffff;
-}
-
-.breakdown {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--text-soft);
-  line-height: 1.45;
-}
-
-.breakdown strong {
-  color: #e5e7eb;
-}
-
-.klarna-box {
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 16px;
-  border: 1px dashed rgba(148,163,184,0.7);
-  background: rgba(15,23,42,0.9);
-  font-size: 12px;
-  color: var(--text-soft);
-}
-
-.klarna-title {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: #e5e7eb;
-}
-
-.klarna-body {
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.cta-row {
-  margin-top: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.btn-primary {
-  padding: 9px 18px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  background: linear-gradient(120deg, #22c55e, #a3e635);
-  color: #052e16;
-  box-shadow: 0 14px 35px rgba(22,163,74,0.65);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 18px 40px rgba(22,163,74,0.85);
-  transform: translateY(-1px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 12px 28px rgba(22,163,74,0.6);
-}
-
-.book-note {
-  font-size: 12px;
-  color: var(--text-soft);
-}
-
+/* footer */
 .footer {
-  margin-top: 30px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.8rem;
   color: var(--text-soft);
+  padding: 10px 0 26px;
 }
-
 </style>
-<style>
+</head>
 
-</style></head>
-
+<body>
 <div class="background-orbit">
   <div class="orb one"></div>
   <div class="orb two"></div>
@@ -576,406 +578,488 @@ body {
 
 <div class="page">
 
+  <!-- HERO -->
   <section class="hero">
-
-    <a href="home.html" class="hero-back-btn">Back</a>
-
-<div class="hero-kicker">
-    <div class="hero-dot"></div>
-    <span>Professional carpet and upholstery care</span>
-  </div>
-
-  <div class="hero-main">
-    <div class="hero-text">
-      <h1>Professional carpet cleaning tailored to suit your needs and your budget</h1>
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        Trusted local carpet and upholstery cleaning
+      </div>
+      <h1 class="hero-title">The Carpet Cleaning Company</h1>
       <p class="hero-sub">
-        Honest room based pricing with three clear service levels so you can choose the depth of clean that suits your carpets and your budget.
+        Professional carpet and upholstery cleaning using deep fibre agitation, targeted enzyme treatments and hot steam extraction.
       </p>
+      <p class="hero-note">
+        Clear options so you always know exactly what you are paying for and what level of clean your carpets will receive.
+      </p>
+    </div>
+  </section>
 
-      <div class="hero-pills">
-        <div class="hero-pill"><strong>Steam extraction</strong> up to 120°C</div>
-        <div class="hero-pill"><strong>Pet friendly</strong> options</div>
-        <div class="hero-pill"><strong>Local service</strong> with clear pricing</div>
+  <!-- TIERS -->
+  <section class="section">
+    <h2 class="section-title">Our three cleaning options</h2>
+    <p class="section-sub">
+      Each option uses professional equipment. The difference is in how much time, chemistry and agitation is invested into your carpets.
+    </p>
+
+    <div class="tiers-grid">
+
+      <!-- Budget -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="tier-label">Tier one</div>
+          <div class="card-title">Budget clean</div>
+          <div class="card-price-line">First room about £45, then about £30 for each extra room.</div>
+          <div class="card-text">
+            <p>
+              This is the classic internet budget clean. It matches the type of thirty pound cleans that are advertised everywhere online.
+              Anything at this price or cheaper will usually follow this method.
+            </p>
+            <p>
+              A strong in tank detergent is mixed with hot water and applied through the wand.
+              The same solution is then extracted back out. Because the detergent is not separately rinsed, a small amount stays in the carpet.
+            </p>
+            <p>
+              It can give a simple freshen on short pile carpets but it is not a deep clean and it does not include targeted pre spray or mechanical agitation.
+            </p>
+          </div>
+          <div class="tier-badge">Budget refresh</div>
+        </div>
+      </div>
+
+      <!-- Enzyme -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="tier-label">Tier two</div>
+          <div class="card-title">Enzyme clean</div>
+          <div class="card-price-line">First room about £65, then about £35 for each extra room.</div>
+          <div class="card-text">
+            <p>
+              This option replaces the basic in tank detergent with a targeted pre spray that is applied directly into the fibres.
+              It is designed to tackle food spills, drink marks, body oils, general soil and light pet related contamination.
+            </p>
+            <p>
+              The solution is given proper dwell time so that the enzymes can break down the contamination and release it from the pile.
+              Hot steam extraction then flushes everything out and leaves the carpet cleaner and fresher.
+            </p>
+            <p>
+              You know you are getting more time and more focused chemistry than a basic budget clean, without going all the way to full restoration.
+            </p>
+          </div>
+          <div class="tier-badge">Family and pets</div>
+        </div>
+      </div>
+
+      <!-- Deep restoration -->
+      <div class="card card-highlight">
+        <div class="card-inner">
+          <div class="tier-label">Tier three</div>
+          <div class="card-title">Deep restoration clean</div>
+          <div class="card-price-line">First room about £75, then about £45 for each extra room.</div>
+          <div class="card-text">
+            <p>
+              This is the full restoration method and the service behind the majority of my five star reviews.
+              It is designed to bring carpets as close as possible to their best condition.
+            </p>
+            <p>
+              A specialist pre spray is applied and given time to work.
+              A counter rotating brush then scrubs from both directions, lifting compacted soil and rejuvenating the pile so the carpet looks and feels new again.
+            </p>
+            <p>
+              Finally everything is rinsed out with high temperature steam extraction, often close to one hundred and twenty degrees,
+              which cuts through grease and heavy traffic lanes and leaves the fibres brighter, softer and noticeably cleaner.
+            </p>
+          </div>
+          <div class="tier-badge">Most popular</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT IS INCLUDED COMPARISON -->
+  <section class="section">
+    <h2 class="section-title">What is included in each option</h2>
+    <p class="section-sub">
+      A simple side by side view so you can see at a glance what changes as you move from Budget to Enzyme to Deep Restoration.
+    </p>
+
+    <div class="comparison-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="feature">Feature</th>
+            <th>Budget</th>
+            <th>Enzyme</th>
+            <th>Deep restoration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature">Professional pre vacuum where needed</td>
+            <td class="empty">•</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Targeted enzyme or specialist pre spray</td>
+            <td class="empty">•</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Counter rotating brush agitation</td>
+            <td class="empty">•</td>
+            <td class="empty">•</td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">High temperature steam extraction up to around 120°C</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Antibacterial treatment and deodoriser</td>
+            <td class="empty">•</td>
+            <td><span class="tick">✓</span></td>
+            <td><span class="tick">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section">
+    <h2 class="section-title">Quick guide price calculator</h2>
+    <p class="section-sub">
+      Choose a level of clean and set how many rooms you would like done.
+      This gives a simple guide for a typical home. Final price is always confirmed after a quick chat.
+    </p>
+
+    <div class="calc-wrap">
+      <div class="calc-heading">Step one   choose your preferred option</div>
+      <div class="calc-sub">All prices are room based. Enzyme and Deep Restoration include more time, chemistry and mechanical agitation.</div>
+
+      <div class="calc-options">
+        <label class="calc-option-pill">
+          <input type="radio" name="tierOption" value="budget" checked>
+          <span>Budget clean</span>
+        </label>
+        <label class="calc-option-pill">
+          <input type="radio" name="tierOption" value="enzyme">
+          <span>Enzyme clean</span>
+        </label>
+        <label class="calc-option-pill">
+          <input type="radio" name="tierOption" value="deep">
+          <span>Deep restoration</span>
+        </label>
+      </div>
+
+      <div class="calc-heading">Step two   set how many rooms</div>
+      <div class="calc-sub">Keep it simple. You can describe exact layout when you call.</div>
+
+      <div class="room-list">
+        <div class="room-row" data-room="lounge">
+          <div class="room-label">Lounge or living room</div>
+          <div class="room-controls">
+            <button type="button" class="btn-step" data-action="dec">-</button>
+            <span class="room-count-badge" data-role="count">0</span>
+            <button type="button" class="btn-step" data-action="inc">+</button>
+          </div>
+        </div>
+
+        <div class="room-row" data-room="hsl">
+          <div class="room-label">Hall stairs landing</div>
+          <div class="room-controls">
+            <button type="button" class="btn-step" data-action="dec">-</button>
+            <span class="room-count-badge" data-role="count">0</span>
+            <button type="button" class="btn-step" data-action="inc">+</button>
+          </div>
+        </div>
+
+        <div class="room-row" data-room="bedrooms">
+          <div class="room-label">Bedrooms</div>
+          <div class="room-controls">
+            <button type="button" class="btn-step" data-action="dec">-</button>
+            <span class="room-count-badge" data-role="count">0</span>
+            <button type="button" class="btn-step" data-action="inc">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-total-box">
+        <div class="calc-total-label">Guide total</div>
+        <div class="calc-total-amount">£<span id="calcTotal">0</span></div>
+        <div class="calc-breakdown" id="calcBreakdown">
+          Add a few rooms above to see an approximate total for the option you have chosen.
+        </div>
+        <div class="calc-note">
+          This is a simple guide based on your room count. Final price is confirmed after a short conversation about layout, access and carpet condition.
+        </div>
+      </div>
+
+      <div class="example-box" id="exampleBox">
+        Example three bedroom house   figures will appear here once the calculator has loaded.
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED VIDEO -->
+  <section class="section">
+    <h2 class="section-title">See the clean in action</h2>
+    <p class="section-sub">
+      Real work on real carpets. Follow us on Facebook to see more of these clips and before and after transformations.
+    </p>
+
+    <div class="video-shell">
+      <div class="video-box">
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F3647709948856392%2F&show_text=false&width=560&t=0"
+          style="width:100%;height:520px;border-radius:16px;"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
       </div>
     </div>
 
-    <div style='text-align:right; margin-bottom:12px;'></div>
-
-    <aside class="hero-side">
-      <div class="hero-side-title">Booking information</div>
-      <div class="hero-side-main">Call 07802 563213</div>
-      <div class="hero-side-note">
-        Most bookings confirmed in a quick call. Use the calculator for a guide.
-      </div>
-    </aside>
-</div>
-</section>
-
-<div class="main-row">
-
-<section class="card">
-  <div class="card-header">
-    <div>
-      <div class="card-title">Cleaning packages</div>
-      <div class="card-subtitle">Simple, clear, and easy to compare</div>
+    <div class="center-text" style="margin-top:18px;">
+      <a class="button" href="https://www.facebook.com/profile.php?id=61559013150413" target="_blank">
+        Like and follow us on Facebook
+      </a>
+      <p class="section-sub" style="margin-top:10px;">
+        It really helps a small local business and lets you see what to expect before you book.
+      </p>
     </div>
-    <div class="badge-label">Method based pricing</div>
-  </div>
+  </section>
 
-  <p class="section-intro">
-    Each package is tailored to a different level of soiling. The deeper the package, the more time, machinery and chemistry is invested into the carpet.
-  </p>
+  <!-- FACEBOOK REVIEWS -->
+  <section class="section">
+    <h2 class="section-title">Facebook reviews</h2>
+    <p class="section-sub">
+      A few recent comments from local customers.
+    </p>
 
-  <!-- Tier 1 -->
-  <article class="tier tier-open" data-tier="t1">
-    <button class="tier-headline" type="button">
-      <div class="tier-headline-main">
-        <div class="tier-name">Tier 1  Budget Clean</div>
-        <div class="tier-tag">Basic maintenance</div>
-      </div>
-      <div class="tier-toggle-label">
-        <span>Details</span>
-        <span class="tier-toggle-chevron">▲</span>
-      </div>
-    </button>
-
-    <div class="tier-content">
-      <div class="tier-body">
-        <p>
-          This is the basic package and very similar to the budget cleans you often see advertised online.
-        </p>
-        <p>
-          A standard in tank detergent is mixed with hot water and applied through the wand. The same solution is then extracted back out. The detergent is not separately rinsed away and a small amount is left in the carpet.
-        </p>
-        <p>
-          It can give a reasonable freshen up on carpet tiles and very short pile carpets but it is not a deep clean.
-        </p>
-
-        <h4>Typical use</h4>
-        <ul class="tier-bullets">
-          <li>Rooms that already look fairly clean and just need a quick freshen up</li>
-          <li>Low profile carpets and carpet tiles</li>
-          <li>Situations where budget is the main priority over maximum soil removal</li>
-        </ul>
-
-        <h4>Guide pricing</h4>
-        <p>
-          First room around £45 and additional rooms around £30, depending on size and layout.
-        </p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Very happy with our carpets which were cleaned by Paul. Excellent service.</div>
+        <div class="review-name">Nicola KS</div>
       </div>
 
-      <div class="selector-row">
-        <div>Rooms at this level</div>
-        <div class="selector-controls">
-          <button class="btn-step" data-action="dec">-</button>
-          <span class="count-badge" data-role="count">0</span>
-          <button class="btn-step" data-action="inc">+</button>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Outstanding work both times. Highly recommended.</div>
+        <div class="review-name">Alex Whittles</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Office carpets completely transformed. No stains left at all.</div>
+        <div class="review-name">Chantal Matthews</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS -->
+  <section class="section">
+    <h2 class="section-title">Google reviews</h2>
+    <p class="section-sub">
+      These are genuine reviews from people who have already used The Carpet Cleaning Company.
+    </p>
+
+    <div class="google-reviews-wrap" id="googleReviewsWrap">
+      <div class="reviews-grid">
+        <!-- first six always visible -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Large sofa, lounge, stairs and bedroom carpet look brand new.</div>
+          <div class="review-name">Sue</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Very thorough job. Carpets came up better than expected.</div>
+          <div class="review-name">David Beardsall</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Fantastic service. Very friendly and professional.</div>
+          <div class="review-name">Patrick Maslin</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Carpets came up like new. Really pleased with the results.</div>
+          <div class="review-name">James Wilson</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Deep clean removed stains I thought were permanent.</div>
+          <div class="review-name">Harry Hancock Davies</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Trustworthy and professional. Sofa and carpet look brilliant.</div>
+          <div class="review-name">Melanie Riches</div>
+        </div>
+
+        <!-- extra reviews that appear when user clicks show more -->
+        <div class="review-card extra-review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Friendly and efficient. Went above and beyond.</div>
+          <div class="review-name">Chris Atherton</div>
+        </div>
+
+        <div class="review-card extra-review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Amazing results. Everything looks brand new.</div>
+          <div class="review-name">Jonathan O Rourke</div>
+        </div>
+
+        <div class="review-card extra-review">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Carpets cleaned beautifully. Very polite and hard working.</div>
+          <div class="review-name">Ellie May</div>
+        </div>
+      </div>
+
+      <div class="center-text" style="margin-top:20px;">
+        <button type="button" class="button" id="btnShowMoreReviews">
+          Show more Google reviews
+        </button>
+        <div style="margin-top:12px;">
+          <a class="button-secondary" href="https://www.google.com/maps/place/The+Carpet+Cleaning+Company/" target="_blank">
+            View all Google reviews on Google
+          </a>
         </div>
       </div>
     </div>
-  </article>
+  </section>
 
-  <!-- Tier 2 -->
-  <article class="tier" data-tier="t2">
-    <button class="tier-headline" type="button">
-      <div class="tier-headline-main">
-        <div class="tier-name">Tier 2  Enzyme Clean</div>
-        <div class="tier-tag">Family and pet homes</div>
-      </div>
-      <div class="tier-toggle-label">
-        <span>Details</span>
-        <span class="tier-toggle-chevron">▼</span>
-      </div>
-    </button>
-
-    <div class="tier-content">
-      <div class="tier-body">
-        <p>
-          This is the intermediate clean. Instead of a basic in tank detergent, a targeted enzyme or specialist pre spray is applied directly into the carpet fibres.
-        </p>
-        <p>
-          The solution is allowed proper dwell time so it can break down food spills, body oils, general soil and light pet related contamination. Specific spotting solutions can also be used on marks that need extra attention.
-        </p>
-
-        <h4>Process</h4>
-        <ul class="tier-bullets">
-          <li>Optional professional pre vacuum where needed</li>
-          <li>Targeted enzyme or tailored pre spray applied to the fibres</li>
-          <li>Dwell time so soils soften and release from the pile</li>
-          <li>Hot water extraction, often up to around 120°C, to flush out loosened soil and residues</li>
-        </ul>
-
-        <h4>When to choose this</h4>
-        <p>
-          Ideal for most lived in family rooms where there are regular spills, general grime and light odours but the carpets do not yet need full restoration.
-        </p>
-
-        <h4>Guide pricing</h4>
-        <p>
-          First room around £65 and additional rooms around £35, depending on size and layout.
-        </p>
-      </div>
-
-      <div class="selector-row">
-        <div>Rooms at this level</div>
-        <div class="selector-controls">
-          <button class="btn-step" data-action="dec">-</button>
-          <span class="count-badge" data-role="count">0</span>
-          <button class="btn-step" data-action="inc">+</button>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- Tier 3 -->
-  <article class="tier" data-tier="t3">
-    <button class="tier-headline" type="button">
-      <div class="tier-headline-main">
-        <div class="tier-name">Tier 3  Deep Restoration</div>
-        <div class="tier-tag">Premium full restoration</div>
-      </div>
-      <div class="tier-toggle-label">
-        <span>Details</span>
-        <span class="tier-toggle-chevron">▼</span>
-      </div>
-    </button>
-
-    <div class="tier-content">
-      <div class="tier-body">
-        <p>
-          This is the premium service and the method responsible for the majority of my five star reviews. It delivers the deepest clean and is designed for carpets that need full restoration rather than a simple freshen up.
-        </p>
-
-        <h4>Full professional pre vacuum</h4>
-        <p>
-          A powerful commercial pre vacuum is used to remove as much loose dry soil, grit and fine particles as possible. Getting this dry soil out first means the cleaning chemistry can work at maximum efficiency.
-        </p>
-
-        <h4>Targeted pre spray treatment</h4>
-        <p>
-          A specialist pre spray is applied to break down heavy soil, oils, grease and stubborn traffic lane contamination. It is allowed proper dwell time so deep down dirt can soften and release from the fibres.
-        </p>
-
-        <h4>Counter rotating brush agitation</h4>
-        <p>
-          The counter rotating brush machine scrubs the carpet from both directions, lifting impacted soil to the surface and restoring the pile. This is the part that really cleans the fibres and removes material that extraction alone cannot reach.
-        </p>
-
-        <h4>High temperature steam extraction</h4>
-        <p>
-          Once the carpet has been fully agitated, everything is flushed out with high temperature extraction, up to around 120°C. This cuts through grease and embedded contamination and leaves the fibres brighter and softer.
-        </p>
-
-        <h4>The result</h4>
-        <p>
-          A dramatic improvement in appearance, hygiene and texture. This service aims to bring carpets as close as possible to their original condition and is my most effective and most popular package.
-        </p>
-
-        <h4>Guide pricing</h4>
-        <p>
-          First room around £75 and additional rooms around £45, depending on size, layout and how much restoration is needed.
-        </p>
-      </div>
-
-      <div class="selector-row">
-        <div>Rooms at this level</div>
-        <div class="selector-controls">
-          <button class="btn-step" data-action="dec">-</button>
-          <span class="count-badge" data-role="count">0</span>
-          <button class="btn-step" data-action="inc">+</button>
-        </div>
-      </div>
-    </div>
-  </article>
-
-</section>
-
-<aside class="card">
-  <div class="card-header">
-    <div>
-      <div class="calculator-title">Instant estimate</div>
-      <div class="calculator-sub">Use this to get a guide price before you call</div>
-    </div>
+  <div class="footer">
+    The Carpet Cleaning Company   ·   Professional carpet and upholstery cleaning in and around Ludlow
   </div>
-
-  <div class="section-intro">
-    Set how many rooms you would like at each level and add any extras. This gives you a guide before a final quote is confirmed.
-  </div>
-
-  <div class="addon-block" data-addon="odour">
-    <div class="selector-row">
-      <div class="addon-label">Odour neutraliser  £15 per room</div>
-      <div class="selector-controls">
-        <button class="btn-step" data-action="dec">-</button>
-        <span class="count-badge" data-role="count">0</span>
-        <button class="btn-step" data-action="inc">+</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="addon-block" data-addon="stain">
-    <div class="selector-row">
-      <div class="addon-label">Stain guard protection  £20 per room</div>
-      <div class="selector-controls">
-        <button class="btn-step" data-action="dec">-</button>
-        <span class="count-badge" data-role="count">0</span>
-        <button class="btn-step" data-action="inc">+</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="total-box">
-    <div class="total-label">Guide total</div>
-    <div class="total-amount">£<span id="totalAmount">0</span></div>
-    <div class="breakdown" id="breakdownText">
-      Select some rooms and add ons to see a breakdown here.
-    </div>
-  </div>
-
-  <div class="klarna-box">
-    <div class="klarna-title">Spread the cost with Klarna</div>
-    <div class="klarna-body" id="klarnaText">
-      Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.
-    </div>
-  </div>
-
-  <div class="cta-row">
-    <button class="btn-primary" type="button">Call now to confirm this estimate</button>
-    <div class="book-note">Final price is confirmed after a quick chat about layout, access and carpet condition. Klarna is available on the final agreed quote.</div>
-  </div>
-</aside>
-
-</div>
-
-<footer class="footer">
-  The Carpet Cleaning Company   07802 563213   thecarpetcleaningcrew.co.uk
-</footer>
 
 </div>
 
 <script>
+/* pricing logic */
 const pricing = {
-  t1: { first: 45, add: 30, label: "Tier 1 Budget Clean" },
-  t2: { first: 65, add: 35, label: "Tier 2 Enzyme Clean" },
-  t3: { first: 75, add: 45, label: "Tier 3 Deep Restoration" },
-  odour: { per: 15, label: "Odour neutraliser" },
-  stain: { per: 20, label: "Stain guard" }
+  budget: { first: 45, add: 30, label: "Budget clean" },
+  enzyme: { first: 65, add: 35, label: "Enzyme clean" },
+  deep:   { first: 75, add: 45, label: "Deep restoration clean" }
 };
 
-function attachControls(scope, key, isAddon) {
-  const decBtn = scope.querySelector('button[data-action="dec"]');
-  const incBtn = scope.querySelector('button[data-action="inc"]');
-  const countEl = scope.querySelector('[data-role="count"]');
+function getSelectedTierKey() {
+  const checked = document.querySelector('input[name="tierOption"]:checked');
+  return checked ? checked.value : "budget";
+}
+
+function getRoomCounts() {
+  const rows = document.querySelectorAll(".room-row");
+  let totalRooms = 0;
+  const parts = [];
+  rows.forEach(row => {
+    const name = row.getAttribute("data-room");
+    const labelEl = row.querySelector(".room-label");
+    const countEl = row.querySelector('[data-role="count"]');
+    const label = labelEl ? labelEl.textContent.trim() : name;
+    const count = parseInt(countEl ? countEl.textContent : "0", 10) || 0;
+    if (count > 0) {
+      totalRooms += count;
+      parts.push(count + " × " + label.toLowerCase());
+    }
+  });
+  return { totalRooms, parts };
+}
+
+function updateCalc() {
+  const tierKey = getSelectedTierKey();
+  const tierCfg = pricing[tierKey];
+  const { totalRooms, parts } = getRoomCounts();
+
+  const totalEl = document.getElementById("calcTotal");
+  const breakdownEl = document.getElementById("calcBreakdown");
+
+  let total = 0;
+  if (totalRooms === 0) {
+    totalEl.textContent = "0";
+    breakdownEl.textContent = "Add a few rooms above to see an approximate total for the option you have chosen.";
+  } else {
+    if (totalRooms === 1) {
+      total = tierCfg.first;
+    } else {
+      total = tierCfg.first + (totalRooms - 1) * tierCfg.add;
+    }
+    totalEl.textContent = total.toString();
+    breakdownEl.textContent =
+      tierCfg.label + " for about " + totalRooms + " room" + (totalRooms > 1 ? "s" : "") +
+      " comes to around £" + total + ". " +
+      (parts.length ? "This example includes " + parts.join(", ") + "." : "");
+  }
+}
+
+/* step buttons */
+document.querySelectorAll(".room-row").forEach(row => {
+  const decBtn = row.querySelector('button[data-action="dec"]');
+  const incBtn = row.querySelector('button[data-action="inc"]');
+  const countEl = row.querySelector('[data-role="count"]');
 
   function change(delta) {
     let value = parseInt(countEl.textContent || "0", 10);
     if (isNaN(value)) value = 0;
     value = value + delta;
     if (value < 0) value = 0;
-    if (value > 20) value = 20;
+    if (value > 12) value = 12;
     countEl.textContent = String(value);
-    computeTotal();
+    updateCalc();
   }
 
-  decBtn.addEventListener("click", () => change(-1));
-  incBtn.addEventListener("click", () => change(1));
+  if (decBtn) decBtn.addEventListener("click", () => change(-1));
+  if (incBtn) incBtn.addEventListener("click", () => change(1));
+});
+
+/* tier change */
+document.querySelectorAll('input[name="tierOption"]').forEach(radio => {
+  radio.addEventListener("change", updateCalc);
+});
+
+/* example three bedroom */
+(function() {
+  const exampleRooms = 5; // lounge, hall stairs landing and three bedrooms
+  const box = document.getElementById("exampleBox");
+  const keys = ["budget","enzyme","deep"];
+  const parts = keys.map(key => {
+    const cfg = pricing[key];
+    const total = cfg.first + (exampleRooms - 1) * cfg.add;
+    return cfg.label + " about £" + total;
+  });
+  box.textContent =
+    "Example three bedroom house   one lounge, one hall stairs landing and three bedrooms (" + exampleRooms +
+    " rooms in total). As a guide this often works out at " + parts.join(", ") + ".";
+})();
+
+/* initial calc */
+updateCalc();
+
+/* show more google reviews */
+const wrap = document.getElementById("googleReviewsWrap");
+const btnMore = document.getElementById("btnShowMoreReviews");
+if (wrap && btnMore) {
+  btnMore.addEventListener("click", () => {
+    wrap.classList.add("reviews-expanded");
+    btnMore.style.display = "none";
+  });
 }
-
-function computeTotal() {
-  let total = 0;
-  const lines = [];
-
-  document.querySelectorAll(".tier").forEach(t => t.classList.remove("tier-active"));
-
-  ["t1","t2","t3"].forEach(id => {
-    const tierEl = document.querySelector('.tier[data-tier="' + id + '"]');
-    if (!tierEl) return;
-    const countEl = tierEl.querySelector('[data-role="count"]');
-    const count = parseInt(countEl ? countEl.textContent : "0", 10) || 0;
-    if (count > 0) {
-      const cfg = pricing[id];
-      let cost = 0;
-      if (count === 1) {
-        cost = cfg.first;
-      } else {
-        cost = cfg.first + (count - 1) * cfg.add;
-      }
-      total += cost;
-      tierEl.classList.add("tier-active");
-      lines.push("<strong>" + cfg.label + "</strong>  ·  " + count + " room" + (count > 1 ? "s" : "") + "  ·  approx £" + cost);
-    }
-  });
-
-  ["odour","stain"].forEach(id => {
-    const block = document.querySelector('[data-addon="' + id + '"]');
-    if (!block) return;
-    const countEl = block.querySelector('[data-role="count"]');
-    const count = parseInt(countEl ? countEl.textContent : "0", 10) || 0;
-    if (count > 0) {
-      const cfg = pricing[id];
-      const cost = count * cfg.per;
-      total += cost;
-      lines.push("<strong>" + cfg.label + "</strong>  ·  " + count + " room" + (count > 1 ? "s" : "") + "  ·  approx £" + cost);
-    }
-  });
-
-  const totalEl = document.getElementById("totalAmount");
-  const breakdownEl = document.getElementById("breakdownText");
-  const klarnaEl = document.getElementById("klarnaText");
-
-  totalEl.textContent = total.toString();
-
-  if (lines.length === 0) {
-    breakdownEl.textContent = "Select some rooms and add ons to see a guide price.";
-    if (klarnaEl) {
-      klarnaEl.textContent = "Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.";
-    }
-  } else {
-    breakdownEl.innerHTML = lines.join("<br>");
-    if (klarnaEl) {
-      const perMonth = Math.round(total / 3);
-      klarnaEl.textContent = "If you choose Klarna Pay in 3, this guide total would be about £" + perMonth + " per month for 3 months, interest free for eligible customers.";
-    }
-  }
-}
-
-document.querySelectorAll(".tier").forEach(tierEl => {
-  const headline = tierEl.querySelector(".tier-headline");
-  const content = tierEl.querySelector(".tier-content");
-  if (!headline || !content) return;
-
-  if (tierEl.classList.contains("tier-open")) {
-    content.style.maxHeight = content.scrollHeight + "px";
-    content.style.opacity = "1";
-  }
-
-  headline.addEventListener("click", () => {
-    const open = tierEl.classList.toggle("tier-open");
-    const chevron = tierEl.querySelector(".tier-toggle-chevron");
-    if (open) {
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.style.opacity = "1";
-      if (chevron) chevron.textContent = "▲";
-    } else {
-      content.style.maxHeight = "0px";
-      content.style.opacity = "0";
-      if (chevron) chevron.textContent = "▼";
-    }
-  });
-});
-
-document.querySelectorAll(".tier").forEach(tierEl => {
-  attachControls(tierEl, tierEl.getAttribute("data-tier"), false);
-});
-
-document.querySelectorAll("[data-addon]").forEach(block => {
-  attachControls(block, block.getAttribute("data-addon"), true);
-});
-
-computeTotal();
 </script>
 
 </body>
 </html>
-     
 
