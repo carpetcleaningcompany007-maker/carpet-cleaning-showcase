@@ -1,3 +1,223 @@
+Can you not just change this whole code for me?       
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Carpet Cleaning Company</title>
+
+<style>
+:root {
+  --bg-main: #020617;
+  --accent-1: #38bdf8;
+  --accent-2: #a855f7;
+  --accent-3: #22c55e;
+  --card-bg: rgba(15,23,42,0.96);
+  --card-border: rgba(148,163,184,0.7);
+  --text-main: #e5e7eb;
+  --text-soft: #9ca3af;
+  --highlight: #facc15;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top left, #0f172a 0%, #020617 55%, #000000 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.background-orbit {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+.orb.one {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #38bdf8 0%, transparent 70%);
+  top: -80px;
+  left: -40px;
+  animation: floatOne 18s ease-in-out infinite;
+}
+
+.orb.two {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+  bottom: -120px;
+  right: -40px;
+  animation: floatTwo 22s ease-in-out infinite;
+}
+
+.orb.three {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #22c55e 0%, transparent 70%);
+  top: 25%;
+  right: 25%;
+  opacity: 0.7;
+  animation: floatThree 26s ease-in-out infinite;
+}
+
+@keyframes floatOne {
+  0%   { transform: translate3d(0,0,0); }
+  50%  { transform: translate3d(40px,30px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes floatTwo {
+  0%   { transform: translate3d(0,0,0); }
+  50%  { transform: translate3d(-30px,-40px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes floatThree {
+  0%   { transform: translate3d(0,0,0); }
+  50%  { transform: translate3d(20px,-30px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 32px auto 60px;
+  padding: 0 18px;
+}
+
+.hero {
+  border-radius: 28px;
+  padding: 26px 24px 26px;
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 60%),
+    radial-gradient(circle at top right, rgba(168,85,247,0.25), transparent 60%),
+    linear-gradient(140deg, rgba(15,23,42,0.95), rgba(15,23,42,0.7));
+  border: 1px solid rgba(148,163,184,0.6);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.75);
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(148,163,184,0.7);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.hero-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34,197,94,0.9);
+}
+
+.hero-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 18px;
+  align-items: flex-end;
+}
+
+.hero-text {
+  flex: 1.4;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 46px);
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.hero-sub {
+  margin-top: 10px;
+  color: var(--text-soft);
+  font-size: 16px;
+  max-width: 620px;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.hero-pill {
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.7);
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.hero-pill strong {
+  color: #e5e7eb;
+}
+
+.hero-side {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 16px 14px;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgba(56,189,248,0.38), transparent 65%),
+    radial-gradient(circle at bottom right, rgba(251,191,36,0.28), transparent 60%),
+    rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.7);
+}
+
+.hero-side-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #e5e7eb;
+  opacity: 0.85;
+}
+
+.hero-side-main {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.hero-side-note {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.card {
+  border-radius: 24px;
+  padding: 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -328,7 +548,9 @@
 }
 
 </style>
-</head>
+<style>
+
+</style></head>
 
 <div class="background-orbit">
   <div class="orb one"></div>
@@ -338,35 +560,35 @@
 
 <div class="page">
 
-<section class="hero">
+  <section class="hero">
 <div class="hero-kicker">
-  <div class="hero-dot"></div>
-  <span>Professional carpet and upholstery care</span>
-</div>
-
-<div class="hero-main">
-  <div class="hero-text">
-    <h1>Professional carpet cleaning tailored to suit your needs and your budget</h1>
-    <p class="hero-sub">
-      Honest room based pricing with three clear service levels so you can choose the depth of clean that suits your carpets and your budget.
-    </p>
-
-    <div class="hero-pills">
-      <div class="hero-pill"><strong>Steam extraction</strong> up to 120°C</div>
-      <div class="hero-pill"><strong>Pet friendly</strong> options</div>
-      <div class="hero-pill"><strong>Local service</strong> with clear pricing</div>
-    </div>
+    <div class="hero-dot"></div>
+    <span>Professional carpet and upholstery care</span>
   </div>
 
-  <div style='text-align:right; margin-bottom:12px;'></div>
+  <div class="hero-main">
+    <div class="hero-text">
+      <h1>Professional carpet cleaning tailored to suit your needs and your budget</h1>
+      <p class="hero-sub">
+        Honest room based pricing with three clear service levels so you can choose the depth of clean that suits your carpets and your budget.
+      </p>
 
-  <aside class="hero-side">
-    <div class="hero-side-title">Booking information</div>
-    <div class="hero-side-main">Call 07802 563213</div>
-    <div class="hero-side-note">
-      Most bookings confirmed in a quick call. Use the calculator for a guide.
+      <div class="hero-pills">
+        <div class="hero-pill"><strong>Steam extraction</strong> up to 120°C</div>
+        <div class="hero-pill"><strong>Pet friendly</strong> options</div>
+        <div class="hero-pill"><strong>Local service</strong> with clear pricing</div>
+      </div>
     </div>
-  </aside>
+
+    <div style='text-align:right; margin-bottom:12px;'></div>
+
+    <aside class="hero-side">
+      <div class="hero-side-title">Booking information</div>
+      <div class="hero-side-main">Call 07802 563213</div>
+      <div class="hero-side-note">
+        Most bookings confirmed in a quick call. Use the calculator for a guide.
+      </div>
+    </aside>
 </div>
 </section>
 
@@ -389,7 +611,7 @@
   <article class="tier tier-open" data-tier="t1">
     <button class="tier-headline" type="button">
       <div class="tier-headline-main">
-        <div class="tier-name">Tier 1 Budget Clean</div>
+        <div class="tier-name">Tier 1  Budget Clean</div>
         <div class="tier-tag">Basic maintenance</div>
       </div>
       <div class="tier-toggle-label">
@@ -400,9 +622,26 @@
 
     <div class="tier-content">
       <div class="tier-body">
+        <p>
+          This is the basic package and very similar to the budget cleans you often see advertised online.
+        </p>
+        <p>
+          A standard in tank detergent is mixed with hot water and applied through the wand. The same solution is then extracted back out. The detergent is not separately rinsed away and a small amount is left in the carpet.
+        </p>
+        <p>
+          It can give a reasonable freshen up on carpet tiles and very short pile carpets but it is not a deep clean.
+        </p>
+
+        <h4>Typical use</h4>
+        <ul class="tier-bullets">
+          <li>Rooms that already look fairly clean and just need a quick freshen up</li>
+          <li>Low profile carpets and carpet tiles</li>
+          <li>Situations where budget is the main priority over maximum soil removal</li>
+        </ul>
+
         <h4>Guide pricing</h4>
         <p>
-          First room around £45 and additional rooms around £30.
+          First room around £45 and additional rooms around £30, depending on size and layout.
         </p>
       </div>
 
@@ -421,7 +660,7 @@
   <article class="tier" data-tier="t2">
     <button class="tier-headline" type="button">
       <div class="tier-headline-main">
-        <div class="tier-name">Tier 2 Enzyme Clean</div>
+        <div class="tier-name">Tier 2  Enzyme Clean</div>
         <div class="tier-tag">Family and pet homes</div>
       </div>
       <div class="tier-toggle-label">
@@ -432,9 +671,29 @@
 
     <div class="tier-content">
       <div class="tier-body">
+        <p>
+          This is the intermediate clean. Instead of a basic in tank detergent, a targeted enzyme or specialist pre spray is applied directly into the carpet fibres.
+        </p>
+        <p>
+          The solution is allowed proper dwell time so it can break down food spills, body oils, general soil and light pet related contamination. Specific spotting solutions can also be used on marks that need extra attention.
+        </p>
+
+        <h4>Process</h4>
+        <ul class="tier-bullets">
+          <li>Optional professional pre vacuum where needed</li>
+          <li>Targeted enzyme or tailored pre spray applied to the fibres</li>
+          <li>Dwell time so soils soften and release from the pile</li>
+          <li>Hot water extraction, often up to around 120°C, to flush out loosened soil and residues</li>
+        </ul>
+
+        <h4>When to choose this</h4>
+        <p>
+          Ideal for most lived in family rooms where there are regular spills, general grime and light odours but the carpets do not yet need full restoration.
+        </p>
+
         <h4>Guide pricing</h4>
         <p>
-          First room around £65 and additional rooms around £35.
+          First room around £65 and additional rooms around £35, depending on size and layout.
         </p>
       </div>
 
@@ -453,8 +712,8 @@
   <article class="tier" data-tier="t3">
     <button class="tier-headline" type="button">
       <div class="tier-headline-main">
-        <div class="tier-name">Tier 3 Deep Restoration</div>
-        <div class="tier-tag">Premium restoration</div>
+        <div class="tier-name">Tier 3  Deep Restoration</div>
+        <div class="tier-tag">Premium full restoration</div>
       </div>
       <div class="tier-toggle-label">
         <span>Details</span>
@@ -464,9 +723,38 @@
 
     <div class="tier-content">
       <div class="tier-body">
+        <p>
+          This is the premium service and the method responsible for the majority of my five star reviews. It delivers the deepest clean and is designed for carpets that need full restoration rather than a simple freshen up.
+        </p>
+
+        <h4>Full professional pre vacuum</h4>
+        <p>
+          A powerful commercial pre vacuum is used to remove as much loose dry soil, grit and fine particles as possible. Getting this dry soil out first means the cleaning chemistry can work at maximum efficiency.
+        </p>
+
+        <h4>Targeted pre spray treatment</h4>
+        <p>
+          A specialist pre spray is applied to break down heavy soil, oils, grease and stubborn traffic lane contamination. It is allowed proper dwell time so deep down dirt can soften and release from the fibres.
+        </p>
+
+        <h4>Counter rotating brush agitation</h4>
+        <p>
+          The counter rotating brush machine scrubs the carpet from both directions, lifting impacted soil to the surface and restoring the pile. This is the part that really cleans the fibres and removes material that extraction alone cannot reach.
+        </p>
+
+        <h4>High temperature steam extraction</h4>
+        <p>
+          Once the carpet has been fully agitated, everything is flushed out with high temperature extraction, up to around 120°C. This cuts through grease and embedded contamination and leaves the fibres brighter and softer.
+        </p>
+
+        <h4>The result</h4>
+        <p>
+          A dramatic improvement in appearance, hygiene and texture. This service aims to bring carpets as close as possible to their original condition and is my most effective and most popular package.
+        </p>
+
         <h4>Guide pricing</h4>
         <p>
-          First room around £75 and additional rooms around £45.
+          First room around £75 and additional rooms around £45, depending on size, layout and how much restoration is needed.
         </p>
       </div>
 
@@ -487,17 +775,17 @@
   <div class="card-header">
     <div>
       <div class="calculator-title">Instant estimate</div>
-      <div class="calculator-sub">Use this to get a guide price</div>
+      <div class="calculator-sub">Use this to get a guide price before you call</div>
     </div>
   </div>
 
   <div class="section-intro">
-    Select rooms and add ons for a quick guide.
+    Set how many rooms you would like at each level and add any extras. This gives you a guide before a final quote is confirmed.
   </div>
 
   <div class="addon-block" data-addon="odour">
     <div class="selector-row">
-      <div class="addon-label">Odour neutraliser £15 per room</div>
+      <div class="addon-label">Odour neutraliser  £15 per room</div>
       <div class="selector-controls">
         <button class="btn-step" data-action="dec">-</button>
         <span class="count-badge" data-role="count">0</span>
@@ -508,7 +796,7 @@
 
   <div class="addon-block" data-addon="stain">
     <div class="selector-row">
-      <div class="addon-label">Stain guard £20 per room</div>
+      <div class="addon-label">Stain guard protection  £20 per room</div>
       <div class="selector-controls">
         <button class="btn-step" data-action="dec">-</button>
         <span class="count-badge" data-role="count">0</span>
@@ -521,20 +809,20 @@
     <div class="total-label">Guide total</div>
     <div class="total-amount">£<span id="totalAmount">0</span></div>
     <div class="breakdown" id="breakdownText">
-      Select some rooms.
+      Select some rooms and add ons to see a breakdown here.
     </div>
   </div>
 
   <div class="klarna-box">
-    <div class="klarna-title">Spread the cost</div>
+    <div class="klarna-title">Spread the cost with Klarna</div>
     <div class="klarna-body" id="klarnaText">
-      Klarna available on final quotes.
+      Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.
     </div>
   </div>
 
   <div class="cta-row">
-    <button class="btn-primary" type="button">Call now</button>
-    <div class="book-note">Price confirmed after a quick chat.</div>
+    <button class="btn-primary" type="button">Call now to confirm this estimate</button>
+    <div class="book-note">Final price is confirmed after a quick chat about layout, access and carpet condition. Klarna is available on the final agreed quote.</div>
   </div>
 </aside>
 
@@ -548,7 +836,7 @@
 
 <script>
 const pricing = {
-  t1: { first: 45, add: 30, label: "Tier 1 Budget Clean" },
+  t1: { first: 45, add: 35, label: "Tier 1 Budget Clean" },
   t2: { first: 65, add: 35, label: "Tier 2 Enzyme Clean" },
   t3: { first: 75, add: 45, label: "Tier 3 Deep Restoration" },
   odour: { per: 15, label: "Odour neutraliser" },
@@ -595,7 +883,7 @@ function computeTotal() {
       }
       total += cost;
       tierEl.classList.add("tier-active");
-      lines.push("<strong>" + cfg.label + "</strong> · " + count + " room" + (count > 1 ? "s" : "") + " · approx £" + cost);
+      lines.push("<strong>" + cfg.label + "</strong>  ·  " + count + " room" + (count > 1 ? "s" : "") + "  ·  approx £" + cost);
     }
   });
 
@@ -608,7 +896,7 @@ function computeTotal() {
       const cfg = pricing[id];
       const cost = count * cfg.per;
       total += cost;
-      lines.push("<strong>" + cfg.label + "</strong> · " + count + " room" + (count > 1 ? "s" : "") + " · approx £" + cost);
+      lines.push("<strong>" + cfg.label + "</strong>  ·  " + count + " room" + (count > 1 ? "s" : "") + "  ·  approx £" + cost);
     }
   });
 
@@ -619,12 +907,16 @@ function computeTotal() {
   totalEl.textContent = total.toString();
 
   if (lines.length === 0) {
-    breakdownEl.textContent = "Select some rooms.";
-    klarnaEl.textContent = "Klarna available after final quote.";
+    breakdownEl.textContent = "Select some rooms and add ons to see a guide price.";
+    if (klarnaEl) {
+      klarnaEl.textContent = "Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.";
+    }
   } else {
     breakdownEl.innerHTML = lines.join("<br>");
-    const perMonth = Math.round(total / 3);
-    klarnaEl.textContent = "Klarna Pay in 3 would be about £" + perMonth + " per month.";
+    if (klarnaEl) {
+      const perMonth = Math.round(total / 3);
+      klarnaEl.textContent = "If you choose Klarna Pay in 3, this guide total would be about £" + perMonth + " per month for 3 months, interest free for eligible customers.";
+    }
   }
 }
 
@@ -644,11 +936,11 @@ document.querySelectorAll(".tier").forEach(tierEl => {
     if (open) {
       content.style.maxHeight = content.scrollHeight + "px";
       content.style.opacity = "1";
-      chevron.textContent = "▲";
+      if (chevron) chevron.textContent = "▲";
     } else {
       content.style.maxHeight = "0px";
       content.style.opacity = "0";
-      chevron.textContent = "▼";
+      if (chevron) chevron.textContent = "▼";
     }
   });
 });
@@ -666,4 +958,3 @@ computeTotal();
 
 </body>
 </html>
-
