@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -89,6 +90,22 @@ body {
   0%   { transform: translate3d(0,0,0); }
   50%  { transform: translate3d(20px,-30px,0); }
   100% { transform: translate3d(0,0,0); }
+}
+
+/* back button inside hero */
+.hero-back-btn {
+  display:inline-block;
+  margin-bottom:16px;
+  padding:8px 14px;
+  border-radius:12px;
+  background:rgba(15,23,42,0.9);
+  border:1px solid rgba(148,163,184,0.7);
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:14px;
+}
+.hero-back-btn:hover {
+  background:rgba(30,41,59,0.95);
 }
 
 .page {
@@ -560,6 +577,9 @@ body {
 <div class="page">
 
   <section class="hero">
+
+    <a href="home.html" class="hero-back-btn">Back</a>
+
 <div class="hero-kicker">
     <div class="hero-dot"></div>
     <span>Professional carpet and upholstery care</span>
@@ -957,9 +977,5 @@ computeTotal();
 
 </body>
 </html>
-1
-2
-3
-4
      
 
