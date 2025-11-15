@@ -1,0 +1,388 @@
+
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width,initial-scale=1'/>
+<title>The Carpet Cleaning Company</title>
+
+<style>
+  :root {
+    --bg-main: #020617;
+    --bg-card: #02091b;
+    --accent: #38bdf8;
+    --accent-soft: rgba(56,189,248,0.25);
+    --accent-strong: #0ea5e9;
+    --border-soft: rgba(148,163,184,0.35);
+    --text-muted: #9ca3af;
+    --text-soft: #e5e7eb;
+  }
+
+  body {
+    margin: 0;
+    background: #020617;
+    color: white;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  .hero {
+    padding: 90px 20px 70px;
+    text-align: center;
+    background:
+      radial-gradient(circle at top left, rgba(56,189,248,0.25), transparent 55%),
+      radial-gradient(circle at top right, rgba(59,130,246,0.25), transparent 55%),
+      linear-gradient(to bottom, #020617 0, #020617 60%, #020617 100%);
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px 32px;
+    border-radius: 26px;
+    border: 1px solid rgba(148,163,184,0.4);
+    background: radial-gradient(circle at top left, rgba(15,23,42,0.96), rgba(2,6,23,0.98));
+    box-shadow:
+      0 0 40px rgba(15,23,42,0.9),
+      0 0 70px rgba(56,189,248,0.25);
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    margin-bottom: 12px;
+  }
+
+  .hero-sub {
+    max-width: 640px;
+    margin: 0 auto 16px;
+    font-size: 1.05rem;
+    color: var(--text-soft);
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: radial-gradient(circle at left, rgba(56,189,248,0.35), transparent 65%);
+    border: 1px solid rgba(148,163,184,0.5);
+    font-size: 0.92rem;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+  }
+
+  .hero-pill-dot {
+    width: 10px; height: 10px;
+    border-radius: 999px;
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34,197,94,0.9);
+  }
+
+  .section {
+    padding: 45px 20px 55px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.9rem, 3vw, 2.3rem);
+    margin-bottom: 10px;
+  }
+
+  .section-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 22px;
+  }
+
+  .card {
+    position: relative;
+    background: radial-gradient(circle at top left,#020617,#020617 40%,#030712 100%);
+    padding: 24px 22px;
+    border-radius: 20px;
+    border: 1px solid var(--border-soft);
+    box-shadow:
+      0 18px 40px rgba(15,23,42,0.95),
+      0 0 36px rgba(15,23,42,0.9);
+    overflow: hidden;
+  }
+
+  .card-inner { position: relative; z-index: 1; }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    opacity: 0.25;
+    background:
+      radial-gradient(circle at top, rgba(56,189,248,0.16) 0, transparent 55%),
+      radial-gradient(circle at bottom, rgba(56,189,248,0.12) 0, transparent 55%);
+  }
+
+  .tier-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 0.97rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: 16px; right: 18px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.6);
+    background: radial-gradient(circle at top, rgba(56,189,248,0.2), rgba(15,23,42,0.98));
+    color: var(--text-soft);
+  }
+
+  .card-highlight {
+    border-color: var(--accent-soft);
+    box-shadow:
+      0 0 0 1px rgba(56,189,248,0.25),
+      0 20px 55px rgba(8,47,73,0.9),
+      0 0 55px rgba(56,189,248,0.28);
+  }
+
+  .card-highlight .tier-badge {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: radial-gradient(circle at top left,#38bdf8,#0ea5e9);
+    color: white;
+    text-decoration: none;
+    font-size: 1.02rem;
+    margin-top: 24px;
+    box-shadow:
+      0 14px 30px rgba(8,47,73,0.9),
+      0 0 40px rgba(56,189,248,0.35);
+  }
+
+  .center-text { text-align: center; }
+
+  .video-shell {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 24px;
+    padding: 10px;
+    background:
+      radial-gradient(circle at top, rgba(56,189,248,0.45), transparent 65%),
+      radial-gradient(circle at bottom, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+    border: 1px solid rgba(148,163,184,0.6);
+    box-shadow:
+      0 22px 60px rgba(15,23,42,1),
+      0 0 75px rgba(56,189,248,0.3);
+  }
+
+  .video-box iframe {
+    width: 100%; border-radius: 16px; border: none;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 22px;
+  }
+
+  .review-card {
+    background: radial-gradient(circle at top,#020617,#020617 40%,#020617 100%);
+    padding: 22px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(148,163,184,0.5);
+    box-shadow:
+      0 16px 36px rgba(15,23,42,1),
+      0 0 30px rgba(15,23,42,0.9);
+  }
+
+  .review-stars { color: #facc15; margin-bottom: 8px; font-size: 0.9rem; }
+  .review-text { font-size: 0.95rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 10px; }
+  .review-name { font-size: 0.9rem; color: var(--text-muted); }
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class='hero'>
+  <div class='hero-inner'>
+    <div class='hero-pill'>
+      <span class='hero-pill-dot'></span>
+      Trusted local carpet and upholstery cleaning
+    </div>
+    <h1 class='hero-title'>The Carpet Cleaning Company</h1>
+    <p class='hero-sub'>
+      Professional carpet and upholstery cleaning using deep fibre agitation, enzyme treatments and hot steam extraction.
+    </p>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class='section'>
+  <h2 class='section-title'>Our three cleaning options</h2>
+  <p class='section-sub'>Choose the level of clean that suits your carpets.</p>
+
+  <div class='tiers-grid'>
+
+    <!-- Tier 1 -->
+    <div class='card'>
+      <div class='card-inner'>
+        <div class='tier-label'>Tier one</div>
+        <div class='card-title'>Budget clean</div>
+        <div class='card-text'>
+          A lighter clean designed to freshen up carpets and remove surface soil. Great for regular maintenance.
+        </div>
+        <div class='tier-badge'>Everyday refresh</div>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class='card'>
+      <div class='card-inner'>
+        <div class='tier-label'>Tier two</div>
+        <div class='card-title'>Enzyme clean</div>
+        <div class='card-text'>
+          Stronger cleaning using an enzyme pre spray to break down oils and traffic lane soil. Ideal for end of tenancy cleans.
+        </div>
+        <div class='tier-badge'>End of tenancy</div>
+      </div>
+    </div>
+
+    <!-- Tier 3 (Now MOST POPULAR) -->
+    <div class='card card-highlight'>
+      <div class='card-inner'>
+        <div class='tier-label'>Tier three</div>
+        <div class='card-title'>Deep restoration</div>
+        <div class='card-text'>
+          Full restoration clean with enzyme treatment, CRB agitation, dwell time and a 120 degree steam rinse and extraction.
+        </div>
+        <div class='tier-badge'>Most popular</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='center-text'>
+    <a class='button' href='https://your-interactive-quote-page.github.io' target='_blank'>
+      Get an instant estimate
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED VIDEO -->
+<section class='section'>
+  <h2 class='section-title'>See the clean in action</h2>
+  <p class='section-sub'>Real work on real carpets.</p>
+
+  <div class='video-shell'>
+    <div class='video-box'>
+      <iframe 
+        src='https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F3647709948856392%2F&show_text=false&width=560&t=0'
+        style='width:100%;height:520px;border-radius:16px;'
+        scrolling='no'
+        frameborder='0'
+        allowfullscreen='true'
+        allow='autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FACEBOOK REVIEWS -->
+<section class='section'>
+  <h2 class='section-title'>Facebook reviews</h2>
+  <p class='section-sub'>
+    Like and follow us on Facebook to see all of our before and after pictures.
+  </p>
+
+  <div class='reviews-grid'>
+
+    <div class='review-card'>
+      <div class='review-stars'>★★★★★</div>
+      <div class='review-text'>Very happy with our carpets which were cleaned by Paul. Excellent service.</div>
+      <div class='review-name'>Nicola KS</div>
+    </div>
+
+    <div class='review-card'>
+      <div class='review-stars'>★★★★★</div>
+      <div class='review-text'>Outstanding work both times. Highly recommended.</div>
+      <div class='review-name'>Alex Whittles</div>
+    </div>
+
+    <div class='review-card'>
+      <div class='review-stars'>★★★★★</div>
+      <div class='review-text'>Office carpets completely transformed. No stains left at all.</div>
+      <div class='review-name'>Chantal Matthews</div>
+    </div>
+
+  </div>
+
+  <div class='center-text'>
+    <a class='button' href='https://www.facebook.com/profile.php?id=61559013150413' target='_blank'>
+      Like and follow us on Facebook
+    </a>
+  </div>
+</section>
+
+<!-- GOOGLE REVIEWS -->
+<section class='section'>
+  <h2 class='section-title'>Google reviews</h2>
+  <p class='section-sub'>Please check out our full Google reviews below.</p>
+
+  <div class='reviews-grid'>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Large sofa, lounge, stairs and bedroom carpet look brand new.</div><div class='review-name'>Sue</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Very thorough job. Carpets came up better than expected.</div><div class='review-name'>David Beardsall</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Fantastic service. Very friendly and professional.</div><div class='review-name'>Patrick Maslin</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Carpets came up like new. Really pleased.</div><div class='review-name'>James Wilson</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Deep clean removed stains I thought were permanent.</div><div class='review-name'>Harry Hancock Davies</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Trustworthy and professional. Sofa and carpet look brilliant.</div><div class='review-name'>Melanie Riches</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Friendly and efficient. Went above and beyond.</div><div class='review-name'>Chris Atherton</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Amazing results. Everything looks brand new.</div><div class='review-name'>Jonathan O Rourke</div></div>
+
+    <div class='review-card'><div class='review-stars'>★★★★★</div><div class='review-text'>Carpets cleaned beautifully. Very polite and hard working.</div><div class='review-name'>Ellie May</div></div>
+
+  </div>
+
+  <div class='center-text'>
+    <a class='button' href='https://www.google.com/maps/place/The+Carpet+Cleaning+Company/' target='_blank'>
+      View all Google reviews
+    </a>
+  </div>
+
+</section>
+
+</body>
+</html>
