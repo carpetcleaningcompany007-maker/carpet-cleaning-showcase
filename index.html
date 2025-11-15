@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,8 +31,6 @@ body {
   color: var(--text-main);
   min-height: 100vh;
 }
-
-/* background effects */
 
 .background-orbit {
   position: fixed;
@@ -93,8 +92,6 @@ body {
   100% { transform: translate3d(0,0,0); }
 }
 
-/* layout */
-
 .page {
   position: relative;
   z-index: 1;
@@ -102,8 +99,6 @@ body {
   margin: 32px auto 60px;
   padding: 0 18px;
 }
-
-/* hero */
 
 .hero {
   border-radius: 28px;
@@ -215,8 +210,6 @@ body {
   color: var(--text-soft);
 }
 
-/* cards */
-
 .card {
   border-radius: 24px;
   padding: 22px;
@@ -259,7 +252,18 @@ body {
   margin-bottom: 10px;
 }
 
-/* tiers */
+.main-row {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .main-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 
 .tier {
   margin-top: 16px;
@@ -295,13 +299,13 @@ body {
 
 .tier-name {
   font-weight: 700;
-  font-size: 17px;
+  font-size: 22px;
 }
 
 .tier-tag {
   padding: 3px 9px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 14px;
   background: rgba(56,189,248,0.15);
   border: 1px solid rgba(56,189,248,0.4);
   color: #bae6fd;
@@ -331,6 +335,16 @@ body {
   font-size: 14px;
   color: #cbd5e1;
   line-height: 1.55;
+}
+
+.tier-body h4 {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.tier-body p {
+  margin-top: 6px;
 }
 
 .tier-bullets {
@@ -395,7 +409,7 @@ body {
 }
 
 .tier.tier-open .tier-content {
-  max-height: 280px;
+  max-height: 520px;
   opacity: 1;
   margin-top: 4px;
 }
@@ -406,8 +420,6 @@ body {
   box-shadow: 0 16px 40px rgba(15,23,42,0.9);
   transform: translateY(-1px);
 }
-
-/* calculator card */
 
 .calculator-title {
   font-size: 18px;
@@ -471,6 +483,28 @@ body {
   color: #e5e7eb;
 }
 
+.klarna-box {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px dashed rgba(148,163,184,0.7);
+  background: rgba(15,23,42,0.9);
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.klarna-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #e5e7eb;
+}
+
+.klarna-body {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .cta-row {
   margin-top: 14px;
   display: flex;
@@ -506,18 +540,50 @@ body {
   color: var(--text-soft);
 }
 
-/* footer */
-
 .footer {
   margin-top: 30px;
   text-align: center;
   font-size: 12px;
   color: var(--text-soft);
 }
-</style>
-</head>
+.hero-logo-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
 
-<body>
+.hero-logo {
+  width: 150px;
+  height: auto;
+  opacity: 0.95;
+}
+</style>
+<style>
+.hero-logo {
+    width: 180px;
+    height: auto;
+    position: absolute;
+    right: 40px;
+    top: 140px;
+    z-index: 50;
+}
+.hero-logo-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.hero-logo {
+  width: 150px;
+  height: auto;
+  opacity: 0.95;
+}
+</style></head>
+
+
+
 
 <div class="background-orbit">
   <div class="orb one"></div>
@@ -528,16 +594,20 @@ body {
 <div class="page">
 
   <section class="hero">
+  <img src="images/logo.png" class="hero-logo" alt="The Carpet Cleaning Company logo">
     <div class="hero-kicker">
       <div class="hero-dot"></div>
       <span>Professional carpet and upholstery care</span>
     </div>
 
-    <div class="hero-main">
+    <div class="hero-logo-wrap">
+  <img src="images/logo.png" class="hero-logo" alt="The Carpet Cleaning Company logo">
+</div>
+<div class="hero-main">
       <div class="hero-text">
-        <h1>Deep cleaning that makes your carpets feel <span style="color:#ffffff;">better than new</span></h1>
+        <h1>Professional carpet cleaning tailored to suit your needs and your budget</h1>
         <p class="hero-sub">
-          Honest room based pricing with three clear service levels. Each one gives you a different depth of clean depending on what your carpets need.
+          Honest room based pricing with three clear service levels so you can choose the depth of clean that suits your carpets and your budget.
         </p>
 
         <div class="hero-pills">
@@ -547,7 +617,10 @@ body {
         </div>
       </div>
 
-      <aside class="hero-side">
+      <div style='text-align:right; margin-bottom:12px;'>
+  
+</div>
+<aside class="hero-side">
         <div class="hero-side-title">Booking information</div>
         <div class="hero-side-main">Call 07802 563213</div>
         <div class="hero-side-note">
@@ -576,24 +649,39 @@ body {
       <article class="tier tier-open" data-tier="t1">
         <button class="tier-headline" type="button">
           <div class="tier-headline-main">
-            <div class="tier-name">Tier 1  Basic Clean</div>
-            <div class="tier-tag">Light maintenance</div>
+            <div class="tier-name">Tier 1  Budget Clean</div>
+            <div class="tier-tag">Basic maintenance</div>
           </div>
           <div class="tier-toggle-label">
             <span>Details</span>
-            <span class="tier-toggle-chevron">▼</span>
+            <span class="tier-toggle-chevron">▲</span>
           </div>
         </button>
 
         <div class="tier-content">
           <div class="tier-body">
-            A simple refresh for carpets that just need a tidy up. Ideal for lightly used rooms or regular upkeep cleans between deeper work.
+            <p>
+              This is the basic package and very similar to the budget cleans you often see advertised online.
+            </p>
+            <p>
+              A standard in tank detergent is mixed with hot water and applied through the wand. The same solution is then extracted back out. The detergent is not separately rinsed away and a small amount is left in the carpet.
+            </p>
+            <p>
+              It can give a reasonable freshen up on carpet tiles and very short pile carpets but it is not a deep clean.
+            </p>
+
+            <h4>Typical use</h4>
+            <ul class="tier-bullets">
+              <li>Rooms that already look fairly clean and just need a quick freshen up</li>
+              <li>Low profile carpets and carpet tiles</li>
+              <li>Situations where budget is the main priority over maximum soil removal</li>
+            </ul>
+
+            <h4>Guide pricing</h4>
+            <p>
+              First room around £45 and additional rooms around £35, depending on size and layout.
+            </p>
           </div>
-          <ul class="tier-bullets">
-            <li>Customer carries out initial vacuum</li>
-            <li>Rinse extraction to remove light everyday soil</li>
-            <li>Helps brighten walkways and general traffic areas</li>
-          </ul>
 
           <div class="selector-row">
             <div>Rooms at this level</div>
@@ -607,7 +695,7 @@ body {
       </article>
 
       <!-- Tier 2 -->
-      <article class="tier tier-open" data-tier="t2">
+      <article class="tier" data-tier="t2">
         <button class="tier-headline" type="button">
           <div class="tier-headline-main">
             <div class="tier-name">Tier 2  Enzyme Clean</div>
@@ -621,13 +709,31 @@ body {
 
         <div class="tier-content">
           <div class="tier-body">
-            A deeper clean using enzyme pre spray to break down food spills, body oils and pet related odours before extraction.
+            <p>
+              This is the intermediate clean. Instead of a basic in tank detergent, a targeted enzyme or specialist pre spray is applied directly into the carpet fibres.
+            </p>
+            <p>
+              The solution is allowed proper dwell time so it can break down food spills, body oils, general soil and light pet related contamination. Specific spotting solutions can also be used on marks that need extra attention.
+            </p>
+
+            <h4>Process</h4>
+            <ul class="tier-bullets">
+              <li>Optional professional pre vacuum where needed</li>
+              <li>Targeted enzyme or tailored pre spray applied to the fibres</li>
+              <li>Dwell time so soils soften and release from the pile</li>
+              <li>Hot water extraction, often up to around 120°C, to flush out loosened soil and residues</li>
+            </ul>
+
+            <h4>When to choose this</h4>
+            <p>
+              Ideal for most lived in family rooms where there are regular spills, general grime and light odours but the carpets do not yet need full restoration.
+            </p>
+
+            <h4>Guide pricing</h4>
+            <p>
+              First room around £65 and additional rooms around £35, depending on size and layout.
+            </p>
           </div>
-          <ul class="tier-bullets">
-            <li>Optional professional pre vacuum where needed</li>
-            <li>Enzyme pre spray to target organic soils and smells</li>
-            <li>Hot water extraction for a noticeably fresher feel underfoot</li>
-          </ul>
 
           <div class="selector-row">
             <div>Rooms at this level</div>
@@ -641,11 +747,11 @@ body {
       </article>
 
       <!-- Tier 3 -->
-      <article class="tier tier-open" data-tier="t3">
+      <article class="tier" data-tier="t3">
         <button class="tier-headline" type="button">
           <div class="tier-headline-main">
             <div class="tier-name">Tier 3  Deep Restoration</div>
-            <div class="tier-tag">Heavy soil and make over</div>
+            <div class="tier-tag">Premium full restoration</div>
           </div>
           <div class="tier-toggle-label">
             <span>Details</span>
@@ -655,14 +761,40 @@ body {
 
         <div class="tier-content">
           <div class="tier-body">
-            Full restoration using targeted chemistry and CRB agitation to lift compacted dirt before high temperature extraction.
+            <p>
+              This is the premium service and the method responsible for the majority of my five star reviews. It delivers the deepest clean and is designed for carpets that need full restoration rather than a simple freshen up.
+            </p>
+
+            <h4>Full professional pre vacuum</h4>
+            <p>
+              A powerful commercial pre vacuum is used to remove as much loose dry soil, grit and fine particles as possible. Getting this dry soil out first means the cleaning chemistry can work at maximum efficiency.
+            </p>
+
+            <h4>Targeted pre spray treatment</h4>
+            <p>
+              A specialist pre spray is applied to break down heavy soil, oils, grease and stubborn traffic lane contamination. It is allowed proper dwell time so deep down dirt can soften and release from the fibres.
+            </p>
+
+            <h4>Counter rotating brush agitation</h4>
+            <p>
+              The counter rotating brush machine scrubs the carpet from both directions, lifting impacted soil to the surface and restoring the pile. This is the part that really cleans the fibres and removes material that extraction alone cannot reach.
+            </p>
+
+            <h4>High temperature steam extraction</h4>
+            <p>
+              Once the carpet has been fully agitated, everything is flushed out with high temperature extraction, up to around 120°C. This cuts through grease and embedded contamination and leaves the fibres brighter and softer.
+            </p>
+
+            <h4>The result</h4>
+            <p>
+              A dramatic improvement in appearance, hygiene and texture. This service aims to bring carpets as close as possible to their original condition and is my most effective and most popular package.
+            </p>
+
+            <h4>Guide pricing</h4>
+            <p>
+              First room around £75 and additional rooms around £45, depending on size, layout and how much restoration is needed.
+            </p>
           </div>
-          <ul class="tier-bullets">
-            <li>Professional pre vacuum to remove loose dry soil</li>
-            <li>Targeted pre sprays for traffic lanes and stubborn spots</li>
-            <li>Counter rotating brush agitation to open and lift fibres</li>
-            <li>High heat steam extraction to flush deep down soil</li>
-          </ul>
 
           <div class="selector-row">
             <div>Rooms at this level</div>
@@ -719,9 +851,16 @@ body {
         </div>
       </div>
 
+      <div class="klarna-box">
+        <div class="klarna-title">Spread the cost with Klarna</div>
+        <div class="klarna-body" id="klarnaText">
+          Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.
+        </div>
+      </div>
+
       <div class="cta-row">
         <button class="btn-primary" type="button">Call now to confirm this estimate</button>
-        <div class="book-note">Final price is confirmed after a quick chat about layout, access and carpet condition.</div>
+        <div class="book-note">Final price is confirmed after a quick chat about layout, access and carpet condition. Klarna is available on the final agreed quote.</div>
       </div>
     </aside>
 
@@ -735,7 +874,7 @@ body {
 
 <script>
 const pricing = {
-  t1: { first: 45, add: 30, label: "Tier 1 Basic Clean" },
+  t1: { first: 45, add: 35, label: "Tier 1 Budget Clean" },
   t2: { first: 65, add: 35, label: "Tier 2 Enzyme Clean" },
   t3: { first: 75, add: 45, label: "Tier 3 Deep Restoration" },
   odour: { per: 15, label: "Odour neutraliser" },
@@ -770,7 +909,8 @@ function computeTotal() {
   ["t1","t2","t3"].forEach(id => {
     const tierEl = document.querySelector('.tier[data-tier="' + id + '"]');
     if (!tierEl) return;
-    const count = parseInt(tierEl.querySelector('[data-role="count"]').textContent || "0", 10) || 0;
+    const countEl = tierEl.querySelector('[data-role="count"]');
+    const count = parseInt(countEl ? countEl.textContent : "0", 10) || 0;
     if (count > 0) {
       const cfg = pricing[id];
       let cost = 0;
@@ -788,7 +928,8 @@ function computeTotal() {
   ["odour","stain"].forEach(id => {
     const block = document.querySelector('[data-addon="' + id + '"]');
     if (!block) return;
-    const count = parseInt(block.querySelector('[data-role="count"]').textContent || "0", 10) || 0;
+    const countEl = block.querySelector('[data-role="count"]');
+    const count = parseInt(countEl ? countEl.textContent : "0", 10) || 0;
     if (count > 0) {
       const cfg = pricing[id];
       const cost = count * cfg.per;
@@ -799,12 +940,21 @@ function computeTotal() {
 
   const totalEl = document.getElementById("totalAmount");
   const breakdownEl = document.getElementById("breakdownText");
+  const klarnaEl = document.getElementById("klarnaText");
+
   totalEl.textContent = total.toString();
 
   if (lines.length === 0) {
     breakdownEl.textContent = "Select some rooms and add ons to see a guide price.";
+    if (klarnaEl) {
+      klarnaEl.textContent = "Once you have a confirmed quote you can choose Klarna to either pay in 30 days or split the cost into 3 interest free monthly payments.";
+    }
   } else {
     breakdownEl.innerHTML = lines.join("<br>");
+    if (klarnaEl) {
+      const perMonth = Math.round(total / 3);
+      klarnaEl.textContent = "If you choose Klarna Pay in 3, this guide total would be about £" + perMonth + " per month for 3 months, interest free for eligible customers.";
+    }
   }
 }
 
