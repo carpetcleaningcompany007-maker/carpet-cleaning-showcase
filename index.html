@@ -241,14 +241,21 @@ body {
 
 .tier-badge {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: -10px;
+  right: 20px;
+  padding: 6px 16px;
   font-size: 0.8rem;
-  padding: 4px 10px;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  color: #38bdf8;
   border-radius: 999px;
-  border: 1px solid rgba(148,163,184,0.6);
-  background: radial-gradient(circle at top,rgba(56,189,248,0.2),rgba(15,23,42,0.98));
-  color: var(--text-main);
+  border: 1px solid rgba(56,189,248,0.5);
+  background: rgba(15,23,42,0.65);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 12px rgba(56,189,248,0.45),
+    0 0 22px rgba(56,189,248,0.25);
+  z-index: 20;
 }
 
 .card-highlight {
@@ -260,8 +267,22 @@ body {
 }
 
 .card-highlight .tier-badge {
-  border-color: var(--accent-1);
-  color: var(--accent-1);
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  color: #38bdf8;
+  border-radius: 999px;
+  border: 1px solid rgba(56,189,248,0.5);
+  background: rgba(15,23,42,0.65);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 12px rgba(56,189,248,0.45),
+    0 0 22px rgba(56,189,248,0.25);
+  z-index: 20;
 }
 
 /* basic button */
@@ -491,7 +512,8 @@ body {
 
 /* video */
 .video-shell {
-  max-width: 900px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   border-radius: 24px;
   padding: 10px;
@@ -502,12 +524,17 @@ body {
   box-shadow:
     0 22px 60px rgba(15,23,42,1),
     0 0 75px rgba(56,189,248,0.3);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .video-box iframe {
   width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
   border-radius: 16px;
-  border: none;
+  display: block;
 }
 
 /* reviews */
@@ -609,21 +636,17 @@ body {
         <div class="card-inner">
           <div class="tier-label">Tier one</div>
           <div class="card-title">Budget clean</div>
-          <div class="card-price-line">First room about £45, then about £30 for each extra room.</div>
-          <div class="card-text">
-            <p>
-              This is the classic internet budget clean. It matches the type of thirty pound cleans that are advertised everywhere online.
-              Anything at this price or cheaper will usually follow this method.
-            </p>
-            <p>
-              A strong in tank detergent is mixed with hot water and applied through the wand.
-              The same solution is then extracted back out. Because the detergent is not separately rinsed, a small amount stays in the carpet.
-            </p>
-            <p>
-              It can give a simple freshen on short pile carpets but it is not a deep clean and it does not include targeted pre spray or mechanical agitation.
-            </p>
-          </div>
-          <div class="tier-badge">Budget refresh</div>
+          <div class="card-price-line">First room £45, then £30 for each extra room.</div>
+          <div class="card-text">	<p>
+This is the classic internet budget clean. It matches the simple thirty pound cleans that are advertised everywhere online. Anything this cheap will usually follow this method.
+</p>
+<p>
+A strong in tank detergent is mixed with hot water and applied through the wand. This is a detergent rinse and the cleaning solution is designed to stay inside the carpet rather than being fully rinsed out.
+</p>
+<p>
+It can give a simple freshen on short pile carpets but it is not a deep clean and it does not include targeted pre spray or mechanical agitation.
+</p></div>
+          
         </div>
       </div>
 
@@ -632,45 +655,37 @@ body {
         <div class="card-inner">
           <div class="tier-label">Tier two</div>
           <div class="card-title">Enzyme clean</div>
-          <div class="card-price-line">First room about £65, then about £35 for each extra room.</div>
-          <div class="card-text">
-            <p>
-              This option replaces the basic in tank detergent with a targeted pre spray that is applied directly into the fibres.
-              It is designed to tackle food spills, drink marks, body oils, general soil and light pet related contamination.
-            </p>
-            <p>
-              The solution is given proper dwell time so that the enzymes can break down the contamination and release it from the pile.
-              Hot steam extraction then flushes everything out and leaves the carpet cleaner and fresher.
-            </p>
-            <p>
-              You know you are getting more time and more focused chemistry than a basic budget clean, without going all the way to full restoration.
-            </p>
-          </div>
-          <div class="tier-badge">Family and pets</div>
+          <div class="card-price-line">First room £65, then £35 for each extra room.</div>
+          <div class="card-text">	<p>
+This option replaces the basic in tank detergent with a targeted pre spray that is applied directly into the fibres. It is designed to tackle food spills, drink marks, body oils, general soil and light pet related contamination.
+</p>
+<p>
+The solution is then given a dwell time so the enzymes can break down the dirt and contamination and release it from the pile. Hot steam extraction at around one hundred and twenty degrees then flushes everything out and leaves the carpet cleaner and fresher.
+</p>
+<p>
+This method does not give the carpet that fluffy new look because no counter rotating brush is used during the process.
+</p></div>
+          
         </div>
       </div>
 
       <!-- Deep restoration -->
-      <div class="card card-highlight">
-        <div class="card-inner">
+<div class="card card-highlight">
+  <div class="card-inner">
+    <div class="tier-badge">Most popular</div>
           <div class="tier-label">Tier three</div>
-          <div class="card-title">Deep restoration clean</div>
-          <div class="card-price-line">First room about £75, then about £45 for each extra room.</div>
-          <div class="card-text">
-            <p>
-              This is the full restoration method and the service behind the majority of my five star reviews.
-              It is designed to bring carpets as close as possible to their best condition.
-            </p>
-            <p>
-              A specialist pre spray is applied and given time to work.
-              A counter rotating brush then scrubs from both directions, lifting compacted soil and rejuvenating the pile so the carpet looks and feels new again.
-            </p>
-            <p>
-              Finally everything is rinsed out with high temperature steam extraction, often close to one hundred and twenty degrees,
-              which cuts through grease and heavy traffic lanes and leaves the fibres brighter, softer and noticeably cleaner.
-            </p>
-          </div>
-          <div class="tier-badge">Most popular</div>
+          <div class="card-title">Professional Deep Clean</div>
+          <div class="card-price-line">First room £75, then £45 for each extra room.</div>
+          <div class="card-text">	<p>
+This is the full professional deep clean method and the service behind all of my five star reviews. It is designed to bring carpets as close as possible to their best condition.
+</p>
+<p>
+A specialist pre spray is applied and given time to work. A counter rotating brush then scrubs from both directions, lifting compacted soil and rejuvenating the pile so the carpet looks and feels new again.
+</p>
+<p>
+Finally everything is rinsed out with high pressure high temperature steam extraction at around one hundred and twenty degrees, which cuts through grease, heavy traffic lanes and leaves the fibres brighter, softer, noticeably cleaner and fully sterilised.
+</p></div>
+          
         </div>
       </div>
 
@@ -697,20 +712,20 @@ body {
         <tbody>
           <tr>
             <td class="feature">Professional pre vacuum where needed</td>
-            <td class="empty">•</td>
+            <td class="empty"><span style="color:#ef4444;font-size:1.4rem;font-weight:bold;">✗</span></td>
             <td><span class="tick">✓</span></td>
             <td><span class="tick">✓</span></td>
           </tr>
           <tr>
             <td class="feature">Targeted enzyme or specialist pre spray</td>
-            <td class="empty">•</td>
+            <td class="empty"><span style="color:#ef4444;font-size:1.4rem;font-weight:bold;">✗</span></td>
             <td><span class="tick">✓</span></td>
             <td><span class="tick">✓</span></td>
           </tr>
           <tr>
             <td class="feature">Counter rotating brush agitation</td>
-            <td class="empty">•</td>
-            <td class="empty">•</td>
+            <td class="empty"><span style="color:#ef4444;font-size:1.4rem;font-weight:bold;">✗</span></td>
+            <td class="empty"><span style="color:#ef4444;font-size:1.4rem;font-weight:bold;">✗</span></td>
             <td><span class="tick">✓</span></td>
           </tr>
           <tr>
@@ -721,7 +736,7 @@ body {
           </tr>
           <tr>
             <td class="feature">Antibacterial treatment and deodoriser</td>
-            <td class="empty">•</td>
+            <td class="empty"><span style="color:#ef4444;font-size:1.4rem;font-weight:bold;">✗</span></td>
             <td><span class="tick">✓</span></td>
             <td><span class="tick">✓</span></td>
           </tr>
@@ -801,8 +816,8 @@ body {
       </div>
 
       <div class="example-box" id="exampleBox">
-        Example three bedroom house   figures will appear here once the calculator has loaded.
-      </div>
+Typical cost based on standard room sizes. We reserve the right to alter the final price depending on difficulty level, access, carpet condition or any additional time needed on the day.
+</div>
     </div>
   </section>
 
@@ -1058,8 +1073,54 @@ if (wrap && btnMore) {
     btnMore.style.display = "none";
   });
 }
-</script>
+//
+// KLARNA PAYMENT LOGIC
+//
+function updateKlarna() {
+  const box = document.getElementById('klarnaBox');
+  const toggle = document.getElementById('klarnaToggle');
+  const totalEl = document.getElementById('calcTotal');
 
+  if (!toggle || !box) return;
+
+  const total = parseFloat(totalEl.textContent) || 0;
+
+  if (!toggle.checked || total === 0) {
+    box.style.display = 'none';
+    return;
+  }
+
+  const klarna3 = (total / 3).toFixed(2);
+  const klarna30 = total.toFixed(2);
+
+  document.getElementById('klarna3').textContent = '£' + klarna3;
+  document.getElementById('klarna30').textContent = '£' + klarna30;
+
+  box.style.display = 'block';
+}
+
+// Update Klarna automatically
+document.addEventListener('change', updateKlarna);
+document.addEventListener('click', updateKlarna);
+
+
+<!-- Floating Call Button -->
+<a href="tel:07802563213"
+   style="position:fixed;bottom:94px;right:22px;z-index:9999;
+          background:#22c55e;width:60px;height:60px;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          box-shadow:0 8px 20px rgba(0,0,0,0.45);font-size:28px;color:white;">
+  📞
+</a>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/447802563213"
+   style="position:fixed;bottom:20px;right:22px;z-index:9999;
+          background:#25D366;width:60px;height:60px;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          box-shadow:0 8px 20px rgba(0,0,0,0.45);">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+       style="width:34px;height:34px;">
+</a>
 </body>
 </html>
 
