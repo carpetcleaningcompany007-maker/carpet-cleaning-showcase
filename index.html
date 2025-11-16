@@ -593,6 +593,17 @@ body {
   color: var(--text-soft);
   padding: 10px 0 26px;
 }
+/* MOBILE VIDEO FIX START */
+@media (max-width: 700px) {
+  .video-shell {
+    padding: 4px !important;
+    border-radius: 14px !important;
+  }
+  .video-box iframe {
+    border-radius: 10px !important;
+  }
+}
+/* MOBILE VIDEO FIX END */
 </style>
 </head>
 
@@ -807,6 +818,23 @@ Finally everything is rinsed out with high pressure high temperature steam extra
       <div class="calc-total-box">
         <div class="calc-total-label">Guide total</div>
         <div class="calc-total-amount">£<span id="calcTotal">0</span></div>
+<div id="klarnaPaymentWrap" style="margin-top:16px;padding:14px;
+border:1px solid rgba(148,163,184,0.4);border-radius:14px;
+background:rgba(15,23,42,0.75);">
+
+  <label style="display:flex;align-items:center;gap:10px;font-size:0.95rem;cursor:pointer;">
+    <input type="checkbox" id="klarnaToggle" style="transform:scale(1.2);accent-color:#22c55e;">
+    Spread the cost with Klarna
+  </label>
+
+  <div id="klarnaBox" style="display:none;margin-top:12px;line-height:1.6;font-size:0.92rem;">
+    <div>Three monthly payments of <strong id="klarna3">£0</strong></div>
+    <div>Pay in 30 days <strong id="klarna30">£0</strong></div>
+    <div style="font-size:0.8rem;margin-top:6px;color:#9ca3af;">
+      Klarna is optional and subject to approval.
+    </div>
+  </div>
+</div>
         <div class="calc-breakdown" id="calcBreakdown">
           Add a few rooms above to see an approximate total for the option you have chosen.
         </div>
@@ -950,7 +978,7 @@ Typical cost based on standard room sizes. We reserve the right to alter the fin
           Show more Google reviews
         </button>
         <div style="margin-top:12px;">
-          <a class="button-secondary" href="https://www.google.com/maps/place/The+Carpet+Cleaning+Company/" target="_blank">
+          <a class="button-secondary" href="https://g.page/r/CVHd852c8gDQEAE/review" target="_blank">
             View all Google reviews on Google
           </a>
         </div>
@@ -1073,36 +1101,46 @@ if (wrap && btnMore) {
     btnMore.style.display = "none";
   });
 }
-//
-// KLARNA PAYMENT LOGIC
-//
-function updateKlarna() {
-  const box = document.getElementById('klarnaBox');
-  const toggle = document.getElementById('klarnaToggle');
-  const totalEl = document.getElementById('calcTotal');
 
-  if (!toggle || !box) return;
+// KLARNA START
+function updateKlarnaBox() {
+    const toggle = document.getElementById("klarnaToggle");
+    const box = document.getElementById("klarnaBox");
+    const totalEl = document.getElementById("calcTotal");
 
-  const total = parseFloat(totalEl.textContent) || 0;
+    if (!toggle || !box || !totalEl) return;
 
-  if (!toggle.checked || total === 0) {
-    box.style.display = 'none';
-    return;
-  }
+    // Detect selected tier
+    const tier = document.querySelector("input[name=\'tierOption\']:checked")?.value || "";
 
-  const klarna3 = (total / 3).toFixed(2);
-  const klarna30 = total.toFixed(2);
+    // Klarna only allowed for the deep clean option
+    if (tier !== "deep") {
+        box.style.display = "none";
+        toggle.checked = false;
+        return;
+    }
 
-  document.getElementById('klarna3').textContent = '£' + klarna3;
-  document.getElementById('klarna30').textContent = '£' + klarna30;
+    const total = parseFloat(totalEl.textContent) || 0;
 
-  box.style.display = 'block';
+    if (!toggle.checked || total === 0) {
+        box.style.display = "none";
+        return;
+    }
+
+    const p3 = (total / 3).toFixed(2);
+    const p30 = total.toFixed(2);
+
+    document.getElementById("klarna3").textContent = "£" + p3;
+    document.getElementById("klarna30").textContent = "£" + p30;
+
+    box.style.display = "block";
 }
 
-// Update Klarna automatically
-document.addEventListener('change', updateKlarna);
-document.addEventListener('click', updateKlarna);
-
+document.addEventListener("click", updateKlarnaBox);
+document.addEventListener("change", updateKlarnaBox);
+setInterval(updateKlarnaBox, 300);
+// KLARNA END
+</script>
 
 <!-- Floating Call Button -->
 <a href="tel:07802563213"
