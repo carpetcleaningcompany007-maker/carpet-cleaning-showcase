@@ -1,0 +1,401 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Carpet Cleaning Company | Carpet and Upholstery Cleaning</title>
+  <meta name="description" content="Professional carpet and upholstery cleaning for homes and businesses with deep steam cleaning, CRB agitation and a 100 percent satisfaction guarantee.">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:"#eff6ff",
+              100:"#dbeafe",
+              600:"#1f7ef2",
+              700:"#1666c6"
+            }
+          },
+          boxShadow: {
+            soft:"0 12px 30px rgba(15,23,42,0.12)",
+            card:"0 16px 40px rgba(15,23,42,0.10)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="mx-auto max-w-6xl px-4 py-3 flex justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+      <img src="static/logo.png" class="h-9 w-auto" alt="The Carpet Cleaning Company">
+      <div class="flex flex-col leading-tight">
+        <div class="font-bold text-lg text-slate-900">The Carpet Cleaning Company</div>
+        <p class="text-xs text-slate-500">Carpet and upholstery cleaning for homes and businesses</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium">
+        <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+        07802 563213
+      </a>
+      <a href="#quote" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white shadow-soft text-sm font-semibold">
+        Get a free quote
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO WITH VIDEO -->
+<section class="relative pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden text-slate-50">
+  <div class="absolute inset-0 -z-10">
+    <video class="hero-video opacity-70" autoplay muted loop playsinline poster="media/hero_poster.jpg">
+      <source src="media/hero_bg.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-slate-900/40"></div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 rounded-full bg-slate-900/70 border border-slate-700 px-3 py-1 text-xs mb-4">
+        <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+        Deep steam carpet and upholstery cleaning
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-white">
+        Carpet and upholstery cleaning that makes rooms feel fresh again
+      </h1>
+
+      <p class="mt-4 text-base md:text-lg text-slate-200 max-w-xl">
+        Professional carpet and sofa cleaning for homes, landlords and small businesses. CRB agitation, high heat extraction and a neutralising rinse for soft clean fibres.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-soft">
+          Get a free quote
+        </a>
+        <a href="#guarantee" class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-slate-500/80 bg-slate-900/60 hover:border-brand-100 text-sm">
+          See satisfaction guarantee
+        </a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+          Child and pet safe solutions
+        </div>
+        <div>Fully insured and owner operated</div>
+        <div>Domestic and commercial work covered</div>
+      </div>
+    </div>
+
+    <div class="mt-6 md:mt-0">
+      <div class="rounded-3xl bg-slate-900/80 border border-slate-700 shadow-card p-6">
+        <div class="flex items-center gap-4">
+          <div class="relative inline-flex items-center justify-center rounded-full border border-amber-300 bg-amber-100/10 px-4 py-4">
+            <div class="text-center leading-tight">
+              <div class="text-xs text-amber-200 tracking-wide uppercase">Satisfaction</div>
+              <div class="text-xl font-extrabold text-amber-300">100%</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-slate-50">
+              Simple promise
+            </p>
+            <p class="text-xs text-slate-300 mt-1">
+              If you are not happy with the result in any area, it will be returned and cleaned again. If it still does not look as it should, the cost of that area will be refunded.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-5 grid grid-cols-2 gap-3 text-xs text-slate-300">
+          <div class="flex items-center gap-2">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Clear pricing agreed up front
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Evening and weekend slots available
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Suitable for wool and synthetic fibres
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Regular maintenance or one off cleans
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE CLEAN -->
+<section class="py-14 bg-white">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-3xl font-extrabold text-slate-900">How the clean works</h2>
+    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+      A simple method used in homes and workplaces so you know what to expect on the day.
+    </p>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+
+      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="text-xs font-semibold text-brand-700 uppercase">Step one</div>
+        <div class="mt-1 text-lg font-semibold text-slate-900">Survey and vacuum</div>
+        <p class="mt-2 text-sm text-slate-600">
+          Short walk through, fibre check and a full dry vacuum to remove loose soil and grit before any solution is applied.
+        </p>
+      </div>
+
+      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="text-xs font-semibold text-brand-700 uppercase">Step two</div>
+        <div class="mt-1 text-lg font-semibold text-slate-900">Pre spray and CRB agitation</div>
+        <p class="mt-2 text-sm text-slate-600">
+          Cleaning solution is chosen for the fibre type, then worked into the pile with a counter rotating brush to lift flattened fibres.
+        </p>
+      </div>
+
+      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="text-xs font-semibold text-brand-700 uppercase">Step three</div>
+        <div class="mt-1 text-lg font-semibold text-slate-900">Hot water rinse and finish</div>
+        <p class="mt-2 text-sm text-slate-600">
+          High heat extraction with a neutralising rinse removes soil and residues so carpets dry clean and soft without sticky marks.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="py-14 bg-slate-50">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-3xl font-extrabold text-slate-900">Simple carpet cleaning options</h2>
+    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
+      Clear choices depending on whether you want a quick freshen or a full deep clean with extra protection.
+    </p>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft">
+        <div class="text-xs text-slate-500 font-semibold uppercase">Quick refresh</div>
+        <div class="mt-1 text-2xl font-extrabold text-slate-900">From £60</div>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+          <li>Spray pre solution and hot water rinse</li>
+          <li>Best for lightly marked carpets</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl border-2 border-brand-600 shadow-soft relative">
+        <span class="absolute -top-3 right-6 px-2 py-1 text-xs bg-brand-600 text-white rounded-full">
+          Most popular
+        </span>
+        <div class="text-xs text-brand-700 font-semibold uppercase">Deluxe deep clean</div>
+        <div class="mt-1 text-2xl font-extrabold text-slate-900">From £75</div>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+          <li>Full CRB agitation through the pile</li>
+          <li>High heat rinse and neutraliser</li>
+          <li>Ideal for family living rooms and stairs</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft">
+        <div class="text-xs text-slate-500 font-semibold uppercase">Elite stain guard</div>
+        <div class="mt-1 text-2xl font-extrabold text-slate-900">Deep clean plus £30</div>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+          <li>Protective treatment helps spills bead</li>
+          <li>Makes regular vacuuming more effective</li>
+          <li>Helps carpets stay cleaner for longer</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE STRIP -->
+<section id="guarantee" class="py-10 bg-brand-50">
+  <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <h2 class="text-2xl font-extrabold text-slate-900">
+        100 percent satisfaction guarantee
+      </h2>
+      <p class="mt-2 text-sm md:text-base text-slate-700 max-w-xl">
+        The aim is simple. Fresh clean carpets and upholstery that you are happy to show family, guests or clients. If you are not pleased with the result in any area, it will be returned and cleaned again. If it still does not look as it should, the cost of that area will be refunded.
+      </p>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <div class="rounded-full border border-brand-600 bg-white shadow-soft px-6 py-5 text-center">
+        <div class="text-xs font-semibold text-slate-500 uppercase">
+          Satisfaction promise
+        </div>
+        <div class="text-3xl font-extrabold text-brand-700">
+          100%
+        </div>
+        <div class="text-xs text-slate-500 mt-1">
+          Simple and written in plain English
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-14 bg-white">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-3xl font-extrabold text-slate-900">Recent customer comments</h2>
+    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+      A mix of home, rental and small commercial work across Ludlow, Shrewsbury, Telford and nearby areas.
+    </p>
+
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+
+      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
+        <div class="text-amber-500 text-sm">★★★★★</div>
+        <blockquote class="mt-3 text-sm text-slate-700">
+          Carpets looked like new again after the clean. Friendly, careful and very tidy.
+        </blockquote>
+        <figcaption class="mt-3 text-xs text-slate-500">
+          Sarah in Ludlow
+        </figcaption>
+      </figure>
+
+      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
+        <div class="text-amber-500 text-sm">★★★★★</div>
+        <blockquote class="mt-3 text-sm text-slate-700">
+          Coffee marks that had been there for months were removed. Very impressed with the finish.
+        </blockquote>
+        <figcaption class="mt-3 text-xs text-slate-500">
+          Mark in Shrewsbury
+        </figcaption>
+      </figure>
+
+      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
+        <div class="text-amber-500 text-sm">★★★★★</div>
+        <blockquote class="mt-3 text-sm text-slate-700">
+          Office carpets cleaned in the evening and ready for staff the next morning with no fuss.
+        </blockquote>
+        <figcaption class="mt-3 text-xs text-slate-500">
+          Office manager in Telford
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote" class="py-16 bg-slate-50">
+  <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-start">
+
+    <div>
+      <h2 class="text-3xl font-extrabold text-slate-900">Get a free quote</h2>
+      <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+        Send a few details about what needs doing and you will receive a clear price and earliest available dates. No sales pressure and no hidden extras.
+      </p>
+
+      <ul class="mt-5 space-y-2 text-sm text-slate-600">
+        <li class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          Living rooms, bedrooms, stairs and landings
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          Sofas, armchairs and footstools
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          Offices, receptions and waiting rooms
+        </li>
+      </ul>
+
+      <p class="mt-4 text-sm text-slate-600">
+        If you prefer to talk it through, you can call 
+        <a href="tel:07802563213" class="text-brand-700 font-medium">07802 563213</a>.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-soft p-6">
+      <form class="space-y-4 text-sm" onsubmit="event.preventDefault(); alert('Thank you. Your quote request has been received.');">
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <label class="block text-sm">
+            Name
+            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+          </label>
+
+          <label class="block text-sm">
+            Phone
+            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+          </label>
+        </div>
+
+        <label class="block text-sm">
+          Postcode
+          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+        </label>
+
+        <label class="block text-sm">
+          What needs cleaning
+          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required></textarea>
+        </label>
+
+        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft">
+          Send my free quote
+        </button>
+
+        <p class="mt-2 text-xs text-slate-500">
+          Your details are only used to respond to your enquiry and are not passed to anyone else.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-8 bg-slate-900 text-slate-300 text-sm">
+  <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+    <div>
+      <div class="font-semibold">The Carpet Cleaning Company</div>
+      <div class="text-xs text-slate-400">
+        Carpet and upholstery cleaning in Ludlow, Shropshire and nearby areas
+      </div>
+    </div>
+
+    <div class="text-xs text-slate-400">
+      © <span id="year"></span> The Carpet Cleaning Company. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
