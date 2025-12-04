@@ -2036,19 +2036,19 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
 
     /* BIG SNOWFLAKES */
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
         let f = document.createElement("div");
         f.className = "bigflake";
         f.textContent = "❄";
         f.style.left = Math.random() * 100 + "vw";
-        f.style.fontSize = (24 + Math.random() * 22) + "px";
+        f.style.fontSize = (12 + Math.random() * 11) + "px";
         f.style.opacity = 0.55 + Math.random() * 0.45;
         f.style.animationDuration = (5 + Math.random() * 6) + "s";
         document.body.appendChild(f);
     }
 
     /* SMALL ROUND WHITE DOT FLAKES */
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 12; i++) {
         let d = document.createElement("div");
         d.className = "smalldot";
         let size = 3 + Math.random() * 5;
@@ -2061,7 +2061,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* HEAVY GLITTER FLAKES (GLOWING SPARKLES) */
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 9; i++) {
         let g = document.createElement("div");
         g.className = "glitterflake";
         let size = 2 + Math.random() * 4;
@@ -2154,6 +2154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </body>
 </html>
+
 
 
 
