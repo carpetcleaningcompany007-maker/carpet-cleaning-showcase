@@ -1,22 +1,4588 @@
-$path = "C:\Users\Pnich\Desktop\Donna_Jones_TopTier\index.html"
 
-# Backup
-Copy-Item $path ($path + "_backup_finalFix.html") -Force
 
-# Read file
-$html = Get-Content $path -Raw
 
-# Remove the LOWER duplicate “Thinking About Booking a Clean?” section
-$html = $html -replace "(?s)<section class='section alt' id='reviews'(.+?)</section>", ""
-$html = $html -replace "(?s)<section class='section alt' id='services'(.+?)</section>", ""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DS Professional Cleaning | Donna Jones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-# Remove PRICING section
-$html = $html -replace "(?s)<section class=\"section alt\" id=\"pricing\".+?</section>", ""
+  <style>
+    :root {
+      --pink: #e88fb5;
+      --pink-soft: #fbe7f1;
+      --pink-light: #ffe9f4;
+      --pink-deep: #b84c7f;
+      --cream: #fffafc;
+      --brown: #2a1f27;
+      --brown-soft: #4a3d45;
+      --shadow-main: 0 22px 55px rgba(10, 16, 30, 0.18);
+      --shadow-soft: 0 18px 40px rgba(10, 16, 30, 0.12);
+      --radius-main: 22px;
+      --radius-lg: 26px;
+      --pill: 999px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    }
 
-# Remove NEWS section
-$html = $html -replace "(?s)<section class=\"section\" id=\"news\".+?</section>", ""
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-# Save updated HTML
-Set-Content $path $html -Encoding UTF8
+    html, body {
+      scroll-behavior: smooth;
+    }
 
-Start-Process $path
+    body {
+      font-family: var(--font);
+      background: radial-gradient(circle at top left, #fff6fb 0, #faf5fb 40%, #f7f4fb 100%);
+      color: var(--brown);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* ORBS */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.7;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    .orb1 {
+      width: 420px;
+      height: 30px;
+      top: -140px;
+      right: -140px;
+      background: #ffd5e6;
+      animation: orbFloat1 20s ease-in-out infinite alternate;
+    }
+
+    .orb2 {
+      width: 360px;
+      height: 30px;
+      bottom: -120px;
+      left: -160px;
+      background: #ffe4cc;
+      animation: orbFloat2 26s ease-in-out infinite alternate;
+    }
+
+    .orb3 {
+      width: 340px;
+      height: 30px;
+      bottom: -40px;
+      right: -40px;
+      background: #ffffff;
+      animation: orbFloat3 30s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbFloat1 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-25px, 30px); }
+      100% { transform: translate(12px, -10px); }
+    }
+
+    @keyframes orbFloat2 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(32px, -22px); }
+      100% { transform: translate(-18px, 18px); }
+    }
+
+    @keyframes orbFloat3 {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, -18px); }
+      100% { transform: translate(10px, 26px); }
+    }
+
+    /* FLOATING WHATSAPP */
+    .wa-float {
+      position: fixed;
+      right: 20px;
+      bottom: 88px;
+      width: 60px;
+      height: 30px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 32px;
+      box-shadow: 0 16px 34px rgba(10, 16, 30, 0.45);
+      z-index: 80;
+    }
+
+    /* MOBILE CALL BAR */
+    .call-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffffee;
+      border-top: 1px solid #e2d0df;
+      box-shadow: 0 -12px 28px rgba(10, 16, 30, 0.35);
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 90;
+    }
+
+    .call-bar span {
+      font-size: 14px;
+      color: #2a1f27;
+    }
+
+    .call-bar-btn {
+      padding: 4px 0;
+      border-radius: var(--pill);
+      border: none;
+      background: linear-gradient(135deg, #fbd3e5, var(--pink));
+      color: #3a2432;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(232, 143, 181, 0.68);
+      font-size: 15px;
+    }
+
+    @media (min-width: 860px) {
+      .call-bar {
+        display: none;
+      }
+    }
+
+    /* NAVBAR */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 70;
+      transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease, border-bottom 0.25s ease;
+      background: linear-gradient(to bottom, rgba(255, 248, 253, 0.9), rgba(255, 248, 253, 0.3));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(243, 223, 235, 0.7);
+    }
+
+    .site-header.nav-scrolled {
+      background: #ffffffee;
+      box-shadow: 0 14px 30px rgba(10, 16, 30, 0.22);
+      border-bottom-color: rgba(226, 206, 220, 0.9);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .nav-tagline {
+      font-size: 11px;
+      color: #2a1f27;
+      text-transform: none;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    .nav-left span {
+      display: block;
+    }
+
+    .nav-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      color: #2a1f27;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 30px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+      transition: width 0.18s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 4px 0;
+      border-radius: var(--pill);
+      border: 1px solid #f1dbe9;
+      background: #fff7fd;
+      font-size: 13px;
+      color: var(--brown);
+      box-shadow: 0 10px 22px rgba(10, 16, 30, 0.16);
+    }
+
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* HERO VIDEO */
+    .hero {
+      position: relative;
+      padding: 160px 0 140px;
+      text-align: center;
+      color: #ffffff;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45);
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 200, 230, 0.35), rgba(6, 12, 30, 0.4));
+      mix-blend-mode: soft-light;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: 50px !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  color: white !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important;
+}
+
+    .hero-dot {
+      width: 10px;
+      height: 30px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 8px;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      text-shadow: 0 0 26px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (min-width: 900px) {
+      .hero-title {
+        font-size: 52px;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 19px;
+      color: #f7f5ff;
+      max-width: 640px;
+      margin: 0 auto 26px;
+      text-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary {
+  padding: 12px 26px !important;
+  border-radius: 50px !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #ffb2d1, #e88fb5) !important;
+  color: #3a2432 !important;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.22) !important;
+}
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 40px rgba(232, 143, 181, 0.8);
+    }
+
+    .btn-ghost {
+  padding: 12px 26px !important;
+  border-radius: 50px !important;
+  font-size: 17px !important;
+  font-weight: 500 !important;
+  border: 2px solid rgba(255,255,255,0.7) !important;
+  background: rgba(255,255,255,0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  color: white !important;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.22) !important;
+}
+
+    .hero-note {
+      font-size: 13px;
+      color: #f4e9ff;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* GENERIC SECTION STYLES */
+    .section {
+      position: relative;
+      z-index: 10;
+      padding: 80px 0;
+    }
+
+    .section.alt {
+      background: radial-gradient(circle at top, #fff4fb 0, #fffdfd 60%, #faf4fb 100%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #2a1f27;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      color: var(--pink-deep);
+      margin-bottom: 8px;
+    }
+
+    .section-lead {
+      font-size: 16px;
+      color: #2a1f27;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      padding: 50px 0 46px;
+      background: linear-gradient(135deg, var(--pink-soft), #fff9fd);
+      border-top: 1px solid #f3ddec;
+      border-bottom: 1px solid #f1d9ea;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 0;
+      border-radius: var(--pill);
+      background: #ffffff;
+      border: 1px solid #f2dce9;
+      font-size: 13px;
+      color: #2a1f27;
+      box-shadow: 0 12px 26px rgba(10, 16, 30, 0.18);
+    }
+
+    .trust-pill span {
+      margin-left: 6px;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    @media (min-width: 820px) {
+      .services-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #f0dbe7;
+      box-shadow: var(--shadow-soft);
+      padding: 4px 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .service-pill {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      padding: 4px 0;
+      border-radius: var(--pill);
+      background: #fff3fa;
+      border: 1px solid #f4d5ea;
+      font-size: 11px;
+      color: #a35c82;
+    }
+
+    .service-title {
+      font-size: 19px;
+      margin-bottom: 10px;
+      color: var(--brown);
+    }
+
+    .service-text {
+      font-size: 14px;
+      color: #2a1f27;
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      gap: 30px;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .about-main {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #f0dbe7;
+      box-shadow: var(--shadow-soft);
+      padding: 4px 0 24px;
+      font-size: 15px;
+      color: #2a1f27;
+      line-height: 1.7;
+    }
+
+    .about-side {
+      background: radial-gradient(circle at top, #ffe5f5 0, #ffffff 60%);
+      border-radius: var(--radius-lg);
+      border: 1px solid #f3dcec;
+      box-shadow: var(--shadow-main);
+      padding: 4px 0 26px;
+    }
+
+    .about-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+
+    .about-role {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #2a1f27;
+      margin-bottom: 18px;
+    }
+
+    .about-badge {
+      display: inline-block;
+      padding: 4px 0;
+      border-radius: var(--pill);
+      background: #fff7fd;
+      border: 1px solid #f4d7ea;
+      font-size: 12px;
+      color: #a35c82;
+      margin-bottom: 12px;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: #2a1f27;
+      line-height: 1.7;
+    }
+
+    /* REVIEWS SLIDER */
+    .reviews-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-row {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .review-card {
+      min-width: 280px;
+      max-width: 360px;
+      flex: 0 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-main);
+      border: 1px solid #f0dbe7;
+      box-shadow: var(--shadow-soft);
+      padding: 4px 0 18px;
+      font-size: 14px;
+      color: #2a1f27;
+      line-height: 1.6;
+      opacity: 0.85;
+      transform: scale(0.99);
+      transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .review-card.active {
+      opacity: 1;
+      transform: scale(1.02);
+      box-shadow: var(--shadow-main);
+    }
+
+    .review-stars {
+      color: #f5b91f;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .review-name {
+      font-size: 13px;
+      color: #2a1f27;
+      margin-top: 10px;
+    }
+
+    .review-pager {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .review-dot {
+      width: 7px;
+      height: 30px;
+      border-radius: 50%;
+      background: #dfc6d8;
+    }
+
+    .review-dot.active {
+      background: var(--pink-deep);
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 860px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-main);
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffe2f4, #fff3f8);
+      height: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      padding: 4px 0;
+      border-radius: var(--pill);
+      background: #ffffffee;
+      font-size: 13px;
+      color: var(--brown);
+    }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    @media (min-width: 900px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .price-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #f0dbe7;
+      box-shadow: var(--shadow-soft);
+      padding: 4px 0 26px;
+      text-align: left;
+    }
+
+    .price-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #2a1f27;
+      margin-bottom: 4px;
+    }
+
+    .price-title {
+      font-size: 19px;
+      margin-bottom: 10px;
+      color: var(--brown);
+    }
+
+    .price-amount {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--pink-deep);
+      margin-bottom: 6px;
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: #2a1f27;
+      margin-bottom: 10px;
+    }
+
+    .price-list {
+      font-size: 14px;
+      color: #2a1f27;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .price-list li {
+      margin-bottom: 6px;
+    }
+
+    .price-badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 0;
+      border-radius: var(--pill);
+      background: #fff3fa;
+      border: 1px solid #f4d7ea;
+      font-size: 11px;
+      color: #a35c82;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      gap: 26px;
+    }
+
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #f0dbe7;
+      box-shadow: var(--shadow-soft);
+      padding: 4px 0 26px;
+    }
+
+    .contact-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--brown);
+    }
+
+    .contact-field {
+      margin-bottom: 12px;
+    }
+
+    .contact-field label {
+      display: block;
+      font-size: 13px;
+      color: #2a1f27;
+      margin-bottom: 4px;
+    }
+
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+      padding: 4px 0;
+      border-radius: 14px;
+      border: 1px solid #e6d4e0;
+      background: #fff9fd;
+      font-size: 14px;
+      color: var(--brown);
+      outline: none;
+    }
+
+    .contact-field textarea {
+      min-height: 30px;
+      resize: vertical;
+    }
+
+    .contact-field input:focus,
+    .contact-field textarea:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 1px rgba(232, 143, 181, 0.3);
+      background: #ffffff;
+    }
+
+    .contact-meta p {
+      font-size: 14px;
+      color: #2a1f27;
+      margin-bottom: 10px;
+    }
+
+    .contact-meta strong {
+      display: block;
+      font-size: 13px;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+
+    .contact-meta a {
+      color: var(--pink-deep);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    /* CTA FOOTER */
+    .cta-footer {
+      padding: 60px 0 40px;
+      background: radial-gradient(circle at top, #ffe6f4 0, #fff7fb 40%, #fffdfd 100%);
+      border-top: 1px solid #f2dce8;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .cta-footer h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: var(--brown);
+    }
+
+    .cta-footer p {
+      font-size: 15px;
+      color: #2a1f27;
+      margin-bottom: 18px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #2a1f27;
+      padding: 4px 0 70px;
+    }
+
+    @media (min-width: 860px) {
+      footer {
+        padding-bottom: 24px;
+      }
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+</head>
+
+<body id="top">
+
+<style>
+.xmas-tree {
+  position: fixed;
+  bottom: 12px;
+  width: 100px;
+  z-index: 9998;
+  animation: treeBounce 2.3s infinite ease-in-out;
+}
+
+.xmas-tree.left { left: 12px; }
+.xmas-tree.right { right: 12px; }
+
+@keyframes treeBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<!-- REAL Christmas trees -->
+
+<style>
+.
+.
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+.
+.
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<a href="https://api.whatsapp.com/send?phone=07725866860" class="wa-float" aria-label="Chat on WhatsApp">💬</a>
+
+<div class="call-bar">
+  <span>Tap to call Donna</span>
+  <a href="tel:07725866860" class="call-bar-btn">07725 866860</a>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="shell nav-inner">
+    <div class="nav-left">
+      <span class="nav-brand">DS Professional Cleaning</span>
+      <span class="nav-tagline">Commercial & domestic cleaning in Shrewsbury</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#top">Home</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:07725866860" class="nav-cta">Call: 07725 866860</a>
+    </nav>
+  </div>
+</header>
+<style>
+#xmas-banner {
+  width: 100%;
+  text-align: center;
+  padding: 7px;
+  background: linear-gradient(90deg, #ff6b6b, #ffd966, #6bff6b);
+  color: #2a1f27;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 70px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 9999;
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<div id="xmas-banner">🎄 Merry Christmas from DS Professional Cleaning 🎄</div>
+<style>
+#
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<section class="hero">
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-1199992484-640_adpp_is.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="shell hero-inner">
+    <div class="hero-badge">
+      
+      <span>Trusted commercial and domestic cleaning in Shrewsbury</span>
+    </div>
+    <h1 class="hero-title">
+      Beautifully clean spaces, expertly cared for.
+    </h1>
+    <p class="hero-subtitle">
+      Homes, offices and local businesses transformed with reliable, detail-driven cleaning.
+    </p>
+    <div class="hero-ctas">
+      <a href="tel:07725866860" class="btn-primary">Call Donna</a>
+      <a href="#contact" class="btn-ghost">Request a quote</a>
+    </div>
+    <p class="hero-note">
+      Regular weekly visits, deep cleans, end of tenancy and one-off refresh cleans arranged around the way you live and work.
+    </p>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="shell">
+    <div class="section-header">
+      <div class="section-kicker">Trusted locally</div>
+      <h2 class="section-title" style="color: var(--brown);">Why clients choose DS Professional Cleaning</h2>
+    </div>
+    <div class="trust-row">
+      <div class="trust-pill">✅<span>Fully insured</span></div>
+      <div class="trust-pill">🪪<span>DBS checked staff</span></div>
+      <div class="trust-pill">📋<span>Manual handling trained</span></div>
+      <div class="trust-pill">⛑️<span>First aid certified</span></div>
+      <div class="trust-pill">🏛️<span>Shropshire Council accredited</span></div>
+      <div class="trust-pill">⚗️<span>COSHH trained</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="services">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Services</div>
+      <h2 class="section-title">Commercial and domestic cleaning</h2>
+      <p class="section-lead">
+        Flexible cleaning plans for busy homes, managed properties and workplaces that need to look presentable every day.
+      </p>
+    </div>
+
+    <div class="services-grid reveal">
+      <article class="service-card">
+        <div class="service-pill">Offices & workplaces</div>
+        <div class="service-icon">🏢</div>
+        <h3 class="service-title">Commercial office cleaning</h3>
+        <p class="service-text">
+          Regular cleaning for offices and workplaces in Shrewsbury. Desks, kitchens, washrooms and reception areas kept tidy, hygienic and welcoming for staff and visitors.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-pill">Homes</div>
+        <div class="service-icon">🏠</div>
+        <h3 class="service-title">Domestic weekly cleaning</h3>
+        <p class="service-text">
+          Weekly or fortnightly visits that keep your home feeling calm and under control. Bathrooms, kitchens, dusting and floors, with a consistent standard on every visit.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-pill">Deep refresh</div>
+        <div class="service-icon">🧽</div>
+        <h3 class="service-title">One-off and deep cleans</h3>
+        <p class="service-text">
+          Top-to-bottom deep cleaning when everything needs a proper reset. Ideal before guests, after building work or when you want the whole property to feel fresh again.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class='section' id='about'>
+  <div class='shell' style='text-align:center;'>
+
+    <div class='section-header reveal'>
+      <div class='section-kicker'>About</div>
+      <h2 class='section-title'>Meet Donna</h2>
+      <p class='section-lead'>
+        The heart, soul and driving force behind DS Professional Cleaning.
+      </p>
+    </div>
+
+    <img src='donna.jpg' alt='Donna Jones'
+         style='width:260px;height:260px;border-radius:50%;
+                object-fit:cover;box-shadow:0 12px 26px rgba(0,0,0,0.25);
+                margin:0 auto 32px auto;display:block;'>
+
+    <div class='about-main reveal'
+         style='max-width:720px;margin:0 auto;font-size:17px;line-height:1.7;color:#2a1f27;'>
+      Donna leads with warmth, experience and an exceptional eye for detail.
+      She has built a trusted, reliable and highly organised cleaning service that
+      supports homes, workplaces and specialist environments across Shropshire and Mid Wales.<br><br>
+
+      Whether helping busy families, supporting elderly clients, maintaining medical spaces
+      or managing commercial cleaning schedules, Donna’s calm professionalism and commitment
+      to high standards shine through in every visit.<br><br>
+
+      Clients describe her as dependable, friendly, hardworking and incredibly thorough.
+      Donna makes every property feel cared for — and every customer feel valued.
+    </div>
+
+  </div>
+</section>
+<section class="section alt" id="reviews">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Reviews</div>
+      <h2 class="section-title">What clients say</h2>
+      <p class="section-lead">
+        Real feedback from local people who trust Donna and the DS Professional Cleaning team.
+      </p>
+    </div>
+
+    <div class="reviews-wrap reveal" style="display:flex; flex-wrap:wrap; gap:22px; justify-content:center;">
+
+      <article class="review-card active" style="opacity:1; transform:scale(1.02); position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Reliable and efficient which is really important to us and awesome cleans. We are really happy with the service and would definitely recommend.
+        <div class="review-name">CrossFit SY1</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Excellent clean and reliable service and the ladies are lovely. Definitely recommend.
+        <div class="review-name">Amy White</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Had my first clean today by Jodie. What a fantastic job and what a lovely person. Cannot recommend highly enough.
+        <div class="review-name">Laura Pointer</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Really professional and quality service. Thoroughly recommend.
+        <div class="review-name">Alix Waik</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Thank you for doing such a great job of cleaning my dad’s house ready to go on the market. Totally recommended.
+        <div class="review-name">Rona Easton</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Donna is so thorough even to the point my pjs were folded and put under my pillow. My busy life is easier thanks to you.
+        <div class="review-name">Sarah Dale</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        I was anxious about letting a cleaner I didn't know into my home but Donna was so lovely and understanding. Great clean every fortnight.
+        <div class="review-name">Hazel Dawn</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        We have Donna clean two of our holiday homes and we are thrilled. Professional and treats our properties like her own.
+        <div class="review-name">Vicki Jones</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Donna works efficiently, the house looks and smells amazing and she’s very polite and professional. Definitely recommend.
+        <div class="review-name">Beth Tyers</div>
+      </article>
+
+      <article class="review-card" style="opacity:1; position:relative;">
+        <div style="position:absolute; top:14px; right:14px; width:28px; height: 30px; background:#e88fb5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:16px;">
+          f
+        </div>
+        <div class="review-stars">★★★★★</div>
+        Top cleaning job done today. Came back to a place like new. Will be using every two weeks now. Definitely recommend.
+        <div class="review-name">James Rogers</div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="https://www.facebook.com/profile.php?id=100083053186560"
+         style="display:inline-block; padding: 4px 0; border-radius:50px; background:#e88fb5; color:white; font-weight:600; box-shadow:0 12px 26px rgba(0,0,0,0.2); text-decoration:none;">
+         View more reviews on Facebook
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Results</div>
+      <h2 class="section-title">Simple before and after transformations</h2>
+      <p class="section-lead">
+        From kitchens and bathrooms to busy offices and rental properties, regular and deep cleaning helps everything feel lighter, fresher and easier to live or work in.
+      </p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <div class="gallery-label">Kitchen reset</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-label">Bathroom sparkle</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-label">Office refresh</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="pricing">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Pricing guide</div>
+      <h2 class="section-title">Clear, sensible cleaning plans</h2>
+      <p class="section-lead">
+        Every property is different, but these examples give a guide to how Donna usually structures prices. You only pay for the time and care your place genuinely needs.
+      </p>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <article class="price-card">
+        <div class="price-label">Homes</div>
+        <h3 class="price-title">Regular domestic cleaning</h3>
+        <div class="price-amount">From £xx per visit</div>
+        <p class="price-note">
+          Weekly or fortnightly visits to keep things under control.
+        </p>
+        <ul class="price-list">
+          <li>Standard visit usually 2 to 3 hours</li>
+          <li>Bathrooms, kitchen, dusting and floors</li>
+          <li>Routines agreed around your day</li>
+          <li>All products and equipment provided</li>
+        </ul>
+      </article>
+
+      <article class="price-card">
+        <div class="price-badge">Most popular</div>
+        <div class="price-label">Deep refresh</div>
+        <h3 class="price-title">One-off and deep cleans</h3>
+        <div class="price-amount">From £xx</div>
+        <p class="price-note">
+          A thorough reset when everything needs extra attention.
+        </p>
+        <ul class="price-list">
+          <li>Ideal for spring cleans and post-build work</li>
+          <li>Kitchens, bathrooms and high-use areas focused</li>
+          <li>Targeted limescale and degreasing where needed</li>
+          <li>Planned around property size and condition</li>
+        </ul>
+      </article>
+
+      <article class="price-card">
+        <div class="price-label">Commercial</div>
+        <h3 class="price-title">Offices and small businesses</h3>
+        <div class="price-amount">Quote on request</div>
+        <p class="price-note">
+          Tailored cleaning plans for offices, salons and local businesses.
+        </p>
+        <ul class="price-list">
+          <li>Regular contract cleaning options</li>
+          <li>Early morning or evening visits available</li>
+          <li>Washrooms, kitchens and front-of-house covered</li>
+          <li>Simple pricing based on site size and frequency</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="news">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Advice</div>
+      <h2 class="section-title">News and cleaning tips</h2>
+      <p class="section-lead">
+        Short guides and thoughts from Donna on keeping homes and workplaces feeling fresh and manageable.
+      </p>
+    </div>
+
+    <div class="services-grid reveal">
+      <article class="service-card">
+        <div class="service-pill">Spring cleaning</div>
+        <h3 class="service-title">5 big jobs that are easier with help</h3>
+        <p class="service-text">
+          Deep oven cleans, inside cupboards, full bathroom descaling, skirting boards and internal doors are all chores that take time. Donna explains when it makes sense to bring in support.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-pill">Moving out</div>
+        <h3 class="service-title">Is end of tenancy cleaning worth it?</h3>
+        <p class="service-text">
+          If you are moving out of a rented property, a well planned end of tenancy clean can help everything look ready for inspection and reduce the chance of disputes over cleanliness.
+        </p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-pill">Busy homes</div>
+        <h3 class="service-title">Why a regular cleaner can reduce stress</h3>
+        <p class="service-text">
+          Knowing that the basics are taken care of each week can free up time and headspace. Donna shares how regular routines help families keep on top of things.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="contact">
+  <div class="shell">
+    <div class="section-header reveal">
+      <div class="section-kicker">Contact</div>
+      <section class="section" id="lead-in">
+  <div class="shell reveal" style="max-width:760px; margin:0 auto 40px; text-align:center;">
+    <h2 style="font-size:28px; margin-bottom:14px; color:#b84c7f; font-weight:700;">
+      Thinking About Booking a Clean?
+    </h2>
+
+    <p style="font-size:17px; line-height:1.6; margin-bottom:10px;">
+      Do you need a regular cleaner for your home?
+    </p>
+    <p style="font-size:17px; line-height:1.6; margin-bottom:10px;">
+      Do you want your workplace to feel more presentable for staff and customers?
+    </p>
+    <p style="font-size:17px; line-height:1.6; margin-bottom:20px;">
+      Are you simply tired of trying to do everything yourself?
+    </p>
+
+    <p style="font-size:16px; line-height:1.6; margin-bottom:22px;">
+      You deserve support that makes your day easier. Donna offers a warm, approachable
+      and professional service that adapts to the way you live or work.
+    </p>
+
+    <p style="font-size:16px; line-height:1.6;">
+      If you’d like to talk through options or get a clear, sensible price, fill in the form
+      below and we’ll be in touch for a friendly chat.
+    </p>
+  </div>
+</section>
+<h2 class="section-title">Arrange a clean with Donna</h2>
+      <p class="section-lead">
+        Share a few details about your property or workplace and Donna will be in touch to suggest a sensible plan and outline prices.
+      </p>
+    </div>
+
+    <section class="section" id="lead-in">
+  <div class="shell reveal" style="max-width:760px; margin:0 auto 40px; text-align:center;">
+    <h2 style="font-size:26px; margin-bottom:14px; color:#2a1f27;">Thinking About Booking a Clean?</h2>
+
+    <p style="font-size:17px; line-height:1.6; margin-bottom:10px;">
+      Do you need a regular cleaner for your home?
+    </p>
+    <p style="font-size:17px; line-height:1.6; margin-bottom:10px;">
+      Do you want your workplace to feel more presentable for staff and customers?
+    </p>
+    <p style="font-size:17px; line-height:1.6; margin-bottom:20px;">
+      Are you simply tired of trying to do everything yourself?
+    </p>
+
+    <p style="font-size:16px; line-height:1.6; margin-bottom:22px;">
+      You deserve support that makes your day easier. Donna offers a warm, approachable
+      and professional service that adapts to the way you live or work.
+    </p>
+
+    <p style="font-size:16px; line-height:1.6;">
+      If you’d like to talk through options or get a clear, sensible price, fill in the form
+      below and we’ll be in touch for a friendly chat.
+    </p>
+  </div>
+</section>
+<div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3>Request a quote</h3>
+        <form>
+          <div class="contact-field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name">
+          </div>
+          <div class="contact-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Your email">
+          </div>
+          <div class="contact-field">
+            <label for="phone">Phone number</label>
+            <input id="phone" type="tel" placeholder="Best number to reach you on">
+          </div>
+          <div class="contact-field">
+            <label for="details">Tell Donna a little about what you need</label>
+            <textarea id="details" placeholder="For example house size, type of clean and how often you would like visits."></textarea>
+          </div>
+          <button type="button" class="btn-primary" style="width:100%;">Send enquiry (demo form)</button>
+        </form>
+      </div>
+
+      <div class="contact-card reveal">
+        <h3>Contact details</h3>
+        <div class="contact-meta">
+          <p>
+            <strong>Call</strong>
+            <a href="tel:07725866860">07725 866860</a>
+          </p>
+          <p>
+            <strong>WhatsApp</strong>
+            <a href="https://api.whatsapp.com/send?phone=07725866860" target="_blank">
+              Message Donna on WhatsApp
+            </a>
+          </p>
+          <p>
+            <strong>Email</strong>
+            <a href="mailto:info@dsprofessionalcleaning.co.uk">info@dsprofessionalcleaning.co.uk</a>
+          </p>
+          <p>
+            <strong>Areas covered</strong>
+            Shrewsbury and surrounding Shropshire villages, with visits to nearby towns available by arrangement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-footer">
+  <div class="shell reveal">
+    <h2>Ready to make your property feel clean and calm again?</h2>
+    <p>
+      Whether you need a one-off deep clean, regular weekly visits or a commercial cleaning contract, Donna is happy to talk through what will work best.
+    </p>
+    <div class="cta-buttons">
+      <a href="tel:07725866860" class="btn-primary">Call Donna · 07725 866860</a>
+      <a href="https://api.whatsapp.com/send?phone=07725866860" class="btn-ghost">WhatsApp message</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © DS Professional Cleaning · Donna Jones · Commercial and domestic cleaning in Shrewsbury and Shropshire
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var header = document.getElementById("site-header");
+  function onScroll() {
+    if (window.scrollY > 40) {
+      header.classList.add("nav-scrolled");
+    } else {
+      header.classList.remove("nav-scrolled");
+    }
+  }
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(function (el) {
+    observer.observe(el);
+  });
+
+  var row = document.getElementById("reviews-row");
+  var cards = row ? row.querySelectorAll(".review-card") : [];
+  var dotsWrap = document.getElementById("review-pager");
+  var dots = dotsWrap ? dotsWrap.querySelectorAll(".review-dot") : [];
+  var current = 0;
+
+  function goToReview(index) {
+    if (!cards.length) return;
+    current = index % cards.length;
+    if (current < 0) current = cards.length - 1;
+    cards.forEach(function (card, i) {
+      card.classList.toggle("active", i === current);
+    });
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle("active", i === current);
+    });
+    var cardWidth = cards[0].offsetWidth + 20;
+    row.style.transform = "translateX(" + (-cardWidth * current) + "px)";
+  }
+
+  if (dotsWrap && dots.length) {
+    dots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        goToReview(i);
+      });
+    });
+  }
+
+  if (cards.length) {
+    setInterval(function () {
+      goToReview(current + 1);
+    }, 6000);
+  }
+
+  goToReview(0);
+});
+</script>
+
+<style>
+.
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+#
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Wrap hero title letters so we can collide with them
+  var heroTitle = document.querySelector(".hero-title");
+  if (heroTitle && !heroTitle.dataset.snowWrapped) {
+    var text = heroTitle.textContent;
+    heroTitle.textContent = "";
+    for (var i = 0; i < text.length; i++) {
+      var span = document.createElement("span");
+      span.textContent = text[i];
+      span.className = "snow-letter";
+      heroTitle.appendChild(span);
+    }
+    heroTitle.dataset.snowWrapped = "1";
+  }
+
+  // Create canvas overlay
+  var canvas = document.createElement("canvas");
+  "
+  window.addEventListener("resize", resize);
+  resize();
+
+  // Get letter rectangles in viewport coordinates
+  function getLetterRects() {
+    var rects = [];
+    document.querySelectorAll(".snow-letter").forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      rects.push({ left: r.left, right: r.right, top: r.top });
+    });
+    return rects;
+  }
+
+  var letterRects = getLetterRects();
+  window.addEventListener("scroll", function () {
+    letterRects = getLetterRects();
+  });
+
+  // 
+
+  ;
+
+  // Simple vertical height map for piles across the screen
+  var cols = 160;
+  var piles = [];
+
+  function resetPiles() {
+    piles = new Array(cols);
+    for (var i = 0; i < cols; i++) {
+      // start below the screen so only letters create initial ground
+      piles[i] = canvas.height + 1000;
+    }
+  }
+
+  function colIndex(x) {
+    if (canvas.width <= 0) return 0;
+    return Math.max(
+      0,
+      Math.min(cols - 1, Math.floor((x / canvas.width) * cols))
+    );
+  }
+
+  function getPileY(x) {
+    return piles[colIndex(x)];
+  }
+
+  function addPile(x, y) {
+    var idx = colIndex(x);
+    // move pile top upwards as snow stacks
+    piles[idx] = Math.min(piles[idx], y - 1);
+  }
+
+  // Collision with letter tops (treated as thin platforms)
+  function collideLetters(x, y, r) {
+    for (var i = 0; i < letterRects.length; i++) {
+      var L = letterRects[i];
+      if (x >= L.left && x <= L.right) {
+        var top = L.top;
+        if (y + r >= top && y - r <= top + 6) {
+          return top;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Create flakes
+  for (var i = 0; i < maxFlakes; i++) {
+    flakes.push(new 
+
+  // Animation loop
+  function step() {
+    if (canvas.width === 0 || canvas.height === 0) {
+      requestAnimationFrame(step);
+      return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.96)";
+
+    for (var i = 0; i < flakes.length; i++) {
+      var f = flakes[i];
+
+      if (!f.stuck) {
+        f.x += f.vx;
+        f.y += f.vy;
+
+        // gentle side drift
+        f.vx += (Math.random() - 0.5) * 0.02;
+
+        // horizontal wrap
+        if (f.x < -10) f.x = canvas.width + 10;
+        if (f.x > canvas.width + 10) f.x = -10;
+
+        // check collision with letter tops first
+        var letterTop = collideLetters(f.x, f.y, f.r);
+        if (letterTop !== null && f.vy > 0) {
+          f.y = letterTop - f.r;
+          f.stuck = true;
+          addPile(f.x, f.y);
+        } else {
+          // then collision with existing piles
+          var pileY = getPileY(f.x);
+          if (f.y + f.r >= pileY) {
+            f.y = pileY - f.r;
+            f.stuck = true;
+            addPile(f.x, f.y);
+          }
+        }
+
+        // if somehow drops off screen without hitting anything, recycle
+        if (f.y - f.r > canvas.height + 40) {
+          f.reset();
+        }
+      }
+
+      // draw flake
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  step();
+});
+</script>
+<style>
+.
+
+.
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+.
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+#
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Wrap hero title letters so we can collide with them
+  var heroTitle = document.querySelector(".hero-title");
+  if (heroTitle && !heroTitle.dataset.snowWrapped) {
+    var text = heroTitle.textContent;
+    heroTitle.textContent = "";
+    for (var i = 0; i < text.length; i++) {
+      var span = document.createElement("span");
+      span.textContent = text[i];
+      span.className = "snow-letter";
+      heroTitle.appendChild(span);
+    }
+    heroTitle.dataset.snowWrapped = "1";
+  }
+
+  // Create canvas overlay
+  var canvas = document.createElement("canvas");
+  "
+  window.addEventListener("resize", resize);
+  resize();
+
+  // Get letter rectangles in viewport coordinates
+  function getLetterRects() {
+    var rects = [];
+    document.querySelectorAll(".snow-letter").forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      rects.push({ left: r.left, right: r.right, top: r.top });
+    });
+    return rects;
+  }
+
+  var letterRects = getLetterRects();
+  window.addEventListener("scroll", function () {
+    letterRects = getLetterRects();
+  });
+
+  // 
+
+  ;
+
+  // Simple vertical height map for piles across the screen
+  var cols = 160;
+  var piles = [];
+
+  function resetPiles() {
+    piles = new Array(cols);
+    for (var i = 0; i < cols; i++) {
+      // start below the screen so only letters create initial ground
+      piles[i] = canvas.height + 1000;
+    }
+  }
+
+  function colIndex(x) {
+    if (canvas.width <= 0) return 0;
+    return Math.max(
+      0,
+      Math.min(cols - 1, Math.floor((x / canvas.width) * cols))
+    );
+  }
+
+  function getPileY(x) {
+    return piles[colIndex(x)];
+  }
+
+  function addPile(x, y) {
+    var idx = colIndex(x);
+    // move pile top upwards as snow stacks
+    piles[idx] = Math.min(piles[idx], y - 1);
+  }
+
+  // Collision with letter tops (treated as thin platforms)
+  function collideLetters(x, y, r) {
+    for (var i = 0; i < letterRects.length; i++) {
+      var L = letterRects[i];
+      if (x >= L.left && x <= L.right) {
+        var top = L.top;
+        if (y + r >= top && y - r <= top + 6) {
+          return top;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Create flakes
+  for (var i = 0; i < maxFlakes; i++) {
+    flakes.push(new 
+
+  // Animation loop
+  function step() {
+    if (canvas.width === 0 || canvas.height === 0) {
+      requestAnimationFrame(step);
+      return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(255,255,255,0.96)";
+
+    for (var i = 0; i < flakes.length; i++) {
+      var f = flakes[i];
+
+      if (!f.stuck) {
+        f.x += f.vx;
+        f.y += f.vy;
+
+        // gentle side drift
+        f.vx += (Math.random() - 0.5) * 0.02;
+
+        // horizontal wrap
+        if (f.x < -10) f.x = canvas.width + 10;
+        if (f.x > canvas.width + 10) f.x = -10;
+
+        // check collision with letter tops first
+        var letterTop = collideLetters(f.x, f.y, f.r);
+        if (letterTop !== null && f.vy > 0) {
+          f.y = letterTop - f.r;
+          f.stuck = true;
+          addPile(f.x, f.y);
+        } else {
+          // then collision with existing piles
+          var pileY = getPileY(f.x);
+          if (f.y + f.r >= pileY) {
+            f.y = pileY - f.r;
+            f.stuck = true;
+            addPile(f.x, f.y);
+          }
+        }
+
+        // if somehow drops off screen without hitting anything, recycle
+        if (f.y - f.r > canvas.height + 40) {
+          f.reset();
+        }
+      }
+
+      // draw flake
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  step();
+});
+</script>
+<style>
+.
+
+.
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+.
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<style>
+.
+@keyframes fallBig {
+  to { transform: translateY(110vh); }
+}
+
+.
+@keyframes fallSmall {
+  to { transform: translateY(110vh); }
+}
+
+/* sticky snowbank along the bottom */
+#snowbank {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30px;
+  background: white;
+  z-index: 9998;
+  transition: height 0.3s linear;
+  pointer-events: none;
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<div id="snowbank"></div>
+
+<style>
+/* Big ❄ flakes */
+.
+@keyframes fallBig {
+  to { transform: translateY(110vh); }
+}
+
+/* Small white round flakes */
+.
+@keyframes fallSmall {
+  to { transform: translateY(110vh); }
+}
+
+/* Heavy glitter sparkles */
+.
+@keyframes fallGlitter {
+  to { transform: translateY(110vh); }
+}
+@keyframes glitterPulse {
+  0% { opacity: 0.1; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0.1; transform: scale(0.6); }
+}
+  /* SNOW OVERLAY */
+  #snow-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+  }
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('snow-canvas');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var flakes = [];
+    var width, height;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    var FLAKE_COUNT = 130;
+
+    function createFlake(isBig) {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: isBig ? (2.2 + Math.random() * 3.5) : (1 + Math.random() * 1.4),
+        vy: isBig ? (0.8 + Math.random() * 1.1) : (0.45 + Math.random() * 0.7),
+        vx: (Math.random() - 0.5) * 0.35,
+        alpha: 0.6 + Math.random() * 0.4,
+        type: isBig ? 'flake' : 'dot'
+      };
+    }
+
+    for (var i = 0; i < FLAKE_COUNT; i++) {
+      // More big flakes than dots, like before
+      flakes.push(createFlake(i < FLAKE_COUNT * 0.6));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.fillStyle = '#ffffff';
+
+      for (var i = 0; i < flakes.length; i++) {
+        var f = flakes[i];
+
+        // Movement
+        f.y += f.vy;
+        f.x += f.vx + Math.sin((f.y + i * 7) * 0.002) * 0.6;
+
+        // Wrap around
+        if (f.y > height + 8) {
+          f.y = -8;
+          f.x = Math.random() * width;
+        }
+        if (f.x < -8) f.x = width + 8;
+        if (f.x > width + 8) f.x = -8;
+
+        ctx.globalAlpha = f.alpha;
+
+        // Big round flakes
+        if (f.type === 'flake') {
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          // Tiny dot flakes
+          ctx.fillRect(f.x, f.y, f.r, f.r);
+        }
+      }
+
+      ctx.restore();
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+</script>
+<canvas id="snow-canvas"></canvas>
+<style>
+#snow-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+.hero-title {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 6px 26px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #f4f4f6 !important;
+  max-width: 720px !important;
+  margin: 20px auto 32px !important;
+  line-height: 1.55 !important;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap');
+
+.hero-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.15 !important;
+  max-width: 900px !important;
+  margin: 0 auto 18px !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.55) !important;
+}
+
+.hero-subtitle {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 10px auto 24px !important;
+  color: #f2f2f2 !important;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55) !important;
+}
+.about-main, .about-side {
+  padding: 34px 32px !important;
+  line-height: 1.65 !important;
+}
+
+.about-text, .about-main p, .about-side p {
+  line-height: 1.65 !important;
+  font-size: 16px !important;
+}
+
+.about-main, .about-side {
+  min-height: 410px !important;
+}
+/* GLOBAL CARD POP-OUT FIX */
+.service-card,
+.trust-pill,
+.review-card,
+.price-card,
+.about-main,
+.about-side,
+.gallery-item,
+.contact-card {
+    padding: 28px 28px !important;
+    border-radius: 22px !important;
+    line-height: 1.55 !important;
+    overflow: visible !important;
+    background: #ffffffcc !important;
+    backdrop-filter: blur(14px) saturate(1.4) !important;
+    box-shadow: 
+        0 12px 32px rgba(0,0,0,0.12),
+        0 4px 12px rgba(0,0,0,0.08),
+        0 0 0 1px rgba(255,255,255,0.8) inset !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Hover effect - smooth pop */
+.service-card:hover,
+.trust-pill:hover,
+.review-card:hover,
+.price-card:hover,
+.about-main:hover,
+.about-side:hover,
+.contact-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 
+        0 22px 48px rgba(0,0,0,0.18),
+        0 10px 20px rgba(0,0,0,0.12),
+        0 0 0 1px rgba(255,255,255,0.9) inset !important;
+}
+
+/* FIX TEXT IN REVIEWS */
+.review-card {
+    min-height: 190px !important;
+    padding: 26px 26px !important;
+    font-size: 15px !important;
+}
+
+/* Ensure tag bubbles (Offices & Workplaces, Homes, Deep refresh) fit properly */
+.service-pill {
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+    line-height: 1.2 !important;
+}
+
+/* Ensure trust-strip chips scale correctly */
+.trust-pill {
+    padding: 8px 18px !important;
+    font-size: 14px !important;
+}
+
+/* Fix pricing cards clipping text */
+.price-card {
+    min-height: 270px !important;
+}
+
+/* Fix gallery labels */
+.gallery-label {
+    padding: 6px 14px !important;
+    font-size: 14px !important;
+}
+
+/* Force all text to wrap normally */
+.service-card *,
+.trust-pill *,
+.review-card *,
+.price-card *,
+.about-main *,
+.about-side *,
+.contact-card * {
+    white-space: normal !important;
+}
+</style>
+
+<script id="clean-snow-script">
+(function () {
+  var canvas = document.getElementById("snow-canvas");
+  var ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // VERY LIGHT SNOWFALL
+  var flakes = [];
+  var FLAKE_COUNT = 35; // LIGHT AMOUNT
+
+  for (var i = 0; i < FLAKE_COUNT; i++) {
+    flakes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 1 + Math.random() * 2,   // small natural flakes
+      vy: 0.3 + Math.random() * 0.6,
+      vx: -0.4 + Math.random() * 0.8,
+      alpha: 0.4 + Math.random() * 0.5
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+
+    flakes.forEach(function (f) {
+      ctx.globalAlpha = f.alpha;
+
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      f.y += f.vy;
+      f.x += f.vx + Math.sin(f.y * 0.01) * 0.3;
+
+      if (f.y > canvas.height) f.y = -5;
+      if (f.x < -5) f.x = canvas.width + 5;
+      if (f.x > canvas.width + 5) f.x = -5;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>
+</body>
+</html>
+
+
