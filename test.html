@@ -2046,25 +2046,30 @@
                 <div class="contact-grid">
                   <div class="contact-card reveal visible">
                     <h3>Request a quote</h3>
-                    <form>
-                      <div class="contact-field">
-                        <label for="name">Name</label>
-                        <input id="name" type="text" placeholder="Your name" fdprocessedid="uo89r">
-                        </div>
-                        <div class="contact-field">
-                          <label for="email">Email</label>
-                          <input id="email" type="email" placeholder="Your email" fdprocessedid="54kjsl">
-                          </div>
-                          <div class="contact-field">
-                            <label for="phone">Phone number</label>
-                            <input id="phone" type="tel" placeholder="Best number to reach you on" fdprocessedid="e99rb">
-                            </div>
-                            <div class="contact-field">
-                              <label for="details">Tell Donna a little about what you need</label>
-                              <textarea id="details" placeholder="For example house size, type of clean and how often you would like visits."></textarea>
-                            </div>
-                            <button type="button" class="btn-primary" style="width:100%;" fdprocessedid="3br2zf">Send enquiry (demo form)</button>
-                          </form>
+<form action="https://formspree.io/f/xkgdzkqk" method="POST">
+  <div class="contact-field">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Your name">
+  </div>
+  <div class="contact-field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="Your email address">
+  </div>
+  <div class="contact-field">
+    <label for="phone">Phone number</label>
+    <input id="phone" name="phone" type="tel" placeholder="Best number to reach you on">
+  </div>
+  <div class="contact-field">
+    <label for="details">Tell Donna a little about what you need</label>
+    <textarea id="details" name="message" placeholder="For example house size, type of clean, and how often you would like visits."></textarea>
+  </div>
+
+  <!-- Improve email formatting -->
+  <input type="hidden" name="_subject" value="New Cleaning Enquiry Submitted">
+  <input type="hidden" name="_captcha" value="false">
+
+  <button type="submit" class="btn-primary" style="width:100%;">Send enquiry</button>
+</form>
                         </div>
                         
                         <div class="contact-card reveal visible">
@@ -3411,6 +3416,7 @@
 <a id="float-whatsapp" class="mobile-float-btn" href="https://api.whatsapp.com/send?phone=07725866860">💬</a>
 </body></html>
         
+
 
 
 
