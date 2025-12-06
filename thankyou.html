@@ -273,6 +273,28 @@
   to { opacity: 1; transform: translateY(0); }
 }
 </style></style>
+<style>
+.donna-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 22px auto;
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow:
+      0 10px 26px rgba(0,0,0,0.25),
+      0 0 0 6px rgba(255,255,255,0.55),
+      0 0 40px rgba(255,255,255,0.65);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: donnaFade 0.8s ease forwards;
+}
+
+@keyframes donnaFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
@@ -299,10 +321,13 @@ for(let i=0;i<25;i++){
 
 
 
-<img src='images/donna.jpg' alt='Donna Jones' class='donna-pic'>
 
 
-  <h1>Thank you!</h1>
+
+  <img src='https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/blob/main/donna.jpg?raw=true'
+     alt='Donna Jones'
+     class='donna-pic'>
+<h1>Thank you!</h1>
   <p>Your enquiry has been received successfully.  
      Donna or a member of the team will be in touch shortly.</p>
 
@@ -331,6 +356,7 @@ for(let i=0;i<25;i++){
 
 </body>
 </html>
+
 
 
 
