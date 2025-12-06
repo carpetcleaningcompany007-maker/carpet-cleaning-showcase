@@ -1,7 +1,284 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<title>Thank You | DS Professional Cleaning</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top left, #fff2f9, #fbe4f1, #f8d8ec, #f6d0ea);
+    color: #2a1f27;
+    overflow-x: hidden;
+    text-align: center;
+    padding: 40px 18px 120px;
+  }
+
+  /* Cinematic orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.65;
+    mix-blend-mode: screen;
+    animation: orbfloat 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .orb1 { width: 420px; height: 420px; background:#ffbad6; top:-160px; left:-120px; }
+  .orb2 { width: 360px; height:360px; background:#ffffff; bottom:-140px; right:-80px; }
+
+  @keyframes orbfloat {
+    0% { transform:translate(0,0); }
+    50% { transform:translate(40px,-30px); }
+    100% { transform:translate(-20px,30px); }
+  }
+
+  /* Confetti sparkles */
+  @keyframes confettiFall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity:1; }
+    100% { transform: translateY(110vh) rotate(220deg); opacity:0; }
+  }
+
+  .confetti {
+    position: fixed;
+    width: 6px;
+    height: 12px;
+    opacity: 0.8;
+    top: -10vh;
+    z-index: 50;
+    animation: confettiFall linear infinite;
+  }
+
+  /* Crystal glass card */
+  .card {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 46px 36px 40px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: saturate(1.8) blur(18px);
+    box-shadow:
+      0 28px 80px rgba(0,0,0,0.15),
+      0 0 0 1px rgba(255,255,255,0.8) inset;
+    animation: fadeup 1.3s ease forwards;
+  }
+
+  @keyframes fadeup {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* Animated checkmark */
+  .checkCircle {
+    width: 110px;
+    height:110px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 16px 40px rgba(232,143,181,0.45);
+    animation: pop 0.9s ease forwards;
+  }
+
+  @keyframes pop {
+    0% { transform:scale(0.2); opacity:0; }
+    70% { transform:scale(1.18); opacity:1; }
+    100% { transform:scale(1); }
+  }
+
+  svg {
+    width:60px;
+    height:60px;
+    stroke:white;
+    stroke-width:6;
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: draw 1.4s ease forwards 0.3s;
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  h1 {
+    font-size:34px;
+    font-weight:800;
+    color:#b84c7f;
+    margin-bottom:14px;
+    text-shadow:0 3px 10px rgba(0,0,0,0.15);
+  }
+
+  p {
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:20px;
+  }
+
+  /* Trust icons */
+  .trust {
+    margin-top:26px;
+    font-size:15px;
+    opacity:0.9;
+  }
+
+  .trust span {
+    display:inline-block;
+    padding:6px 14px;
+    margin:4px;
+    border-radius:40px;
+    background:white;
+    border:1px solid #f2cfe0;
+    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+  }
+
+  /* Buttons */
+  .btn {
+    display:block;
+    width:100%;
+    padding:15px;
+    margin:12px 0;
+    border-radius:40px;
+    font-weight:600;
+    font-size:17px;
+    text-decoration:none;
+    transition:0.2s;
+    box-shadow:0 14px 38px rgba(0,0,0,0.12);
+  }
+
+  .btn-call { background: linear-gradient(135deg,#ffffff,#ffffff); color:#3a2432; }
+  .btn-wa { background: #25d366; color:white; }
+  .btn-home { background:white; border:2px solid #e7c6d8; color:#b84c7f; }
+
+  .btn:hover {
+    transform:translateY(-4px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+  }
+
+  /* Floating mobile contact dock */
+  .dock {
+    position:fixed;
+    bottom:28px;
+    right:24px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:999;
+  }
+
+  .dock a {
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.25);
+    background:linear-gradient(135deg,#ffffff,#ffffff);
+    color:white;
+    text-decoration:none;
+    animation: fadeup 1.4s ease forwards;
+  }
+
+  .dock a.wa { background:#25d366; }
+
+
+@keyframes picFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes donnaFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+}<style>
+.donna-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0 auto 25px;
+
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.25),
+    0 0 0 6px rgba(255,255,255,0.6),
+    0 0 40px rgba(232,143,181,0.55);
+
+  animation: donnaFade 1.1s ease forwards;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@keyframes donnaFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+<style>
+.donna-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0 auto 25px;
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow:
+      0 10px 26px rgba(0,0,0,0.25),
+      0 0 0 6px rgba(255,255,255,0.55),
+      0 0 40px rgba(232,143,181,0.55);
+  animation: portraitFade 1.1s ease forwards;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@keyframes portraitFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+</style></style><style>
+.donna-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0 auto 25px;
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow:
+      0 10px 26px rgba(0,0,0,0.25),
+      0 0 0 6px rgba(255,255,255,0.55),
+      0 0 40px rgba(232,143,181,0.55);
+  animation: portraitFade 1.1s ease forwards;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@keyframes portraitFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+</style></style>
+</head>
+
 <body>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div class='orb orb1'></div>
+<div class='orb orb2'></div>
 
 <!-- Confetti particles -->
 <script>
@@ -14,54 +291,56 @@ for(let i=0;i<25;i++){
   c.style.animationDelay=(Math.random()*3)+'s';
   document.body.appendChild(c);
 }
-</script><div class="confetti" style="left: 75.878vw; background: rgb(255, 255, 255); animation-duration: 12.2359s; animation-delay: 0.316071s;"></div><div class="confetti" style="left: 24.1648vw; background: rgb(255, 255, 255); animation-duration: 12.6181s; animation-delay: 0.594325s;"></div><div class="confetti" style="left: 67.8101vw; background: rgb(255, 255, 255); animation-duration: 7.85565s; animation-delay: 1.41285s;"></div><div class="confetti" style="left: 88.2228vw; background: rgb(255, 255, 255); animation-duration: 11.8248s; animation-delay: 2.9767s;"></div><div class="confetti" style="left: 50.3892vw; background: rgb(255, 255, 255); animation-duration: 10.695s; animation-delay: 1.62465s;"></div><div class="confetti" style="left: 1.61394vw; background: rgb(255, 255, 255); animation-duration: 9.24782s; animation-delay: 2.12844s;"></div><div class="confetti" style="left: 26.9937vw; background: rgb(255, 255, 255); animation-duration: 7.68476s; animation-delay: 2.75154s;"></div><div class="confetti" style="left: 6.38015vw; background: rgb(255, 255, 255); animation-duration: 10.0602s; animation-delay: 2.41583s;"></div><div class="confetti" style="left: 32.8326vw; background: rgb(255, 255, 255); animation-duration: 8.25374s; animation-delay: 2.41505s;"></div><div class="confetti" style="left: 11.2657vw; background: rgb(255, 255, 255); animation-duration: 12.844s; animation-delay: 2.02783s;"></div><div class="confetti" style="left: 9.31262vw; background: rgb(255, 255, 255); animation-duration: 11.7343s; animation-delay: 2.34748s;"></div><div class="confetti" style="left: 1.41026vw; background: rgb(255, 255, 255); animation-duration: 12.1421s; animation-delay: 2.24535s;"></div><div class="confetti" style="left: 28.6976vw; background: rgb(255, 255, 255); animation-duration: 12.386s; animation-delay: 2.28797s;"></div><div class="confetti" style="left: 60.5219vw; background: rgb(255, 255, 255); animation-duration: 8.57375s; animation-delay: 2.36763s;"></div><div class="confetti" style="left: 65.672vw; background: rgb(255, 255, 255); animation-duration: 9.0781s; animation-delay: 1.22263s;"></div><div class="confetti" style="left: 65.7831vw; background: rgb(255, 255, 255); animation-duration: 9.10426s; animation-delay: 0.632033s;"></div><div class="confetti" style="left: 72.8066vw; background: rgb(255, 255, 255); animation-duration: 11.7053s; animation-delay: 1.65124s;"></div><div class="confetti" style="left: 71.5005vw; background: rgb(255, 255, 255); animation-duration: 11.9042s; animation-delay: 2.61417s;"></div><div class="confetti" style="left: 48.1971vw; background: rgb(255, 255, 255); animation-duration: 9.08103s; animation-delay: 2.42974s;"></div><div class="confetti" style="left: 43.4863vw; background: rgb(255, 255, 255); animation-duration: 11.2427s; animation-delay: 0.798747s;"></div><div class="confetti" style="left: 59.7688vw; background: rgb(255, 255, 255); animation-duration: 7.97627s; animation-delay: 1.48823s;"></div><div class="confetti" style="left: 30.0472vw; background: rgb(255, 255, 255); animation-duration: 10.6355s; animation-delay: 2.69972s;"></div><div class="confetti" style="left: 59.9217vw; background: rgb(255, 255, 255); animation-duration: 7.92771s; animation-delay: 0.211757s;"></div><div class="confetti" style="left: 28.5021vw; background: rgb(255, 255, 255); animation-duration: 10.481s; animation-delay: 1.21058s;"></div><div class="confetti" style="left: 32.7612vw; background: rgb(255, 255, 255); animation-duration: 12.2957s; animation-delay: 1.54708s;"></div>
+</script>
 
-<div class="card">
+<div class='card'>
   
 
 
 
 
-<img src="images/donna.jpg" alt="Donna Jones" class="donna-pic">
+<img src='images/donna.jpg' alt='Donna Jones' class='donna-pic'>
 
 
   <h1>Thank you!</h1>
   <p>Your enquiry has been received successfully.  
      Donna or a member of the team will be in touch shortly.</p>
 
-  <p style="font-size:16px; opacity:0.9; margin-bottom:26px;">
+  <p style='font-size:16px; opacity:0.9; margin-bottom:26px;'>
     We create tailored cleaning plans designed around the way you live or work.  
     You’ll always receive a warm, professional and dependable service.
   </p>
 
-  <div class="trust">
+  <div class='trust'>
     <span>Fully insured</span>
     <span>DBS checked</span>
     <span>COSHH trained</span>
     <span>Trusted by healthcare clinics</span>
   </div>
 
-  <a class="btn btn-call" href="tel:07725866860">Call Donna · 07725 866860</a>
-  <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=07725866860">Message on WhatsApp</a>
-  <a class="btn btn-home" href="index.html">Return to Homepage</a>
+  <a class='btn btn-call' href='tel:07725866860'>Call Donna · 07725 866860</a>
+  <a class='btn btn-wa' href='https://api.whatsapp.com/send?phone=07725866860'>Message on WhatsApp</a>
+  <a class='btn btn-home' href='index.html'>Return to Homepage</a>
 </div>
 
 <!-- Contact dock -->
-<div class="dock">
-  <a href="tel:07725866860">📞</a>
-  <a href="https://api.whatsapp.com/send?phone=07725866860" class="wa">💬</a>
+<div class='dock'>
+  <a href='tel:07725866860'>📞</a>
+  <a href='https://api.whatsapp.com/send?phone=07725866860' class='wa'>💬</a>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
