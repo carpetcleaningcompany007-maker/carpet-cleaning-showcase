@@ -1,6 +1,9 @@
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Carpet Cleaning Company | Carpet and Upholstery Cleaning</title>
   <meta name="description" content="Professional carpet and upholstery cleaning for homes and businesses with deep steam cleaning, CRB agitation and a 100 percent satisfaction guarantee.">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,8 +30,8 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -37,8 +40,170 @@
       height: 100%;
       object-fit: cover;
     }
+
+    /* Shared hover behaviour for all raised cards */
+    .hover-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .hover-card:hover {
+      transform: translateY(-6px);
+      border-color: #1f7ef2 !important;
+      box-shadow: 0 20px 48px rgba(31,126,242,0.35);
+    }
+
+    /* Service cards */
+    .service-card {
+  display: block;
+  background: white;
+  border-radius: 26px;
+  padding: 30px;
+  border: 2px solid #dbeafe; /* subtle blue outline always visible */
+  text-decoration: none;
+  color: #1e3a8a;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: all 0.35s ease;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.service-card:hover {
+  background: white; /* stays white */
+  border-color: #1f7ef2; /* brighter blue outline */
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 48px rgba(31,126,242,0.25); /* gentle blue glow */
+  color: #1e3a8a; /* consistent text colour */
+}
+
+    /* Review cards */
+    .review-card {
+      transition: all 0.35s ease;
+      cursor: pointer;
+    }
+    .review-card:hover {
+      transform: translateY(-6px);
+      border-color: #1f7ef2 !important;
+      box-shadow: 0 22px 55px rgba(31,126,242,0.28);
+    }
+
+    /* How we clean cards */
+    .clean-card {
+      background: white;
+      border-radius: 22px;
+      padding: 24px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: all 0.30s ease;
+    }
+    .clean-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(31,126,242,0.22);
+      border-color: #1f7ef2;
+    }
+
+    /* Floating WhatsApp / phone buttons */
+    .floating-btn {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .floating-btn a {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
   </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-top-3{top:-0.75rem}.bottom-0{bottom:0px}.left-0{left:0px}.right-0{right:0px}.right-6{right:1.5rem}.top-0{top:0px}.-z-10{z-index:-10}.z-40{z-index:40}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:0.375rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-9{height:2.25rem}.h-full{height:100%}.w-1\.5{width:0.375rem}.w-2{width:0.5rem}.w-2\.5{width:0.625rem}.w-auto{width:auto}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-6xl{max-width:72rem}.max-w-xl{max-width:36rem}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-10{gap:2.5rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77 / var(--tw-border-opacity, 1))}.border-brand-600{--tw-border-opacity:1;border-color:rgb(31 126 242 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-500\/80{border-color:rgb(100 116 139 / 0.8)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.bg-amber-100\/10{background-color:rgb(254 243 199 / 0.1)}.bg-brand-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-brand-600{--tw-bg-opacity:1;background-color:rgb(31 126 242 / var(--tw-bg-opacity, 1))}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/40{background-color:rgb(15 23 42 / 0.4)}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-slate-900\/70{background-color:rgb(15 23 42 / 0.7)}.bg-slate-900\/80{background-color:rgb(15 23 42 / 0.8)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.object-cover{object-fit:cover}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-16{padding-bottom:4rem}.pt-28{padding-top:7rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11 / var(--tw-text-opacity, 1))}.text-brand-700{--tw-text-opacity:1;color:rgb(22 102 198 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-50{--tw-text-opacity:1;color:rgb(248 250 252 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-80{opacity:0.8}.shadow-card{--tw-shadow:0 16px 40px rgba(15,23,42,0.10);--tw-shadow-colored:0 16px 40px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-soft{--tw-shadow:0 12px 30px rgba(15,23,42,0.12);--tw-shadow-colored:0 12px 30px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.hover\:border-brand-100:hover{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.hover\:bg-brand-700:hover{--tw-bg-opacity:1;background-color:rgb(22 102 198 / var(--tw-bg-opacity, 1))}.focus\:border-brand-600:focus{--tw-border-opacity:1;border-color:rgb(31 126 242 / var(--tw-border-opacity, 1))}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-brand-600:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(31 126 242 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:inline-flex{display:inline-flex}}@media (min-width: 768px){.md\:mt-0{margin-top:0px}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:pb-20{padding-bottom:5rem}.md\:pt-32{padding-top:8rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}}</style></head>
+<style>
+.service-box {
+  background: white;
+  border-radius: 26px;
+  padding: 28px;
+  border: 2px solid #dbeafe;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+.service-box h3,
+.service-box .service-label,
+.service-box p,
+.service-box li {
+  color: #0f172a !important;
+}
+.service-box:hover {
+  transform: translateY(-6px);
+  border-color: #1f7ef2;
+  box-shadow: 0 22px 55px rgba(31,126,242,0.45);
+  background: #ffffff;
+}
+.service-box:hover .service-label {
+  color: #1f7ef2 !important;
+}
+</style>
+<style>
+.service-box *, .service-card * {
+  color: #0f172a !important;
+  opacity: 1 !important;
+}
+.service-box:hover .service-label,
+.service-card:hover .service-label {
+  color: #1f7ef2 !important;
+}
+.service-box:hover,
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #1f7ef2 !important;
+  box-shadow: 0 22px 55px rgba(31,126,242,0.45);
+}
+</style>
+<style>
+.service-box {
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.service-box .service-label {
+  color: #1e3a8a !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+.service-box h3 {
+  color: #0f172a !important;
+  font-weight: 800;
+  margin-top: 4px;
+  font-size: 1.25rem;
+}
+.service-box p,
+.service-box ul li {
+  color: #475569 !important;
+  font-weight: 400;
+  opacity: 1 !important;
+}
+.service-box:hover {
+  transform: translateY(-6px);
+  border-color: #1f7ef2;
+  box-shadow: 0 16px 40px rgba(31,126,242,0.20);
+}
+.service-box:hover .service-label {
+  color: #1f7ef2 !important;
+}
+</style>
+</head>
 
 <body class="bg-slate-50 text-slate-800">
 
@@ -65,13 +230,17 @@
 </header>
 
 <!-- HERO WITH VIDEO -->
-<section class="relative pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden text-slate-50">
+<section class="relative min-h-[700px] pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden text-slate-50">
   <div class="absolute inset-0 -z-10">
-    
-    <video class="absolute right-0 bottom-0 h-full w-auto object-cover opacity-80" autoplay="" muted="" loop="" playsinline="">
-    <source src="istockphoto-2158195023-640_adpp_is.mp4" type="video/mp4">
+    <video class="hero-video opacity-70" autoplay muted loop playsinline poster="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/blob/main/Wand_4748.png?raw=true">
+  <source src="C:/Users/Pnich/Downloads/istockphoto-2158195023-640_adpp_is (2).mp4" type="video/mp4">
 </video>
-<div class="absolute inset-0 bg-slate-900/40"></div>
+    <div class="absolute inset-0 bg-slate-900/40"></div>
+
+    <!-- Hero image on top of video -->
+    <img src="C:/Users/Pnich/Downloads/videoframe_4748.png"
+         class="absolute bottom-0 right-0 w-[420px] md:w-[520px] opacity-90 pointer-events-none select-none drop-shadow-2xl"
+         alt="Hero image">
   </div>
 
   <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
@@ -160,7 +329,7 @@
 
     <div class="mt-8 grid md:grid-cols-3 gap-6">
 
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+      <div class="clean-card">
         <div class="text-xs font-semibold text-brand-700 uppercase">Step one</div>
         <div class="mt-1 text-lg font-semibold text-slate-900">Survey and vacuum</div>
         <p class="mt-2 text-sm text-slate-600">
@@ -168,7 +337,7 @@
         </p>
       </div>
 
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+      <div class="clean-card">
         <div class="text-xs font-semibold text-brand-700 uppercase">Step two</div>
         <div class="mt-1 text-lg font-semibold text-slate-900">Pre spray and CRB agitation</div>
         <p class="mt-2 text-sm text-slate-600">
@@ -176,7 +345,7 @@
         </p>
       </div>
 
-      <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+      <div class="clean-card">
         <div class="text-xs font-semibold text-brand-700 uppercase">Step three</div>
         <div class="mt-1 text-lg font-semibold text-slate-900">Hot water rinse and finish</div>
         <p class="mt-2 text-sm text-slate-600">
@@ -188,8 +357,46 @@
   </div>
 </section>
 
-<!-- PACKAGES -->
+<!-- SERVICES WE OFFER -->
+<section id="services" class="py-14 bg-slate-50">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-3xl font-extrabold text-slate-900">Services we offer</h2>
+    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
+      A full professional cleaning service for homes, landlords, offices and commercial venues across Shropshire.
+    </p>
 
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+
+      <!-- Residential Carpet Cleaning -->
+      <a href="#quote" class="service-card hover-card">
+        <div class="text-xs text-slate-500 font-semibold uppercase">Residential carpet cleaning</div>
+        <div class="mt-1 text-xl font-extrabold text-slate-900">Homes &amp; domestic properties</div>
+        <p class="mt-4 text-sm text-slate-100/90">
+          Living rooms, bedrooms, stairs and landings. Deep steam extraction with CRB agitation and a neutralising rinse.
+        </p>
+      </a>
+
+      <!-- Commercial Carpet Cleaning -->
+      <a href="#quote" class="service-card hover-card">
+        <div class="text-xs text-brand-700 font-semibold uppercase">Commercial carpet cleaning</div>
+        <div class="mt-1 text-xl font-extrabold text-slate-900">Workplaces &amp; public venues</div>
+        <p class="mt-4 text-sm text-slate-100/90">
+          Offices, hotels, pubs, restaurants, racecourses, halls, receptions and waiting rooms. Out-of-hours cleaning available.
+        </p>
+      </a>
+
+      <!-- Upholstery Cleaning -->
+      <a href="#quote" class="service-card hover-card">
+        <div class="text-xs text-slate-500 font-semibold uppercase">Upholstery cleaning</div>
+        <div class="mt-1 text-xl font-extrabold text-slate-900">Sofas, chairs &amp; fabric seating</div>
+        <p class="mt-4 text-sm text-slate-100/90">
+          Sofas, armchairs and footstools. Safe solutions for wool and delicate fabrics. Restores appearance and removes odours.
+        </p>
+      </a>
+
+    </div>
+  </div>
+</section>
 
 <!-- GUARANTEE STRIP -->
 <section id="guarantee" class="py-10 bg-brand-50">
@@ -219,46 +426,88 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- GOOGLE REVIEWS -->
 <section class="py-14 bg-white">
   <div class="mx-auto max-w-6xl px-4">
-    <h2 class="text-3xl font-extrabold text-slate-900">Recent customer comments</h2>
+    <h2 class="text-3xl font-extrabold text-slate-900">What customers are saying</h2>
     <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-      A mix of home, rental and small commercial work across Ludlow, Shrewsbury, Telford and nearby areas.
+      A selection of our most recent Google reviews from homes and businesses across Shropshire.
     </p>
 
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
 
-      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
-        <div class="text-amber-500 text-sm">★★★★★</div>
-        <blockquote class="mt-3 text-sm text-slate-700">
-          Carpets looked like new again after the clean. Friendly, careful and very tidy.
-        </blockquote>
-        <figcaption class="mt-3 text-xs text-slate-500">
-          Sarah in Ludlow
-        </figcaption>
-      </figure>
+      <!-- REVIEW 1 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Kerrie Glanville</h3>
+        <p class="text-xs text-slate-500 mb-3">6 days ago</p>
+        <p class="text-sm text-slate-700">
+          Fantastic job on my stairs. They smell so fresh and look clean, making my house feel cleaner.
+          Paul even removed a stain in the kids' room that had been there for years.
+        </p>
+      </div>
 
-      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
-        <div class="text-amber-500 text-sm">★★★★★</div>
-        <blockquote class="mt-3 text-sm text-slate-700">
-          Coffee marks that had been there for months were removed. Very impressed with the finish.
-        </blockquote>
-        <figcaption class="mt-3 text-xs text-slate-500">
-          Mark in Shrewsbury
-        </figcaption>
-      </figure>
+      <!-- REVIEW 2 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Jenna Hamar</h3>
+        <p class="text-xs text-slate-500 mb-3">1 week ago</p>
+        <p class="text-sm text-slate-700">
+          Paul cleaned all the carpets in my holiday let and did a fantastic job. Spotless and fresh smelling
+          with excellent service and clear pricing up front. Highly recommend.
+        </p>
+      </div>
 
-      <figure class="bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-soft">
-        <div class="text-amber-500 text-sm">★★★★★</div>
-        <blockquote class="mt-3 text-sm text-slate-700">
-          Office carpets cleaned in the evening and ready for staff the next morning with no fuss.
-        </blockquote>
-        <figcaption class="mt-3 text-xs text-slate-500">
-          Office manager in Telford
-        </figcaption>
-      </figure>
+      <!-- REVIEW 3 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Suzanne Powell</h3>
+        <p class="text-xs text-slate-500 mb-3">1 month ago</p>
+        <p class="text-sm text-slate-700">
+          Had Paul clean my large sofa, lounge, stairs, landing and bedroom. Superb service from start to finish.
+          Everything looks brand new and he saved me a fortune compared to replacing the carpet.
+        </p>
+      </div>
 
+      <!-- REVIEW 4 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Jac P</h3>
+        <p class="text-xs text-slate-500 mb-3">1 month ago</p>
+        <p class="text-sm text-slate-700">
+          Paul was punctual, polite and very knowledgeable, reassuring me throughout the process.
+          My carpets look amazing now. A genuine guy who takes pride in his work.
+        </p>
+      </div>
+
+      <!-- REVIEW 5 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Patrick Maslin</h3>
+        <p class="text-xs text-slate-500 mb-3">3 months ago</p>
+        <p class="text-sm text-slate-700">
+          Fantastic service. Polite, friendly and efficient. Great value for money and carpets cleaned to
+          a high professional standard. Highly recommend.
+        </p>
+      </div>
+
+      <!-- REVIEW 6 -->
+      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
+        <div class="text-amber-500 text-lg">★★★★★</div>
+        <h3 class="mt-2 font-semibold text-slate-800">Jenny James</h3>
+        <p class="text-xs text-slate-500 mb-3">1 week ago</p>
+        <p class="text-sm text-slate-700">
+          Very impressed with Paul's prompt and effective service – he got rid of everything, including the impossible.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="https://g.page/r/CVHd852c8gDQEAE/review"
+         class="inline-block px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-soft text-sm">
+        Read all 23 Google reviews
+      </a>
     </div>
   </div>
 </section>
@@ -289,7 +538,7 @@
       </ul>
 
       <p class="mt-4 text-sm text-slate-600">
-        If you prefer to talk it through, you can call 
+        If you prefer to talk it through, you can call
         <a href="tel:07802563213" class="text-brand-700 font-medium">07802 563213</a>.
       </p>
     </div>
@@ -300,26 +549,31 @@
         <div class="grid md:grid-cols-2 gap-4">
           <label class="block text-sm">
             Name
-            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="v13s29">
+            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
           </label>
 
           <label class="block text-sm">
             Phone
-            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="puhuxb">
+            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
           </label>
         </div>
 
         <label class="block text-sm">
+          Email address
+          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+        </label>
+
+        <label class="block text-sm">
           Postcode
-          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="5rf7tb">
+          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
         </label>
 
         <label class="block text-sm">
           What needs cleaning
-          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required=""></textarea>
+          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required></textarea>
         </label>
 
-        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft" fdprocessedid="muhxj">
+        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft">
           Send my free quote
         </button>
 
@@ -343,7 +597,7 @@
     </div>
 
     <div class="text-xs text-slate-400">
-      © <span id="year">2025</span> The Carpet Cleaning Company. All rights reserved.
+      © <span id="year"></span> The Carpet Cleaning Company. All rights reserved.
     </div>
   </div>
 </footer>
@@ -352,7 +606,13 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
+<!-- Floating WhatsApp and phone buttons -->
+<div class="floating-btn">
+  <a href="https://wa.me/447802563213" style="background:#25D366;">💬</a>
+  <a href="tel:07802563213" style="background:#1f7ef2;">📞</a>
+</div>
+
+</body>
+</html>
 
 
-
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
