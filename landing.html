@@ -124,7 +124,7 @@
       text-decoration: none;
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
-  </style>
+    body { padding-top: 88px; }\n</style>
 <style>
 .service-box {
   background: white;
@@ -150,7 +150,7 @@
 .service-box:hover .service-label {
   color: #1f7ef2 !important;
 }
-</style>
+  body { padding-top: 88px; }\n</style>
 <style>
 .service-box *, .service-card * {
   color: #0f172a !important;
@@ -166,7 +166,7 @@
   border-color: #1f7ef2 !important;
   box-shadow: 0 22px 55px rgba(31,126,242,0.45);
 }
-</style>
+  body { padding-top: 88px; }\n</style>
 <style>
 .service-box {
   background: white;
@@ -203,7 +203,7 @@
 .service-box:hover .service-label {
   color: #1f7ef2 !important;
 }
-</style>
+  body { padding-top: 88px; }\n</style>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
@@ -215,8 +215,12 @@
       <img src=""https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/ChatGPT%20Image%20Nov%2015,%202025,%2012_42_51%20AM.png"" 
      class=""h-10 w-auto drop-shadow-md"" 
      alt=""The Carpet Cleaning Company Logo"">
-      <div class="flex flex-col leading-tight">
-        <div class="font-bold text-lg text-slate-900">The Carpet Cleaning Company</div>
+      <div class="flex items-center gap-3 leading-tight">
+  <img src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/ChatGPT%20Image%20Nov%2015,%202025,%2012_42_51%20AM.png"
+       class="h-11 w-auto drop-shadow-sm"
+       alt="The Carpet Cleaning Company logo">
+  <div class="flex flex-col">
+    <div class="font-bold text-lg text-slate-900">The Carpet Cleaning Company</div>
         <p class="text-xs text-slate-500">Carpet and upholstery cleaning for homes and businesses</p>
       </div>
     </div>
@@ -233,7 +237,7 @@
 </header>
 
 <!-- HERO WITH VIDEO -->
-<section class="relative min-h-[700px] pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden text-slate-50">
+
   <div class="absolute inset-0 -z-10">
     <video class="hero-video opacity-70" autoplay muted loop playsinline poster="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4">
   <source src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4" type="video/mp4">
@@ -245,11 +249,6 @@
 
   <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
     <div>
-      <div class="inline-flex items-center gap-2 rounded-full bg-slate-900/70 border border-slate-700 px-3 py-1 text-xs mb-4">
-        <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
-        Deep steam carpet and upholstery cleaning
-      </div>
-
       <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-white">
         Carpet and upholstery cleaning that makes rooms feel fresh again
       </h1>
@@ -263,7 +262,7 @@
           Get a free quote
         </a>
         <a href="#guarantee" class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-slate-500/80 bg-slate-900/60 hover:border-brand-100 text-sm">
-          See satisfaction guarantee
+          <span class="text-white">See satisfaction guarantee</span>
         </a>
       </div>
 
@@ -317,6 +316,68 @@
       </div>
     </div>
   </div>
+<section id="quote" class="py-24 bg-white relative z-20">
+  <div class="mx-auto max-w-4xl px-4 text-center">
+
+    <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">
+      Get a free quote
+    </h2>
+
+    <p class="mt-3 text-base text-slate-600 max-w-2xl mx-auto">
+      Tell us what needs cleaning and receive a clear price and availability.
+      No pressure. No hidden extras.
+    </p>
+
+    <div class="mt-12 bg-white rounded-[32px] border border-slate-200 p-10 text-left relative
+             shadow-[0_30px_80px_rgba(31,126,242,0.25)]
+             before:absolute before:inset-0 before:rounded-[32px]
+             before:bg-gradient-to-br before:from-brand-100/60 before:to-transparent
+             before:opacity-60 before:-z-10
+             hover:shadow-[0_40px_100px_rgba(31,126,242,0.35)]
+             transition-all duration-300">
+      <form action="https://formspree.io/f/mblnzwpv" method="POST" class="space-y-4 text-sm">
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <label class="block text-slate-700 font-medium">
+            Name
+            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+          </label>
+
+          <label class="block text-slate-700 font-medium">
+            Phone
+            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+          </label>
+        </div>
+
+        <label class="block text-slate-700 font-medium">
+          Email address
+          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+        </label>
+
+        <label class="block text-slate-700 font-medium">
+          Postcode
+          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+        </label>
+
+        <label class="block text-slate-700 font-medium">
+          What needs cleaning
+          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required></textarea>
+        </label>
+
+        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 font-semibold shadow-soft text-base">
+          Send my free quote
+        </button>
+
+        <p class="text-xs text-slate-500 text-center">
+          Your details are only used to respond to your enquiry.
+        </p>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
 </section>
 
 <!-- HOW WE CLEAN -->
@@ -513,78 +574,7 @@
 </section>
 
 <!-- QUOTE FORM -->
-<section id="quote" class="py-16 bg-slate-50">
-  <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-start">
 
-    <div>
-      <h2 class="text-3xl font-extrabold text-slate-900">Get a free quote</h2>
-      <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-        Send a few details about what needs doing and you will receive a clear price and earliest available dates. No sales pressure and no hidden extras.
-      </p>
-
-      <ul class="mt-5 space-y-2 text-sm text-slate-600">
-        <li class="flex items-center gap-2">
-          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
-          Living rooms, bedrooms, stairs and landings
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
-          Sofas, armchairs and footstools
-        </li>
-        <li class="flex items-center gap-2">
-          <span class="inline-block h-1.5 w-1.5 rounded-full bg-brand-600"></span>
-          Offices, receptions and waiting rooms
-        </li>
-      </ul>
-
-      <p class="mt-4 text-sm text-slate-600">
-        If you prefer to talk it through, you can call
-        <a href="tel:07802563213" class="text-brand-700 font-medium">07802 563213</a>.
-      </p>
-    </div>
-
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-soft p-6">
-      <form action="https://formspree.io/f/mblnzwpv" method="POST" class="space-y-4 text-sm">
-
-        <div class="grid md:grid-cols-2 gap-4">
-          <label class="block text-sm">
-            Name
-            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
-          </label>
-
-          <label class="block text-sm">
-            Phone
-            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
-          </label>
-        </div>
-
-        <label class="block text-sm">
-          Email address
-          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
-        </label>
-
-        <label class="block text-sm">
-          Postcode
-          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
-        </label>
-
-        <label class="block text-sm">
-          What needs cleaning
-          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required></textarea>
-        </label>
-
-        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft">
-          Send my free quote
-        </button>
-
-        <p class="mt-2 text-xs text-slate-500">
-          Your details are only used to respond to your enquiry and are not passed to anyone else.
-        </p>
-      </form>
-    </div>
-
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer class="py-8 bg-slate-900 text-slate-300 text-sm">
@@ -614,6 +604,16 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
 
 
 
