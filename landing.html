@@ -855,7 +855,7 @@
         </a>
       </div>
 
-      <div class="mt-6 flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
+      <div class="mt-6 mb-6 flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
         <div class="flex items-center gap-2">
           <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
           Child and pet safe solutions
@@ -897,32 +897,41 @@
              hover:shadow-[0_40px_100px_rgba(31,126,242,0.35)]
              transition-all duration-300">
       <form action="https://formspree.io/f/mblnzwpv" method="POST" class="space-y-4 text-sm">
+<label class="block text-slate-700 font-medium">
+  Type of clean
+  <select name="clean_type" required
+    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 bg-white focus:ring-2 focus:ring-brand-600">
+    <option value="">Please select</option>
+    <option value="Residential">Residential (home)</option>
+    <option value="Commercial">Commercial (business)</option>
+  </select>
+</label>
 
         <div class="grid md:grid-cols-2 gap-4">
           <label class="block text-slate-700 font-medium">
             Name
-            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+            <input type="text" name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
           </label>
 
           <label class="block text-slate-700 font-medium">
             Phone
-            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+            <input type="tel" name="phone" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
           </label>
         </div>
 
         <label class="block text-slate-700 font-medium">
           Email address
-          <input type="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+          <input type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
         </label>
 
         <label class="block text-slate-700 font-medium">
           Postcode
-          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
+          <input type="text" name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
         </label>
 
         <label class="block text-slate-700 font-medium">
           What needs cleaning
-          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required></textarea>
+          <textarea name="message" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required></textarea>
         </label>
 
         <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 font-semibold shadow-soft text-base">
@@ -933,7 +942,9 @@
           Your details are only used to respond to your enquiry.
         </p>
 
-      </form>
+      <input type="hidden" name="_subject" value="New carpet cleaning enquiry">
+<input type="hidden" name="_replyto" value="%email%">
+</form>
     </div>
 
   </div>
@@ -1165,6 +1176,10 @@
 
 </body>
 </html>
+
+
+
+
 
 
 
