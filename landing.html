@@ -272,6 +272,121 @@
     display: none !important;
   }
 }
+/* CHRISTMAS MODE */
+:root {
+  --christmas-gold: #d4af37;
+  --christmas-red: #8b1e1e;
+  --winter-blue: #0f2a44;
+}
+
+/* Hero winter warmth */
+.hero-video {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Soft winter overlay */
+section:first-of-type::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
+              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
+  pointer-events: none;
+}
+
+/* Festive headline glow */
+h1 {
+  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
+}
+
+/* CTA festive shimmer */
+.bg-brand-600 {
+  background-image: linear-gradient(
+    135deg,
+    #1f7ef2 0%,
+    #2a8cff 50%,
+    #1f7ef2 100%
+  );
+  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+}
+
+/* Gold hover accents */
+a:hover {
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
+              0 18px 40px rgba(212,175,55,0.25);
+}
+
+/* Subtle festive divider */
+section {
+  position: relative;
+}
+
+/* Snowfall */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+/* CHRISTMAS RIBBON V2 */
+.christmas-banner {
+  position: relative;
+  display: inline-block;
+  padding: 10px 36px;
+  background: linear-gradient(180deg, #9c1f1f, #7d1717);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Ribbon ends */
+.christmas-banner::before,
+.christmas-banner::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  border-width: 10px 14px;
+  border-style: solid;
+  border-color: #6b1212 transparent transparent transparent;
+}
+
+.christmas-banner::before {
+  left: 0;
+}
+
+.christmas-banner::after {
+  right: 0;
+}
+
+/* Gold trim */
+.christmas-banner span {
+  color: #f6d57a;
+  margin: 0 8px;
+}
+
+/* Holly accents */
+.christmas-banner .holly {
+  font-size: 1rem;
+  margin: 0 6px;
+}
+
+@media (max-width: 768px) {
+  .christmas-banner {
+    font-size: 0.75rem;
+    padding: 8px 28px;
+  }
+}
 </style>
 <style>
 .service-box {
@@ -444,6 +559,121 @@
     display: none !important;
   }
 }
+/* CHRISTMAS MODE */
+:root {
+  --christmas-gold: #d4af37;
+  --christmas-red: #8b1e1e;
+  --winter-blue: #0f2a44;
+}
+
+/* Hero winter warmth */
+.hero-video {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Soft winter overlay */
+section:first-of-type::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
+              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
+  pointer-events: none;
+}
+
+/* Festive headline glow */
+h1 {
+  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
+}
+
+/* CTA festive shimmer */
+.bg-brand-600 {
+  background-image: linear-gradient(
+    135deg,
+    #1f7ef2 0%,
+    #2a8cff 50%,
+    #1f7ef2 100%
+  );
+  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+}
+
+/* Gold hover accents */
+a:hover {
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
+              0 18px 40px rgba(212,175,55,0.25);
+}
+
+/* Subtle festive divider */
+section {
+  position: relative;
+}
+
+/* Snowfall */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+/* CHRISTMAS RIBBON V2 */
+.christmas-banner {
+  position: relative;
+  display: inline-block;
+  padding: 10px 36px;
+  background: linear-gradient(180deg, #9c1f1f, #7d1717);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Ribbon ends */
+.christmas-banner::before,
+.christmas-banner::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  border-width: 10px 14px;
+  border-style: solid;
+  border-color: #6b1212 transparent transparent transparent;
+}
+
+.christmas-banner::before {
+  left: 0;
+}
+
+.christmas-banner::after {
+  right: 0;
+}
+
+/* Gold trim */
+.christmas-banner span {
+  color: #f6d57a;
+  margin: 0 8px;
+}
+
+/* Holly accents */
+.christmas-banner .holly {
+  font-size: 1rem;
+  margin: 0 6px;
+}
+
+@media (max-width: 768px) {
+  .christmas-banner {
+    font-size: 0.75rem;
+    padding: 8px 28px;
+  }
+}
 </style>
 <style>
 .service-box *, .service-card * {
@@ -604,6 +834,121 @@
   span.bg-emerald-500,
   span.rounded-full {
     display: none !important;
+  }
+}
+/* CHRISTMAS MODE */
+:root {
+  --christmas-gold: #d4af37;
+  --christmas-red: #8b1e1e;
+  --winter-blue: #0f2a44;
+}
+
+/* Hero winter warmth */
+.hero-video {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Soft winter overlay */
+section:first-of-type::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
+              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
+  pointer-events: none;
+}
+
+/* Festive headline glow */
+h1 {
+  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
+}
+
+/* CTA festive shimmer */
+.bg-brand-600 {
+  background-image: linear-gradient(
+    135deg,
+    #1f7ef2 0%,
+    #2a8cff 50%,
+    #1f7ef2 100%
+  );
+  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+}
+
+/* Gold hover accents */
+a:hover {
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
+              0 18px 40px rgba(212,175,55,0.25);
+}
+
+/* Subtle festive divider */
+section {
+  position: relative;
+}
+
+/* Snowfall */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+/* CHRISTMAS RIBBON V2 */
+.christmas-banner {
+  position: relative;
+  display: inline-block;
+  padding: 10px 36px;
+  background: linear-gradient(180deg, #9c1f1f, #7d1717);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Ribbon ends */
+.christmas-banner::before,
+.christmas-banner::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  border-width: 10px 14px;
+  border-style: solid;
+  border-color: #6b1212 transparent transparent transparent;
+}
+
+.christmas-banner::before {
+  left: 0;
+}
+
+.christmas-banner::after {
+  right: 0;
+}
+
+/* Gold trim */
+.christmas-banner span {
+  color: #f6d57a;
+  margin: 0 8px;
+}
+
+/* Holly accents */
+.christmas-banner .holly {
+  font-size: 1rem;
+  margin: 0 6px;
+}
+
+@media (max-width: 768px) {
+  .christmas-banner {
+    font-size: 0.75rem;
+    padding: 8px 28px;
   }
 }
 </style>
@@ -789,6 +1134,121 @@
     display: none !important;
   }
 }
+/* CHRISTMAS MODE */
+:root {
+  --christmas-gold: #d4af37;
+  --christmas-red: #8b1e1e;
+  --winter-blue: #0f2a44;
+}
+
+/* Hero winter warmth */
+.hero-video {
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Soft winter overlay */
+section:first-of-type::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
+              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
+  pointer-events: none;
+}
+
+/* Festive headline glow */
+h1 {
+  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
+}
+
+/* CTA festive shimmer */
+.bg-brand-600 {
+  background-image: linear-gradient(
+    135deg,
+    #1f7ef2 0%,
+    #2a8cff 50%,
+    #1f7ef2 100%
+  );
+  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
+}
+
+/* Gold hover accents */
+a:hover {
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
+              0 18px 40px rgba(212,175,55,0.25);
+}
+
+/* Subtle festive divider */
+section {
+  position: relative;
+}
+
+/* Snowfall */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+/* CHRISTMAS RIBBON V2 */
+.christmas-banner {
+  position: relative;
+  display: inline-block;
+  padding: 10px 36px;
+  background: linear-gradient(180deg, #9c1f1f, #7d1717);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Ribbon ends */
+.christmas-banner::before,
+.christmas-banner::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  border-width: 10px 14px;
+  border-style: solid;
+  border-color: #6b1212 transparent transparent transparent;
+}
+
+.christmas-banner::before {
+  left: 0;
+}
+
+.christmas-banner::after {
+  right: 0;
+}
+
+/* Gold trim */
+.christmas-banner span {
+  color: #f6d57a;
+  margin: 0 8px;
+}
+
+/* Holly accents */
+.christmas-banner .holly {
+  font-size: 1rem;
+  margin: 0 6px;
+}
+
+@media (max-width: 768px) {
+  .christmas-banner {
+    font-size: 0.75rem;
+    padding: 8px 28px;
+  }
+}
 </style>
 </head>
 
@@ -838,7 +1298,12 @@
 
   <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-1 gap-10 items-center">
     <div>
-      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight md:leading-snug text-white">
+      <div class="christmas-banner mb-6">
+  <span class="holly">🌿</span>
+  🎄 Merry Christmas 🎄
+  <span class="holly">🌿</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold leading-tight md:leading-snug text-white">
         Carpet and upholstery cleaning that makes your rooms look like new again
       </h1>
 
@@ -1174,8 +1639,23 @@
   <a href="tel:07802563213" style="background:#1f7ef2;">📞</a>
 </div>
 
+<!-- SNOW SCRIPT -->
+<script>
+for (let i = 0; i < 30; i++) {
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.animationDuration = 6 + Math.random() * 8 + "s";
+  snow.style.opacity = Math.random();
+  document.body.appendChild(snow);
+}
+</script>
 </body>
 </html>
+
+
+
 
 
 
