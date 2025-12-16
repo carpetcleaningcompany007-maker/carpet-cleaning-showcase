@@ -1,252 +1,209 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Carpet Cleaning Company | Commercial & Domestic Cleaning</title>
-  <meta name="description" content="Professional carpet and upholstery cleaning across Shropshire, Herefordshire, Worcestershire and surrounding areas." />
-  <meta name="theme-color" content="#0a1020" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Carpet Cleaning Company</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-</head>
-
-<body id="top">
-
-<div class="topbar">
-  <div class="wrap">
-    <div class="topbar-left">
-      <span class="pill">Insured</span>
-      <span class="pill">Professional equipment</span>
-      <span class="pill">Local trusted service</span>
-    </div>
-    <div class="topbar-right">
-      <a class="toplink" href="tel:07802563213">Call 07802 563213</a>
-      <a class="toplink" href="#quote">Get a quote</a>
-    </div>
-  </div>
-</div>
-
-<header class="header">
-  <div class="wrap header-inner">
-    <div class="brand">
-      <div class="brand-mark">TCCC</div>
-      <div>
-        <div class="brand-name">The Carpet Cleaning Company</div>
-        <div class="brand-sub">Carpet & Upholstery Cleaning</div>
-      </div>
-    </div>
-
-    <nav class="nav">
-      <a href="#sectors">Services</a>
-      <a href="#work">How we work</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#quote" class="btn btn-sm">Book now</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-  <div class="wrap hero-content">
-    <h1>deep clean<br>carpet & upholstery</h1>
-    <p class="hero-lead">
-      High quality, tailored cleaning that lifts embedded dirt, refreshes fibres,
-      and leaves commercial and domestic spaces looking professional and hygienic.
-    </p>
-
-    <div class="hero-cta">
-      <a class="btn" href="#quote">Request a quote</a>
-      <a class="btn btn-ghost" href="#work">How it works</a>
-    </div>
-  </div>
-</section>
-
-<section class="band band-light">
-  <div class="wrap two-col">
-    <h2>we deliver a total cleaning solution</h2>
-    <p class="subhead">
-      across homes and commercial environments using proven methods,
-      professional equipment, and a results driven approach
-    </p>
-  </div>
-</section>
-
-<section id="sectors" class="band band-dark">
-  <div class="wrap">
-    <h3 class="kicker">services</h3>
-
-    <div class="cards">
-      <div class="card">
-        <h4>Commercial premises</h4>
-        <p>Offices, conference centres, hotels, pubs, clubs and care homes.</p>
-      </div>
-
-      <div class="card">
-        <h4>Domestic cleaning</h4>
-        <p>Living rooms, bedrooms, hall stairs landings and rugs.</p>
-      </div>
-
-      <div class="card">
-        <h4>Stain and odour treatment</h4>
-        <p>Targeted solutions for spills, traffic lanes and pet accidents.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="work" class="band band-light">
-  <div class="wrap">
-    <h3>a desire and passion to do the job right</h3>
-    <ol class="steps">
-      <li>Inspect and identify fibre type</li>
-      <li>Pre treat with the correct solution</li>
-      <li>Mechanical agitation to lift soil</li>
-      <li>Hot water extraction and rinse</li>
-      <li>Neutralise and leave residue free</li>
-    </ol>
-  </div>
-</section>
-
-<section id="reviews" class="band band-light">
-  <div class="wrap">
-    <h3>what customers say</h3>
-    <p>Professional results, reliable service, and clear communication.</p>
-  </div>
-</section>
-
-<section id="quote" class="band band-dark">
-  <div class="wrap">
-    <h3>lets work together</h3>
-    <p>Tell us what needs cleaning and your postcode and we will quote accurately.</p>
-    <a class="btn" href="tel:07802563213">Call 07802 563213</a>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="wrap footer-bottom">
-    <span>© <span id="year"></span> The Carpet Cleaning Company</span>
-  </div>
-</footer>
-
-</body>
-</html>
+<style>
 :root{
   --bg:#0a1020;
   --bg2:#0f1a33;
   --text:#e9eefc;
   --muted:rgba(233,238,252,.75);
-  --line:rgba(255,255,255,.12);
   --accent:#78a82c;
+  --accent2:#00bcd4;
+  --line:rgba(255,255,255,.12);
+  --r:18px;
 }
 
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Lato,system-ui,Arial,sans-serif;
+  font-family:Lato,system-ui;
   background:linear-gradient(180deg,var(--bg),var(--bg2));
   color:var(--text);
 }
 
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.wrap{max-width:1100px;margin:auto;padding:0 18px}
 
 .topbar{
-  background:rgba(10,16,32,.7);
+  background:rgba(10,16,32,.9);
   border-bottom:1px solid var(--line);
 }
-
 .topbar .wrap{
   display:flex;
   justify-content:space-between;
   padding:10px 0;
 }
-
 .pill{
   border:1px solid var(--line);
-  padding:4px 10px;
+  padding:6px 10px;
   border-radius:999px;
   font-size:12px;
 }
 
-.header{
+header{
   border-bottom:1px solid var(--line);
 }
-
 .header-inner{
   display:flex;
   justify-content:space-between;
-  padding:16px 0;
+  align-items:center;
+  padding:18px 0;
 }
 
-.brand-mark{
-  width:42px;
-  height:42px;
-  background:linear-gradient(135deg,#00bcd4,#78a82c);
-  display:grid;
-  place-items:center;
-  border-radius:12px;
+.brand-name{
   font-weight:900;
+  font-size:20px;
 }
 
-.nav a{margin-left:16px;color:var(--muted)}
-
-.btn{
-  padding:10px 14px;
-  background:linear-gradient(135deg,#78a82c,#00bcd4);
-  color:#071018;
-  border-radius:12px;
-  font-weight:800;
+.nav a{
+  margin-left:16px;
+  color:var(--muted);
 }
-
-.btn-ghost{
-  background:none;
-  border:1px solid var(--line);
-  color:var(--text);
-}
+.nav a:hover{color:white}
 
 .hero{
-  padding:90px 0;
+  padding:80px 0;
+  text-align:center;
 }
-
 .hero h1{
-  font-family:"Libre Franklin",sans-serif;
-  font-size:60px;
+  font-family:"Libre Franklin";
+  font-size:56px;
   line-height:.95;
-  margin:0 0 12px;
+  margin-bottom:20px;
 }
-
-.hero-lead{
+.hero p{
   max-width:640px;
+  margin:0 auto 30px;
   color:var(--muted);
   font-size:18px;
 }
 
-.band{padding:70px 0}
-.band-dark{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#071018;
+  font-weight:800;
+}
+
+.section{
+  padding:70px 0;
+  border-top:1px solid var(--line);
+}
 
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:16px;
 }
-
 .card{
   border:1px solid var(--line);
-  padding:16px;
-  border-radius:16px;
+  border-radius:var(--r);
+  padding:18px;
+  background:rgba(255,255,255,.05);
 }
+.card h3{margin-top:0}
 
 .footer{
   border-top:1px solid var(--line);
-  padding:24px 0;
+  padding:40px 0;
   text-align:center;
+  color:var(--muted);
 }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>
+      <span class="pill">Insured</span>
+      <span class="pill">Professional equipment</span>
+    </div>
+    <div>
+      <a href="tel:07802563213">07802 563213</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="brand-name">The Carpet Cleaning Company</div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#work">How we work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>deep clean<br>carpet & upholstery</h1>
+    <p>
+      Professional commercial and domestic carpet cleaning using
+      hot water extraction, rotary bonnet systems and specialist
+      fibre-safe solutions.
+    </p>
+    <a class="btn" href="#contact">Get a quote</a>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="cards">
+      <div class="card">
+        <h3>Commercial Cleaning</h3>
+        <p>Offices, hotels, care homes, pubs, clubs and conference venues.</p>
+      </div>
+      <div class="card">
+        <h3>Hot Water Extraction</h3>
+        <p>High-temperature rinse extraction for deep restorative cleaning.</p>
+      </div>
+      <div class="card">
+        <h3>Low Moisture Systems</h3>
+        <p>Ideal for carpet tiles and low-profile commercial flooring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="wrap">
+    <h2>How we work</h2>
+    <ol>
+      <li>Inspect carpet fibres and traffic patterns</li>
+      <li>Pre-treat with professional solutions</li>
+      <li>Agitate using rotary or CRB systems</li>
+      <li>Rinse and extract</li>
+      <li>Neutralise and finish residue free</li>
+    </ol>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="wrap">
+    <h2>Let’s work together</h2>
+    <p>Call or message with your rooms and postcode for a quote.</p>
+    <a class="btn" href="tel:07802563213">Call 07802 563213</a>
+  </div>
+</section>
+
+<footer class="footer">
+  © <span id="year"></span> The Carpet Cleaning Company
+</footer>
+
+<script>
 document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
