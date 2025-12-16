@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>The Carpet Cleaning Company | Commercial & Domestic Cleaning</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,202 +14,160 @@
 :root{
   --bg:#0a1020;
   --bg2:#0f1a33;
-  --ink:#0b0f1a;
   --text:#e9eefc;
-  --muted:rgba(233,238,252,.78);
-  --line:rgba(255,255,255,.12);
+  --muted:rgba(233,238,252,.75);
   --accent:#78a82c;
-  --accent2:#00bcd4;
-  --sand:#d8ddce;
-  --r:18px;
+  --line:rgba(255,255,255,.12);
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Lato,system-ui,Arial,sans-serif;
-  background:
-    radial-gradient(1200px 800px at 20% 0%, rgba(0,188,212,.18), transparent 55%),
-    radial-gradient(900px 700px at 80% 10%, rgba(120,168,44,.16), transparent 55%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
+  font-family:Lato,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
   color:var(--text);
   line-height:1.55;
 }
 
-a{text-decoration:none;color:inherit}
+a{color:inherit;text-decoration:none}
 
-.wrap{max-width:1120px;margin:auto;padding:0 18px}
-
-.topbar{
-  background:rgba(10,16,32,.7);
-  border-bottom:1px solid var(--line);
+.wrap{
+  max-width:1120px;
+  margin:auto;
+  padding:20px;
 }
 
+/* Top bar */
+.topbar{
+  background:rgba(10,16,32,.85);
+  border-bottom:1px solid var(--line);
+}
 .topbar .wrap{
   display:flex;
   justify-content:space-between;
-  padding:10px 18px;
-  gap:12px;
-  flex-wrap:wrap;
+  align-items:center;
+  font-size:14px;
 }
-
 .pill{
   border:1px solid var(--line);
   padding:6px 10px;
   border-radius:999px;
-  font-size:12px;
-  background:rgba(255,255,255,.04);
+  margin-right:6px;
 }
+.toplink{margin-left:12px;color:var(--muted)}
 
+/* Header */
 .header{
   border-bottom:1px solid var(--line);
-  background:rgba(10,16,32,.4);
 }
-
 .header-inner{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 0;
 }
-
 .brand{
   display:flex;
   gap:12px;
   align-items:center;
 }
-
 .brand-mark{
-  width:44px;
-  height:44px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
+  width:44px;height:44px;
+  background:linear-gradient(135deg,#00bcd4,#78a82c);
+  display:grid;place-items:center;
   font-weight:900;
-  background:linear-gradient(135deg,var(--accent2),var(--accent));
+  border-radius:12px;
 }
-
 .brand-name{font-weight:900}
 .brand-sub{font-size:13px;color:var(--muted)}
 
-.nav{
-  display:flex;
-  gap:18px;
-  align-items:center;
+.nav a{
+  margin-left:16px;
+  font-size:14px;
+  color:var(--muted);
 }
 
-.btn{
-  padding:12px 16px;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#071018;
-  font-weight:800;
-}
-
-.btn-ghost{
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--text);
-}
-
+/* Hero */
 .hero{
   min-height:78vh;
   display:grid;
   align-items:center;
 }
-
-.hero-content{
-  padding:80px 0;
-}
-
-h1{
+.hero-content{text-align:left}
+.hero h1{
   font-family:"Libre Franklin",sans-serif;
-  font-size:clamp(38px,5.2vw,74px);
-  font-weight:900;
+  font-size:64px;
   line-height:.95;
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
-
 .hero-lead{
   max-width:640px;
   font-size:18px;
   color:var(--muted);
 }
+.hero-cta{margin-top:24px}
 
-.hero-cta{
-  display:flex;
-  gap:12px;
-  margin:20px 0;
-  flex-wrap:wrap;
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  background:var(--accent);
+  color:#071018;
+  font-weight:800;
+  border-radius:14px;
+  margin-right:10px;
 }
-
-.hero-trust{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:22px;
-}
-
-.trust-card{
+.btn-ghost{
+  background:none;
   border:1px solid var(--line);
-  padding:14px;
-  border-radius:var(--r);
-  background:rgba(255,255,255,.06);
+  color:var(--text);
 }
 
-.band{padding:64px 0}
-
+/* Bands */
+.band{padding:70px 0}
 .band-dark{
+  background:rgba(255,255,255,.04);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
-  background:rgba(255,255,255,.03);
 }
 
-.band-sand{
-  background:linear-gradient(180deg,var(--sand),#cfd4c5);
-  color:var(--ink);
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
 }
 
 .cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:18px;
 }
-
 .card{
   border:1px solid var(--line);
-  border-radius:var(--r);
-  padding:16px;
-  background:rgba(255,255,255,.05);
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
 }
+.card p{color:var(--muted)}
 
+/* Footer */
 .footer{
   border-top:1px solid var(--line);
   padding:40px 0;
-  background:rgba(10,16,32,.6);
 }
-
 .footer-grid{
   display:grid;
-  grid-template-columns:1.2fr .9fr .6fr;
-  gap:18px;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px;
 }
-
-.footer-bottom{
-  margin-top:20px;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
+.muted{color:var(--muted)}
 
 @media(max-width:900px){
-  .hero-trust,.cards,.footer-grid{grid-template-columns:1fr}
+  .two-col,.cards,.footer-grid{grid-template-columns:1fr}
+  .hero h1{font-size:44px}
 }
 </style>
 </head>
 
-<body id="top">
+<body>
 
 <div class="topbar">
   <div class="wrap">
@@ -218,7 +177,7 @@ h1{
       <span class="pill">Local trusted service</span>
     </div>
     <div>
-      <a href="tel:07802563213">Call 07802 563213</a>
+      <a class="toplink" href="tel:07802563213">Call 07802 563213</a>
     </div>
   </div>
 </div>
@@ -233,70 +192,65 @@ h1{
       </div>
     </div>
     <nav class="nav">
-      <a href="#sectors">Services</a>
+      <a href="#services">Services</a>
       <a href="#work">How we work</a>
       <a href="#quote" class="btn">Book now</a>
     </nav>
   </div>
 </header>
 
-<main>
 <section class="hero">
   <div class="wrap hero-content">
     <h1>deep clean<br>carpet & upholstery</h1>
     <p class="hero-lead">
       High quality, tailored cleaning that lifts embedded dirt, refreshes fibres, and leaves rooms feeling brand new.
     </p>
-
     <div class="hero-cta">
-      <a class="btn" href="#quote">Tell us what you need</a>
-      <a class="btn btn-ghost" href="#work">See how it works</a>
-    </div>
-
-    <div class="hero-trust">
-      <div class="trust-card">Fast turnaround</div>
-      <div class="trust-card">Proper deep clean</div>
-      <div class="trust-card">Local coverage</div>
+      <a href="#quote" class="btn">Get a quote</a>
+      <a href="#work" class="btn btn-ghost">See how it works</a>
     </div>
   </div>
 </section>
 
-<section class="band band-dark" id="sectors">
-  <div class="wrap">
-    <h2>commercial & domestic services</h2>
-    <div class="cards">
-      <div class="card">Offices & conference centres</div>
-      <div class="card">Hotels, pubs & clubs</div>
-      <div class="card">Domestic carpets & upholstery</div>
-    </div>
+<section class="band">
+  <div class="wrap two-col">
+    <h2>we deliver a total cleaning solution</h2>
+    <p class="muted">
+      Across homes and commercial environments using professional equipment and proven methods.
+    </p>
   </div>
 </section>
 
-<section class="band band-light" id="work">
-  <div class="wrap">
-    <h2>a desire and passion to do the job right</h2>
-    <p>Inspection, correct chemistry, mechanical agitation, hot water extraction and neutralising rinse.</p>
+<section id="services" class="band band-dark">
+  <div class="wrap cards">
+    <div class="card"><h3>Offices</h3><p>Conference rooms, corridors, regular maintenance</p></div>
+    <div class="card"><h3>Hotels & venues</h3><p>High traffic areas and function rooms</p></div>
+    <div class="card"><h3>Domestic carpets</h3><p>Living rooms, stairs, bedrooms and rugs</p></div>
   </div>
 </section>
 
-<section class="band band-dark" id="quote">
+<section id="quote" class="band">
   <div class="wrap">
     <h2>lets work together</h2>
-    <a class="btn" href="tel:07802563213">Call 07802 563213</a>
+    <p class="muted">Tell us what needs cleaning and your postcode.</p>
+    <a href="tel:07802563213" class="btn">Call 07802 563213</a>
   </div>
 </section>
-</main>
 
 <footer class="footer">
-  <div class="wrap footer-bottom">
-    <span>© <span id="year"></span> The Carpet Cleaning Company</span>
-    <a href="#top">Back to top</a>
+  <div class="wrap footer-grid">
+    <div>
+      <strong>The Carpet Cleaning Company</strong>
+      <p class="muted">Professional carpet and upholstery cleaning</p>
+    </div>
+    <div>
+      <p class="muted">07802 563213</p>
+    </div>
+    <div>
+      <p class="muted">Ludlow & surrounding areas</p>
+    </div>
   </div>
 </footer>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
 
 </body>
 </html>
