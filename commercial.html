@@ -1,145 +1,80 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Carpet Cleaning Company</title>
 
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- JS -->
+  <script defer src="./script.js"></script>
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="wrap">
-    <div>Insured · Professional equipment · Local trusted service</div>
-    <div>
+  <div class="topbar">
+    <div class="wrap">
+      Insured · Professional equipment · Local trusted service
       <a href="tel:07802563213">Call 07802 563213</a>
     </div>
   </div>
-</header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <h1>deep clean<br>carpet & upholstery</h1>
-    <p>High quality, tailored cleaning that lifts embedded dirt and refreshes fibres.</p>
-    <a class="btn" href="#quote">Get a quote</a>
-  </div>
-</section>
+  <section class="hero">
+    <div class="wrap">
+      <h1>deep clean<br>carpet & upholstery</h1>
+      <p>High quality, tailored cleaning that lifts embedded dirt and refreshes fibres.</p>
+      <a class="btn" href="#quote">Get a quote</a>
+    </div>
+  </section>
 
-<section class="band">
-  <h2>we deliver a total cleaning solution</h2>
-  <p>Across homes and commercial environments using professional equipment and proven methods.</p>
-</section>
+  <section class="band">
+    <div class="wrap">
+      <h2>we deliver a total cleaning solution</h2>
+      <p>Across homes and commercial environments using professional equipment and proven methods.</p>
+    </div>
+  </section>
 
-<section class="band dark">
-  <h2>services</h2>
-  <ul>
-    <li>Offices, conference centres, hotels, pubs and clubs</li>
-    <li>Domestic carpets and upholstery</li>
-    <li>Stain and odour treatments</li>
-    <li>Regular maintenance programmes</li>
-  </ul>
-</section>
+  <section class="band dark">
+    <div class="wrap">
+      <h2>services</h2>
+      <p>Offices, conference centres, hotels, pubs and clubs</p>
+      <p>Domestic carpets and upholstery</p>
+      <p>Stain and odour treatments</p>
+      <p>Regular maintenance programmes</p>
+    </div>
+  </section>
 
-<section class="band">
-  <h2>a desire and passion to do the job right</h2>
-  <ol>
-    <li>Inspect and identify fibre type</li>
-    <li>Pre treat with the correct solution</li>
-    <li>Mechanical agitation</li>
-    <li>Hot water extraction</li>
-    <li>Neutralise and leave residue free</li>
-  </ol>
-</section>
+  <section class="band">
+    <div class="wrap">
+      <h2>a desire and passion to do the job right</h2>
+      <ol>
+        <li>Inspect and identify fibre type</li>
+        <li>Pre treat with the correct solution</li>
+        <li>Mechanical agitation</li>
+        <li>Hot water extraction</li>
+        <li>Neutralise and leave residue free</li>
+      </ol>
+    </div>
+  </section>
 
-<section id="quote" class="band dark">
-  <h2>lets work together</h2>
-  <p>Tell us what needs cleaning and your postcode.</p>
-  <a class="btn" href="tel:07802563213">Call 07802 563213</a>
-</section>
+  <section id="quote" class="band dark">
+    <div class="wrap">
+      <h2>lets work together</h2>
+      <p>Tell us what needs cleaning and your postcode.</p>
+      <a class="btn" href="tel:07802563213">Call 07802 563213</a>
+    </div>
+  </section>
 
-<footer class="footer">
-  © <span id="year"></span> The Carpet Cleaning Company
-</footer>
+  <footer class="footer">
+    © <span id="year"></span> The Carpet Cleaning Company
+  </footer>
 
 </body>
 </html>
-:root{
-  --bg:#0a1020;
-  --bg2:#0f1a33;
-  --text:#e9eefc;
-  --accent:#78a82c;
-}
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:Lato,Arial,sans-serif;
-  background:linear-gradient(180deg,var(--bg),var(--bg2));
-  color:var(--text);
-}
-
-.wrap{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-
-.topbar{
-  background:#060b18;
-  font-size:14px;
-}
-
-.topbar a{
-  color:#fff;
-  text-decoration:none;
-}
-
-.hero{
-  min-height:70vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.hero h1{
-  font-family:"Libre Franklin",sans-serif;
-  font-size:56px;
-  margin-bottom:10px;
-}
-
-.band{
-  padding:60px 20px;
-  text-align:center;
-}
-
-.band.dark{
-  background:rgba(255,255,255,0.05);
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
-  text-decoration:none;
-  border-radius:10px;
-}
-
-.footer{
-  padding:30px;
-  text-align:center;
-  font-size:14px;
-  opacity:0.7;
-}
-document.getElementById("year").textContent = new Date().getFullYear();
-
