@@ -1,71 +1,29 @@
-:root{
-  --bg:#0a1020;
-  --bg2:#0f1a33;
-  --text:#e9eefc;
-  --accent:#78a82c;
-}
-
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  font-family:Lato,Arial,sans-serif;
-  background:linear-gradient(180deg,var(--bg),var(--bg2));
-  color:var(--text);
-}
-
-.wrap{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-.topbar{
-  background:#060b18;
-  font-size:14px;
-}
-
-.topbar a{
-  color:#fff;
-  margin-left:15px;
-  text-decoration:none;
-}
-
-.hero{
-  min-height:70vh;
-  display:flex;
-  align-items:center;
-  text-align:center;
-}
-
-.hero h1{
-  font-family:"Libre Franklin",sans-serif;
-  font-size:56px;
-  margin-bottom:10px;
-}
-
-.band{
-  padding:60px 20px;
-  text-align:center;
-}
-
-.band.dark{
-  background:rgba(255,255,255,0.05);
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 20px;
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
-  text-decoration:none;
-  border-radius:10px;
-}
-
-.footer{
-  padding:30px;
-  text-align:center;
-  font-size:14px;
-  opacity:0.7;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+  </div>
+  <div class="hero">
+    <div class="wrap">
+      <h1>Welcome to Your Site</h1>
+      <p>Your hero section text here.</p>
+    </div>
+  </div>
+  <div class="band dark">
+    <div class="wrap">
+      <p>Content goes here in your band section.</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>© 2024 Your Company</p>
+  </footer>
+</body>
+</html>
