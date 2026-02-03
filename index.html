@@ -319,14 +319,15 @@
 <section id="quote" class="py-16 bg-slate-50">
   <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-start">
 
+    <!-- LEFT COLUMN -->
     <div>
 
-      <!-- GOOGLE ADS CHECKLIST (PLACED CORRECTLY) -->
-      <div class="mb-8 max-w-xl rounded-2xl border border-slate-200 bg-white/90 backdrop-blur shadow-soft overflow-hidden">
+      <!-- GOOGLE ADS CHECKLIST -->
+      <div class="mb-8 max-w-xl rounded-3xl border border-slate-200 bg-white shadow-card overflow-hidden">
         <button
           type="button"
           onclick="focusQuoteForm()"
-          class="w-full text-left p-6 hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-600"
+          class="w-full text-left p-6 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           <div class="flex items-start justify-between gap-4">
             <div>
@@ -398,71 +399,78 @@
       </p>
     </div>
 
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-soft p-6">
-      <form class="space-y-4 text-sm" onsubmit="event.preventDefault(); alert('Thank you. Your quote request has been received.');">
+    <!-- RIGHT COLUMN (FORM - UPGRADED) -->
+    <div class="relative rounded-3xl border border-brand-100 bg-white shadow-card overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-24 bg-brand-50"></div>
+      <div class="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-brand-100 blur-3xl opacity-70"></div>
 
-        <div class="grid md:grid-cols-2 gap-4">
-          <label class="block text-sm">
-            Name
-            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
-          </label>
-
-          <label class="block text-sm">
-            Phone
-            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
-          </label>
+      <div class="relative p-6 md:p-7">
+        <div class="inline-flex items-center gap-2 rounded-full bg-brand-50 border border-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+          Fixed price quote
         </div>
 
-        <label class="block text-sm">
-          Postcode
-          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
-        </label>
-
-        <label class="block text-sm">
-          What needs cleaning
-          <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required=""></textarea>
-        </label>
-
-        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft">
-          Send my free quote
-        </button>
-
-        <p class="mt-2 text-xs text-slate-500">
-          Your details are only used to respond to your enquiry and are not passed to anyone else.
+        <h3 class="mt-3 text-xl font-extrabold text-slate-900">
+          Get your fixed price in under 60 seconds
+        </h3>
+        <p class="mt-1 text-sm text-slate-600">
+          No hidden extras. No pressure. Just a clear price and next available dates.
         </p>
-      </form>
+
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 font-semibold text-emerald-700">
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+            Clear quote
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-200 px-3 py-1 font-semibold text-slate-700">
+            <span class="inline-block h-2 w-2 rounded-full bg-slate-400"></span>
+            No surprises
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-200 px-3 py-1 font-semibold text-slate-700">
+            <span class="inline-block h-2 w-2 rounded-full bg-slate-400"></span>
+            Local and insured
+          </span>
+        </div>
+
+        <form class="mt-6 space-y-4 text-sm" onsubmit="event.preventDefault(); alert('Thank you. Your quote request has been received.');">
+          <div class="grid md:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="text-sm font-semibold text-slate-700">Name</span>
+              <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+            </label>
+
+            <label class="block">
+              <span class="text-sm font-semibold text-slate-700">Phone</span>
+              <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="text-sm font-semibold text-slate-700">Postcode</span>
+            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required>
+          </label>
+
+          <label class="block">
+            <span class="text-sm font-semibold text-slate-700">What needs cleaning</span>
+            <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required></textarea>
+          </label>
+
+          <button type="submit" class="w-full rounded-2xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3.5 text-sm font-extrabold shadow-soft">
+            Get my fixed price
+          </button>
+
+          <p class="text-xs text-slate-500">
+            Your details are only used to respond to your enquiry and are not passed to anyone else.
+          </p>
+        </form>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="py-8 bg-slate-900 text-slate-300 text-sm">
-  <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-    <div>
-      <div class="font-semibold">The Carpet Cleaning Company</div>
-      <div class="text-xs text-slate-400">
-        Carpet and upholstery cleaning in Ludlow, Shropshire and nearby areas
-      </div>
-    </div>
-
-    <div class="text-xs text-slate-400">
-      © <span id="year">2025</span> The Carpet Cleaning Company. All rights reserved.
-    </div>
-  </div>
-</footer>
-
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
   function focusQuoteForm() {
     const first = document.querySelector("#quote form input, #quote form textarea, #quote form select");
     if (first) first.focus();
   }
 </script>
-
-
-
-
-
-<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
