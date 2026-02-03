@@ -315,81 +315,63 @@
   </div>
 </section>
 
-<!-- GOOGLE ADS CHECKLIST (IMPROVED) -->
-<div
-  class="mt-6 max-w-xl rounded-2xl border border-slate-200 bg-white/90 backdrop-blur shadow-soft overflow-hidden"
->
-  <button
-    type="button"
-    onclick="goQuote()"
-    class="w-full text-left p-6 hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-600"
-    aria-label="Scroll to quote form"
-  >
-    <div class="flex items-start justify-between gap-4">
-      <div>
-        <div class="text-sm font-semibold text-slate-900">
-          Quick check
-        </div>
-        <p class="mt-1 text-sm text-slate-600">
-          If you tick these, you’re in the right place.
-        </p>
-      </div>
-      <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-semibold">
-        Fixed price
-      </span>
-    </div>
-
-    <ul class="mt-5 space-y-3 text-sm text-slate-800">
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
-        <span>Looking for a professional carpet cleaning company?</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
-        <span>Want a fixed price agreed before we arrive?</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
-        <span>Fed up with low quotes that go up on the day?</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
-        <span>Want a proper deep clean, not a rushed splash clean?</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
-        <span>Want clear pricing with no pressure or surprises?</span>
-      </li>
-    </ul>
-
-    <div class="mt-5 border-t border-slate-200 pt-4">
-      <p class="text-sm font-semibold text-slate-900">
-        Fill out the short form below
-      </p>
-      <p class="mt-1 text-sm text-slate-600">
-        We’ll send you a clear fixed price with no obligation. Takes less than 60 seconds.
-      </p>
-
-      <div class="mt-4 flex flex-col sm:flex-row gap-3">
-        <span class="inline-flex items-center justify-center rounded-xl bg-brand-600 text-white px-5 py-3 text-sm font-semibold shadow-soft">
-          Get my fixed price
-        </span>
-        <span class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800">
-          No hidden extras
-        </span>
-      </div>
-    </div>
-  </button>
-</div>
-
-<!-- QUOTE FORM -->
-<section id="quote" class="py-16 bg-slate-50">
-
 <!-- QUOTE FORM -->
 <section id="quote" class="py-16 bg-slate-50">
   <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-start">
 
     <div>
+
+      <!-- GOOGLE ADS CHECKLIST (PLACED CORRECTLY) -->
+      <div class="mb-8 max-w-xl rounded-2xl border border-slate-200 bg-white/90 backdrop-blur shadow-soft overflow-hidden">
+        <button
+          type="button"
+          onclick="focusQuoteForm()"
+          class="w-full text-left p-6 hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-600"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-sm font-semibold text-slate-900">Quick check</div>
+              <p class="mt-1 text-sm text-slate-600">If you tick these, you’re in the right place.</p>
+            </div>
+            <span class="inline-flex items-center rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-semibold">
+              Fixed price
+            </span>
+          </div>
+
+          <ul class="mt-5 space-y-3 text-sm text-slate-800">
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
+              <span>Looking for a professional carpet cleaning company?</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
+              <span>Want a fixed price agreed before we arrive?</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
+              <span>Fed up with low quotes that go up on the day?</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
+              <span>Want a proper deep clean, not a rushed splash clean?</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white font-bold">✓</span>
+              <span>Want clear pricing with no pressure or surprises?</span>
+            </li>
+          </ul>
+
+          <div class="mt-5 border-t border-slate-200 pt-4">
+            <p class="text-sm font-semibold text-slate-900">If that sounds like you, fill out the short form</p>
+            <p class="mt-1 text-sm text-slate-600">We’ll send you a clear fixed price with no obligation. Takes less than 60 seconds.</p>
+
+            <div class="mt-4 inline-flex items-center justify-center rounded-xl bg-brand-600 text-white px-5 py-3 text-sm font-semibold shadow-soft">
+              Get my fixed price
+            </div>
+          </div>
+        </button>
+      </div>
+
       <h2 class="text-3xl font-extrabold text-slate-900">Get a free quote</h2>
       <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
         Send a few details about what needs doing and you will receive a clear price and earliest available dates. No sales pressure and no hidden extras.
@@ -411,7 +393,7 @@
       </ul>
 
       <p class="mt-4 text-sm text-slate-600">
-        If you prefer to talk it through, you can call 
+        If you prefer to talk it through, you can call
         <a href="tel:07802563213" class="text-brand-700 font-medium">07802 563213</a>.
       </p>
     </div>
@@ -422,18 +404,18 @@
         <div class="grid md:grid-cols-2 gap-4">
           <label class="block text-sm">
             Name
-            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="v13s29">
+            <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
           </label>
 
           <label class="block text-sm">
             Phone
-            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="puhuxb">
+            <input type="tel" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
           </label>
         </div>
 
         <label class="block text-sm">
           Postcode
-          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="" fdprocessedid="5rf7tb">
+          <input type="text" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" required="">
         </label>
 
         <label class="block text-sm">
@@ -441,7 +423,7 @@
           <textarea rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:ring-2 focus:ring-brand-600 focus:border-brand-600" placeholder="For example living room carpet and stairs, three seater sofa, office reception." required=""></textarea>
         </label>
 
-        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft" fdprocessedid="muhxj">
+        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 text-sm font-semibold shadow-soft">
           Send my free quote
         </button>
 
@@ -472,7 +454,13 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  function focusQuoteForm() {
+    const first = document.querySelector("#quote form input, #quote form textarea, #quote form select");
+    if (first) first.focus();
+  }
 </script>
+
 
 
 
