@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,10 +42,46 @@
 body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
 .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 input, select, textarea { font-size: 16px; }
+
+/* premium scroll offset for fixed header */
+:root { scroll-padding-top: 92px; }
+
+/* premium lift hover */
+.lift { transition: transform .18s ease, box-shadow .18s ease; }
+.lift:hover { transform: translateY(-2px); }
+
+/* premium field focus */
+.premium-field:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(52,211,153,.25);
+  border-color: rgba(16,185,129,.9);
+}
+
+/* premium shimmer CTA */
+.shimmer { position: relative; overflow: hidden; }
+.shimmer:after{
+  content:"";
+  position:absolute;
+  inset:-40% -60%;
+  transform: rotate(20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  animation: shimmer 3.5s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-40%) rotate(20deg); opacity:0; }
+  10% { opacity:1; }
+  50% { transform: translateX(40%) rotate(20deg); opacity:0; }
+  100% { opacity:0; }
+}
   </style>
 </head>
 
 <body class="bg-ink-900 text-slate-100">
+
+  <!-- subtle film grain -->
+  <div class="pointer-events-none fixed inset-0 z-[1] opacity-[0.06] mix-blend-overlay"
+       style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.25%22/%3E%3C/svg%3E');">
+  </div>
 
   <!-- TOP BAR -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 border-b border-emerald-800/60 glass">
@@ -65,13 +101,13 @@ input, select, textarea { font-size: 16px; }
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold">
+        <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold lift">
           <span class="inline-block h-2 w-2 rounded-full bg-emerald-300"></span>
           07802 563213
         </a>
-<a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-5 py-2 text-sm font-extrabold shadow-soft">
-  Get my quote
-</a>
+        <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-5 py-2 text-sm font-extrabold shadow-soft lift shimmer">
+          Get my quote
+        </a>
       </div>
     </div>
   </header>
@@ -131,15 +167,15 @@ input, select, textarea { font-size: 16px; }
           </div>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#quote" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft">
+            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
               Get my quote
             </a>
-            <a href="#guarantee" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold">
+            <a href="#guarantee" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
               See guarantee
             </a>
           </div>
 
-          <div class="mt-6 inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2">
+          <div class="mt-6 inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 lift">
             <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-emerald-400 text-emerald-950 text-sm font-extrabold">✓</span>
             <span class="text-sm font-semibold">100 percent satisfaction guarantee</span>
           </div>
@@ -147,7 +183,7 @@ input, select, textarea { font-size: 16px; }
 
         <!-- RIGHT FORM (HERO) -->
         <div class="lg:pt-2">
-          <div class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden">
+          <div class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift">
             <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
             <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
 
@@ -172,14 +208,14 @@ input, select, textarea { font-size: 16px; }
                 <label class="block">
                   <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
                   <input required name="postcode" autocomplete="postal-code"
-                    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                     placeholder="e.g. SY8 1AA" />
                 </label>
 
                 <label class="block">
                   <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
                   <select required name="service"
-                    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400">
+                    class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
                     <option value="" selected disabled>Select a service</option>
                     <option>Carpet cleaning</option>
                     <option>Upholstery cleaning</option>
@@ -191,12 +227,12 @@ input, select, textarea { font-size: 16px; }
                 <label class="block">
                   <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
                   <select name="areas"
-                    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400">
+                    class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
                     <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
                   </select>
                 </label>
 
-                <div class="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm">
+                <div class="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm lift">
                   <div class="font-extrabold text-emerald-900">Fair price promise</div>
                   <div class="text-emerald-900/80 mt-1">
                     The price is agreed up front and stays the same on the day
@@ -206,7 +242,7 @@ input, select, textarea { font-size: 16px; }
                 <label class="block">
                   <span class="text-sm font-semibold text-slate-700">Anything we should know</span>
                   <textarea name="notes" rows="3"
-                    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                     placeholder="Stains, pets, parking, access, ideal days"></textarea>
                 </label>
 
@@ -214,13 +250,13 @@ input, select, textarea { font-size: 16px; }
                   <label class="block">
                     <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
                     <input required name="name" autocomplete="name"
-                      class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                       placeholder="Your name" />
                   </label>
                   <label class="block">
                     <span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span>
                     <input required name="phone" inputmode="tel" autocomplete="tel"
-                      class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                       placeholder="07..." />
                   </label>
                 </div>
@@ -228,7 +264,7 @@ input, select, textarea { font-size: 16px; }
                 <label class="block">
                   <span class="text-sm font-semibold text-slate-700">Email</span>
                   <input name="email" type="email" autocomplete="email"
-                    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                     placeholder="you@example.com" />
                 </label>
 
@@ -238,17 +274,17 @@ input, select, textarea { font-size: 16px; }
                 </label>
 
                 <button type="submit"
-                  class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft">
+                  class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
                   Get My Quote
                 </button>
 
                 <div class="grid sm:grid-cols-2 gap-3">
                   <a href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please.%0AMy%20postcode%3A%20____%0AWhat%20needs%20cleaning%3A%20____"
-                     class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold">
+                     class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold lift">
                     Message on WhatsApp
                   </a>
                   <a href="tel:07802563213"
-                     class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold">
+                     class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold lift">
                     Or call us now
                   </a>
                 </div>
@@ -261,8 +297,8 @@ input, select, textarea { font-size: 16px; }
           </div>
 
           <div class="mt-4 flex items-center justify-center gap-3 text-xs text-slate-200/90">
-            <div class="rounded-full bg-white/10 border border-white/15 px-4 py-2">★★★★★ 5 star on Google</div>
-            <div class="rounded-full bg-white/10 border border-white/15 px-4 py-2">★★★★★ 5 star on Facebook</div>
+            <div class="rounded-full bg-white/10 border border-white/15 px-4 py-2 lift">★★★★★ 5 star on Google</div>
+            <div class="rounded-full bg-white/10 border border-white/15 px-4 py-2 lift">★★★★★ 5 star on Facebook</div>
           </div>
         </div>
       </div>
@@ -278,7 +314,7 @@ input, select, textarea { font-size: 16px; }
       </p>
 
       <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6 lift">
           <div class="text-xs font-semibold text-emerald-700 uppercase">Step one</div>
           <div class="mt-1 text-lg font-semibold">Survey and vacuum</div>
           <p class="mt-2 text-sm text-slate-600">
@@ -286,7 +322,7 @@ input, select, textarea { font-size: 16px; }
           </p>
         </div>
 
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6 lift">
           <div class="text-xs font-semibold text-emerald-700 uppercase">Step two</div>
           <div class="mt-1 text-lg font-semibold">Pre spray and CRB agitation</div>
           <p class="mt-2 text-sm text-slate-600">
@@ -294,7 +330,7 @@ input, select, textarea { font-size: 16px; }
           </p>
         </div>
 
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6">
+        <div class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6 lift">
           <div class="text-xs font-semibold text-emerald-700 uppercase">Step three</div>
           <div class="mt-1 text-lg font-semibold">Hot water rinse and finish</div>
           <p class="mt-2 text-sm text-slate-600">
@@ -316,7 +352,7 @@ input, select, textarea { font-size: 16px; }
       </div>
 
       <div class="flex md:justify-end">
-        <div class="rounded-3xl bg-white border border-emerald-200 shadow-soft px-6 py-6 text-center w-full md:w-auto">
+        <div class="rounded-3xl bg-white border border-emerald-200 shadow-soft px-6 py-6 text-center w-full md:w-auto lift">
           <div class="text-xs font-semibold text-slate-500 uppercase">Satisfaction promise</div>
           <div class="text-4xl font-extrabold text-emerald-700 mt-1">100%</div>
           <div class="text-xs text-slate-500 mt-1">Simple and written in plain English</div>
@@ -330,7 +366,7 @@ input, select, textarea { font-size: 16px; }
   <div class="mx-auto max-w-6xl px-4">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div>
-        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800">
+        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">
           Google Reviews
         </div>
         <h2 class="mt-3 text-3xl font-extrabold">Rated 5 stars by local customers</h2>
@@ -339,7 +375,7 @@ input, select, textarea { font-size: 16px; }
         </p>
       </div>
 
-      <div class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto">
+      <div class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto lift">
         <div class="flex items-center gap-3">
           <div class="text-3xl font-extrabold">5.0</div>
           <div>
@@ -353,7 +389,7 @@ input, select, textarea { font-size: 16px; }
             href="https://share.google/6SsMDsVIxstP2tIUv"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold"
+            class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer"
           >
             Read all reviews
           </a>
@@ -362,7 +398,7 @@ input, select, textarea { font-size: 16px; }
             href="https://share.google/6SsMDsVIxstP2tIUv/review"
             target="_blank"
             rel="noopener"
-            class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-100 px-4 py-2 text-xs font-bold"
+            class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-100 px-4 py-2 text-xs font-bold lift"
           >
             Leave a review
           </a>
@@ -371,7 +407,7 @@ input, select, textarea { font-size: 16px; }
     </div>
 
     <div class="mt-8 grid md:grid-cols-3 gap-6">
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">Carolyn Mills</div>
@@ -384,7 +420,7 @@ input, select, textarea { font-size: 16px; }
         </blockquote>
       </figure>
 
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">E Stock</div>
@@ -397,7 +433,7 @@ input, select, textarea { font-size: 16px; }
         </blockquote>
       </figure>
 
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">Kim Nicholas</div>
@@ -410,7 +446,7 @@ input, select, textarea { font-size: 16px; }
         </blockquote>
       </figure>
 
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">Suzanne Powell</div>
@@ -423,7 +459,7 @@ input, select, textarea { font-size: 16px; }
         </blockquote>
       </figure>
 
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">James Wilson</div>
@@ -436,7 +472,7 @@ input, select, textarea { font-size: 16px; }
         </blockquote>
       </figure>
 
-      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6">
+      <figure class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="font-extrabold">Patrick Maslin</div>
@@ -455,21 +491,19 @@ input, select, textarea { font-size: 16px; }
         href="https://share.google/6SsMDsVIxstP2tIUv"
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold"
+        class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer"
       >
         Read more Google reviews
       </a>
       <a
         href="#heroQuoteForm"
-        class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 text-sm font-extrabold"
+        class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 text-sm font-extrabold lift"
       >
         Get a fixed price quote
       </a>
     </div>
   </div>
 </section>
-
-
 
   <!-- FACEBOOK VIDEOS -->
   <section class="py-14 bg-white text-slate-900">
@@ -478,7 +512,7 @@ input, select, textarea { font-size: 16px; }
       <p class="mt-2 text-slate-600">A recent clean in action.</p>
 
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black">
+        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
           <iframe
             src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1899520797292791%2F&show_text=false"
             width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
@@ -487,7 +521,7 @@ input, select, textarea { font-size: 16px; }
           ></iframe>
         </div>
 
-        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black">
+        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
           <iframe
             src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1162016885802464%2F&show_text=false"
             width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
@@ -496,7 +530,7 @@ input, select, textarea { font-size: 16px; }
           ></iframe>
         </div>
 
-        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black">
+        <div class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
           <iframe
             src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1362198414861523%2F&show_text=false"
             width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
@@ -511,7 +545,7 @@ input, select, textarea { font-size: 16px; }
   <!-- QUOTE (ANCHOR TARGET, SIMPLE SECTION) -->
   <section id="quote" class="py-14 bg-ink-900">
     <div class="mx-auto max-w-6xl px-4">
-      <div class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8">
+      <div class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8 lift">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-extrabold">Want a fixed price quote</h2>
@@ -519,11 +553,11 @@ input, select, textarea { font-size: 16px; }
           </div>
           <div class="flex gap-3">
             <button type="button" onclick="focusHeroForm()"
-              class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft">
+              class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
               Fill the form
             </button>
             <a href="tel:07802563213"
-              class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold">
+              class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
               Call 07802 563213
             </a>
           </div>
@@ -547,13 +581,13 @@ input, select, textarea { font-size: 16px; }
 
   <!-- FLOATING WHATSAPP + PHONE (BOTTOM RIGHT) -->
   <div class="fixed bottom-4 right-4 z-[60] flex flex-col gap-3">
-    <a href="https://wa.me/447802563213" target="_blank" rel="noopener"
-      class="h-14 w-14 rounded-full shadow-card bg-[#25D366] grid place-items-center text-white text-2xl"
+    <a href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please.%0AMy%20postcode%3A%20____%0AWhat%20needs%20cleaning%3A%20____" target="_blank" rel="noopener"
+      class="h-14 w-14 rounded-full shadow-card bg-[#25D366] grid place-items-center text-white text-2xl lift"
       aria-label="WhatsApp">
       💬
     </a>
     <a href="tel:07802563213"
-      class="h-14 w-14 rounded-full shadow-card bg-emerald-400 grid place-items-center text-emerald-950 text-2xl"
+      class="h-14 w-14 rounded-full shadow-card bg-emerald-400 grid place-items-center text-emerald-950 text-2xl lift"
       aria-label="Call">
       ☎
     </a>
@@ -576,16 +610,16 @@ input, select, textarea { font-size: 16px; }
       window.addEventListener("click", tryPlay, { once: true, passive: true });
     })();
 
-function focusHeroForm() {
-  const first = document.querySelector("#heroQuoteForm input, #heroQuoteForm textarea, #heroQuoteForm select");
-  if (!first) return;
+    function focusHeroForm() {
+      const first = document.querySelector("#heroQuoteForm input, #heroQuoteForm textarea, #heroQuoteForm select");
+      if (!first) return;
 
-  first.scrollIntoView({ behavior: "smooth", block: "center" });
+      first.scrollIntoView({ behavior: "smooth", block: "center" });
 
-  setTimeout(() => {
-    first.focus({ preventScroll: true });
-  }, 250);
-}
+      setTimeout(() => {
+        first.focus({ preventScroll: true });
+      }, 250);
+    }
 
     function fakeSubmit(form) {
       const btn = form.querySelector('button[type="submit"]');
