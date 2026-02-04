@@ -1,3 +1,31 @@
+<script>
+  // Always start at the top on mobile (WhatsApp/Safari restore + hash jump)
+  (function () {
+    try {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    } catch (e) {}
+
+    function hardTop() {
+      // remove any #anchor so it can't jump down
+      if (location.hash) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+
+      // force top (do it a few times for iOS/WhatsApp weirdness)
+      window.scrollTo(0, 0);
+      setTimeout(() => window.scrollTo(0, 0), 50);
+      setTimeout(() => window.scrollTo(0, 0), 200);
+    }
+
+    window.addEventListener("load", hardTop);
+
+    // when coming back from cache/back button
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) hardTop();
+    });
+  })();
+</script>
+
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
