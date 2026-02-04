@@ -1,64 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Carpet Cleaning Company | Carpet and Upholstery Cleaning</title>
-  <meta name="description" content="Professional carpet and upholstery cleaning with CRB agitation, hot water extraction and a 100 percent satisfaction guarantee." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Carpet Cleaning Company</title>
+  <meta name="description" content="Professional carpet and upholstery cleaning with a 100 percent satisfaction guarantee.">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: {
-              900:"#070b14",
-              800:"#0b1220"
-            }
-          },
-          boxShadow: {
-            soft:"0 12px 30px rgba(2,6,23,0.18)",
-            card:"0 24px 70px rgba(2,6,23,0.38)"
-          }
-        }
-      }
-    }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: Inter, system-ui, sans-serif; }
-    .glass { backdrop-filter: blur(10px); }
   </style>
 </head>
 
-<body class="bg-ink-900 text-slate-100">
+<body class="bg-slate-900 text-slate-100">
 
 <!-- HEADER -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 border-b border-emerald-800/60 glass">
+<header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 backdrop-blur border-b border-emerald-800">
   <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 
     <div class="flex items-center gap-4">
       <img
         src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/ChatGPT%20Image%20Feb%204,%202026,%2012_51_48%20AM.png"
-        class="h-16 sm:h-20 w-auto object-contain"
         alt="The Carpet Cleaning Company"
+        class="h-16 sm:h-20 w-auto object-contain"
       />
-      <div class="hidden sm:block leading-tight">
+      <div class="hidden sm:block">
         <div class="font-extrabold text-lg">The Carpet Cleaning Company</div>
         <div class="text-xs text-emerald-100">Carpet and upholstery cleaning</div>
       </div>
     </div>
 
-    <div class="flex items-center gap-3">
-      <a href="tel:07802563213" class="hidden sm:flex rounded-full bg-white/10 px-4 py-2 text-sm font-semibold">
+    <div class="flex gap-3 items-center">
+      <a href="tel:07802563213" class="hidden sm:block rounded-full bg-white/10 px-4 py-2 text-sm font-semibold">
         07802 563213
       </a>
-      <a href="#quote" class="rounded-full bg-emerald-400 px-5 py-2 text-sm font-extrabold text-emerald-950 shadow-soft">
+      <a href="#quote" class="rounded-full bg-emerald-400 px-5 py-2 text-sm font-extrabold text-emerald-950">
         Get my quote
       </a>
     </div>
@@ -67,9 +47,9 @@
 </header>
 
 <!-- HERO -->
-<section class="pt-28 pb-20 relative overflow-hidden">
+<section class="pt-28 pb-20 relative">
   <div class="absolute inset-0">
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-70">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-70">
       <source src="istockphoto-2158195023-640_adpp_is.mp4" type="video/mp4">
     </video>
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black"></div>
@@ -81,7 +61,9 @@
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold">
         Carpet & Upholstery Cleaning
-        <span class="block text-slate-200 mt-2">Beautiful carpets. Fixed prices. Guaranteed results.</span>
+        <span class="block text-slate-300 mt-2">
+          Beautiful carpets. Fixed prices. Guaranteed results.
+        </span>
       </h1>
 
       <p class="mt-4 text-lg text-slate-200">
@@ -90,14 +72,14 @@
 
       <ul class="mt-6 space-y-2 text-sm">
         <li>✓ CRB deep agitation</li>
-        <li>✓ Fully insured local company</li>
-        <li>✓ Wool & synthetic safe</li>
-        <li>✓ 5 star rated service</li>
+        <li>✓ Fully insured</li>
+        <li>✓ Wool and synthetic safe</li>
+        <li>✓ 5 star rated local service</li>
       </ul>
     </div>
 
     <!-- FORM -->
-    <div class="bg-white text-slate-900 rounded-3xl shadow-card p-6 relative">
+    <div class="bg-white text-slate-900 rounded-3xl shadow-2xl p-6 relative">
 
       <div class="flex justify-between items-start">
         <div>
@@ -108,8 +90,8 @@
         <!-- BADGE ONLY HERE -->
         <img
           src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/satisfaction_badge_transparent.png"
-          class="h-24 w-24 object-contain"
           alt="100% Satisfaction Guaranteed"
+          class="h-24 w-24 object-contain"
         />
       </div>
 
@@ -119,6 +101,7 @@
           <option>Select service</option>
           <option>Carpet cleaning</option>
           <option>Upholstery cleaning</option>
+          <option>Carpets and upholstery</option>
         </select>
         <input class="w-full rounded-xl border px-3 py-3" placeholder="Rooms or areas">
         <textarea class="w-full rounded-xl border px-3 py-3" placeholder="Anything we should know"></textarea>
@@ -129,21 +112,54 @@
           Get My Quote
         </button>
       </form>
+    </div>
 
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="bg-white text-slate-900 py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold">How the clean works</h2>
+
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div class="p-6 rounded-2xl bg-slate-50 border">
+        <h3 class="font-semibold">Survey & vacuum</h3>
+        <p class="text-sm text-slate-600 mt-2">Inspection and dry vacuum.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-50 border">
+        <h3 class="font-semibold">CRB agitation</h3>
+        <p class="text-sm text-slate-600 mt-2">Deep agitation lifts soil.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-slate-50 border">
+        <h3 class="font-semibold">Hot water extraction</h3>
+        <p class="text-sm text-slate-600 mt-2">Residue free finish.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FLOATING CONTACT -->
-<div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
-  <a href="https://wa.me/447802563213" class="h-14 w-14 flex items-center justify-center rounded-full bg-[#25D366] shadow-lg text-white text-xl">💬</a>
-  <a href="tel:07802563213" class="h-14 w-14 flex items-center justify-center rounded-full bg-emerald-400 shadow-lg text-xl">☎</a>
-</div>
+<!-- GUARANTEE -->
+<section id="quote" class="bg-emerald-50 text-slate-900 py-14">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl font-extrabold">100 percent satisfaction guarantee</h2>
+    <p class="mt-2 max-w-2xl">
+      If you are not happy with the result in any area, it will be returned and cleaned again.
+      If it still does not look as it should, that area will be refunded.
+    </p>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="py-10 bg-ink-900 border-t border-white/10 text-center text-sm text-slate-400">
-  © 2026 The Carpet Cleaning Company
+<footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm">
+  © 2026 The Carpet Cleaning Company. All rights reserved.
 </footer>
+
+<!-- FLOATING CONTACT -->
+<div class="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
+  <a href="https://wa.me/447802563213" class="h-14 w-14 flex items-center justify-center rounded-full bg-[#25D366] text-white text-xl shadow-lg">💬</a>
+  <a href="tel:07802563213" class="h-14 w-14 flex items-center justify-center rounded-full bg-emerald-400 text-emerald-950 text-xl shadow-lg">☎</a>
+</div>
 
 </body>
 </html>
