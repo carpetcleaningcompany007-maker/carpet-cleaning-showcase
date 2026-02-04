@@ -157,8 +157,12 @@ colors: {
                   </p>
                 </div>
 
-                <!-- optional badge image if you have one -->
-                <img src="static/guarantee-badge.png" alt="" class="h-16 w-16 object-contain hidden sm:block" />
+                <!-- guarantee badge (your GitHub image) -->
+                <img
+                  src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/blob/main/ChatGPT%20Image%20Feb%204,%202026,%2012_26_14%20AM.png?raw=true"
+                  alt="100% Satisfaction Guaranteed"
+                  class="h-16 w-16 object-contain hidden sm:block"
+                />
               </div>
 
               <form id="heroQuoteForm" class="mt-5 space-y-4" onsubmit="event.preventDefault(); fakeSubmit(this);">
@@ -431,7 +435,6 @@ colors: {
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // mobile autoplay helper: tries again on first tap if iOS blocks it
     (function () {
       const v = document.getElementById("heroVideo");
       if (!v) return;
