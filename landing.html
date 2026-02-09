@@ -20,13 +20,8 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            brand: { 50:"#eff6ff", 100:"#dbeafe", 600:"#1f7ef2", 700:"#1666c6" }
-          },
-          boxShadow: {
-            soft:"0 12px 30px rgba(15,23,42,0.12)",
-            card:"0 16px 40px rgba(15,23,42,0.10)"
-          }
+          colors: { brand: { 50:"#eff6ff", 100:"#dbeafe", 600:"#1f7ef2", 700:"#1666c6" } },
+          boxShadow: { soft:"0 12px 30px rgba(15,23,42,0.12)", card:"0 16px 40px rgba(15,23,42,0.10)" }
         }
       }
     }
@@ -164,12 +159,23 @@
             Professional carpet and sofa cleaning for homes, landlords and small businesses. CRB agitation, high heat extraction and a neutralising rinse for soft clean fibres.
           </p>
 
+          <!-- TEST (PROVES YOU ARE ON THE RIGHT FILE) -->
+          <div class="mt-6" style="background:yellow;color:black;padding:10px;border-radius:10px;font-weight:900;">
+            TEST 123 IF YOU SEE THIS YOU ARE ON THE RIGHT FILE
+          </div>
+
           <div class="mt-7 flex flex-wrap gap-3">
             <a href="#quote" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-soft">
               Get a free quote
             </a>
+
             <a href="#guarantee" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/30 bg-white/10 hover:bg-white/15 text-white text-sm font-semibold">
               See satisfaction guarantee
+            </a>
+
+            <a href="https://g.page/r/CVHd852c8gDQEAE/review"
+               class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/30 bg-white/10 hover:bg-white/15 text-white text-sm font-semibold">
+              Google reviews
             </a>
           </div>
 
@@ -179,19 +185,17 @@
             <div>Regular maintenance or one off cleans</div>
           </div>
 
-          <!-- KLARNA STRIP -->
+          <!-- KLARNA STRIP (ALWAYS VISIBLE, NO EXTERNAL IMAGE) -->
           <div class="mt-8 rounded-2xl border border-white/15 bg-white/10 backdrop-blur px-5 py-4">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div class="flex items-start gap-3">
-                <img
-                  src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg"
-                  alt="Klarna"
-                  class="h-8 w-auto"
-                  loading="lazy">
+                <div class="inline-flex items-center justify-center h-8 px-3 rounded-lg bg-white text-slate-900 font-extrabold">
+                  Klarna
+                </div>
                 <div>
                   <div class="font-extrabold text-white">Pay with Klarna</div>
                   <div class="text-sm text-slate-200">
-                    Buy now and spread the cost. You can pay later or split it over a few months depending on your Klarna options.
+                    Buy now and spread the cost. Pay later or split it over a few months depending on your Klarna options.
                   </div>
                 </div>
               </div>
@@ -215,7 +219,6 @@
 
         <div class="mt-10 bg-white rounded-[32px] border border-slate-200 p-8 md:p-10 text-left shadow-[0_30px_80px_rgba(31,126,242,0.18)]">
           <form id="quoteForm" class="space-y-4 text-sm" novalidate>
-            <!-- honeypot -->
             <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off">
 
             <label class="block text-slate-700 font-medium">
@@ -418,7 +421,6 @@
 
   </main>
 
-  <!-- Floating WhatsApp and phone buttons -->
   <div class="floating-btn">
     <a href="https://wa.me/447802563213" style="background:#25D366;">💬</a>
     <a href="tel:07802563213" style="background:#1f7ef2;">📞</a>
@@ -427,15 +429,11 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Formspree submit (shows success or error)
     (function(){
       const ENDPOINT = "https://formspree.io/f/mblnzwpv";
       const form = document.getElementById("quoteForm");
       const btn = document.getElementById("submitBtn");
       const status = document.getElementById("formStatus");
-
-      // Optional Google Ads conversion (only fires if you set the label)
-      const GOOGLE_CONVERSION_SEND_TO = "AW-17072644239/REPLACE_ME";
 
       function showStatus(ok, msg){
         status.classList.remove("hidden");
@@ -470,9 +468,6 @@
           });
 
           if(res.ok){
-            if(GOOGLE_CONVERSION_SEND_TO.indexOf("REPLACE_ME") === -1){
-              try { gtag("event", "conversion", { "send_to": GOOGLE_CONVERSION_SEND_TO }); } catch(_){}
-            }
             showStatus(true, "Sent. We have received your request and will reply as soon as possible.");
             form.reset();
           } else {
