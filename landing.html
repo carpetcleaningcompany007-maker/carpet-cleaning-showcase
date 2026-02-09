@@ -1,7 +1,3 @@
-
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Carpet Cleaning Company | Carpet and Upholstery Cleaning</title>
   <meta name="description" content="Professional carpet and upholstery cleaning for homes and businesses with deep steam cleaning, CRB agitation and a 100 percent satisfaction guarantee.">
-  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Ads tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17072644239"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-17072644239");
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50:"#eff6ff",
-              100:"#dbeafe",
-              600:"#1f7ef2",
-              700:"#1666c6"
-            }
+            brand: { 50:"#eff6ff", 100:"#dbeafe", 600:"#1f7ef2", 700:"#1666c6" }
           },
           boxShadow: {
             soft:"0 12px 30px rgba(15,23,42,0.12)",
@@ -34,1635 +34,460 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
-    .hero-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    html, body { overflow-x:hidden; }
 
-    /* Shared hover behaviour for all raised cards */
-    .hover-card {
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .hover-card:hover {
+    header, main, footer, .floating-btn { position:relative; z-index:5; }
+
+    .hero-video{ width:100%; height:100%; object-fit:cover; }
+
+    .hover-card{ transition: all .28s ease; }
+    .hover-card:hover{
       transform: translateY(-6px);
-      border-color: #1f7ef2 !important;
-      box-shadow: 0 20px 48px rgba(31,126,242,0.35);
-    }
-
-    /* Service cards */
-    .service-card {
-  display: block;
-  background: white;
-  border-radius: 26px;
-  padding: 30px;
-  border: 2px solid #dbeafe; /* subtle blue outline always visible */
-  text-decoration: none;
-  color: #1e3a8a;
-  font-size: 1.05rem;
-  font-weight: 600;
-  transition: all 0.35s ease;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-}
-
-.service-card:hover {
-  background: white; /* stays white */
-  border-color: #1f7ef2; /* brighter blue outline */
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 20px 48px rgba(31,126,242,0.25); /* gentle blue glow */
-  color: #1e3a8a; /* consistent text colour */
-}
-
-    /* Review cards */
-    .review-card {
-      transition: all 0.35s ease;
-      cursor: pointer;
-    }
-    .review-card:hover {
-      transform: translateY(-6px);
-      border-color: #1f7ef2 !important;
+      border-color:#1f7ef2 !important;
       box-shadow: 0 22px 55px rgba(31,126,242,0.28);
     }
 
-    /* How we clean cards */
-    .clean-card {
-      background: white;
-      border-radius: 22px;
-      padding: 24px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      transition: all 0.30s ease;
+    .service-card{
+      display:block;
+      background:#fff;
+      border-radius:26px;
+      padding:30px;
+      border:2px solid #dbeafe;
+      text-decoration:none;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      transition: all .30s ease;
     }
-    .clean-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(31,126,242,0.22);
-      border-color: #1f7ef2;
+    .service-card:hover{
+      transform: translateY(-6px) scale(1.02);
+      border-color:#1f7ef2;
+      box-shadow: 0 20px 48px rgba(31,126,242,0.25);
     }
 
-    /* Floating WhatsApp / phone buttons */
-    .floating-btn {
+    .clean-card{
+      background:#fff;
+      border-radius:22px;
+      padding:24px;
+      border:1px solid #e5e7eb;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: all .28s ease;
+    }
+    .clean-card:hover{
+      transform: translateY(-6px);
+      border-color:#1f7ef2;
+      box-shadow: 0 16px 40px rgba(31,126,242,0.22);
+    }
+
+    .review-card{
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      box-shadow: 0 10px 26px rgba(2,6,23,0.08);
+      transition: all .28s ease;
+    }
+    .review-card:hover{
+      transform: translateY(-6px);
+      border-color:#1f7ef2;
+      box-shadow: 0 22px 55px rgba(31,126,242,0.22);
+    }
+
+    .floating-btn{
       position: fixed;
       bottom: 22px;
       right: 22px;
-      z-index: 50;
-      display: flex;
-      flex-direction: column;
+      z-index: 60;
+      display:flex;
+      flex-direction:column;
       gap: 12px;
     }
-    .floating-btn a {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .floating-btn a{
+      width:56px; height:56px;
+      border-radius: 9999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-size: 26px;
-      color: white;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      color:#fff;
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(2,6,23,0.22);
     }
-    body { padding-top: 88px; }\n/* HEADER OVERRIDES */
-@media (max-width: 768px) {
-  header {
-    min-height: 44px !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  header img {
-    height: 26px !important;
-  }
-  header a {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-  }
-}
-/* MOBILE HEADER HARD LIMIT */
-@media (max-width: 768px) {
-  header {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 !important;
-  }
-
-  header > div {
-    height: 44px !important;
-    padding: 0 8px !important;
-    align-items: center !important;
-  }
-
-  header img {
-    height: 22px !important;
-  }
-
-  header a,
-  header button {
-    padding: 2px 8px !important;
-    font-size: 12px !important;
-  }
-
-  header p {
-    display: none !important;
-  }
-}
-/* MOBILE HEADER SCROLL */
-@media (max-width: 768px) {
-  header {
-    position: static !important;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-}
-/* MOBILE HERO FIX */
-@media (max-width: 768px) {
-
-  /* Give hero breathing room from header */
-  section:first-of-type {
-    padding-top: 64px !important;
-    padding-bottom: 32px !important;
-  }
-
-  /* Reduce headline size slightly so it wraps cleaner */
-  h1 {
-    font-size: 2.25rem !important;
-    line-height: 1.15 !important;
-  }
-
-  /* Pull CTAs closer to text */
-  h1 + p + div {
-    margin-top: 16px !important;
-  }
-
-  /* Tighten trust bullet spacing */
-  .mt-6 {
-    margin-top: 12px !important;
-  }
-}
-/* MOBILE TRUST BULLETS FIX */
-@media (max-width: 768px) {
-
-  /* Trust bullet container */
-  .mt-6.flex.flex-wrap {
-    flex-direction: column !important;
-    gap: 8px !important;
-    align-items: flex-start !important;
-  }
-
-  /* Each trust item */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-size: 14px !important;
-  }
-
-  /* Green dot alignment */
-  .mt-6.flex.flex-wrap span {
-    flex-shrink: 0;
-    margin-top: 0 !important;
-  }
-}
-/* MOBILE TRUST LIST FINAL FIX */
-@media (max-width: 768px) {
-
-  /* Target the trust bullet container */
-  .mt-6.flex.flex-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-
-  /* Each trust line */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* Green dot */
-  .mt-6.flex.flex-wrap > div span {
-    width: 8px !important;
-    height: 8px !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-  }
-}
-/* MOBILE REMOVE GREEN DOTS */
-@media (max-width: 768px) {
-  .mt-6 span {
-    display: none !important;
-  }
-}
-/* REMOVE TRUST DOTS HARD */
-@media (max-width: 768px) {
-  span.bg-emerald-400,
-  span.bg-emerald-500,
-  span.rounded-full {
-    display: none !important;
-  }
-}
-/* CHRISTMAS MODE */
-:root {
-  --christmas-gold: #d4af37;
-  --christmas-red: #8b1e1e;
-  --winter-blue: #0f2a44;
-}
-
-/* Hero winter warmth */
-.hero-video {
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Soft winter overlay */
-section:first-of-type::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
-              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
-  pointer-events: none;
-}
-
-/* Festive headline glow */
-h1 {
-  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
-}
-
-/* CTA festive shimmer */
-.bg-brand-600 {
-  background-image: linear-gradient(
-    135deg,
-    #1f7ef2 0%,
-    #2a8cff 50%,
-    #1f7ef2 100%
-  );
-  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
-}
-
-/* Gold hover accents */
-a:hover {
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
-              0 18px 40px rgba(212,175,55,0.25);
-}
-
-/* Subtle festive divider */
-section {
-  position: relative;
-}
-
-/* Snowfall */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: rgba(255,255,255,0.6);
-  font-size: 12px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-/* CHRISTMAS RIBBON V3 - SLIM */
-.christmas-banner {
-  position: relative;
-  display: inline-block;
-  padding: 6px 24px;
-  background: linear-gradient(180deg, #8f1d1d, #7a1616);
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-
-/* Ribbon ends - shallow */
-.christmas-banner::before,
-.christmas-banner::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  border-width: 6px 10px;
-  border-style: solid;
-  border-color: #651010 transparent transparent transparent;
-}
-
-.christmas-banner::before { left: 0; }
-.christmas-banner::after { right: 0; }
-
-/* Holly accents */
-.christmas-banner .holly {
-  font-size: 0.8rem;
-  margin: 0 4px;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .christmas-banner {
-    font-size: 0.65rem;
-    padding: 5px 18px;
-  }
-}
-</style>
-<style>
-.service-box {
-  background: white;
-  border-radius: 26px;
-  padding: 28px;
-  border: 2px solid #dbeafe;
-  transition: all 0.35s ease;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-  cursor: pointer;
-}
-.service-box h3,
-.service-box .service-label,
-.service-box p,
-.service-box li {
-  color: #0f172a !important;
-}
-.service-box:hover {
-  transform: translateY(-6px);
-  border-color: #1f7ef2;
-  box-shadow: 0 22px 55px rgba(31,126,242,0.45);
-  background: #ffffff;
-}
-.service-box:hover .service-label {
-  color: #1f7ef2 !important;
-}
-  body { padding-top: 88px; }\n/* HEADER OVERRIDES */
-@media (max-width: 768px) {
-  header {
-    min-height: 44px !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  header img {
-    height: 26px !important;
-  }
-  header a {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-  }
-}
-/* MOBILE HEADER HARD LIMIT */
-@media (max-width: 768px) {
-  header {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 !important;
-  }
-
-  header > div {
-    height: 44px !important;
-    padding: 0 8px !important;
-    align-items: center !important;
-  }
-
-  header img {
-    height: 22px !important;
-  }
-
-  header a,
-  header button {
-    padding: 2px 8px !important;
-    font-size: 12px !important;
-  }
-
-  header p {
-    display: none !important;
-  }
-}
-/* MOBILE HEADER SCROLL */
-@media (max-width: 768px) {
-  header {
-    position: static !important;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-}
-/* MOBILE HERO FIX */
-@media (max-width: 768px) {
-
-  /* Give hero breathing room from header */
-  section:first-of-type {
-    padding-top: 64px !important;
-    padding-bottom: 32px !important;
-  }
-
-  /* Reduce headline size slightly so it wraps cleaner */
-  h1 {
-    font-size: 2.25rem !important;
-    line-height: 1.15 !important;
-  }
-
-  /* Pull CTAs closer to text */
-  h1 + p + div {
-    margin-top: 16px !important;
-  }
-
-  /* Tighten trust bullet spacing */
-  .mt-6 {
-    margin-top: 12px !important;
-  }
-}
-/* MOBILE TRUST BULLETS FIX */
-@media (max-width: 768px) {
-
-  /* Trust bullet container */
-  .mt-6.flex.flex-wrap {
-    flex-direction: column !important;
-    gap: 8px !important;
-    align-items: flex-start !important;
-  }
-
-  /* Each trust item */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-size: 14px !important;
-  }
-
-  /* Green dot alignment */
-  .mt-6.flex.flex-wrap span {
-    flex-shrink: 0;
-    margin-top: 0 !important;
-  }
-}
-/* MOBILE TRUST LIST FINAL FIX */
-@media (max-width: 768px) {
-
-  /* Target the trust bullet container */
-  .mt-6.flex.flex-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-
-  /* Each trust line */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* Green dot */
-  .mt-6.flex.flex-wrap > div span {
-    width: 8px !important;
-    height: 8px !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-  }
-}
-/* MOBILE REMOVE GREEN DOTS */
-@media (max-width: 768px) {
-  .mt-6 span {
-    display: none !important;
-  }
-}
-/* REMOVE TRUST DOTS HARD */
-@media (max-width: 768px) {
-  span.bg-emerald-400,
-  span.bg-emerald-500,
-  span.rounded-full {
-    display: none !important;
-  }
-}
-/* CHRISTMAS MODE */
-:root {
-  --christmas-gold: #d4af37;
-  --christmas-red: #8b1e1e;
-  --winter-blue: #0f2a44;
-}
-
-/* Hero winter warmth */
-.hero-video {
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Soft winter overlay */
-section:first-of-type::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
-              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
-  pointer-events: none;
-}
-
-/* Festive headline glow */
-h1 {
-  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
-}
-
-/* CTA festive shimmer */
-.bg-brand-600 {
-  background-image: linear-gradient(
-    135deg,
-    #1f7ef2 0%,
-    #2a8cff 50%,
-    #1f7ef2 100%
-  );
-  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
-}
-
-/* Gold hover accents */
-a:hover {
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
-              0 18px 40px rgba(212,175,55,0.25);
-}
-
-/* Subtle festive divider */
-section {
-  position: relative;
-}
-
-/* Snowfall */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: rgba(255,255,255,0.6);
-  font-size: 12px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-/* CHRISTMAS RIBBON V3 - SLIM */
-.christmas-banner {
-  position: relative;
-  display: inline-block;
-  padding: 6px 24px;
-  background: linear-gradient(180deg, #8f1d1d, #7a1616);
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-
-/* Ribbon ends - shallow */
-.christmas-banner::before,
-.christmas-banner::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  border-width: 6px 10px;
-  border-style: solid;
-  border-color: #651010 transparent transparent transparent;
-}
-
-.christmas-banner::before { left: 0; }
-.christmas-banner::after { right: 0; }
-
-/* Holly accents */
-.christmas-banner .holly {
-  font-size: 0.8rem;
-  margin: 0 4px;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .christmas-banner {
-    font-size: 0.65rem;
-    padding: 5px 18px;
-  }
-}
-</style>
-<style>
-.service-box *, .service-card * {
-  color: #0f172a !important;
-  opacity: 1 !important;
-}
-.service-box:hover .service-label,
-.service-card:hover .service-label {
-  color: #1f7ef2 !important;
-}
-.service-box:hover,
-.service-card:hover {
-  transform: translateY(-6px);
-  border-color: #1f7ef2 !important;
-  box-shadow: 0 22px 55px rgba(31,126,242,0.45);
-}
-  body { padding-top: 88px; }\n/* HEADER OVERRIDES */
-@media (max-width: 768px) {
-  header {
-    min-height: 44px !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  header img {
-    height: 26px !important;
-  }
-  header a {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-  }
-}
-/* MOBILE HEADER HARD LIMIT */
-@media (max-width: 768px) {
-  header {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 !important;
-  }
-
-  header > div {
-    height: 44px !important;
-    padding: 0 8px !important;
-    align-items: center !important;
-  }
-
-  header img {
-    height: 22px !important;
-  }
-
-  header a,
-  header button {
-    padding: 2px 8px !important;
-    font-size: 12px !important;
-  }
-
-  header p {
-    display: none !important;
-  }
-}
-/* MOBILE HEADER SCROLL */
-@media (max-width: 768px) {
-  header {
-    position: static !important;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-}
-/* MOBILE HERO FIX */
-@media (max-width: 768px) {
-
-  /* Give hero breathing room from header */
-  section:first-of-type {
-    padding-top: 64px !important;
-    padding-bottom: 32px !important;
-  }
-
-  /* Reduce headline size slightly so it wraps cleaner */
-  h1 {
-    font-size: 2.25rem !important;
-    line-height: 1.15 !important;
-  }
-
-  /* Pull CTAs closer to text */
-  h1 + p + div {
-    margin-top: 16px !important;
-  }
-
-  /* Tighten trust bullet spacing */
-  .mt-6 {
-    margin-top: 12px !important;
-  }
-}
-/* MOBILE TRUST BULLETS FIX */
-@media (max-width: 768px) {
-
-  /* Trust bullet container */
-  .mt-6.flex.flex-wrap {
-    flex-direction: column !important;
-    gap: 8px !important;
-    align-items: flex-start !important;
-  }
-
-  /* Each trust item */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-size: 14px !important;
-  }
-
-  /* Green dot alignment */
-  .mt-6.flex.flex-wrap span {
-    flex-shrink: 0;
-    margin-top: 0 !important;
-  }
-}
-/* MOBILE TRUST LIST FINAL FIX */
-@media (max-width: 768px) {
-
-  /* Target the trust bullet container */
-  .mt-6.flex.flex-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-
-  /* Each trust line */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* Green dot */
-  .mt-6.flex.flex-wrap > div span {
-    width: 8px !important;
-    height: 8px !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-  }
-}
-/* MOBILE REMOVE GREEN DOTS */
-@media (max-width: 768px) {
-  .mt-6 span {
-    display: none !important;
-  }
-}
-/* REMOVE TRUST DOTS HARD */
-@media (max-width: 768px) {
-  span.bg-emerald-400,
-  span.bg-emerald-500,
-  span.rounded-full {
-    display: none !important;
-  }
-}
-/* CHRISTMAS MODE */
-:root {
-  --christmas-gold: #d4af37;
-  --christmas-red: #8b1e1e;
-  --winter-blue: #0f2a44;
-}
-
-/* Hero winter warmth */
-.hero-video {
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Soft winter overlay */
-section:first-of-type::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
-              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
-  pointer-events: none;
-}
-
-/* Festive headline glow */
-h1 {
-  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
-}
-
-/* CTA festive shimmer */
-.bg-brand-600 {
-  background-image: linear-gradient(
-    135deg,
-    #1f7ef2 0%,
-    #2a8cff 50%,
-    #1f7ef2 100%
-  );
-  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
-}
-
-/* Gold hover accents */
-a:hover {
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
-              0 18px 40px rgba(212,175,55,0.25);
-}
-
-/* Subtle festive divider */
-section {
-  position: relative;
-}
-
-/* Snowfall */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: rgba(255,255,255,0.6);
-  font-size: 12px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-/* CHRISTMAS RIBBON V3 - SLIM */
-.christmas-banner {
-  position: relative;
-  display: inline-block;
-  padding: 6px 24px;
-  background: linear-gradient(180deg, #8f1d1d, #7a1616);
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-
-/* Ribbon ends - shallow */
-.christmas-banner::before,
-.christmas-banner::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  border-width: 6px 10px;
-  border-style: solid;
-  border-color: #651010 transparent transparent transparent;
-}
-
-.christmas-banner::before { left: 0; }
-.christmas-banner::after { right: 0; }
-
-/* Holly accents */
-.christmas-banner .holly {
-  font-size: 0.8rem;
-  margin: 0 4px;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .christmas-banner {
-    font-size: 0.65rem;
-    padding: 5px 18px;
-  }
-}
-</style>
-<style>
-.service-box {
-  background: white;
-  border-radius: 22px;
-  padding: 28px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.service-box .service-label {
-  color: #1e3a8a !important;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-}
-.service-box h3 {
-  color: #0f172a !important;
-  font-weight: 800;
-  margin-top: 4px;
-  font-size: 1.25rem;
-}
-.service-box p,
-.service-box ul li {
-  color: #475569 !important;
-  font-weight: 400;
-  opacity: 1 !important;
-}
-.service-box:hover {
-  transform: translateY(-6px);
-  border-color: #1f7ef2;
-  box-shadow: 0 16px 40px rgba(31,126,242,0.20);
-}
-.service-box:hover .service-label {
-  color: #1f7ef2 !important;
-}
-  body { padding-top: 88px; }\n/* HEADER OVERRIDES */
-@media (max-width: 768px) {
-  header {
-    min-height: 44px !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  header img {
-    height: 26px !important;
-  }
-  header a {
-    padding-top: 4px !important;
-    padding-bottom: 4px !important;
-  }
-}
-/* MOBILE HEADER HARD LIMIT */
-@media (max-width: 768px) {
-  header {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 !important;
-  }
-
-  header > div {
-    height: 44px !important;
-    padding: 0 8px !important;
-    align-items: center !important;
-  }
-
-  header img {
-    height: 22px !important;
-  }
-
-  header a,
-  header button {
-    padding: 2px 8px !important;
-    font-size: 12px !important;
-  }
-
-  header p {
-    display: none !important;
-  }
-}
-/* MOBILE HEADER SCROLL */
-@media (max-width: 768px) {
-  header {
-    position: static !important;
-  }
-
-  body {
-    padding-top: 0 !important;
-  }
-}
-/* MOBILE HERO FIX */
-@media (max-width: 768px) {
-
-  /* Give hero breathing room from header */
-  section:first-of-type {
-    padding-top: 64px !important;
-    padding-bottom: 32px !important;
-  }
-
-  /* Reduce headline size slightly so it wraps cleaner */
-  h1 {
-    font-size: 2.25rem !important;
-    line-height: 1.15 !important;
-  }
-
-  /* Pull CTAs closer to text */
-  h1 + p + div {
-    margin-top: 16px !important;
-  }
-
-  /* Tighten trust bullet spacing */
-  .mt-6 {
-    margin-top: 12px !important;
-  }
-}
-/* MOBILE TRUST BULLETS FIX */
-@media (max-width: 768px) {
-
-  /* Trust bullet container */
-  .mt-6.flex.flex-wrap {
-    flex-direction: column !important;
-    gap: 8px !important;
-    align-items: flex-start !important;
-  }
-
-  /* Each trust item */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    font-size: 14px !important;
-  }
-
-  /* Green dot alignment */
-  .mt-6.flex.flex-wrap span {
-    flex-shrink: 0;
-    margin-top: 0 !important;
-  }
-}
-/* MOBILE TRUST LIST FINAL FIX */
-@media (max-width: 768px) {
-
-  /* Target the trust bullet container */
-  .mt-6.flex.flex-wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 6px !important;
-  }
-
-  /* Each trust line */
-  .mt-6.flex.flex-wrap > div {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    font-size: 14px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* Green dot */
-  .mt-6.flex.flex-wrap > div span {
-    width: 8px !important;
-    height: 8px !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-  }
-}
-/* MOBILE REMOVE GREEN DOTS */
-@media (max-width: 768px) {
-  .mt-6 span {
-    display: none !important;
-  }
-}
-/* REMOVE TRUST DOTS HARD */
-@media (max-width: 768px) {
-  span.bg-emerald-400,
-  span.bg-emerald-500,
-  span.rounded-full {
-    display: none !important;
-  }
-}
-/* CHRISTMAS MODE */
-:root {
-  --christmas-gold: #d4af37;
-  --christmas-red: #8b1e1e;
-  --winter-blue: #0f2a44;
-}
-
-/* Hero winter warmth */
-.hero-video {
-  filter: contrast(1.05) saturate(1.05);
-}
-
-/* Soft winter overlay */
-section:first-of-type::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 40%),
-              radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 45%);
-  pointer-events: none;
-}
-
-/* Festive headline glow */
-h1 {
-  text-shadow: 0 2px 12px rgba(212,175,55,0.25);
-}
-
-/* CTA festive shimmer */
-.bg-brand-600 {
-  background-image: linear-gradient(
-    135deg,
-    #1f7ef2 0%,
-    #2a8cff 50%,
-    #1f7ef2 100%
-  );
-  box-shadow: 0 12px 30px rgba(212,175,55,0.35);
-}
-
-/* Gold hover accents */
-a:hover {
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.4),
-              0 18px 40px rgba(212,175,55,0.25);
-}
-
-/* Subtle festive divider */
-section {
-  position: relative;
-}
-
-/* Snowfall */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: rgba(255,255,255,0.6);
-  font-size: 12px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-/* CHRISTMAS RIBBON V3 - SLIM */
-.christmas-banner {
-  position: relative;
-  display: inline-block;
-  padding: 6px 24px;
-  background: linear-gradient(180deg, #8f1d1d, #7a1616);
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-
-/* Ribbon ends - shallow */
-.christmas-banner::before,
-.christmas-banner::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  border-width: 6px 10px;
-  border-style: solid;
-  border-color: #651010 transparent transparent transparent;
-}
-
-.christmas-banner::before { left: 0; }
-.christmas-banner::after { right: 0; }
-
-/* Holly accents */
-.christmas-banner .holly {
-  font-size: 0.8rem;
-  margin: 0 4px;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .christmas-banner {
-    font-size: 0.65rem;
-    padding: 5px 18px;
-  }
-}
-</style>
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
 
-<!-- HEADER -->
-<header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200 py-0 md:py-1">
-  <div class="mx-auto max-w-6xl px-3 py-1 flex items-center justify-between gap-2">
-
-  <!-- Left: Logo + Name -->
-  <div class="flex items-center gap-2">
-    <img src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/ChatGPT%20Image%20Nov%2015,%202025,%2012_42_51%20AM.png"
-         class="h-8 md:h-11 w-auto"
-         alt="The Carpet Cleaning Company logo">
-
-    <div class="leading-tight">
-      <div class="font-bold text-sm md:text-lg text-slate-900">
-        The Carpet Cleaning Company
-      </div>
-      <div class="hidden md:block text-xs text-slate-500">
-        Carpet and upholstery cleaning for homes and businesses
-      </div>
-    </div>
-  </div>
-
-  <!-- Right: CTA -->
-  <a href="#quote"
-     class="shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs md:text-sm font-semibold">
-     Get a free quote
-  </a>
-
-</div>
-</header>
-
-<!-- HERO WITH VIDEO -->
-
-  <div class="absolute inset-0 -z-10">
-    <video class="hero-video opacity-70" autoplay muted loop playsinline poster="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4">
-  <source src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4" type="video/mp4">
-</video>
-    <div class="absolute inset-0 bg-slate-900/55"></div>
-
-
-
-    <!-- Hero image on top of video -->
-    </div>
-
-  <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-1 gap-10 items-center">
-    <div>
-      <div class="christmas-banner mb-6">
-  <span class="holly">🌿</span>
-  🎄 Merry Christmas 🎄
-  <span class="holly">🌿</span>
-</div>
-<h1 class="text-4xl md:text-5xl font-extrabold leading-tight md:leading-snug text-white">
-        Carpet and upholstery cleaning that makes your rooms look like new again
-      </h1>
-
-      <p class="mt-5 text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl">
-        Professional carpet and sofa cleaning for homes, landlords and small businesses. CRB agitation, high heat extraction and a neutralising rinse for soft clean fibres.
-      </p>
-
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-soft">
-          Get a free quote
-        </a>
-        <a href="#guarantee" class="hidden md:inline-flex inline-flex items-center justify-center px-5 py-3 rounded-xl border border-slate-500/80 bg-slate-900/60 hover:border-brand-100 text-sm">
-          <span class="text-white">See satisfaction guarantee</span>
-        </a>
-      </div>
-
-      <div class="mt-6 mb-6 flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
-        <div class="flex items-center gap-2">
-          <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
-          Child and pet safe solutions
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <img
+          src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/ChatGPT%20Image%20Nov%2015,%202025,%2012_42_51%20AM.png"
+          class="h-9 md:h-11 w-auto"
+          alt="The Carpet Cleaning Company logo">
+        <div class="leading-tight">
+          <div class="font-extrabold text-slate-900 text-sm md:text-lg">The Carpet Cleaning Company</div>
+          <div class="hidden md:block text-xs text-slate-500">Carpet and upholstery cleaning for homes and businesses</div>
         </div>
-        <div>Fully insured and owner operated</div>
-        <div>Domestic and commercial work covered</div>
-        <div>Regular maintenance or one off cleans</div>
       </div>
-    </div>
 
-    
+      <a href="#quote" class="shrink-0 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-soft">
+        Get a free quote
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <video class="hero-video opacity-80" autoplay muted loop playsinline
+          poster="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4">
+          <source src="https://github.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/raw/refs/heads/main/istockphoto-2158195023-640_adpp_is%20(3).mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-slate-900/60"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-extrabold text-white">
+            Fully insured • Owner operated • Professional deep cleans
           </div>
-          <div>
-            <p class="text-sm font-semibold text-slate-50">
-              
+
+          <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight text-white">
+            Carpet and upholstery cleaning that makes your rooms look like new again
+          </h1>
+
+          <p class="mt-5 text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl">
+            Professional carpet and sofa cleaning for homes, landlords and small businesses. CRB agitation, high heat extraction and a neutralising rinse for soft clean fibres.
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#quote" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-soft">
+              Get a free quote
+            </a>
+            <a href="#guarantee" class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/30 bg-white/10 hover:bg-white/15 text-white text-sm font-semibold">
+              See satisfaction guarantee
+            </a>
           </div>
-          
+
+          <div class="mt-7 flex flex-col gap-2 text-sm text-slate-200">
+            <div>Child and pet safe solutions</div>
+            <div>Domestic and commercial work covered</div>
+            <div>Regular maintenance or one off cleans</div>
+          </div>
+
+          <!-- KLARNA STRIP -->
+          <div class="mt-8 rounded-2xl border border-white/15 bg-white/10 backdrop-blur px-5 py-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div class="flex items-start gap-3">
+                <img
+                  src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg"
+                  alt="Klarna"
+                  class="h-8 w-auto"
+                  loading="lazy">
+                <div>
+                  <div class="font-extrabold text-white">Pay with Klarna</div>
+                  <div class="text-sm text-slate-200">
+                    Buy now and spread the cost. You can pay later or split it over a few months depending on your Klarna options.
+                  </div>
+                </div>
+              </div>
+              <a href="#quote" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-white text-slate-900 font-extrabold hover:bg-slate-100">
+                Ask about Klarna
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </div>
-<section id="quote" class="pt-12 pb-20 md:pt-20 bg-white relative z-20">
-  <div class="mx-auto max-w-4xl px-4 text-center">
+    </section>
 
-    <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">
-      Get a free quote
-    </h2>
-
-    <p class="mt-3 text-base text-slate-600 max-w-2xl mx-auto">
-      Tell us what needs cleaning and receive a clear price and availability.
-      No pressure. No hidden extras.
-    </p>
-
-    <div class="mt-12 bg-white rounded-[32px] border border-slate-200 p-10 text-left relative
-             shadow-[0_30px_80px_rgba(31,126,242,0.25)]
-             before:absolute before:inset-0 before:rounded-[32px]
-             before:bg-gradient-to-br before:from-brand-100/60 before:to-transparent
-             before:opacity-60 before:-z-10
-             hover:shadow-[0_40px_100px_rgba(31,126,242,0.35)]
-             transition-all duration-300">
-      <form action="https://formspree.io/f/mblnzwpv" method="POST" class="space-y-4 text-sm">
-<label class="block text-slate-700 font-medium">
-  Type of clean
-  <select name="clean_type" required
-    class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 bg-white focus:ring-2 focus:ring-brand-600">
-    <option value="">Please select</option>
-    <option value="Residential">Residential (home)</option>
-    <option value="Commercial">Commercial (business)</option>
-  </select>
-</label>
-
-        <div class="grid md:grid-cols-2 gap-4">
-          <label class="block text-slate-700 font-medium">
-            Name
-            <input type="text" name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
-          </label>
-
-          <label class="block text-slate-700 font-medium">
-            Phone
-            <input type="tel" name="phone" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
-          </label>
-        </div>
-
-        <label class="block text-slate-700 font-medium">
-          Email address
-          <input type="email" name="email" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
-        </label>
-
-        <label class="block text-slate-700 font-medium">
-          Postcode
-          <input type="text" name="name" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required>
-        </label>
-
-        <label class="block text-slate-700 font-medium">
-          What needs cleaning
-          <textarea name="message" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-brand-600" required></textarea>
-        </label>
-
-        <button type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 font-semibold shadow-soft text-base">
-          Send my free quote
-        </button>
-
-        <p class="text-xs text-slate-500 text-center">
-          Your details are only used to respond to your enquiry.
+    <!-- QUOTE -->
+    <section id="quote" class="pt-12 pb-20 md:pt-16 bg-white">
+      <div class="mx-auto max-w-4xl px-4 text-center">
+        <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">Get a free quote</h2>
+        <p class="mt-3 text-base text-slate-600 max-w-2xl mx-auto">
+          Tell us what needs cleaning and receive a clear price and availability.
         </p>
 
-      <input type="hidden" name="_subject" value="New carpet cleaning enquiry">
-<input type="hidden" name="_replyto" value="%email%">
-</form>
-    </div>
+        <div class="mt-10 bg-white rounded-[32px] border border-slate-200 p-8 md:p-10 text-left shadow-[0_30px_80px_rgba(31,126,242,0.18)]">
+          <form id="quoteForm" class="space-y-4 text-sm" novalidate>
+            <!-- honeypot -->
+            <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off">
 
-  </div>
-</section>
+            <label class="block text-slate-700 font-medium">
+              Type of clean
+              <select name="clean_type" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 bg-white focus:ring-2 focus:ring-brand-600">
+                <option value="">Please select</option>
+                <option value="Residential">Residential (home)</option>
+                <option value="Commercial">Commercial (business)</option>
+              </select>
+            </label>
 
-</section>
+            <div class="grid md:grid-cols-2 gap-4">
+              <label class="block text-slate-700 font-medium">
+                Name
+                <input type="text" name="name" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 focus:ring-2 focus:ring-brand-600">
+              </label>
 
-<!-- HOW WE CLEAN -->
-<section class="py-14 bg-white">
-  <div class="mx-auto max-w-6xl px-4">
-    <h2 class="text-3xl font-extrabold text-slate-900">How the clean works</h2>
-    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-      A simple method used in homes and workplaces so you know what to expect on the day.
-    </p>
+              <label class="block text-slate-700 font-medium">
+                Phone
+                <input type="tel" name="phone" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 focus:ring-2 focus:ring-brand-600">
+              </label>
+            </div>
 
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
+            <label class="block text-slate-700 font-medium">
+              Email address
+              <input type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 focus:ring-2 focus:ring-brand-600">
+            </label>
 
-      <div class="clean-card">
-        <div class="text-xs font-semibold text-brand-700 uppercase">Step one</div>
-        <div class="mt-1 text-lg font-semibold text-slate-900">Survey and vacuum</div>
-        <p class="mt-2 text-sm text-slate-600">
-          Short walk through, fibre check and a full dry vacuum to remove loose soil and grit before any solution is applied.
-        </p>
-      </div>
+            <label class="block text-slate-700 font-medium">
+              Postcode
+              <input type="text" name="postcode" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 focus:ring-2 focus:ring-brand-600">
+            </label>
 
-      <div class="clean-card">
-        <div class="text-xs font-semibold text-brand-700 uppercase">Step two</div>
-        <div class="mt-1 text-lg font-semibold text-slate-900">Pre spray and CRB agitation</div>
-        <p class="mt-2 text-sm text-slate-600">
-          Cleaning solution is chosen for the fibre type, then worked into the pile with a counter rotating brush to lift flattened fibres.
-        </p>
-      </div>
+            <label class="block text-slate-700 font-medium">
+              What needs cleaning
+              <textarea name="message" rows="4" required class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-3 focus:ring-2 focus:ring-brand-600"></textarea>
+            </label>
 
-      <div class="clean-card">
-        <div class="text-xs font-semibold text-brand-700 uppercase">Step three</div>
-        <div class="mt-1 text-lg font-semibold text-slate-900">Hot water rinse and finish</div>
-        <p class="mt-2 text-sm text-slate-600">
-          High heat extraction with a neutralising rinse removes soil and residues so carpets dry clean and soft without sticky marks.
-        </p>
-      </div>
+            <button id="submitBtn" type="submit" class="w-full rounded-xl bg-brand-600 hover:bg-brand-700 text-white px-4 py-3 font-semibold shadow-soft text-base">
+              Send my free quote
+            </button>
 
-    </div>
-  </div>
-</section>
+            <div id="formStatus" class="hidden rounded-2xl border p-4 text-sm"></div>
 
-<!-- SERVICES WE OFFER -->
-<section id="services" class="py-14 bg-slate-50">
-  <div class="mx-auto max-w-6xl px-4">
-    <h2 class="text-3xl font-extrabold text-slate-900">Services we offer</h2>
-    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
-      A full professional cleaning service for homes, landlords, offices and commercial venues across Shropshire.
-    </p>
-
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
-
-      <!-- Residential Carpet Cleaning -->
-      <a href="#quote" class="service-card hover-card">
-        <div class="text-xs text-slate-500 font-semibold uppercase">Residential carpet cleaning</div>
-        <div class="mt-1 text-xl font-extrabold text-slate-900">Homes &amp; domestic properties</div>
-        <p class="mt-4 text-sm text-slate-100/90">
-          Living rooms, bedrooms, stairs and landings. Deep steam extraction with CRB agitation and a neutralising rinse.
-        </p>
-      </a>
-
-      <!-- Commercial Carpet Cleaning -->
-      <a href="#quote" class="service-card hover-card">
-        <div class="text-xs text-brand-700 font-semibold uppercase">Commercial carpet cleaning</div>
-        <div class="mt-1 text-xl font-extrabold text-slate-900">Workplaces &amp; public venues</div>
-        <p class="mt-4 text-sm text-slate-100/90">
-          Offices, hotels, pubs, restaurants, racecourses, halls, receptions and waiting rooms. Out-of-hours cleaning available.
-        </p>
-      </a>
-
-      <!-- Upholstery Cleaning -->
-      <a href="#quote" class="service-card hover-card">
-        <div class="text-xs text-slate-500 font-semibold uppercase">Upholstery cleaning</div>
-        <div class="mt-1 text-xl font-extrabold text-slate-900">Sofas, chairs &amp; fabric seating</div>
-        <p class="mt-4 text-sm text-slate-100/90">
-          Sofas, armchairs and footstools. Safe solutions for wool and delicate fabrics. Restores appearance and removes odours.
-        </p>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEE STRIP -->
-<section id="guarantee" class="py-10 bg-brand-50">
-  <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="text-2xl font-extrabold text-slate-900">
-        100 percent satisfaction guarantee
-      </h2>
-      <p class="mt-2 text-sm md:text-base text-slate-700 max-w-xl">
-        The aim is simple. Fresh clean carpets and upholstery that you are happy to show family, guests or clients. If you are not pleased with the result in any area, it will be returned and cleaned again. If it still does not look as it should, the cost of that area will be refunded.
-      </p>
-    </div>
-
-    <div class="flex items-center justify-center">
-      <div class="rounded-full border border-brand-600 bg-white shadow-soft px-6 py-5 text-center">
-        <div class="text-xs font-semibold text-slate-500 uppercase">
-          Satisfaction promise
-        </div>
-        <div class="text-3xl font-extrabold text-brand-700">
-          100%
-        </div>
-        <div class="text-xs text-slate-500 mt-1">
-          Simple and written in plain English
+            <p class="text-xs text-slate-500 text-center">
+              Your details are only used to respond to your enquiry.
+            </p>
+          </form>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- HOW WE CLEAN -->
+    <section class="py-14 bg-white">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl font-extrabold text-slate-900">How the clean works</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+          A simple method used in homes and workplaces so you know what to expect on the day.
+        </p>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <div class="clean-card">
+            <div class="text-xs font-semibold text-brand-700 uppercase">Step one</div>
+            <div class="mt-1 text-lg font-semibold text-slate-900">Survey and vacuum</div>
+            <p class="mt-2 text-sm text-slate-600">
+              Fibre check and a full dry vacuum to remove loose soil and grit before any solution is applied.
+            </p>
+          </div>
+
+          <div class="clean-card">
+            <div class="text-xs font-semibold text-brand-700 uppercase">Step two</div>
+            <div class="mt-1 text-lg font-semibold text-slate-900">Pre spray and CRB agitation</div>
+            <p class="mt-2 text-sm text-slate-600">
+              Solution matched to the fibre type, then worked into the pile with a counter rotating brush to lift and separate fibres.
+            </p>
+          </div>
+
+          <div class="clean-card">
+            <div class="text-xs font-semibold text-brand-700 uppercase">Step three</div>
+            <div class="mt-1 text-lg font-semibold text-slate-900">Hot water rinse and finish</div>
+            <p class="mt-2 text-sm text-slate-600">
+              High heat extraction with a neutralising rinse removes soil and residues so it dries soft and clean.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-14 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl font-extrabold text-slate-900">Services we offer</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
+          Professional cleaning for homes, landlords, offices and venues across Shropshire.
+        </p>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-6">
+          <a href="#quote" class="service-card hover-card">
+            <div class="text-xs text-slate-500 font-semibold uppercase">Residential carpet cleaning</div>
+            <div class="mt-1 text-xl font-extrabold text-slate-900">Homes and domestic properties</div>
+            <p class="mt-4 text-sm text-slate-600">
+              Living rooms, bedrooms, stairs and landings. Deep extraction with CRB agitation and a neutralising rinse.
+            </p>
+          </a>
+
+          <a href="#quote" class="service-card hover-card">
+            <div class="text-xs text-slate-500 font-semibold uppercase">Commercial carpet cleaning</div>
+            <div class="mt-1 text-xl font-extrabold text-slate-900">Workplaces and public venues</div>
+            <p class="mt-4 text-sm text-slate-600">
+              Offices, hotels, pubs, restaurants, halls, receptions and waiting rooms. Out of hours available.
+            </p>
+          </a>
+
+          <a href="#quote" class="service-card hover-card">
+            <div class="text-xs text-slate-500 font-semibold uppercase">Upholstery cleaning</div>
+            <div class="mt-1 text-xl font-extrabold text-slate-900">Sofas, chairs and fabric seating</div>
+            <p class="mt-4 text-sm text-slate-600">
+              Safe solutions for delicate fabrics. Restores appearance and helps remove odours.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section id="guarantee" class="py-10 bg-brand-50">
+      <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-extrabold text-slate-900">100 percent satisfaction guarantee</h2>
+          <p class="mt-2 text-sm md:text-base text-slate-700 max-w-xl">
+            If you are not happy with the result in any area, it will be returned and cleaned again. If it still does not look as it should, the cost of that area will be refunded.
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center">
+          <div class="rounded-full border border-brand-600 bg-white shadow-soft px-6 py-5 text-center">
+            <div class="text-xs font-semibold text-slate-500 uppercase">Satisfaction promise</div>
+            <div class="text-3xl font-extrabold text-brand-700">100%</div>
+            <div class="text-xs text-slate-500 mt-1">Simple and in plain English</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS -->
+    <section class="py-14 bg-white">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 class="text-3xl font-extrabold text-slate-900">What customers are saying</h2>
+        <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+          A selection of recent comments from customers across Shropshire.
+        </p>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="review-card p-6 bg-white">
+            <div class="text-amber-500 text-lg">★★★★★</div>
+            <h3 class="mt-2 font-semibold text-slate-800">Kerrie Glanville</h3>
+            <p class="text-xs text-slate-500 mb-3">Recent</p>
+            <p class="text-sm text-slate-700">
+              Fantastic job on my stairs. They smell so fresh and look clean. Paul removed a stain in the kids room that had been there for years.
+            </p>
+          </div>
+
+          <div class="review-card p-6 bg-white">
+            <div class="text-amber-500 text-lg">★★★★★</div>
+            <h3 class="mt-2 font-semibold text-slate-800">Jenna Hamar</h3>
+            <p class="text-xs text-slate-500 mb-3">Recent</p>
+            <p class="text-sm text-slate-700">
+              Paul cleaned all the carpets in my holiday let and did a fantastic job. Spotless and fresh smelling with excellent service and clear pricing.
+            </p>
+          </div>
+
+          <div class="review-card p-6 bg-white">
+            <div class="text-amber-500 text-lg">★★★★★</div>
+            <h3 class="mt-2 font-semibold text-slate-800">Suzanne Powell</h3>
+            <p class="text-xs text-slate-500 mb-3">Recent</p>
+            <p class="text-sm text-slate-700">
+              Superb service from start to finish. Everything looks brand new and he saved me a fortune compared to replacing the carpet.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="https://g.page/r/CVHd852c8gDQEAE/review" class="inline-block px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-soft text-sm">
+            Read our Google reviews
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-900 text-slate-300 text-sm">
+      <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div>
+          <div class="font-semibold">The Carpet Cleaning Company</div>
+          <div class="text-xs text-slate-400">Carpet and upholstery cleaning in Ludlow, Shropshire and nearby areas</div>
+        </div>
+        <div class="text-xs text-slate-400">© <span id="year"></span> The Carpet Cleaning Company</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Floating WhatsApp and phone buttons -->
+  <div class="floating-btn">
+    <a href="https://wa.me/447802563213" style="background:#25D366;">💬</a>
+    <a href="tel:07802563213" style="background:#1f7ef2;">📞</a>
   </div>
-</section>
 
-<!-- GOOGLE REVIEWS -->
-<section class="py-14 bg-white">
-  <div class="mx-auto max-w-6xl px-4">
-    <h2 class="text-3xl font-extrabold text-slate-900">What customers are saying</h2>
-    <p class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-      A selection of our most recent Google reviews from homes and businesses across Shropshire.
-    </p>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    <div class="mt-10 grid md:grid-cols-3 gap-6">
+    // Formspree submit (shows success or error)
+    (function(){
+      const ENDPOINT = "https://formspree.io/f/mblnzwpv";
+      const form = document.getElementById("quoteForm");
+      const btn = document.getElementById("submitBtn");
+      const status = document.getElementById("formStatus");
 
-      <!-- REVIEW 1 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Kerrie Glanville</h3>
-        <p class="text-xs text-slate-500 mb-3">6 days ago</p>
-        <p class="text-sm text-slate-700">
-          Fantastic job on my stairs. They smell so fresh and look clean, making my house feel cleaner.
-          Paul even removed a stain in the kids' room that had been there for years.
-        </p>
-      </div>
+      // Optional Google Ads conversion (only fires if you set the label)
+      const GOOGLE_CONVERSION_SEND_TO = "AW-17072644239/REPLACE_ME";
 
-      <!-- REVIEW 2 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Jenna Hamar</h3>
-        <p class="text-xs text-slate-500 mb-3">1 week ago</p>
-        <p class="text-sm text-slate-700">
-          Paul cleaned all the carpets in my holiday let and did a fantastic job. Spotless and fresh smelling
-          with excellent service and clear pricing up front. Highly recommend.
-        </p>
-      </div>
+      function showStatus(ok, msg){
+        status.classList.remove("hidden");
+        status.className = "rounded-2xl border p-4 text-sm " + (ok ? "border-emerald-200 bg-emerald-50 text-emerald-900" : "border-rose-200 bg-rose-50 text-rose-900");
+        status.textContent = msg;
+      }
 
-      <!-- REVIEW 3 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Suzanne Powell</h3>
-        <p class="text-xs text-slate-500 mb-3">1 month ago</p>
-        <p class="text-sm text-slate-700">
-          Had Paul clean my large sofa, lounge, stairs, landing and bedroom. Superb service from start to finish.
-          Everything looks brand new and he saved me a fortune compared to replacing the carpet.
-        </p>
-      </div>
+      form.addEventListener("submit", async function(e){
+        e.preventDefault();
 
-      <!-- REVIEW 4 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Jac P</h3>
-        <p class="text-xs text-slate-500 mb-3">1 month ago</p>
-        <p class="text-sm text-slate-700">
-          Paul was punctual, polite and very knowledgeable, reassuring me throughout the process.
-          My carpets look amazing now. A genuine guy who takes pride in his work.
-        </p>
-      </div>
+        if(!form.checkValidity()){
+          showStatus(false, "Please fill in all required fields.");
+          return;
+        }
 
-      <!-- REVIEW 5 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Patrick Maslin</h3>
-        <p class="text-xs text-slate-500 mb-3">3 months ago</p>
-        <p class="text-sm text-slate-700">
-          Fantastic service. Polite, friendly and efficient. Great value for money and carpets cleaned to
-          a high professional standard. Highly recommend.
-        </p>
-      </div>
+        const honey = form.querySelector('input[name="website"]');
+        if(honey && honey.value.trim() !== ""){
+          showStatus(true, "Thanks, we will be in touch.");
+          form.reset();
+          return;
+        }
 
-      <!-- REVIEW 6 -->
-      <div class="review-card rounded-2xl border border-slate-200 shadow-soft p-6 bg-white">
-        <div class="text-amber-500 text-lg">★★★★★</div>
-        <h3 class="mt-2 font-semibold text-slate-800">Jenny James</h3>
-        <p class="text-xs text-slate-500 mb-3">1 week ago</p>
-        <p class="text-sm text-slate-700">
-          Very impressed with Paul's prompt and effective service – he got rid of everything, including the impossible.
-        </p>
-      </div>
+        btn.disabled = true;
+        btn.textContent = "Sending...";
 
-    </div>
+        try{
+          const formData = new FormData(form);
+          const res = await fetch(ENDPOINT, {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: formData
+          });
 
-    <div class="mt-10 text-center">
-      <a href="https://g.page/r/CVHd852c8gDQEAE/review"
-         class="inline-block px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-soft text-sm">
-        Read our Google reviews
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE FORM -->
-
-
-<!-- FOOTER -->
-<footer class="py-8 bg-slate-900 text-slate-300 text-sm">
-  <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-    <div>
-      <div class="font-semibold">The Carpet Cleaning Company</div>
-      <div class="text-xs text-slate-400">
-        Carpet and upholstery cleaning in Ludlow, Shropshire and nearby areas
-      </div>
-    </div>
-
-    <div class="text-xs text-slate-400">
-      © <span id="year"></span> The Carpet Cleaning Company. All rights reserved.
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-<!-- Floating WhatsApp and phone buttons -->
-<div class="floating-btn">
-  <a href="https://wa.me/447802563213" style="background:#25D366;">💬</a>
-  <a href="tel:07802563213" style="background:#1f7ef2;">📞</a>
-</div>
-
-<!-- SNOW SCRIPT -->
-<script>
-for (let i = 0; i < 30; i++) {
-  const snow = document.createElement("div");
-  snow.className = "snowflake";
-  snow.innerHTML = "❄";
-  snow.style.left = Math.random() * 100 + "vw";
-  snow.style.animationDuration = 6 + Math.random() * 8 + "s";
-  snow.style.opacity = Math.random();
-  document.body.appendChild(snow);
-}
-</script>
+          if(res.ok){
+            if(GOOGLE_CONVERSION_SEND_TO.indexOf("REPLACE_ME") === -1){
+              try { gtag("event", "conversion", { "send_to": GOOGLE_CONVERSION_SEND_TO }); } catch(_){}
+            }
+            showStatus(true, "Sent. We have received your request and will reply as soon as possible.");
+            form.reset();
+          } else {
+            let data = null;
+            try{ data = await res.json(); }catch(_){}
+            showStatus(false, (data && data.error) ? data.error : "Form not accepted. Check Formspree is active and the email is confirmed inside Formspree.");
+          }
+        } catch(err){
+          showStatus(false, "Blocked request or no connection. Try again without an ad blocker or privacy extension.");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Send my free quote";
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
