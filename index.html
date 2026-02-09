@@ -70,6 +70,19 @@
     }
 
     @keyframes fadeUp { 0% { opacity:0; transform: translateY(16px); } 100% { opacity:1; transform: translateY(0); } }
+    @keyframes popFloatIn {
+      0%   { opacity:0; transform: scale(.78) translateY(10px); filter: blur(6px); }
+      60%  { opacity:1; transform: scale(1.04) translateY(-2px); filter: blur(0); }
+      100% { opacity:1; transform: scale(1) translateY(0); }
+    }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+    @keyframes pulseRing {
+      0%   { opacity:0; transform: scale(.85); }
+      20%  { opacity:.9; }
+      70%  { opacity:0; transform: scale(1.22); }
+      100% { opacity:0; transform: scale(1.22); }
+    }
+
     [data-anim] { opacity: 0; transform: translateY(14px); }
     .is-ready [data-anim="hero-title"] { animation: fadeUp 800ms ease-out forwards; }
     .is-ready [data-anim="hero-copy"]  { animation: fadeUp 820ms ease-out 120ms forwards; }
@@ -78,28 +91,33 @@
     .is-ready [data-anim="hero-card"]  { animation: fadeUp 900ms ease-out 200ms forwards; }
     .in-view[data-anim="reveal"] { animation: fadeUp 750ms ease-out forwards; }
 
+    .badge-wrap { position: relative; display: inline-grid; place-items: center; }
+    .badge-wrap:before{
+      content:"";
+      position:absolute;
+      width: 120%;
+      height: 120%;
+      border-radius: 999px;
+      border: 2px solid rgba(16,185,129,.35);
+      opacity: 0;
+    }
+    .is-ready .badge-wrap:before{ animation: pulseRing 1.7s ease-out .55s 1; }
+    #satisfactionBadge { opacity: 0; transform: scale(.9) translateY(8px); }
+    .is-ready #satisfactionBadge{
+      opacity: 1;
+      animation: popFloatIn 900ms cubic-bezier(.2,.8,.2,1) forwards, floaty 4.6s ease-in-out 1.1s infinite;
+      transform-origin: 70% 30%;
+    }
+
     .step { display:none; }
     .step.is-active { display:block; }
 
     .bar { height: 10px; border-radius: 999px; background: rgba(15,23,42,.10); overflow: hidden; }
     .bar > span { display:block; height:100%; width:50%; border-radius:999px; background: linear-gradient(90deg, rgba(16,185,129,1), rgba(52,211,153,1)); transition: width .25s ease; }
 
-    .form-glow { position: relative; }
-    .form-glow:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 24px;
-      background: radial-gradient(800px 320px at 20% 0%, rgba(16,185,129,.22), transparent 55%),
-                  radial-gradient(650px 260px at 90% 35%, rgba(34,197,94,.18), transparent 55%);
-      filter: blur(10px);
-      opacity: .9;
-      z-index: 0;
-    }
-    .form-glow > * { position: relative; z-index: 1; }
-
     @media (prefers-reduced-motion: reduce) {
-      [data-anim] { opacity: 1 !important; transform: none !important; animation: none !important; }
+      [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .badge-wrap:before { display:none !important; }
       .shimmer:after { animation: none !important; }
       .bar > span { transition:none !important; }
     }
@@ -198,6 +216,10 @@
               <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span>
               <span>Wool and synthetic safe process</span>
             </div>
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span>
+              <span>5 star rated local service</span>
+            </div>
           </div>
 
           <div data-anim="hero-cta" class="mt-6 flex flex-wrap gap-3">
@@ -209,6 +231,7 @@
             </a>
           </div>
 
+          <!-- Reviews chips (LEFT of form) -->
           <div class="mt-7 grid gap-3 sm:grid-cols-2 max-w-xl">
             <a href="#reviews" class="group flex items-center gap-3 rounded-2xl bg-white/10 border border-white/15 px-4 py-3 lift">
               <span class="grid place-items-center h-10 w-10 rounded-xl bg-white">
@@ -225,7 +248,7 @@
               </div>
             </a>
 
-            <a href="#" class="group flex items-center gap-3 rounded-2xl bg-white/10 border border-white/15 px-4 py-3 lift">
+            <a href="#videos" class="group flex items-center gap-3 rounded-2xl bg-white/10 border border-white/15 px-4 py-3 lift">
               <span class="grid place-items-center h-10 w-10 rounded-xl bg-[#1877F2]">
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill="white" d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.7-1.6h1.8V4.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.6-4.6 4.7v1.9H7v3.2h2.9V22h3.6z"/>
@@ -239,145 +262,156 @@
           </div>
         </div>
 
+        <!-- RIGHT FORM -->
         <div class="lg:pt-2">
-          <div data-anim="hero-card" class="form-glow rounded-3xl">
-            <div class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift">
-              <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
-              <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
+          <div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift">
+            <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
+            <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
 
-              <div class="relative p-6 md:p-7">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <div class="text-xl font-extrabold">Instant Quote Request</div>
-                    <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
+            <div class="relative p-6 md:p-7">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="text-xl font-extrabold">Instant Quote Request</div>
+                  <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
+                </div>
+
+                <!-- 100% badge restored -->
+                <span class="badge-wrap">
+                  <img
+                    id="satisfactionBadge"
+                    src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/satisfaction_badge_transparent.png"
+                    alt="100% Satisfaction Guaranteed"
+                    class="h-20 w-20 sm:h-28 sm:w-28 object-contain drop-shadow-xl"
+                  />
+                </span>
+              </div>
+
+              <!-- KLARNA LINE (BOLD, EXACT STYLE ASKED) -->
+              <div class="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="min-w-0">
+                    <div class="text-sm font-extrabold text-emerald-900">
+                      Buy now, pay later with Klarna
+                    </div>
+                    <div class="text-xs font-semibold text-emerald-900/80 mt-0.5">
+                      Or spread the cost over three months
+                    </div>
                   </div>
-
-                  <span class="inline-flex items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-200 px-3 py-2">
-                    <span class="text-xs font-extrabold text-emerald-800">100% guarantee</span>
+                  <span class="shrink-0 inline-flex items-center justify-center rounded-xl bg-[#ffb3c7] px-3 py-2 text-sm font-extrabold text-slate-900 shadow-soft">
+                    Klarna
                   </span>
                 </div>
+              </div>
 
-                <!-- PAY WITH KLARNA (ON THE FORM, VISIBLE) -->
-                <div class="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3">
-                  <div class="flex items-center justify-between gap-3">
-                    <div class="min-w-0">
-                      <div class="text-sm font-extrabold text-emerald-900">Pay with Klarna</div>
-                      <div class="text-xs text-emerald-900/80 mt-0.5">Buy now, pay later. Spread the cost over 3 months.</div>
-                    </div>
-                    <span class="shrink-0 inline-flex items-center justify-center rounded-xl bg-[#ffb3c7] px-3 py-2 text-sm font-extrabold text-slate-900 shadow-soft">
-                      Klarna
-                    </span>
-                  </div>
+              <div class="mt-5 space-y-2">
+                <div class="flex items-center justify-between text-xs text-slate-600">
+                  <div class="font-bold">Step <span id="stepNum">1</span> of 2</div>
+                  <div class="font-semibold" id="stepHint">Property details</div>
                 </div>
+                <div class="bar"><span id="barFill"></span></div>
+              </div>
 
-                <div class="mt-5 space-y-2">
-                  <div class="flex items-center justify-between text-xs text-slate-600">
-                    <div class="font-bold">Step <span id="stepNum">1</span> of 2</div>
-                    <div class="font-semibold" id="stepHint">Property details</div>
-                  </div>
-                  <div class="bar"><span id="barFill"></span></div>
-                </div>
+              <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitMulti(this);">
 
-                <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitMulti(this);">
-
-                  <div id="step1" class="step is-active space-y-4">
-                    <div class="grid sm:grid-cols-2 gap-4">
-                      <label class="block">
-                        <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
-                        <input required name="postcode" autocomplete="postal-code"
-                          class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
-                          placeholder="e.g. SY8 1AA" />
-                      </label>
-
-                      <label class="block">
-                        <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
-                        <select name="areas"
-                          class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm">
-                          <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
-                        </select>
-                      </label>
-                    </div>
+                <!-- STEP 1 -->
+                <div id="step1" class="step is-active space-y-4">
+                  <div class="grid sm:grid-cols-2 gap-4">
+                    <label class="block">
+                      <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
+                      <input required name="postcode" autocomplete="postal-code"
+                        class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
+                        placeholder="e.g. SY8 1AA" />
+                    </label>
 
                     <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
-                      <select required name="service"
+                      <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
+                      <select name="areas"
                         class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm">
-                        <option value="" selected disabled>Select a service</option>
-                        <option>Carpet cleaning</option>
-                        <option>Upholstery cleaning</option>
-                        <option>Carpets and upholstery</option>
-                        <option>Commercial cleaning</option>
+                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
                       </select>
                     </label>
+                  </div>
 
+                  <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
+                    <select required name="service"
+                      class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm">
+                      <option value="" selected disabled>Select a service</option>
+                      <option>Carpet cleaning</option>
+                      <option>Upholstery cleaning</option>
+                      <option>Carpets and upholstery</option>
+                      <option>Commercial cleaning</option>
+                    </select>
+                  </label>
+
+                  <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">Anything we should know</span>
+                    <textarea name="notes" rows="3"
+                      class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
+                      placeholder="Stains, pets, parking, access, ideal days"></textarea>
+                  </label>
+
+                  <button type="button" onclick="goStep(2)"
+                    class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
+                    Continue
+                  </button>
+
+                  <p class="text-xs text-slate-500 text-center">Next step: contact details</p>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="step2" class="step space-y-4">
+                  <div class="rounded-2xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm">
+                    <div class="font-extrabold text-emerald-900">Fair price promise</div>
+                    <div class="text-emerald-900/80 mt-1">The price is agreed up front and stays the same on the day.</div>
+                  </div>
+
+                  <div class="grid sm:grid-cols-2 gap-4">
                     <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Anything we should know</span>
-                      <textarea name="notes" rows="3"
+                      <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
+                      <input required name="name" autocomplete="name"
                         class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
-                        placeholder="Stains, pets, parking, access, ideal days"></textarea>
+                        placeholder="Your name" />
                     </label>
 
-                    <button type="button" onclick="goStep(2)"
-                      class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
-                      Continue
+                    <label class="block">
+                      <span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span>
+                      <input required name="phone" inputmode="tel" autocomplete="tel"
+                        class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
+                        placeholder="07..." />
+                    </label>
+                  </div>
+
+                  <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">Email</span>
+                    <input name="email" type="email" autocomplete="email"
+                      class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
+                      placeholder="you@example.com" />
+                  </label>
+
+                  <label class="flex items-start gap-3 text-xs text-slate-600">
+                    <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-400" />
+                    <span>I agree to be contacted about this request</span>
+                  </label>
+
+                  <div class="flex gap-3">
+                    <button type="button" onclick="goStep(1)"
+                      class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-extrabold text-slate-900 lift">
+                      Back
                     </button>
 
-                    <p class="text-xs text-slate-500 text-center">Next step: contact details</p>
+                    <button type="submit"
+                      class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
+                      Send request
+                    </button>
                   </div>
 
-                  <div id="step2" class="step space-y-4">
-                    <div class="rounded-2xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm">
-                      <div class="font-extrabold text-slate-900">Fair price promise</div>
-                      <div class="text-slate-700 mt-1">The price is agreed up front and stays the same on the day.</div>
-                    </div>
+                  <p class="text-xs text-slate-500 text-center">
+                    We will contact you from 07802 563213. No obligation.
+                  </p>
+                </div>
 
-                    <div class="grid sm:grid-cols-2 gap-4">
-                      <label class="block">
-                        <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
-                        <input required name="name" autocomplete="name"
-                          class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
-                          placeholder="Your name" />
-                      </label>
-
-                      <label class="block">
-                        <span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span>
-                        <input required name="phone" inputmode="tel" autocomplete="tel"
-                          class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
-                          placeholder="07..." />
-                      </label>
-                    </div>
-
-                    <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Email</span>
-                      <input name="email" type="email" autocomplete="email"
-                        class="premium-field mt-1 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm bg-white shadow-sm"
-                        placeholder="you@example.com" />
-                    </label>
-
-                    <label class="flex items-start gap-3 text-xs text-slate-600">
-                      <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-400" />
-                      <span>I agree to be contacted about this request</span>
-                    </label>
-
-                    <div class="flex gap-3">
-                      <button type="button" onclick="goStep(1)"
-                        class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-extrabold text-slate-900 lift">
-                        Back
-                      </button>
-
-                      <button type="submit"
-                        class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
-                        Send request
-                      </button>
-                    </div>
-
-                    <p class="text-xs text-slate-500 text-center">
-                      We will contact you from 07802 563213. No obligation.
-                    </p>
-                  </div>
-
-                </form>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -386,12 +420,29 @@
     </div>
   </section>
 
+  <!-- HOW WE CLEAN -->
   <section class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <h2 data-anim="reveal" class="text-3xl font-extrabold">How the clean works</h2>
       <p data-anim="reveal" class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
         A simple method used in homes and workplaces so you know what to expect on the day.
       </p>
+
+      <!-- Klarna strip (near How it works, as requested earlier) -->
+      <div data-anim="reveal" class="mt-6 rounded-3xl border border-emerald-200 bg-emerald-50 px-6 py-5 shadow-soft lift">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <div class="text-lg font-extrabold text-emerald-900">Buy now, pay later with Klarna</div>
+            <div class="text-sm font-semibold text-emerald-900/80 mt-1">Or spread the cost over three months</div>
+          </div>
+          <div class="inline-flex items-center gap-3">
+            <span class="inline-flex items-center justify-center rounded-2xl bg-[#ffb3c7] px-4 py-2 text-base font-extrabold text-slate-900 shadow-soft">Klarna</span>
+            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 text-sm font-extrabold lift shimmer">
+              Get my quote
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <div data-anim="reveal" class="bg-slate-50 rounded-2xl border border-slate-200 shadow-soft p-6 lift">
@@ -421,6 +472,7 @@
     </div>
   </section>
 
+  <!-- GUARANTEE -->
   <section id="guarantee" class="py-12 bg-emerald-50 text-slate-900">
     <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-3 gap-8 items-center">
       <div class="md:col-span-2">
@@ -440,6 +492,188 @@
     </div>
   </section>
 
+  <!-- REVIEWS (GOOGLE) -->
+  <section id="reviews" class="py-14 bg-white text-slate-900">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <div data-anim="reveal" class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">
+            Google Reviews
+          </div>
+          <h2 data-anim="reveal" class="mt-3 text-3xl font-extrabold">Rated 5 stars by local customers</h2>
+          <p data-anim="reveal" class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
+            Real feedback from carpet and upholstery cleans across Ludlow, Shrewsbury and nearby areas.
+          </p>
+        </div>
+
+        <div data-anim="reveal" class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto lift">
+          <div class="flex items-center gap-3">
+            <div class="text-3xl font-extrabold">5.0</div>
+            <div>
+              <div class="text-amber-500 text-sm leading-none">★★★★★</div>
+              <div class="text-xs text-slate-500 mt-1">Based on Google reviews</div>
+            </div>
+          </div>
+
+          <div class="mt-3 flex gap-2">
+            <a
+              href="https://share.google/6SsMDsVIxstP2tIUv"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer"
+            >
+              Read all reviews
+            </a>
+
+            <a
+              href="https://share.google/6SsMDsVIxstP2tIUv/review"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-100 px-4 py-2 text-xs font-bold lift"
+            >
+              Leave a review
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">Carolyn Mills</div>
+              <div class="text-xs text-slate-500 mt-0.5">3 days ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Paul did a super job. Very thorough, moved all the furniture, left no stone unturned. Deserves the five stars.
+          </blockquote>
+        </figure>
+
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">E Stock</div>
+              <div class="text-xs text-slate-500 mt-0.5">3 weeks ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Lovely chap. Definitely recommend the deep clean. Worth the small amount extra for a job excellently done.
+          </blockquote>
+        </figure>
+
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">Kim Nicholas</div>
+              <div class="text-xs text-slate-500 mt-0.5">3 weeks ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Short notice clean and Paul was courteous and efficient. Rug and carpet look brand new. Really happy with the results.
+          </blockquote>
+        </figure>
+
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">Suzanne Powell</div>
+              <div class="text-xs text-slate-500 mt-0.5">3 months ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Superb service from start to finish. On time, polite and hardworking. Everything looks brand new. Highly recommended.
+          </blockquote>
+        </figure>
+
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">James Wilson</div>
+              <div class="text-xs text-slate-500 mt-0.5">4 months ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Removed all the stains and left the carpets looking like new. Polite and professional throughout. Definitely recommend.
+          </blockquote>
+        </figure>
+
+        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold">Patrick Maslin</div>
+              <div class="text-xs text-slate-500 mt-0.5">5 months ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <blockquote class="mt-3 text-sm text-slate-700">
+            Fantastic service. On time, friendly and great value. Carpets cleaned to a high professional standard and look amazing.
+          </blockquote>
+        </figure>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a
+          href="https://share.google/6SsMDsVIxstP2tIUv"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer"
+        >
+          Read more Google reviews
+        </a>
+        <a
+          href="#heroQuoteForm"
+          class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 text-sm font-extrabold lift"
+        >
+          Get a fixed price quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACEBOOK VIDEOS (3 videos kept) -->
+  <section id="videos" class="py-14 bg-white text-slate-900">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 data-anim="reveal" class="text-3xl font-extrabold">Watch the results</h2>
+      <p data-anim="reveal" class="mt-2 text-slate-600">A recent clean in action.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1899520797292791%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1162016885802464%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1362198414861523%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="py-10 bg-ink-900 border-t border-white/10">
     <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
       <div class="text-slate-200">
@@ -452,6 +686,7 @@
     </div>
   </footer>
 
+  <!-- FLOATING WHATSAPP + PHONE (kept) -->
   <div class="fixed bottom-4 right-4 z-[60] flex flex-col gap-3">
     <a href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please.%0AMy%20postcode%3A%20____%0AWhat%20needs%20cleaning%3A%20____" target="_blank" rel="noopener"
       class="h-14 w-14 rounded-full shadow-card bg-[#25D366] grid place-items-center text-white text-2xl lift"
@@ -490,13 +725,6 @@
       window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
       window.addEventListener("click", tryPlay, { once: true, passive: true });
     })();
-
-    function focusHeroForm() {
-      const first = document.querySelector("#heroQuoteForm input, #heroQuoteForm textarea, #heroQuoteForm select");
-      if (!first) return;
-      first.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => { first.focus({ preventScroll: true }); }, 250);
-    }
 
     function goStep(n){
       const s1 = document.getElementById("step1");
