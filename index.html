@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -123,31 +122,51 @@
   </style>
 
   <script>
-    // Always start at the top on mobile (WhatsApp/Safari restore + hash jump)
     (function () {
       try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
 
-      function hardTop() {
+      function clearHash() {
         if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+      }
+
+      function hardTop() {
+        clearHash();
         window.scrollTo(0, 0);
+        requestAnimationFrame(() => window.scrollTo(0, 0));
         setTimeout(() => window.scrollTo(0, 0), 50);
         setTimeout(() => window.scrollTo(0, 0), 200);
       }
 
+      hardTop();
+
       window.addEventListener("load", hardTop);
-      window.addEventListener("pageshow", function (e) { if (e.persisted) hardTop(); });
+      window.addEventListener("pageshow", function (e) {
+        if (e.persisted) hardTop();
+        setTimeout(hardTop, 0);
+      });
+
+      document.addEventListener("click", function (e) {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+
+        const id = a.getAttribute("href").slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(clearHash, 10);
+      }, { passive: false });
     })();
   </script>
 </head>
 
 <body class="bg-ink-900 text-slate-100">
 
-  <!-- subtle film grain -->
   <div class="pointer-events-none fixed inset-0 z-[1] opacity-[0.06] mix-blend-overlay"
        style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.25%22/%3E%3C/svg%3E');">
   </div>
 
-  <!-- TOP BAR (thinner) -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 glass border-b border-emerald-800/35">
     <div class="mx-auto max-w-6xl px-4 py-2.5 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
@@ -174,7 +193,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="relative pt-24 md:pt-28 pb-14 md:pb-20 overflow-hidden">
     <div class="absolute inset-0">
       <video
@@ -197,7 +215,6 @@
 
     <div class="relative mx-auto max-w-6xl px-4">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
-        <!-- LEFT COPY -->
         <div class="pt-2">
           <h1 data-anim="hero-title" class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
             Carpet and Upholstery Cleaning
@@ -242,10 +259,8 @@
           </div>
         </div>
 
-        <!-- RIGHT AREA -->
         <div class="lg:pt-2">
 
-          <!-- WHITE REVIEW CARDS (stand out more) -->
           <div class="mb-4 grid sm:grid-cols-2 gap-3">
             <div class="rounded-2xl bg-white text-slate-900 border border-white/60 shadow-soft px-4 py-3 lift">
               <div class="flex items-center justify-between gap-3">
@@ -253,12 +268,12 @@
                   <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-900 font-extrabold">G</span>
                   <div>
                     <div class="text-sm font-extrabold">Google</div>
-                    <div class="text-xs text-slate-600">31 five star reviews</div>
+                    <div class="text-xs text-slate-600"><span id="googleReviewCount">31</span> five star reviews</div>
                   </div>
                 </div>
                 <div class="text-right">
                   <div class="text-amber-500 text-lg leading-none">★★★★★</div>
-                  <div class="text-xs text-slate-600 font-semibold">5.0 rating</div>
+                  <div class="text-xs text-slate-600 font-semibold"><span id="googleRating">5.0</span> rating</div>
                 </div>
               </div>
             </div>
@@ -280,7 +295,6 @@
             </div>
           </div>
 
-          <!-- FORM CARD -->
           <div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift">
             <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
             <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
@@ -302,7 +316,6 @@
                 </span>
               </div>
 
-              <!-- Klarna (visible) -->
               <div class="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 lift">
                 <div class="flex items-center justify-between gap-3">
                   <div>
@@ -315,7 +328,6 @@
                 </div>
               </div>
 
-              <!-- Two step form -->
               <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitStep2(this);">
                 <div class="flex items-center justify-between">
                   <div class="text-xs font-semibold text-slate-500">Step <span id="stepNum">1</span> of 2</div>
@@ -325,7 +337,6 @@
                   </div>
                 </div>
 
-                <!-- STEP 1 -->
                 <div id="step1" class="mt-4 space-y-4">
                   <label class="block">
                     <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
@@ -374,7 +385,6 @@
                   <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
                 </div>
 
-                <!-- STEP 2 -->
                 <div id="step2" class="mt-4 space-y-4 step-hidden">
                   <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm lift">
                     <div class="font-extrabold text-slate-900">Almost done</div>
@@ -426,12 +436,11 @@
             </div>
           </div>
 
-          <!-- Slim star strip under the card (kept, but not massive) -->
           <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm">
             <div class="rounded-full bg-white/10 border border-white/15 px-5 py-2 lift">
               <span class="font-extrabold text-white">Google</span>
               <span class="mx-2 text-amber-400 text-lg align-middle">★★★★★</span>
-              <span class="text-slate-200/90 font-semibold">31 five star reviews</span>
+              <span class="text-slate-200/90 font-semibold"><span id="googleReviewCountStrip">31</span> five star reviews</span>
             </div>
             <div class="rounded-full bg-white/10 border border-white/15 px-5 py-2 lift">
               <span class="font-extrabold text-white">Facebook</span>
@@ -445,7 +454,6 @@
     </div>
   </section>
 
-  <!-- HOW WE CLEAN -->
   <section class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <h2 data-anim="reveal" class="text-3xl font-extrabold">How the clean works</h2>
@@ -453,7 +461,6 @@
         A simple method used in homes and workplaces so you know what to expect on the day.
       </p>
 
-      <!-- 120 degrees emphasis -->
       <div data-anim="reveal" class="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 shadow-soft lift">
         <div class="text-xs font-semibold text-emerald-700 uppercase">Best results</div>
         <div class="mt-1 text-lg font-extrabold text-emerald-950">Steam cleaning up to 120 degrees</div>
@@ -488,7 +495,6 @@
     </div>
   </section>
 
-  <!-- GUARANTEE -->
   <section id="guarantee" class="py-12 bg-emerald-50 text-slate-900">
     <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-3 gap-8 items-center">
       <div class="md:col-span-2">
@@ -508,7 +514,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS (GOOGLE) -->
   <section id="reviews" class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -524,10 +529,10 @@
 
         <div data-anim="reveal" class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto lift">
           <div class="flex items-center gap-3">
-            <div class="text-3xl font-extrabold">5.0</div>
+            <div class="text-3xl font-extrabold" id="googleRatingBig">5.0</div>
             <div>
               <div class="text-amber-500 text-sm leading-none">★★★★★</div>
-              <div class="text-xs text-slate-500 mt-1">31 five star Google reviews</div>
+              <div class="text-xs text-slate-500 mt-1"><span id="googleReviewCountMid">31</span> five star Google reviews</div>
             </div>
           </div>
 
@@ -652,7 +657,6 @@
     </div>
   </section>
 
-  <!-- FACEBOOK VIDEOS -->
   <section class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <h2 data-anim="reveal" class="text-3xl font-extrabold">Watch the results</h2>
@@ -689,7 +693,6 @@
     </div>
   </section>
 
-  <!-- QUOTE CTA SECTION -->
   <section id="quote" class="py-14 bg-ink-900">
     <div class="mx-auto max-w-6xl px-4">
       <div data-anim="reveal" class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8 lift">
@@ -713,7 +716,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="py-10 bg-ink-900 border-t border-white/10">
     <div class="mx-auto max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
       <div class="text-slate-200">
@@ -726,7 +728,6 @@
     </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP + PHONE (BOTTOM RIGHT) -->
   <div class="fixed bottom-4 right-4 z-[90] flex flex-col gap-3">
     <a
       href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please.%0AMy%20postcode%3A%20____%0AWhat%20needs%20cleaning%3A%20____"
@@ -802,7 +803,6 @@
       window.addEventListener("click", tryPlay, { once: true, passive: true });
     })();
 
-    // Two-step form
     function setStep(n) {
       const s1 = document.getElementById("step1");
       const s2 = document.getElementById("step2");
@@ -862,7 +862,38 @@
         setStep(1);
       }, 700);
     }
+
+    // Optional: live Google review count (needs your own backend endpoint)
+    // This will call /api/google-rating and update the numbers if it returns JSON like:
+    // { "rating": 5.0, "user_ratings_total": 31 }
+    async function refreshGoogleCounts() {
+      try {
+        const res = await fetch("/api/google-rating", { cache: "no-store" });
+        if (!res.ok) return;
+        const data = await res.json();
+
+        const count = Number(data.user_ratings_total);
+        const rating = Number(data.rating);
+
+        if (Number.isFinite(count)) {
+          const ids = ["googleReviewCount", "googleReviewCountStrip", "googleReviewCountMid"];
+          ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = String(count);
+          });
+        }
+        if (Number.isFinite(rating)) {
+          const ids = ["googleRating", "googleRatingBig"];
+          ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = rating.toFixed(1);
+          });
+        }
+      } catch (e) {}
+    }
+
+    // If you build the endpoint, turn this on
+    // window.addEventListener("load", refreshGoogleCounts);
   </script>
 </body>
 </html>
-```
