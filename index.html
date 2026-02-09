@@ -1,4 +1,4 @@
-Can you put this on the bottom of the screen and make it sort of stay at the bottom, almost like it's sort of floating at the bottom of the screen, and then when you click on that as a floating sort of link, it takes you to my reviews. Can you, is that impossible to do that?  <!doctype html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
@@ -243,7 +243,7 @@ Can you put this on the bottom of the screen and make it sort of stay at the bot
 
         <!-- RIGHT AREA -->
         <div class="lg:pt-2">
-          <!-- REVIEW BADGES (left of the form area, not huge boxes) -->
+          <!-- REVIEW BADGES (above the form, not huge boxes) -->
           <div class="mb-4 grid sm:grid-cols-2 gap-3">
             <!-- Google -->
             <div class="rounded-2xl bg-white/10 border border-white/15 px-4 py-3 lift">
@@ -289,9 +289,7 @@ Can you put this on the bottom of the screen and make it sort of stay at the bot
               <div class="flex items-start justify-between gap-4">
                 <div>
                   <div class="text-xl font-extrabold">Instant Quote Request</div>
-                  <p class="mt-1 text-sm text-slate-600">
-                    Fast fixed price quote and earliest available dates
-                  </p>
+                  <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
                 </div>
 
                 <!-- 100% badge -->
@@ -359,9 +357,7 @@ Can you put this on the bottom of the screen and make it sort of stay at the bot
 
                   <div class="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm lift">
                     <div class="font-extrabold text-emerald-900">Fair price promise</div>
-                    <div class="text-emerald-900/80 mt-1">
-                      The price is agreed up front and stays the same on the day
-                    </div>
+                    <div class="text-emerald-900/80 mt-1">The price is agreed up front and stays the same on the day</div>
                   </div>
 
                   <label class="block">
@@ -437,7 +433,7 @@ Can you put this on the bottom of the screen and make it sort of stay at the bot
             </div>
           </div>
 
-          <!-- Bigger, prettier star strip under the card (still visible) -->
+          <!-- Bigger, prettier star strip under the card -->
           <div class="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm">
             <div class="rounded-full bg-white/10 border border-white/15 px-5 py-2.5 lift">
               <span class="font-extrabold text-white">Google</span>
@@ -738,6 +734,26 @@ Can you put this on the bottom of the screen and make it sort of stay at the bot
   >
     Get a fast quote
   </button>
+
+  <!-- FLOATING GOOGLE REVIEWS PILL (click opens reviews link) -->
+  <a
+    href="https://share.google/6SsMDsVIxstP2tIUv"
+    target="_blank"
+    rel="noopener"
+    class="fixed bottom-4 left-4 z-[999] flex items-center gap-3 rounded-2xl bg-white text-slate-900 border border-slate-200 shadow-xl px-4 py-2.5 hover:scale-[1.02] transition"
+    style="padding-bottom: calc(0.625rem + env(safe-area-inset-bottom));"
+    aria-label="Open Google reviews"
+  >
+    <div class="h-9 w-9 rounded-xl bg-white grid place-items-center border border-slate-200 font-extrabold">G</div>
+    <div class="leading-tight">
+      <div class="flex items-center gap-1">
+        <span class="text-sm font-extrabold">5.0</span>
+        <span class="text-amber-500 text-base leading-none">★★★★★</span>
+      </div>
+      <div class="text-xs text-slate-600 font-semibold">31 Google reviews</div>
+    </div>
+    <div class="ml-1 text-slate-400 text-lg">›</div>
+  </a>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
