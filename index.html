@@ -794,80 +794,200 @@
     }
 
     // ===== YOUR REAL REVIEWS (replace / add more here) =====
-    const REVIEWS = [
-      {
-        name: "Diana Roach",
-        when: "2 weeks ago",
-        stars: 5,
-        text: "Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!"
-      },
-      {
-        name: "Carolyn Mills",
-        when: "a week ago",
-        stars: 5,
-        text: "Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars."
-      },
-      {
-        name: "kerrie glanville",
-        when: "2 months ago",
-        stars: 5,
-        text: "Paul visited me today 3/12/25.. did an absolute fantastic job on my stairs. They smell so fresh and look clean making my house feel cleaner! There is also a stain that he magically got out of my kids rooms that has been there years and …More"
-      },
-      {
-        name: "jac P",
-        when: "3 months ago",
-        stars: 5,
-        text: "Had my carpets cleaned by Paul a few days ago. I was reassured through out the whole process. Paul was punctual, polite and very knowledgeable as I asked about the products and equipment he used. My carpets look amazing 👏. Paul is a genuine professional and nice guy. I have recommended him to colleagues. Great experience from start to finish 👌"
-      },
-      {
-        name: "suzanne powell",
-        when: "3 months ago",
-        stars: 5,
-        text: "Had Paul over today to clean my large sofa. Lounge, stairs, landing and bedroom carpet. Superb service from start to finish. On time, polite and hardworking. Everything looks brand new!! Was thinking of having a new carpet, but so glad I contacted Paul, he's saved me a fortune!! Highly recommended and superb service."
-      },
-      {
-        name: "Eluned Harrison",
-        when: "a month ago",
-        stars: 5,
-        text: "Great job done on our Lime green sofas this week, all stains gone and looking so much better and brighter. Paul took great care with the fabric and in ensuring I was happy with everything before leaving. Would highly recommend."
-      },
-      {
-        name: "Patrick Maslin",
-        when: "5 months ago",
-        stars: 5,
-        text: "Paul provided a fantastic service. He was polite, friendly, on time and he worked quickly and efficiently. It was great value for money. My carpets were cleaned to a high professional standard and look amazing so clean and bright. I highly recommend the Carpet Cleaning Company."
-      },
-      {
-        name: "jenna Hamar",
-        when: "2 months ago",
-        stars: 5,
-        text: "Paul cleaned all the carpets in my holiday let on Thursday and did a fantastic job, carpets spotless and fresh smelling. Excellent service, explains the process and quotes a price before doing the job. Would highly recommend."
-      },
-      {
-        name: "James Wilson",
-        when: "4 months ago",
-        stars: 5,
-        text: "I had my carpets cleaned by The Carpet Cleaning Company in Shrewsbury, and I’m really pleased with the results. Paul did an excellent job — he managed to remove all the stains and left the carpets looking like new. He was also very polite and professional throughout. I’d definitely recommend this company!"
-      },
-      {
-        name: "David Beardsall",
-        when: "3 months ago",
-        stars: 5,
-        text: "Paul did a very thorough job and worked hard to fit around our schedule. We had moved into a house with some old and stained carpets so we had low expectations but Paul's excellent work made them look so much better. He went above and beyond with every detail, staying late to make sure he got rid of every stain. Would highly recommend his work"
-      },
-      {
-        name: "JANE WOOD",
-        when: "3 months ago",
-        stars: 5,
-        text: "Wouldn’t highly recommend this company Paul was professional throughout his visit, he was punctual, he explained the process and the products he would use to achieve the best results as a hygienic clean was required. The results were fantastic, I would highly recommend this company, I am extremely impressed and pleased. Thanks Paul."
-      },
-      {
-        name: "Anne Douthwaite",
-        when: "5 hours ago",
-        stars: 5,
-        text: "Excellent service. Can highly recommend! Two rugs cleaned and they look brand new again! Very reasonably priced and will definitely use again. Thank you!"
-      }
-    ];
+   const REVIEWS = [
+  {
+    name: "Diana Roach",
+    when: "2 weeks ago",
+    stars: 5,
+    text: "Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!"
+  },
+  {
+    name: "Carolyn Mills",
+    when: "a week ago",
+    stars: 5,
+    text: "Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars."
+  },
+  {
+    name: "kerrie glanville",
+    when: "2 months ago",
+    stars: 5,
+    text: "Paul visited me today 3/12/25.. did an absolute fantastic job on my stairs. They smell so fresh and look clean making my house feel cleaner! There is also a stain that he magically got out of my kids rooms that has been there years and …More"
+  },
+  {
+    name: "jac P",
+    when: "3 months ago",
+    stars: 5,
+    text: "Had my carpets cleaned by Paul a few days ago. I was reassured through out the whole process. Paul was punctual, polite and very knowledgeable as I asked about the products and equipment he used. My carpets look amazing 👏. Paul is a genuine professional and nice guy. I have recommended him to colleagues. Great experience from start to finish 👌"
+  },
+  {
+    name: "suzanne powell",
+    when: "3 months ago",
+    stars: 5,
+    text: "Had Paul over today to clean my large sofa. Lounge, stairs, landing and bedroom carpet. Superb service from start to finish. On time, polite and hardworking. Everything looks brand new!! Was thinking of having a new carpet, but so glad I contacted Paul, he's saved me a fortune!! Highly recommended and superb service."
+  },
+  {
+    name: "Eluned Harrison",
+    when: "a month ago",
+    stars: 5,
+    text: "Great job done on our Lime green sofas this week, all stains gone and looking so much better and brighter. Paul took great care with the fabric and in ensuring I was happy with everything before leaving. Would highly recommend."
+  },
+  {
+    name: "Patrick Maslin",
+    when: "5 months ago",
+    stars: 5,
+    text: "Paul provided a fantastic service. He was polite, friendly, on time and he worked quickly and efficiently. It was great value for money. My carpets were cleaned to a high professional standard and look amazing-so clean and bright. I highly recommend the Carpet Cleaning Company."
+  },
+  {
+    name: "jenna Hamar",
+    when: "2 months ago",
+    stars: 5,
+    text: "Paul cleaned all the carpets in my holiday let on Thursday and did a fantastic job, carpets spotless and fresh smelling. Excellent service, explains the process and quotes a price before doing the job. Would highly recommend."
+  },
+  {
+    name: "James Wilson",
+    when: "4 months ago",
+    stars: 5,
+    text: "I had my carpets cleaned by The Carpet Cleaning Company in Shrewsbury, and I’m really pleased with the results. Paul did an excellent job — he managed to remove all the stains and left the carpets looking like new. He was also very polite and professional throughout. I’d definitely recommend this company!"
+  },
+  {
+    name: "David Beardsall",
+    when: "3 months ago",
+    stars: 5,
+    text: "Paul did a very thorough job and worked hard to fit around our schedule. We had moved into a house with some old and stained carpets so we had low expectations but Paul's excellent work made them look so much better. He went above and beyond with every detail, staying late to make sure he got rid of every stain. Would highly recommend his work"
+  },
+  {
+    name: "kim nicholas",
+    when: "a month ago",
+    stars: 5,
+    text: "I had the carpet cleaning company come today at short notice . Paul was courteous and efficient and made my rug and carpet look brand new. Really happy with the results."
+  },
+  {
+    name: "Harry Hancock Davies",
+    when: "5 months ago",
+    stars: 5,
+    text: "Paul did an excellent job on our carpets throughout our house. We had multiple stains caused by our pets and such stains were deeply engrained into our carpet as they had been there for some time. When Paul finished the carpet was like …More"
+  },
+  {
+    name: "Chris Atherton",
+    when: "4 months ago",
+    stars: 5,
+    text: "Paul was friendly, professional and efficient. He went above and beyond to make sure that the finished result was perfect. We couldn’t be more pleased, the carpet looks like new. We will definitely be happy to have Paul back again when needed."
+  },
+  {
+    name: "Gourmet Vanilla",
+    when: "3 months ago",
+    stars: 5,
+    text: "Paul from the Carpet Cleaning Company has just finished dry cleaning our big sofa and two armchairs in Ludlow. He’s done a brilliant job, what an improvement! Paul was a pleasure to deal with. Thank you!"
+  },
+  {
+    name: "JANE WOOD",
+    when: "3 months ago",
+    stars: 5,
+    text: "Wouldn’t highly recommend this company Paul was professional throughout his visit, he was punctual, he explained the process and the products he would use to achieve the best results as a hygienic clean was required. The results were fantastic, I would highly recommend this company, I am extremely impressed and pleased. Thanks Paul."
+  },
+  {
+    name: "Alison Benbow",
+    when: "a month ago",
+    stars: 5,
+    text: "Paul tackled our farmhouse with enthusiasm , expertise and bags of energy for our big rooms . He has top quality machines and solutions and what a difference it has made . Thank you"
+  },
+  {
+    name: "Ellie may darkes (ellie)",
+    when: "4 months ago",
+    stars: 5,
+    text: "Came in and cleaned my carpets, did a fantastic job carpets look brand new I highly recommend! Thank you Paul"
+  },
+  {
+    name: "idris thomas",
+    when: "5 months ago",
+    stars: 5,
+    text: "Paul arrived today and cleaned three bedroom carpets, did a fantastic job would recommend.."
+  },
+  {
+    name: "E Stock",
+    when: "a month ago",
+    stars: 5,
+    text: "Lovely chap - definitely recommend the deep clean! Worth the small amount extra for a job excellently done. High end equipment and professional service. Highly recommend 😊"
+  },
+  {
+    name: "Ross Doodson",
+    when: "a month ago",
+    stars: 5,
+    text: "Superb and efficient service from start to finish. I thoroughly recommend Paul. A professional, trustworthy and high effective service. Thank you very much indeed!"
+  },
+  {
+    name: "Jonathan O’Rourke",
+    when: "7 months ago",
+    stars: 5,
+    text: "Amazing service provided and will definitely be using again. My carpets and sofa look brand new for a very reasonable price. Can’t recommend enough."
+  },
+  {
+    name: "Bodhi Hughes",
+    when: "4 months ago",
+    stars: 5,
+    text: "The carpet cleaning company are true professionals. My expectations with what could be done with my carpets was far exceeded. Thank you so much"
+  },
+  {
+    name: "Donna Jones",
+    when: "a month ago",
+    stars: 5,
+    text: "Absolutely amazing service carried out by Paul!\n\nPaul carried out a carpet clean at Shrewsbury and done a amazing job!!"
+  },
+  {
+    name: "Melanie Riches",
+    when: "3 months ago",
+    stars: 5,
+    text: "Very trustworthy, professional and reliable service. Would highly recommend, carpet and sofa came up as as new."
+  },
+  {
+    name: "Jenny James",
+    when: "2 months ago",
+    stars: 5,
+    text: "Very impressed with Paul's prompt and effective service - he got rid of everything including the impossible!"
+  },
+  {
+    name: "Robin Nicholas",
+    when: "8 months ago",
+    stars: 5,
+    text: "Saved a fortune, was going to get new carpets until a friend in Ludlow recommended this company. The carpets are like new. An excellent Company."
+  },
+  {
+    name: "Caroline Martin",
+    when: "8 months ago",
+    stars: 5,
+    text: "So happy with this company; Paul is chatty and approachable, knows his business very well and does a thorough job for a very reasonable price. No hesitation in recommending him."
+  },
+  {
+    name: "Christine Bourne",
+    when: "7 months ago",
+    stars: 5,
+    text: "An excellent job carried out very professionally. Really pleased with three piece suite and carpets. Ludlow should be proud of it’s trades people."
+  },
+  {
+    name: "Victor Munsanje",
+    when: "6 months ago",
+    stars: 5,
+    text: "Excellent service, will definitely hire them again. If you are looking for a professional service, honest and sincere, you are here."
+  },
+  {
+    name: "carol rowley",
+    when: "4 months ago",
+    stars: 5,
+    text: "Efficient,friendly and carpet looks new again. Would definitely recommend 👌"
+  },
+  {
+    name: "Chris Jennings",
+    when: "4 months ago",
+    stars: 5,
+    text: "Very good service from start to finish, would highly recommend."
+  },
+  {
+    name: "Anne Douthwaite",
+    when: "5 hours ago",
+    stars: 5,
+    text: "Excellent service. Can highly recommend! Two rugs cleaned and they look brand new again! Very reasonably priced and will definitely use again. Thank you!"
+  }
+];
 
     function starString(n){
       const r = Math.max(0, Math.min(5, Math.round(Number(n) || 0)));
