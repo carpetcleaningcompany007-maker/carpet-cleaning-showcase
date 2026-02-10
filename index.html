@@ -310,112 +310,128 @@
               </div>
 
               <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitStep2(this);">
-                <div class="flex items-center justify-between">
-                  <div class="text-xs font-semibold text-slate-500">Step <span id="stepNum">1</span> of 2</div>
-                  <div class="flex items-center gap-2">
-                    <span id="dot1" class="step-dot on"></span>
-                    <span id="dot2" class="step-dot"></span>
-                  </div>
-                </div>
 
-                <div id="step1" class="mt-4 space-y-4">
-                  <label class="block">
-                    <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
-                    <input required name="postcode" autocomplete="postal-code"
-                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
-                      placeholder="e.g. SY8 1AA" />
-                  </label>
+  <!-- NEW: proper two page header -->
+  <div class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 border border-emerald-200 px-3 py-1 text-xs font-extrabold text-emerald-900">
+          Quick quote form
+        </div>
+        <div class="text-xs text-slate-500">Takes 30 seconds</div>
+      </div>
 
-                  <label class="block">
-                    <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
-                    <select required name="service"
-                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
-                      <option value="" selected disabled>Select a service</option>
-                      <option>Carpet cleaning</option>
-                      <option>Upholstery cleaning</option>
-                      <option>Carpets and upholstery</option>
-                      <option>Commercial cleaning</option>
-                    </select>
-                  </label>
+      <div class="flex items-center gap-2">
+        <div id="tab1" class="rounded-xl bg-white border border-slate-200 px-3 py-1.5 text-xs font-extrabold text-slate-900">
+          Page 1
+        </div>
+        <div id="tab2" class="rounded-xl bg-white/60 border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-500">
+          Page 2
+        </div>
+      </div>
+    </div>
 
-                  <label class="block">
-                    <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
-                    <select name="areas"
-                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
-                      <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
-                    </select>
-                  </label>
+    <div class="mt-3 h-2 w-full rounded-full bg-slate-200 overflow-hidden">
+      <div id="progressBar" class="h-full w-1/2 bg-emerald-500 rounded-full"></div>
+    </div>
+  </div>
 
-                  <div class="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm lift">
-                    <div class="font-extrabold text-emerald-900">Fair price promise</div>
-                    <div class="text-emerald-900/80 mt-1">The price is agreed up front and stays the same on the day</div>
-                  </div>
+  <div id="step1" class="mt-4 space-y-4">
 
-                  <label class="block">
-                    <span class="text-sm font-semibold text-slate-700">Anything we should know</span>
-                    <textarea name="notes" rows="3"
-                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
-                      placeholder="Stains, pets, parking, access, ideal days"></textarea>
-                  </label>
+    <label class="block">
+      <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
+      <input required name="postcode" autocomplete="postal-code"
+        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
+        placeholder="e.g. SY8 1AA" />
+    </label>
 
-                  <button type="button" onclick="goStep2()"
-                    class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
-                    Next
-                  </button>
+    <label class="block">
+      <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
+      <select required name="service"
+        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+        <option value="" selected disabled>Select a service</option>
+        <option>Carpet cleaning</option>
+        <option>Upholstery cleaning</option>
+        <option>Carpets and upholstery</option>
+        <option>Commercial cleaning</option>
+      </select>
+    </label>
 
-                  <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
-                </div>
+    <label class="block">
+      <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
+      <select name="areas"
+        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+      </select>
+    </label>
 
-                <div id="step2" class="mt-4 space-y-4 step-hidden">
-                  <div class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm lift">
-                    <div class="font-extrabold text-slate-900">Almost done</div>
-                    <div class="text-slate-600 mt-1">Add your contact details so we can send your fixed price quote</div>
-                  </div>
+    <!-- NEW: contact fields on page 1 -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <label class="block sm:col-span-2">
+        <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
+        <input required name="name" autocomplete="name"
+          class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
+          placeholder="Your name" />
+      </label>
 
-                  <div class="grid sm:grid-cols-2 gap-4">
-                    <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
-                      <input required name="name" autocomplete="name"
-                        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
-                        placeholder="Your name" />
-                    </label>
-                    <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span>
-                      <input required name="phone" inputmode="tel" autocomplete="tel"
-                        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
-                        placeholder="07..." />
-                    </label>
-                  </div>
+      <label class="block">
+        <span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span>
+        <input required name="phone" inputmode="tel" autocomplete="tel"
+          class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
+          placeholder="07..." />
+      </label>
 
-                  <label class="block">
-                    <span class="text-sm font-semibold text-slate-700">Email</span>
-                    <input name="email" type="email" autocomplete="email"
-                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
-                      placeholder="you@example.com" />
-                  </label>
+      <label class="block">
+        <span class="text-sm font-semibold text-slate-700">Email</span>
+        <input name="email" type="email" autocomplete="email"
+          class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
+          placeholder="you@example.com" />
+      </label>
+    </div>
 
-                  <label class="flex items-start gap-3 text-xs text-slate-600">
-                    <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-400" />
-                    <span>I agree to be contacted about this request</span>
-                  </label>
+    <!-- NEW: smaller notes box -->
+    <label class="block">
+      <span class="text-sm font-semibold text-slate-700">Anything we should know</span>
+      <textarea name="notes" rows="2"
+        class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
+        placeholder="Stains, pets, parking, access, ideal days"></textarea>
+    </label>
 
-                  <div class="grid sm:grid-cols-2 gap-3">
-                    <button type="button" onclick="goStep1()"
-                      class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold lift">
-                      Back
-                    </button>
+    <button type="button" onclick="goStep2()"
+      class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
+      Next
+    </button>
 
-                    <button id="submitBtn" type="submit"
-                      class="rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-                      Get My Quote
-                    </button>
-                  </div>
+    <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
+  </div>
 
-                  <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
-                </div>
-              </form>
-            </div>
-          </div>
+  <div id="step2" class="mt-4 space-y-4 step-hidden">
+
+    <div class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm">
+      <div class="font-extrabold text-slate-900">Page 2</div>
+      <div class="text-slate-600 mt-1">Just confirm and send. We’ll reply with a fixed price and dates.</div>
+    </div>
+
+    <label class="flex items-start gap-3 text-xs text-slate-600">
+      <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-500 focus:ring-emerald-400" />
+      <span>I agree to be contacted about this request</span>
+    </label>
+
+    <div class="grid sm:grid-cols-2 gap-3">
+      <button type="button" onclick="goStep1()"
+        class="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold lift">
+        Back
+      </button>
+
+      <button id="submitBtn" type="submit"
+        class="rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3 text-sm font-extrabold shadow-soft lift shimmer">
+        Get My Quote
+      </button>
+    </div>
+
+    <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
+  </div>
+</form>
 
           <!-- removed the extra Google/Facebook pills under the form -->
 
