@@ -64,15 +64,18 @@
       0% { opacity:0; transform: translateY(16px); }
       100% { opacity:1; transform: translateY(0); }
     }
+
     @keyframes popFloatIn {
       0%   { opacity:0; transform: scale(.78) translateY(10px); filter: blur(6px); }
       60%  { opacity:1; transform: scale(1.04) translateY(-2px); filter: blur(0); }
       100% { opacity:1; transform: scale(1) translateY(0); }
     }
+
     @keyframes floaty {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-7px); }
     }
+
     @keyframes pulseRing {
       0%   { opacity:0; transform: scale(.85); }
       20%  { opacity:.9; }
@@ -100,6 +103,7 @@
       opacity: 0;
     }
     .is-ready .badge-wrap:before{ animation: pulseRing 1.7s ease-out .55s 1; }
+
     #satisfactionBadge { opacity: 0; transform: scale(.9) translateY(8px); }
     .is-ready #satisfactionBadge{
       opacity: 1;
@@ -113,11 +117,17 @@
     .step-dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(15,23,42,.18); }
     .step-dot.on { background: rgba(16,185,129,1); }
 
+    /* Review carousel */
+    .review-fade { transition: opacity 450ms ease, transform 450ms ease; }
+    .review-hidden { opacity: 0; transform: translateY(10px); }
+    .review-show { opacity: 1; transform: translateY(0); }
+
     @media (prefers-reduced-motion: reduce) {
       [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
       .badge-wrap:before { display:none !important; }
       #heroGlow { transition: none !important; }
       .shimmer:after { animation: none !important; }
+      .review-fade { transition: none !important; }
     }
   </style>
 
@@ -514,6 +524,7 @@
     </div>
   </section>
 
+  <!-- LIVE GOOGLE REVIEWS (rotating) -->
   <section id="reviews" class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -521,18 +532,18 @@
           <div data-anim="reveal" class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">
             Google Reviews
           </div>
-          <h2 data-anim="reveal" class="mt-3 text-3xl font-extrabold">Rated 5 stars by local customers</h2>
+          <h2 data-anim="reveal" class="mt-3 text-3xl font-extrabold">Rated <span id="googleRatingBig">5.0</span> stars by local customers</h2>
           <p data-anim="reveal" class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-            Real feedback from carpet and upholstery cleans across Ludlow, Shrewsbury and nearby areas.
+            These cards pull from your live Google reviews feed and rotate automatically.
           </p>
         </div>
 
         <div data-anim="reveal" class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto lift">
           <div class="flex items-center gap-3">
-            <div class="text-3xl font-extrabold" id="googleRatingBig">5.0</div>
+            <div class="text-3xl font-extrabold" id="googleRatingBig2">5.0</div>
             <div>
               <div class="text-amber-500 text-sm leading-none">★★★★★</div>
-              <div class="text-xs text-slate-500 mt-1"><span id="googleReviewCountMid">31</span> five star Google reviews</div>
+              <div class="text-xs text-slate-500 mt-1"><span id="googleReviewCountMid">31</span> Google reviews</div>
             </div>
           </div>
 
@@ -558,84 +569,63 @@
         </div>
       </div>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">Carolyn Mills</div>
-              <div class="text-xs text-slate-500 mt-0.5">3 days ago</div>
-            </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
+      <div class="mt-8 grid md:grid-cols-12 gap-6">
+        <!-- Carousel card -->
+        <div data-anim="reveal" class="md:col-span-7 rounded-3xl border border-slate-200 bg-white shadow-soft p-6 lift">
+          <div class="flex items-center justify-between gap-3">
+            <div class="text-sm font-extrabold">Latest Google reviews</div>
+            <div class="text-xs text-slate-500" id="reviewSourceNote">Auto updating</div>
           </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Paul did a super job. Very thorough, moved all the furniture, left no stone unturned. Deserves the five stars.
-          </blockquote>
-        </figure>
 
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">E Stock</div>
-              <div class="text-xs text-slate-500 mt-0.5">3 weeks ago</div>
+          <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 review-fade review-show" id="reviewCard">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold" id="revName">Loading…</div>
+                <div class="text-xs text-slate-500 mt-0.5" id="revTime">Please wait</div>
+              </div>
+              <div class="text-amber-500 text-sm" id="revStars">★★★★★</div>
             </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
+            <blockquote class="mt-3 text-sm text-slate-700" id="revText">
+              Pulling your live reviews feed…
+            </blockquote>
           </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Lovely chap. Definitely recommend the deep clean. Worth the small amount extra for a job excellently done.
-          </blockquote>
-        </figure>
 
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">Kim Nicholas</div>
-              <div class="text-xs text-slate-500 mt-0.5">3 weeks ago</div>
+          <div class="mt-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-xs text-slate-500">
+              <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+              Rotates every few seconds
             </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
-          </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Short notice clean and Paul was courteous and efficient. Rug and carpet look brand new. Really happy with the results.
-          </blockquote>
-        </figure>
 
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">Suzanne Powell</div>
-              <div class="text-xs text-slate-500 mt-0.5">3 months ago</div>
+            <div class="flex gap-2">
+              <button type="button" id="prevReview"
+                class="rounded-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
+                Prev
+              </button>
+              <button type="button" id="nextReview"
+                class="rounded-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
+                Next
+              </button>
             </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
           </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Superb service from start to finish. On time, polite and hardworking. Everything looks brand new. Highly recommended.
-          </blockquote>
-        </figure>
+        </div>
 
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">James Wilson</div>
-              <div class="text-xs text-slate-500 mt-0.5">4 months ago</div>
-            </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
-          </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Removed all the stains and left the carpets looking like new. Polite and professional throughout. Definitely recommend.
-          </blockquote>
-        </figure>
+        <!-- Side stats -->
+        <div data-anim="reveal" class="md:col-span-5 rounded-3xl border border-slate-200 bg-slate-50 shadow-soft p-6 lift">
+          <div class="text-xs font-semibold text-emerald-700 uppercase">Live trust signals</div>
+          <div class="mt-2 text-2xl font-extrabold">Google rating <span id="googleRatingSide">5.0</span></div>
+          <div class="mt-1 text-sm text-slate-600"><span id="googleReviewCountSide">31</span> reviews and counting</div>
 
-        <figure data-anim="reveal" class="rounded-2xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <div class="font-extrabold">Patrick Maslin</div>
-              <div class="text-xs text-slate-500 mt-0.5">5 months ago</div>
+          <div class="mt-5 space-y-3">
+            <div class="rounded-2xl border border-slate-200 bg-white p-4">
+              <div class="text-xs text-slate-500">Last refreshed</div>
+              <div class="text-sm font-extrabold" id="googleUpdatedAt">Loading…</div>
             </div>
-            <div class="text-amber-500 text-sm">★★★★★</div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4">
+              <div class="text-xs text-slate-500">What this means</div>
+              <div class="text-sm text-slate-700">Your counts update automatically without you editing the site.</div>
+            </div>
           </div>
-          <blockquote class="mt-3 text-sm text-slate-700">
-            Fantastic service. On time, friendly and great value. Carpets cleaned to a high professional standard and look amazing.
-          </blockquote>
-        </figure>
+        </div>
       </div>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
@@ -749,10 +739,7 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    window.addEventListener("load", () => {
-      document.documentElement.classList.add("is-ready");
-    });
+    window.addEventListener("load", () => document.documentElement.classList.add("is-ready"));
 
     (function () {
       const els = Array.from(document.querySelectorAll('[data-anim="reveal"]'));
@@ -773,36 +760,30 @@
     (function () {
       const glow = document.getElementById("heroGlow");
       if (!glow) return;
-
       const isCoarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
       if (isCoarse) return;
 
-      const maxX = 18;
-      const maxY = 12;
-
-      const onMove = (e) => {
+      const maxX = 18, maxY = 12;
+      window.addEventListener("mousemove", (e) => {
         const x = (e.clientX / window.innerWidth) - 0.5;
         const y = (e.clientY / window.innerHeight) - 0.5;
         glow.style.transform = `translate(${x * maxX}px, ${y * maxY}px)`;
-      };
-
-      window.addEventListener("mousemove", onMove, { passive: true });
+      }, { passive: true });
     })();
 
     (function () {
       const v = document.getElementById("heroVideo");
       if (!v) return;
-
       const tryPlay = () => {
         const p = v.play();
         if (p && typeof p.catch === "function") p.catch(() => {});
       };
-
       tryPlay();
       window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
       window.addEventListener("click", tryPlay, { once: true, passive: true });
     })();
 
+    // Two-step form
     function setStep(n) {
       const s1 = document.getElementById("step1");
       const s2 = document.getElementById("step2");
@@ -848,52 +829,123 @@
 
     function submitStep2(form) {
       const btn = document.getElementById("submitBtn");
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Sending...";
-      }
+      if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
       setTimeout(() => {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = "Get My Quote";
-        }
+        if (btn) { btn.disabled = false; btn.textContent = "Get My Quote"; }
         alert("Thank you. Your quote request has been received.");
         form.reset();
         setStep(1);
       }, 700);
     }
 
-    // Optional: live Google review count (needs your own backend endpoint)
-    // This will call /api/google-rating and update the numbers if it returns JSON like:
-    // { "rating": 5.0, "user_ratings_total": 31 }
-    async function refreshGoogleCounts() {
-      try {
-        const res = await fetch("/api/google-rating", { cache: "no-store" });
-        if (!res.ok) return;
-        const data = await res.json();
+    // ===== LIVE GOOGLE REVIEWS (reads the JSON created by GitHub Actions) =====
+    const GOOGLE_JSON_URL = "data/google-reviews.json";
 
-        const count = Number(data.user_ratings_total);
-        const rating = Number(data.rating);
-
-        if (Number.isFinite(count)) {
-          const ids = ["googleReviewCount", "googleReviewCountStrip", "googleReviewCountMid"];
-          ids.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = String(count);
-          });
-        }
-        if (Number.isFinite(rating)) {
-          const ids = ["googleRating", "googleRatingBig"];
-          ids.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = rating.toFixed(1);
-          });
-        }
-      } catch (e) {}
+    function setText(id, txt) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(txt);
     }
 
-    // If you build the endpoint, turn this on
-    // window.addEventListener("load", refreshGoogleCounts);
+    function stars(n) {
+      const r = Math.max(0, Math.min(5, Math.round(Number(n) || 0)));
+      return "★★★★★".slice(0, r) + "☆☆☆☆☆".slice(0, 5 - r);
+    }
+
+    function updateCounts(data) {
+      if (!data) return;
+
+      if (typeof data.userRatingCount === "number") {
+        ["googleReviewCount", "googleReviewCountStrip", "googleReviewCountMid", "googleReviewCountSide"]
+          .forEach(id => setText(id, data.userRatingCount));
+      }
+
+      if (typeof data.rating === "number") {
+        const fixed = data.rating.toFixed(1);
+        ["googleRating", "googleRatingBig", "googleRatingBig2", "googleRatingSide"]
+          .forEach(id => setText(id, fixed));
+      }
+
+      if (data.updatedAt) setText("googleUpdatedAt", data.updatedAt);
+    }
+
+    function makeReviewSafe(r) {
+      return {
+        name: (r && r.authorName) ? String(r.authorName) : "Google customer",
+        time: (r && r.relativeTime) ? String(r.relativeTime) : "",
+        rating: (r && typeof r.rating === "number") ? r.rating : 5,
+        text: (r && r.text) ? String(r.text) : ""
+      };
+    }
+
+    function startCarousel(reviews) {
+      const list = (reviews || []).map(makeReviewSafe).filter(x => x.text);
+      if (!list.length) {
+        setText("revName", "Google customer");
+        setText("revTime", "");
+        setText("revText", "Reviews will appear here once the feed updates.");
+        setText("revStars", "★★★★★");
+        return;
+      }
+
+      let i = 0;
+      const card = document.getElementById("reviewCard");
+
+      function paint(idx) {
+        const r = list[idx];
+        setText("revName", r.name);
+        setText("revTime", r.time);
+        setText("revText", r.text);
+        setText("revStars", stars(r.rating));
+      }
+
+      function show(idx) {
+        if (card) {
+          card.classList.add("review-hidden");
+          card.classList.remove("review-show");
+          setTimeout(() => {
+            paint(idx);
+            card.classList.remove("review-hidden");
+            card.classList.add("review-show");
+          }, 220);
+        } else {
+          paint(idx);
+        }
+      }
+
+      const next = () => { i = (i + 1) % list.length; show(i); };
+      const prev = () => { i = (i - 1 + list.length) % list.length; show(i); };
+
+      const nextBtn = document.getElementById("nextReview");
+      const prevBtn = document.getElementById("prevReview");
+      if (nextBtn) nextBtn.addEventListener("click", next);
+      if (prevBtn) prevBtn.addEventListener("click", prev);
+
+      show(i);
+
+      // Auto rotate
+      setInterval(() => {
+        const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduced) return;
+        next();
+      }, 5200);
+    }
+
+    async function loadGoogleJson() {
+      try {
+        const res = await fetch(GOOGLE_JSON_URL, { cache: "no-store" });
+        if (!res.ok) throw new Error("No JSON yet");
+        const data = await res.json();
+
+        updateCounts(data);
+        if (data && Array.isArray(data.reviews)) startCarousel(data.reviews);
+
+        setText("reviewSourceNote", "Auto updating");
+      } catch (e) {
+        setText("reviewSourceNote", "Waiting for first sync");
+      }
+    }
+
+    window.addEventListener("load", loadGoogleJson);
   </script>
 </body>
 </html>
