@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -16,7 +17,7 @@
             ink: { 900:"#070b14", 800:"#0b1220", 700:"#0f172a" }
           },
           boxShadow: {
-            soft:"0 12px 30px rgba(2,6,23,0.18)",
+            soft:"0 12s 30px rgba(2,6,23,0.18)",
             card:"0 24px 70px rgba(2,6,23,0.38)"
           }
         }
@@ -117,17 +118,19 @@
     .step-dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(15,23,42,.18); }
     .step-dot.on { background: rgba(16,185,129,1); }
 
-    /* Review carousel */
-    .review-fade { transition: opacity 450ms ease, transform 450ms ease; }
-    .review-hidden { opacity: 0; transform: translateY(10px); }
-    .review-show { opacity: 1; transform: translateY(0); }
+    /* Review expand */
+    .clamp-4{
+      display:-webkit-box;
+      -webkit-line-clamp:4;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
       .badge-wrap:before { display:none !important; }
       #heroGlow { transition: none !important; }
       .shimmer:after { animation: none !important; }
-      .review-fade { transition: none !important; }
     }
   </style>
 
@@ -278,7 +281,7 @@
                   <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-900 font-extrabold">G</span>
                   <div>
                     <div class="text-sm font-extrabold">Google</div>
-                    <div class="text-xs text-slate-600"><span id="googleReviewCount">31</span> five star reviews</div>
+                    <div class="text-xs text-slate-600"><span id="googleReviewCount">30+</span> five star reviews</div>
                   </div>
                 </div>
                 <div class="text-right">
@@ -450,7 +453,7 @@
             <div class="rounded-full bg-white/10 border border-white/15 px-5 py-2 lift">
               <span class="font-extrabold text-white">Google</span>
               <span class="mx-2 text-amber-400 text-lg align-middle">★★★★★</span>
-              <span class="text-slate-200/90 font-semibold"><span id="googleReviewCountStrip">31</span> five star reviews</span>
+              <span class="text-slate-200/90 font-semibold"><span id="googleReviewCountStrip">30+</span> five star reviews</span>
             </div>
             <div class="rounded-full bg-white/10 border border-white/15 px-5 py-2 lift">
               <span class="font-extrabold text-white">Facebook</span>
@@ -524,26 +527,29 @@
     </div>
   </section>
 
-  <!-- LIVE GOOGLE REVIEWS (rotating) -->
-  <section id="reviews" class="py-14 bg-white text-slate-900">
+  <!-- REVIEWS (best first, then expandable list, no API) -->
+  <section id="reviews" class="py-16 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
+
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <div data-anim="reveal" class="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">
-            Google Reviews
+            Customer Reviews
           </div>
-          <h2 data-anim="reveal" class="mt-3 text-3xl font-extrabold">Rated <span id="googleRatingBig">5.0</span> stars by local customers</h2>
+          <h2 data-anim="reveal" class="mt-3 text-3xl font-extrabold">
+            The reviews people actually read
+          </h2>
           <p data-anim="reveal" class="mt-2 text-sm md:text-base text-slate-600 max-w-xl">
-            These cards pull from your live Google reviews feed and rotate automatically.
+            Top reviews first, with the option to expand every review.
           </p>
         </div>
 
         <div data-anim="reveal" class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 shadow-soft w-full md:w-auto lift">
           <div class="flex items-center gap-3">
-            <div class="text-3xl font-extrabold" id="googleRatingBig2">5.0</div>
+            <div class="text-3xl font-extrabold">5.0</div>
             <div>
               <div class="text-amber-500 text-sm leading-none">★★★★★</div>
-              <div class="text-xs text-slate-500 mt-1"><span id="googleReviewCountMid">31</span> Google reviews</div>
+              <div class="text-xs text-slate-500 mt-1">30+ Google reviews</div>
             </div>
           </div>
 
@@ -554,7 +560,7 @@
               rel="noopener"
               class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer"
             >
-              Read all reviews
+              Read on Google
             </a>
 
             <a
@@ -569,81 +575,215 @@
         </div>
       </div>
 
-      <div class="mt-8 grid md:grid-cols-12 gap-6">
-        <!-- Carousel card -->
-        <div data-anim="reveal" class="md:col-span-7 rounded-3xl border border-slate-200 bg-white shadow-soft p-6 lift">
-          <div class="flex items-center justify-between gap-3">
-            <div class="text-sm font-extrabold">Latest Google reviews</div>
-            <div class="text-xs text-slate-500" id="reviewSourceNote">Auto updating</div>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+
+        <!-- Featured 1 -->
+        <article data-anim="reveal" class="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">Diana Roach</div>
+              <div class="text-xs text-slate-500">2 weeks ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
           </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
 
-          <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 review-fade review-show" id="reviewCard">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="font-extrabold" id="revName">Loading…</div>
-                <div class="text-xs text-slate-500 mt-0.5" id="revTime">Please wait</div>
-              </div>
-              <div class="text-amber-500 text-sm" id="revStars">★★★★★</div>
+        <!-- Featured 2 -->
+        <article data-anim="reveal" class="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">Suzanne Powell</div>
+              <div class="text-xs text-slate-500">3 months ago</div>
             </div>
-            <blockquote class="mt-3 text-sm text-slate-700" id="revText">
-              Pulling your live reviews feed…
-            </blockquote>
+            <div class="text-amber-500 text-sm">★★★★★</div>
           </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Had Paul over today to clean my large sofa. Lounge, stairs, landing and bedroom carpet. Superb service from start to finish. On time, polite and hardworking. Everything looks brand new!! Was thinking of having a new carpet, but so glad I contacted Paul, he's saved me a fortune!! Highly recommended and superb service.
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
 
-          <div class="mt-4 flex items-center justify-between">
-            <div class="flex items-center gap-2 text-xs text-slate-500">
-              <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-              Rotates every few seconds
+        <!-- Featured 3 -->
+        <article data-anim="reveal" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">Patrick Maslin</div>
+              <div class="text-xs text-slate-500">5 months ago</div>
             </div>
-
-            <div class="flex gap-2">
-              <button type="button" id="prevReview"
-                class="rounded-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
-                Prev
-              </button>
-              <button type="button" id="nextReview"
-                class="rounded-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
-                Next
-              </button>
-            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
           </div>
-        </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Paul provided a fantastic service. He was polite, friendly, on time and he worked quickly and efficiently. It was great value for money. My carpets were cleaned to a high professional standard and look amazing-so clean and bright. I highly recommend the Carpet Cleaning Company.
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
 
-        <!-- Side stats -->
-        <div data-anim="reveal" class="md:col-span-5 rounded-3xl border border-slate-200 bg-slate-50 shadow-soft p-6 lift">
-          <div class="text-xs font-semibold text-emerald-700 uppercase">Live trust signals</div>
-          <div class="mt-2 text-2xl font-extrabold">Google rating <span id="googleRatingSide">5.0</span></div>
-          <div class="mt-1 text-sm text-slate-600"><span id="googleReviewCountSide">31</span> reviews and counting</div>
-
-          <div class="mt-5 space-y-3">
-            <div class="rounded-2xl border border-slate-200 bg-white p-4">
-              <div class="text-xs text-slate-500">Last refreshed</div>
-              <div class="text-sm font-extrabold" id="googleUpdatedAt">Loading…</div>
+        <!-- Featured 4 -->
+        <article data-anim="reveal" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">Jenny James</div>
+              <div class="text-xs text-slate-500">2 months ago</div>
             </div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-4">
-              <div class="text-xs text-slate-500">What this means</div>
-              <div class="text-sm text-slate-700">Your counts update automatically without you editing the site.</div>
-            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
           </div>
-        </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Very impressed with Paul's prompt and effective service - he got rid of everything including the impossible!
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
+
+        <!-- Featured 5 -->
+        <article data-anim="reveal" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">E Stock</div>
+              <div class="text-xs text-slate-500">1 month ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Lovely chap - definitely recommend the deep clean! Worth the small amount extra for a job excellently done. High end equipment and professional service. Highly recommend 😊
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
+
+        <!-- Featured 6 (fresh) -->
+        <article data-anim="reveal" class="rounded-3xl border border-emerald-200 bg-emerald-50 p-6 shadow-soft lift reviewItem featured">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="font-extrabold text-lg">Anne Douthwaite</div>
+              <div class="text-xs text-slate-500">5 hours ago</div>
+            </div>
+            <div class="text-amber-500 text-sm">★★★★★</div>
+          </div>
+          <p class="mt-4 text-sm text-slate-700 clamp-4 reviewText">
+            Excellent service. Can highly recommend! Two rugs cleaned and they look brand new again! Very reasonably priced and will definitely use again. Thank you!
+          </p>
+          <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+        </article>
+
       </div>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a
-          href="https://share.google/6SsMDsVIxstP2tIUv"
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer"
-        >
-          Read more Google reviews
-        </a>
-        <a
-          href="#heroQuoteForm"
-          class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 text-sm font-extrabold lift"
-        >
+        <button id="showAllBtn"
+          class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer">
+          Show all reviews
+        </button>
+
+        <button id="collapseAllBtn"
+          class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-100 px-6 py-3 text-sm font-bold lift">
+          Collapse all
+        </button>
+
+        <a href="#heroQuoteForm"
+          class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 text-sm font-extrabold lift">
           Get a fixed price quote
         </a>
       </div>
+
+      <div class="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-soft">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <div class="text-lg font-extrabold">More customer reviews</div>
+            <div class="text-sm text-slate-600 mt-1">Tap any review to expand it.</div>
+          </div>
+          <div class="text-amber-500 text-sm">★★★★★</div>
+        </div>
+
+        <div class="mt-5 grid md:grid-cols-2 gap-4">
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Carolyn Mills</div>
+                <div class="text-xs text-slate-500">1 week ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Jac P</div>
+                <div class="text-xs text-slate-500">3 months ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Had my carpets cleaned by Paul a few days ago. I was reassured throughout the whole process. Paul was punctual, polite and very knowledgeable as I asked about the products and equipment he used. My carpets look amazing. Paul is a genuine professional.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Eluned Harrison</div>
+                <div class="text-xs text-slate-500">1 month ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Great job done on our lime green sofas this week, all stains gone and looking so much better and brighter. Paul took great care with the fabric and in ensuring I was happy with everything before leaving. Would highly recommend.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Jenna Hamar</div>
+                <div class="text-xs text-slate-500">2 months ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Paul cleaned all the carpets in my holiday let and did a fantastic job, carpets spotless and fresh smelling. Excellent service, explains the process and quotes a price before doing the job. Would highly recommend.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Chris Atherton</div>
+                <div class="text-xs text-slate-500">4 months ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Paul was friendly, professional and efficient. He went above and beyond to make sure that the finished result was perfect. We couldn’t be more pleased, the carpet looks like new. We will definitely be happy to have Paul back again.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+          <article class="rounded-2xl bg-white border border-slate-200 p-5 lift reviewItem">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="font-extrabold">Victor Munsanje</div>
+                <div class="text-xs text-slate-500">6 months ago</div>
+              </div>
+              <div class="text-amber-500 text-sm">★★★★★</div>
+            </div>
+            <p class="mt-3 text-sm text-slate-700 clamp-4 reviewText">
+              Excellent service, will definitely hire them again. If you are looking for a professional service, honest and sincere, you are here.
+            </p>
+            <button type="button" class="mt-3 text-sm font-extrabold text-emerald-700 readMoreBtn">Read more</button>
+          </article>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -838,115 +978,47 @@
       }, 700);
     }
 
-    // ===== LIVE GOOGLE REVIEWS (reads the JSON created by GitHub Actions) =====
-    const GOOGLE_JSON_URL = "data/google-reviews.json";
+    // Reviews expand / collapse
+    (function () {
+      function toggleOne(btn) {
+        const card = btn.closest(".reviewItem");
+        if (!card) return;
+        const p = card.querySelector(".reviewText");
+        if (!p) return;
 
-    function setText(id, txt) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = String(txt);
-    }
-
-    function stars(n) {
-      const r = Math.max(0, Math.min(5, Math.round(Number(n) || 0)));
-      return "★★★★★".slice(0, r) + "☆☆☆☆☆".slice(0, 5 - r);
-    }
-
-    function updateCounts(data) {
-      if (!data) return;
-
-      if (typeof data.userRatingCount === "number") {
-        ["googleReviewCount", "googleReviewCountStrip", "googleReviewCountMid", "googleReviewCountSide"]
-          .forEach(id => setText(id, data.userRatingCount));
-      }
-
-      if (typeof data.rating === "number") {
-        const fixed = data.rating.toFixed(1);
-        ["googleRating", "googleRatingBig", "googleRatingBig2", "googleRatingSide"]
-          .forEach(id => setText(id, fixed));
-      }
-
-      if (data.updatedAt) setText("googleUpdatedAt", data.updatedAt);
-    }
-
-    function makeReviewSafe(r) {
-      return {
-        name: (r && r.authorName) ? String(r.authorName) : "Google customer",
-        time: (r && r.relativeTime) ? String(r.relativeTime) : "",
-        rating: (r && typeof r.rating === "number") ? r.rating : 5,
-        text: (r && r.text) ? String(r.text) : ""
-      };
-    }
-
-    function startCarousel(reviews) {
-      const list = (reviews || []).map(makeReviewSafe).filter(x => x.text);
-      if (!list.length) {
-        setText("revName", "Google customer");
-        setText("revTime", "");
-        setText("revText", "Reviews will appear here once the feed updates.");
-        setText("revStars", "★★★★★");
-        return;
-      }
-
-      let i = 0;
-      const card = document.getElementById("reviewCard");
-
-      function paint(idx) {
-        const r = list[idx];
-        setText("revName", r.name);
-        setText("revTime", r.time);
-        setText("revText", r.text);
-        setText("revStars", stars(r.rating));
-      }
-
-      function show(idx) {
-        if (card) {
-          card.classList.add("review-hidden");
-          card.classList.remove("review-show");
-          setTimeout(() => {
-            paint(idx);
-            card.classList.remove("review-hidden");
-            card.classList.add("review-show");
-          }, 220);
+        const isClamped = p.classList.contains("clamp-4");
+        if (isClamped) {
+          p.classList.remove("clamp-4");
+          btn.textContent = "Show less";
         } else {
-          paint(idx);
+          p.classList.add("clamp-4");
+          btn.textContent = "Read more";
         }
       }
 
-      const next = () => { i = (i + 1) % list.length; show(i); };
-      const prev = () => { i = (i - 1 + list.length) % list.length; show(i); };
+      document.querySelectorAll(".readMoreBtn").forEach((btn) => {
+        btn.addEventListener("click", () => toggleOne(btn));
+      });
 
-      const nextBtn = document.getElementById("nextReview");
-      const prevBtn = document.getElementById("prevReview");
-      if (nextBtn) nextBtn.addEventListener("click", next);
-      if (prevBtn) prevBtn.addEventListener("click", prev);
+      const showAllBtn = document.getElementById("showAllBtn");
+      const collapseAllBtn = document.getElementById("collapseAllBtn");
 
-      show(i);
-
-      // Auto rotate
-      setInterval(() => {
-        const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduced) return;
-        next();
-      }, 5200);
-    }
-
-    async function loadGoogleJson() {
-      try {
-        const res = await fetch(GOOGLE_JSON_URL, { cache: "no-store" });
-        if (!res.ok) throw new Error("No JSON yet");
-        const data = await res.json();
-
-        updateCounts(data);
-        if (data && Array.isArray(data.reviews)) startCarousel(data.reviews);
-
-        setText("reviewSourceNote", "Auto updating");
-      } catch (e) {
-        setText("reviewSourceNote", "Waiting for first sync");
+      if (showAllBtn) {
+        showAllBtn.addEventListener("click", () => {
+          document.querySelectorAll(".reviewText").forEach(p => p.classList.remove("clamp-4"));
+          document.querySelectorAll(".readMoreBtn").forEach(b => b.textContent = "Show less");
+        });
       }
-    }
 
-    window.addEventListener("load", loadGoogleJson);
+      if (collapseAllBtn) {
+        collapseAllBtn.addEventListener("click", () => {
+          document.querySelectorAll(".reviewText").forEach(p => p.classList.add("clamp-4"));
+          document.querySelectorAll(".readMoreBtn").forEach(b => b.textContent = "Read more");
+          document.getElementById("reviews").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    })();
   </script>
 </body>
 </html>
-
+```
