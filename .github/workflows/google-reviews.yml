@@ -35,6 +35,12 @@ jobs:
             "https://places.googleapis.com/v1/places/${PLACE_ID}" \
             > /tmp/place.json
 
+          echo "----- RAW GOOGLE RESPONSE -----"
+          cat /tmp/place.json
+          echo "-------------------------------"
+
+          node -e 'const r=require("/tmp/place.json"); if(r.error){ console.error(r.error); process.exit(1); }'
+
           node <<'NODE'
           const fs = require("fs");
 
