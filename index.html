@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>The Carpet Cleaning Company | Carpet and Upholstery Cleaning</title>
   <meta name="description" content="Professional carpet and upholstery cleaning with CRB agitation, hot water extraction and a 100 percent satisfaction guarantee." />
 
@@ -30,9 +30,16 @@
 
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+
+    /* HARD MOBILE FIT FIXES */
+    html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+    body { position: relative; }
+    * { min-width: 0; }
+    img, video, svg { max-width: 100%; height: auto; }
+    :root { scroll-padding-top: 74px; }
+
     .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
     input, select, textarea { font-size: 16px; }
-    :root { scroll-padding-top: 74px; }
 
     .lift { transition: transform .18s ease, box-shadow .18s ease; }
     .lift:hover { transform: translateY(-2px); }
@@ -121,16 +128,22 @@
       overflow: hidden;
     }
 
-    /* Progressive reveal for extra fields */
-    .reveal-wrap { max-height: 0; opacity: 0; transform: translateY(-6px); overflow: hidden; transition: max-height .35s ease, opacity .25s ease, transform .25s ease; }
-    .reveal-wrap.is-open { max-height: 520px; opacity: 1; transform: translateY(0); }
+    /* Reveal extra fields once phone + email are filled */
+    .reveal-wrap {
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-6px);
+      overflow: hidden;
+      transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+    }
+    .reveal-wrap.is-open { max-height: 560px; opacity: 1; transform: translateY(0); }
 
     @media (prefers-reduced-motion: reduce) {
       [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
       .badge-wrap:before { display:none !important; }
       #heroGlow { transition: none !important; }
       .shimmer:after { animation: none !important; }
-      .reveal-wrap { transition: none !important; max-height: none !important; opacity: 1 !important; transform: none !important; }
+      .reveal-wrap { transition:none !important; max-height:none !important; opacity:1 !important; transform:none !important; }
     }
   </style>
 
@@ -173,7 +186,7 @@
   </script>
 </head>
 
-<body class="bg-ink-900 text-slate-100">
+<body class="bg-ink-900 text-slate-100 overflow-x-hidden">
 
   <div class="pointer-events-none fixed inset-0 z-[1] opacity-[0.06] mix-blend-overlay"
        style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.25%22/%3E%3C/svg%3E');">
@@ -181,14 +194,14 @@
 
   <header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 glass border-b border-emerald-800/35">
     <div class="mx-auto max-w-6xl px-4 py-1.5 flex items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 min-w-0">
         <img
           src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/ChatGPT%20Image%20Feb%204,%202026,%2012_51_48%20AM.png"
-          class="h-14 sm:h-20 w-auto object-contain"
+          class="h-14 sm:h-20 w-auto object-contain shrink-0"
           alt="The Carpet Cleaning Company"
         />
-        <div class="leading-tight">
-          <div class="font-extrabold text-base sm:text-lg">The Carpet Cleaning Company</div>
+        <div class="leading-tight min-w-0">
+          <div class="font-extrabold text-base sm:text-lg truncate">The Carpet Cleaning Company</div>
           <div class="text-[11px] sm:text-xs text-emerald-100/90">Carpet and upholstery cleaning for homes and businesses</div>
         </div>
       </div>
@@ -202,7 +215,7 @@
     </div>
   </header>
 
-  <section class="relative pt-24 md:pt-28 pb-14 md:pb-20 overflow-hidden">
+  <section class="relative pt-24 md:pt-28 pb-14 md:pb-20 overflow-hidden overflow-x-clip isolate">
     <div class="absolute inset-0">
       <video
         id="heroVideo"
@@ -272,41 +285,39 @@
         </div>
 
         <div class="lg:pt-2">
-          <div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift">
+          <div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift max-w-full">
             <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
             <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
 
             <div class="relative p-6 md:p-7">
               <div class="flex items-start justify-between gap-4">
-                <div>
+                <div class="min-w-0">
                   <div class="text-xl font-extrabold">Instant Quote Request</div>
                   <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
                 </div>
 
-                <span class="badge-wrap">
+                <span class="badge-wrap shrink-0">
                   <img
                     id="satisfactionBadge"
                     src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/satisfaction_badge_transparent.png"
                     alt="100% Satisfaction Guaranteed"
-                    class="h-28 w-28 sm:h-40 sm:w-40 object-contain drop-shadow-xl"
+                    class="h-24 w-24 sm:h-36 sm:w-36 object-contain drop-shadow-xl"
                   />
                 </span>
               </div>
 
-              <!-- ONE PAGE FORM -->
               <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitQuote(this);">
-
                 <div class="space-y-4">
 
                   <div class="grid sm:grid-cols-2 gap-4">
-                    <label class="block sm:col-span-1">
+                    <label class="block">
                       <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
                       <input required name="postcode" autocomplete="postal-code"
                         class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                         placeholder="e.g. SY8 1AA" />
                     </label>
 
-                    <label class="block sm:col-span-1">
+                    <label class="block">
                       <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
                       <select name="areas"
                         class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
@@ -350,7 +361,6 @@
                     </label>
                   </div>
 
-                  <!-- MAGICAL REVEAL SECTION (shows after phone + email valid) -->
                   <div id="extraFields" class="reveal-wrap">
                     <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-4 shadow-soft">
                       <div class="text-sm font-extrabold text-emerald-950">Anything we should know</div>
@@ -389,8 +399,8 @@
 
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </section>
@@ -522,7 +532,7 @@
             <h2 class="text-2xl md:text-3xl font-extrabold">Want a fixed price quote</h2>
             <p class="mt-1 text-slate-200 text-sm md:text-base">Use the form at the top and we will reply with a clear price and next available dates.</p>
           </div>
-          <div class="flex gap-3">
+          <div class="flex gap-3 flex-wrap">
             <a href="#heroQuoteForm"
               class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
               Get a fast quote
@@ -549,23 +559,22 @@
     </div>
   </footer>
 
-  <div class="fixed bottom-4 right-4 z-[90] flex flex-col gap-3">
+  <!-- Floating buttons (safe area aware + stays on screen) -->
+  <div class="fixed z-[90] flex flex-col gap-3"
+       style="right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); max-width: 100vw;">
     <a
       href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please.%0AMy%20postcode%3A%20____%0AWhat%20needs%20cleaning%3A%20____"
       target="_blank"
       rel="noopener"
       class="h-14 w-14 rounded-full shadow-card bg-[#25D366] grid place-items-center text-white text-2xl lift"
       aria-label="WhatsApp"
-    >
-      💬
-    </a>
+    >💬</a>
+
     <a
       href="tel:07802563213"
       class="h-14 w-14 rounded-full shadow-card bg-emerald-400 grid place-items-center text-emerald-950 text-2xl lift"
       aria-label="Call"
-    >
-      ☎
-    </a>
+    >☎</a>
   </div>
 
   <script>
@@ -614,7 +623,7 @@
       window.addEventListener("click", tryPlay, { once: true, passive: true });
     })();
 
-    // Progressive reveal: show extra fields after phone + email are valid
+    // Reveal extras after phone + email look valid
     (function () {
       const phone = document.getElementById("phoneField");
       const email = document.getElementById("emailField");
@@ -622,15 +631,12 @@
       if (!phone || !email || !wrap) return;
 
       function shouldOpen() {
-        const phoneOk = phone.value.trim().length >= 8; // simple, tolerant
+        const phoneOk = phone.value.trim().length >= 8;
         const emailOk = email.checkValidity() && email.value.trim().length > 0;
         return phoneOk && emailOk;
       }
 
-      function sync() {
-        const open = shouldOpen();
-        wrap.classList.toggle("is-open", open);
-      }
+      function sync() { wrap.classList.toggle("is-open", shouldOpen()); }
 
       ["input","blur","change"].forEach(evt => {
         phone.addEventListener(evt, sync, { passive: true });
@@ -659,33 +665,7 @@
       { name:"kerrie glanville", when:"2 months ago", stars:5, text:"Paul visited me today 3/12/25.. did an absolute fantastic job on my stairs. They smell so fresh and look clean making my house feel cleaner! There is also a stain that he magically got out of my kids rooms that has been there years and …More" },
       { name:"jac P", when:"3 months ago", stars:5, text:"Had my carpets cleaned by Paul a few days ago. I was reassured through out the whole process. Paul was punctual, polite and very knowledgeable as I asked about the products and equipment he used. My carpets look amazing 👏. Paul is a genuine professional and nice guy. I have recommended him to colleagues. Great experience from start to finish 👌" },
       { name:"suzanne powell", when:"3 months ago", stars:5, text:"Had Paul over today to clean my large sofa. Lounge, stairs, landing and bedroom carpet. Superb service from start to finish. On time, polite and hardworking. Everything looks brand new!! Was thinking of having a new carpet, but so glad I contacted Paul, he's saved me a fortune!! Highly recommended and superb service." },
-      { name:"Eluned Harrison", when:"a month ago", stars:5, text:"Great job done on our Lime green sofas this week, all stains gone and looking so much better and brighter. Paul took great care with the fabric and in ensuring I was happy with everything before leaving. Would highly recommend." },
-      { name:"Patrick Maslin", when:"5 months ago", stars:5, text:"Paul provided a fantastic service. He was polite, friendly, on time and he worked quickly and efficiently. It was great value for money. My carpets were cleaned to a high professional standard and look amazing-so clean and bright. I highly recommend the Carpet Cleaning Company." },
-      { name:"jenna Hamar", when:"2 months ago", stars:5, text:"Paul cleaned all the carpets in my holiday let on Thursday and did a fantastic job, carpets spotless and fresh smelling. Excellent service, explains the process and quotes a price before doing the job. Would highly recommend." },
-      { name:"James Wilson", when:"4 months ago", stars:5, text:"I had my carpets cleaned by The Carpet Cleaning Company in Shrewsbury, and I’m really pleased with the results. Paul did an excellent job — he managed to remove all the stains and left the carpets looking like new. He was also very polite and professional throughout. I’d definitely recommend this company!" },
-      { name:"David Beardsall", when:"3 months ago", stars:5, text:"Paul did a very thorough job and worked hard to fit around our schedule. We had moved into a house with some old and stained carpets so we had low expectations but Paul's excellent work made them look so much better. He went above and beyond with every detail, staying late to make sure he got rid of every stain. Would highly recommend his work" },
-      { name:"kim nicholas", when:"a month ago", stars:5, text:"I had the carpet cleaning company come today at short notice . Paul was courteous and efficient and made my rug and carpet look brand new. Really happy with the results." },
-      { name:"Harry Hancock Davies", when:"5 months ago", stars:5, text:"Paul did an excellent job on our carpets throughout our house. We had multiple stains caused by our pets and such stains were deeply engrained into our carpet as they had been there for some time. When Paul finished the carpet was like …More" },
-      { name:"Chris Atherton", when:"4 months ago", stars:5, text:"Paul was friendly, professional and efficient. He went above and beyond to make sure that the finished result was perfect. We couldn’t be more pleased, the carpet looks like new. We will definitely be happy to have Paul back again when needed." },
-      { name:"Gourmet Vanilla", when:"3 months ago", stars:5, text:"Paul from the Carpet Cleaning Company has just finished dry cleaning our big sofa and two armchairs in Ludlow. He’s done a brilliant job, what an improvement! Paul was a pleasure to deal with. Thank you!" },
-      { name:"JANE WOOD", when:"3 months ago", stars:5, text:"Wouldn’t highly recommend this company Paul was professional throughout his visit, he was punctual, he explained the process and the products he would use to achieve the best results as a hygienic clean was required. The results were fantastic, I would highly recommend this company, I am extremely impressed and pleased. Thanks Paul." },
-      { name:"Alison Benbow", when:"a month ago", stars:5, text:"Paul tackled our farmhouse with enthusiasm , expertise and bags of energy for our big rooms . He has top quality machines and solutions and what a difference it has made . Thank you" },
-      { name:"Ellie may darkes (ellie)", when:"4 months ago", stars:5, text:"Came in and cleaned my carpets, did a fantastic job carpets look brand new I highly recommend! Thank you Paul" },
-      { name:"idris thomas", when:"5 months ago", stars:5, text:"Paul arrived today and cleaned three bedroom carpets, did a fantastic job would recommend.." },
-      { name:"E Stock", when:"a month ago", stars:5, text:"Lovely chap - definitely recommend the deep clean! Worth the small amount extra for a job excellently done. High end equipment and professional service. Highly recommend 😊" },
-      { name:"Ross Doodson", when:"a month ago", stars:5, text:"Superb and efficient service from start to finish. I thoroughly recommend Paul. A professional, trustworthy and high effective service. Thank you very much indeed!" },
-      { name:"Jonathan O’Rourke", when:"7 months ago", stars:5, text:"Amazing service provided and will definitely be using again. My carpets and sofa look brand new for a very reasonable price. Can’t recommend enough." },
-      { name:"Bodhi Hughes", when:"4 months ago", stars:5, text:"The carpet cleaning company are true professionals. My expectations with what could be done with my carpets was far exceeded. Thank you so much" },
-      { name:"Donna Jones", when:"a month ago", stars:5, text:"Absolutely amazing service carried out by Paul!\n\nPaul carried out a carpet clean at Shrewsbury and done a amazing job!!" },
-      { name:"Melanie Riches", when:"3 months ago", stars:5, text:"Very trustworthy, professional and reliable service. Would highly recommend, carpet and sofa came up as as new." },
-      { name:"Jenny James", when:"2 months ago", stars:5, text:"Very impressed with Paul's prompt and effective service - he got rid of everything including the impossible!" },
-      { name:"Robin Nicholas", when:"8 months ago", stars:5, text:"Saved a fortune, was going to get new carpets until a friend in Ludlow recommended this company. The carpets are like new. An excellent Company." },
-      { name:"Caroline Martin", when:"8 months ago", stars:5, text:"So happy with this company; Paul is chatty and approachable, knows his business very well and does a thorough job for a very reasonable price. No hesitation in recommending him." },
-      { name:"Christine Bourne", when:"7 months ago", stars:5, text:"An excellent job carried out very professionally. Really pleased with three piece suite and carpets. Ludlow should be proud of it’s trades people." },
-      { name:"Victor Munsanje", when:"6 months ago", stars:5, text:"Excellent service, will definitely hire them again. If you are looking for a professional service, honest and sincere, you are here." },
-      { name:"carol rowley", when:"4 months ago", stars:5, text:"Efficient,friendly and carpet looks new again. Would definitely recommend 👌" },
-      { name:"Chris Jennings", when:"4 months ago", stars:5, text:"Very good service from start to finish, would highly recommend." },
-      { name:"Anne Douthwaite", when:"5 hours ago", stars:5, text:"Excellent service. Can highly recommend! Two rugs cleaned and they look brand new again! Very reasonably priced and will definitely use again. Thank you!" }
+      { name:"Eluned Harrison", when:"a month ago", stars:5, text:"Great job done on our Lime green sofas this week, all stains gone and looking so much better and brighter. Paul took great care with the fabric and in ensuring I was happy with everything before leaving. Would highly recommend." }
     ];
 
     function starString(n){
