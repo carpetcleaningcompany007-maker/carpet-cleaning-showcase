@@ -1,0 +1,63 @@
+name: Update Google Reviews JSON
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Google Place details (rating, count, reviews)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          PLACE_ID: "ChIJTYmk-ipFXS8RUd3znZzyANA"
+        run: |
+          set -e
+          mkdir -p data
+
+          # Google Places API (v1) uses header-based field mask
+          curl -sS \
+            -H "X-Goog-Api-Key: ${GOOGLE_API_KEY}" \
+            -H "X-Goog-FieldMask: rating,userRatingCount,reviews" \
+            "https://places.googleapis.com/v1/places/${PLACE_ID}" \
+            > /tmp/place.json
+
+          # Build a safe JSON file for the website (no personal data beyond public review content)
+          node <<'NODE'
+          const fs = require("fs");
+
+          const raw = JSON.parse(fs.readFileSync("/tmp/place.json","utf8"));
+          const out = {
+            rating: typeof raw.rating === "number" ? raw.rating : 0,
+            userRatingCount: typeof raw.userRatingCount === "number" ? raw.userRatingCount : 0,
+            updatedAt: new Date().toLocaleString("en-GB", { timeZone: "Europe/London" }),
+            reviews: []
+          };
+
+          const reviews = Array.isArray(raw.reviews) ? raw.reviews : [];
+          out.reviews = reviews.slice(0, 12).map(r => ({
+            authorName: r?.authorAttribution?.displayName || "Google customer",
+            relativeTime: r?.relativePublishTimeDescription || "",
+            rating: typeof r?.rating === "number" ? r.rating : 5,
+            text: r?.text?.text || ""
+          })).filter(r => r.text);
+
+          fs.writeFileSync("data/google-reviews.json", JSON.stringify(out, null, 2));
+          console.log("Wrote data/google-reviews.json");
+          NODE
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/google-reviews.json
+          git commit -m "Update Google reviews JSON" || exit 0
+          git push
