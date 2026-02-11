@@ -32,11 +32,10 @@
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
 
-    /* HARD MOBILE FIT FIXES */
     html, body { width: 100%; max-width: 100%; overflow-x: clip; }
     body { position: relative; }
     * { min-width: 0; }
-    img, video, svg, iframe { max-width: 100%; height: auto; }
+    img, video, svg { max-width: 100%; height: auto; }
     :root { scroll-padding-top: 74px; }
 
     .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
@@ -129,7 +128,6 @@
       overflow: hidden;
     }
 
-    /* Reveal extra fields once phone + email are filled */
     .reveal-wrap {
       max-height: 0;
       opacity: 0;
@@ -271,8 +269,8 @@
             <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
               Get my quote
             </a>
-            <a href="#guarantee" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
-              See guarantee
+            <a href="#videos" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
+              Watch videos
             </a>
             <a href="#reviews" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
               Read reviews first
@@ -456,6 +454,43 @@
     </div>
   </section>
 
+  <!-- ADDED: YOUR 3 VIDEOS SECTION -->
+  <section id="videos" class="py-14 bg-white text-slate-900">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 data-anim="reveal" class="text-3xl font-extrabold">Watch the results</h2>
+      <p data-anim="reveal" class="mt-2 text-slate-600">A recent clean in action.</p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1899520797292791%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1162016885802464%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+
+        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1362198414861523%2F&show_text=false"
+            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="reviews" class="py-14 bg-emerald-50 text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -534,43 +569,6 @@
     </div>
   </section>
 
-  <!-- YOUR 3 VIDEOS -->
-  <section class="py-14 bg-white text-slate-900">
-    <div class="mx-auto max-w-6xl px-4">
-      <h2 data-anim="reveal" class="text-3xl font-extrabold">Watch the results</h2>
-      <p data-anim="reveal" class="mt-2 text-slate-600">A recent clean in action.</p>
-
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1899520797292791%2F&show_text=false"
-            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-
-        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1162016885802464%2F&show_text=false"
-            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-
-        <div data-anim="reveal" class="w-[267px] h-[476px] overflow-hidden rounded-2xl border border-slate-200 shadow-soft bg-black lift">
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61559013150413%2Fvideos%2F1362198414861523%2F&show_text=false"
-            width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="quote" class="py-14 bg-ink-900">
     <div class="mx-auto max-w-6xl px-4">
       <div data-anim="reveal" class="rounded-3xl bg-white/5 border border-white/10 p-6 md:p-8 lift">
@@ -600,15 +598,12 @@
         <div class="font-semibold">The Carpet Cleaning Company</div>
         <div class="text-xs text-slate-400">Carpet and upholstery cleaning in Ludlow, Shropshire and nearby areas</div>
       </div>
-
-      <div class="text-xs text-slate-500 text-center md:text-right">
-        <div>© <span id="year">2025</span> The Carpet Cleaning Company. All rights reserved.</div>
-        <div class="mt-1">Site visits: <span id="visitCount">...</span></div>
+      <div class="text-xs text-slate-500">
+        © <span id="year">2025</span> The Carpet Cleaning Company. All rights reserved.
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING BUTTONS (MOBILE SAFE AREA) -->
   <div class="fixed z-[90] flex flex-col gap-3"
        style="right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); max-width: 100vw;">
     <a
@@ -908,24 +903,6 @@
       const colAll = document.getElementById("collapseAllBtn");
       if (colAll) colAll.addEventListener("click", collapseAll);
     });
-
-    /* WEB COUNTER (CountAPI) */
-    (function () {
-      const el = document.getElementById("visitCount");
-      if (!el) return;
-
-      /* Change these 2 if you want */
-      const namespace = "thecarpetcleaningcrew-co-uk";
-      const key = "home";
-
-      fetch(`https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`)
-        .then(r => r.json())
-        .then(d => {
-          if (typeof d.value === "number") el.textContent = d.value.toLocaleString();
-          else el.textContent = "0";
-        })
-        .catch(() => { el.textContent = ""; });
-    })();
   </script>
 </body>
 </html>
