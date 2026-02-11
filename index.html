@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -31,7 +32,6 @@
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
 
-    /* HARD MOBILE FIT FIXES */
     html, body { width: 100%; max-width: 100%; overflow-x: clip; }
     body { position: relative; }
     * { min-width: 0; }
@@ -128,7 +128,6 @@
       overflow: hidden;
     }
 
-    /* Reveal extra fields once phone + email are filled */
     .reveal-wrap {
       max-height: 0;
       opacity: 0;
@@ -306,7 +305,17 @@
                 </span>
               </div>
 
-              <form id="heroQuoteForm" class="mt-5" onsubmit="event.preventDefault(); submitQuote(this);">
+              <!-- FORM: NOW REALLY SENDS TO FORMSPREE -->
+              <form
+                id="heroQuoteForm"
+                class="mt-5"
+                action="https://formspree.io/f/mblnzwpv"
+                method="POST"
+                onsubmit="submitQuote(event, this);"
+              >
+                <input type="hidden" name="_subject" value="New Quote Request - The Carpet Cleaning Company" />
+                <input type="hidden" name="_format" value="plain" />
+
                 <div class="space-y-4">
 
                   <div class="grid sm:grid-cols-2 gap-4">
@@ -354,8 +363,8 @@
                     </label>
 
                     <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Email</span>
-                      <input id="emailField" name="email" type="email" autocomplete="email"
+                      <span class="text-sm font-semibold text-slate-700">Email <span class="text-rose-500">*</span></span>
+                      <input required id="emailField" name="email" type="email" autocomplete="email"
                         class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm"
                         placeholder="you@example.com" />
                     </label>
@@ -630,9 +639,8 @@
 
       function shouldOpen() {
         const phoneOk = phone.value.trim().length >= 8;
-        const emailVal = (email.value || "").trim();
-        const emailOk = emailVal.length ? email.checkValidity() : true; /* email optional */
-        return phoneOk && emailOk && (emailVal.length > 0);
+        const emailOk = email.value.trim().length > 0 && email.checkValidity();
+        return phoneOk && emailOk;
       }
 
       function sync() { wrap.classList.toggle("is-open", shouldOpen()); }
@@ -645,20 +653,34 @@
       sync();
     })();
 
-    function submitQuote(form) {
+    // REAL SUBMIT TO FORMSPREE (NO FAKE TIMEOUT)
+    async function submitQuote(e, form) {
+      e.preventDefault();
+
       const btn = document.getElementById("submitBtn");
       if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
 
-      setTimeout(() => {
-        if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!res.ok) throw new Error("Formspree submit failed");
+
         alert("Thank you. Your quote request has been received.");
         form.reset();
+
         const wrap = document.getElementById("extraFields");
         if (wrap) wrap.classList.remove("is-open");
-      }, 700);
+      } catch (err) {
+        alert("Sorry, it didn’t send. Please try again, or call 07802 563213.");
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
+      }
     }
 
-    /* FULL REVIEWS LIST (THIS IS THE FIX: earlier you only had 6, so it said all shown) */
     const REVIEWS = [
       { name:"Diana Roach", when:"2 weeks ago", stars:5, text:"Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!" },
       { name:"Carolyn Mills", when:"a week ago", stars:5, text:"Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars." },
@@ -849,3 +871,4 @@
   </script>
 </body>
 </html>
+```
