@@ -137,20 +137,12 @@
     }
     .reveal-wrap.is-open { max-height: 560px; opacity: 1; transform: translateY(0); }
 
-    /* Calculator micro animations */
-    .qty-pop { animation: qtyPop 140ms ease-out; }
-    @keyframes qtyPop {
-      0% { transform: scale(.94); }
-      100% { transform: scale(1); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
       .badge-wrap:before { display:none !important; }
       #heroGlow { transition: none !important; }
       .shimmer:after { animation: none !important; }
       .reveal-wrap { transition:none !important; max-height:none !important; opacity:1 !important; transform:none !important; }
-      .qty-pop { animation: none !important; }
     }
   </style>
 
@@ -247,7 +239,7 @@
         <div class="pt-2">
           <h1 data-anim="hero-title" class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
             Carpet and Upholstery Cleaning
-            <span class="block text-slate-200 mt-2">Instant price calculator. Fast booking. Guaranteed results.</span>
+            <span class="block text-slate-200 mt-2">Beautiful carpets. Fast quotes. Guaranteed results.</span>
           </h1>
 
           <p data-anim="hero-copy" class="mt-4 text-base md:text-lg text-slate-200 max-w-xl">
@@ -274,8 +266,8 @@
           </div>
 
           <div data-anim="hero-cta" class="mt-6 flex flex-wrap gap-3">
-            <a href="#instantQuote" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-              Use instant calculator
+            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
+              Get my quote
             </a>
             <a href="#videos" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
               Watch videos
@@ -299,8 +291,8 @@
             <div class="relative p-6 md:p-7">
               <div class="flex items-start justify-between gap-4">
                 <div class="min-w-0">
-                  <div class="text-xl font-extrabold" id="instantQuote">Instant Price Calculator</div>
-                  <p class="mt-1 text-sm text-slate-600">Pick your rooms, add optional treatments, then request a call back</p>
+                  <div class="text-xl font-extrabold">Instant Quote Request</div>
+                  <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
                 </div>
 
                 <span class="badge-wrap shrink-0">
@@ -313,93 +305,9 @@
                 </span>
               </div>
 
-              <!-- CALCULATOR -->
-              <div class="mt-5">
-                <!-- Total Bar -->
-                <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 shadow-soft">
-                  <div class="flex items-center justify-between gap-4">
-                    <div class="min-w-0">
-                      <div class="text-xs font-semibold text-emerald-800 uppercase">Estimated total</div>
-                      <div class="mt-0.5 text-2xl font-extrabold text-emerald-950">
-                        <span id="calcTotal">£0.00</span>
-                      </div>
-                      <div class="text-[11px] text-emerald-900/80">VAT included (where applicable). Final price confirmed on booking.</div>
-                    </div>
-
-                    <div class="flex items-center gap-2 shrink-0">
-                      <button id="calcResetBtn" type="button"
-                        class="rounded-full bg-white border border-emerald-200 hover:bg-emerald-100 px-4 py-2 text-xs font-extrabold lift">
-                        Reset
-                      </button>
-                      <a href="#heroQuoteForm"
-                        class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">
-                        Request call back
-                      </a>
-                    </div>
-                  </div>
-
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-emerald-200 px-3 py-1 text-[11px] font-semibold text-emerald-800">
-                      <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
-                      Tap plus and minus to adjust
-                    </span>
-                    <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700">
-                      Optional add ons are per item
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Category Tabs -->
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <button type="button" data-tab="carpets"
-                    class="calcTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-slate-900 text-white border-slate-900">
-                    Carpets
-                  </button>
-                  <button type="button" data-tab="rugs"
-                    class="calcTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50">
-                    Rugs
-                  </button>
-                  <button type="button" data-tab="upholstery"
-                    class="calcTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50">
-                    Sofas and Upholstery
-                  </button>
-                </div>
-
-                <!-- Desktop Grid Header -->
-                <div class="mt-4 hidden sm:grid grid-cols-12 gap-3 px-1 text-[11px] font-extrabold text-slate-600">
-                  <div class="col-span-5">Item</div>
-                  <div class="col-span-3 text-center">Quantity</div>
-                  <div class="col-span-4 grid grid-cols-3 gap-2 text-center">
-                    <div>Stain guard</div>
-                    <div>Deodorise</div>
-                    <div>Insecticide</div>
-                  </div>
-                </div>
-
-                <!-- Items -->
-                <div id="calcList" class="mt-2 space-y-2"></div>
-
-                <!-- Breakdown -->
-                <div class="mt-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-soft">
-                  <div class="flex items-center justify-between gap-3">
-                    <div class="text-sm font-extrabold text-slate-900">Your quote items</div>
-                    <button type="button" id="calcCopyBtn"
-                      class="rounded-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 text-xs font-extrabold lift">
-                      Copy breakdown
-                    </button>
-                  </div>
-                  <div class="mt-2 text-xs text-slate-600">This will automatically be sent with your enquiry.</div>
-
-                  <div class="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <pre id="calcBreakdown" class="whitespace-pre-wrap text-[12px] leading-5 text-slate-800"></pre>
-                  </div>
-                </div>
-              </div>
-
-              <!-- FORM -->
               <form
                 id="heroQuoteForm"
-                class="mt-6"
+                class="mt-5"
                 action="https://formspree.io/f/mblnzwpv"
                 method="POST"
                 onsubmit="submitQuote(event, this);"
@@ -407,11 +315,8 @@
                 <input type="hidden" name="_subject" value="New Quote Request - The Carpet Cleaning Company" />
                 <input type="hidden" name="_format" value="plain" />
 
-                <!-- calculator payload -->
-                <input type="hidden" name="instant_quote_total" id="instant_quote_total" value="£0.00" />
-                <input type="hidden" name="instant_quote_breakdown" id="instant_quote_breakdown" value="" />
-
                 <div class="space-y-4">
+
                   <div class="grid sm:grid-cols-2 gap-4">
                     <label class="block">
                       <span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span>
@@ -421,16 +326,25 @@
                     </label>
 
                     <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Preferred timing</span>
-                      <select name="timing"
+                      <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
+                      <select name="areas"
                         class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
-                        <option>As soon as possible</option>
-                        <option>This week</option>
-                        <option>Next week</option>
-                        <option>Just pricing</option>
+                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
                       </select>
                     </label>
                   </div>
+
+                  <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
+                    <select required name="service"
+                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+                      <option value="" selected disabled>Select a service</option>
+                      <option>Carpet cleaning</option>
+                      <option>Upholstery cleaning</option>
+                      <option>Carpets and upholstery</option>
+                      <option>Commercial cleaning</option>
+                    </select>
+                  </label>
 
                   <label class="block">
                     <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
@@ -484,7 +398,7 @@
 
                   <button id="submitBtn" type="submit"
                     class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
-                    Request call back
+                    Get my quote
                   </button>
 
                   <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
@@ -600,9 +514,9 @@
           </div>
 
           <div class="mt-3 flex flex-wrap gap-2">
-            <a href="#instantQuote"
+            <a href="#heroQuoteForm"
               class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">
-              Use instant calculator
+              Get a quick quote
             </a>
             <button type="button" id="expandAllBtn"
               class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
@@ -624,7 +538,7 @@
           Load 10 more reviews
         </button>
 
-        <a href="#instantQuote"
+        <a href="#heroQuoteForm"
           class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer">
           Get my quote
         </a>
@@ -661,12 +575,12 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-extrabold">Want a fixed price quote</h2>
-            <p class="mt-1 text-slate-200 text-sm md:text-base">Use the instant calculator at the top, then request a call back.</p>
+            <p class="mt-1 text-slate-200 text-sm md:text-base">Use the form at the top and we will reply with a clear price and next available dates.</p>
           </div>
           <div class="flex gap-3 flex-wrap">
-            <a href="#instantQuote"
+            <a href="#heroQuoteForm"
               class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-              Use instant calculator
+              Get a fast quote
             </a>
             <a href="tel:07802563213"
               class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
@@ -798,350 +712,10 @@
       } catch (err) {
         alert("Sorry, it didn’t send. Please try again, or call 07802 563213.");
       } finally {
-        if (btn) { btn.disabled = false; btn.textContent = "Request call back"; }
+        if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
       }
     }
 
-    /* =========================
-       INSTANT PRICE CALCULATOR
-       Edit prices below to match your exact rates.
-       ========================= */
-    (function () {
-      const STORAGE_KEY = "tccc_instant_quote_v1";
-
-      const PRICES = {
-        carpets: [
-          { id:"stairs_flight", name:"Staircase", note:"Per flight", price:45 },
-          { id:"living_room", name:"Living Room", note:"Family room", price:75 },
-          { id:"bedroom", name:"Bedroom", note:"Regular or large", price:45 },
-          { id:"hallway", name:"Hallway", note:"Downstairs corridor", price:45 },
-          { id:"dining", name:"Dining Room", note:"or breakfast room", price:75 },
-          { id:"bathroom", name:"Bathroom", note:"or shower room", price:45 },
-          { id:"landing", name:"Landing", note:"Upstairs passage", price:45 },
-          { id:"lounge_diner", name:"Lounge Diner", note:"Joined through room", price:90 },
-          { id:"box_room", name:"Box Room", note:"Box bedroom or study", price:30 }
-        ],
-        rugs: [
-          { id:"rug_small", name:"Rug Small", note:"Up to 1.5m x 1m", price:35 },
-          { id:"rug_medium", name:"Rug Medium", note:"Up to 2m x 1.5m", price:55 },
-          { id:"rug_large", name:"Rug Large", note:"Up to 3m x 2m", price:75 }
-        ],
-        upholstery: [
-          { id:"sofa_2", name:"2 Seater Sofa", note:"Fabric or leather", price:85 },
-          { id:"sofa_3", name:"3 Seater Sofa", note:"Fabric or leather", price:105 },
-          { id:"corner", name:"Corner Sofa", note:"Typical L shape", price:145 },
-          { id:"armchair", name:"Armchair", note:"Single chair", price:55 },
-          { id:"dining_chair", name:"Dining Chair", note:"Per chair", price:15 },
-          { id:"mattress", name:"Mattress", note:"One side", price:75 }
-        ]
-      };
-
-      const ADDONS = {
-        stain_guard: { key:"stain_guard", name:"Stain guard", price:30 },
-        deodorise:   { key:"deodorise",   name:"Deodorise",  price:15 },
-        insecticide: { key:"insecticide", name:"Insecticide", price:25 }
-      };
-
-      const fmt = (n) => "£" + (Math.round((Number(n)||0) * 100) / 100).toFixed(2);
-
-      const els = {
-        total: document.getElementById("calcTotal"),
-        list: document.getElementById("calcList"),
-        breakdown: document.getElementById("calcBreakdown"),
-        hiddenTotal: document.getElementById("instant_quote_total"),
-        hiddenBreakdown: document.getElementById("instant_quote_breakdown"),
-        resetBtn: document.getElementById("calcResetBtn"),
-        copyBtn: document.getElementById("calcCopyBtn"),
-        tabs: Array.from(document.querySelectorAll(".calcTab"))
-      };
-
-      if (!els.total || !els.list || !els.breakdown) return;
-
-      const state = {
-        tab: "carpets",
-        items: {} // id -> { qty, stain_guard, deodorise, insecticide }
-      };
-
-      function load() {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return;
-          const data = JSON.parse(raw);
-          if (data && typeof data === "object") {
-            if (data.tab) state.tab = data.tab;
-            if (data.items) state.items = data.items;
-          }
-        } catch (e) {}
-      }
-
-      function save() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-      }
-
-      function allItemsFlat() {
-        return [
-          ...PRICES.carpets.map(x => ({...x, cat:"carpets"})),
-          ...PRICES.rugs.map(x => ({...x, cat:"rugs"})),
-          ...PRICES.upholstery.map(x => ({...x, cat:"upholstery"}))
-        ];
-      }
-
-      function getRow(id) {
-        if (!state.items[id]) state.items[id] = { qty: 0, stain_guard: false, deodorise: false, insecticide: false };
-        return state.items[id];
-      }
-
-      function clampQty(q) {
-        q = Number(q)||0;
-        if (q < 0) q = 0;
-        if (q > 99) q = 99;
-        return q;
-      }
-
-      function lineTotal(item, row) {
-        const q = clampQty(row.qty);
-        let t = item.price * q;
-        if (row.stain_guard) t += ADDONS.stain_guard.price * q;
-        if (row.deodorise)   t += ADDONS.deodorise.price * q;
-        if (row.insecticide) t += ADDONS.insecticide.price * q;
-        return t;
-      }
-
-      function grandTotal() {
-        const items = allItemsFlat();
-        let total = 0;
-        for (const it of items) {
-          const row = getRow(it.id);
-          total += lineTotal(it, row);
-        }
-        return total;
-      }
-
-      function buildBreakdown() {
-        const items = allItemsFlat();
-        const lines = [];
-        let total = 0;
-
-        for (const it of items) {
-          const row = getRow(it.id);
-          const q = clampQty(row.qty);
-          if (!q) continue;
-
-          const addOns = [];
-          if (row.stain_guard) addOns.push(`${ADDONS.stain_guard.name} (${fmt(ADDONS.stain_guard.price)} each)`);
-          if (row.deodorise) addOns.push(`${ADDONS.deodorise.name} (${fmt(ADDONS.deodorise.price)} each)`);
-          if (row.insecticide) addOns.push(`${ADDONS.insecticide.name} (${fmt(ADDONS.insecticide.price)} each)`);
-
-          const lt = lineTotal(it, row);
-          total += lt;
-
-          const baseLine = `${q} x ${it.name} (${fmt(it.price)} each)`;
-          const addLine = addOns.length ? `  Add ons: ${addOns.join(", ")}` : "";
-          lines.push(baseLine);
-          if (addLine) lines.push(addLine);
-          lines.push(`  Line total: ${fmt(lt)}`);
-          lines.push("");
-        }
-
-        if (!lines.length) {
-          return { text: "No items selected yet.\nTap plus to build your quote.", total: 0 };
-        }
-
-        lines.push(`Estimated total: ${fmt(total)}`);
-        return { text: lines.join("\n").trim(), total };
-      }
-
-      function setTab(tab) {
-        state.tab = tab;
-
-        els.tabs.forEach(btn => {
-          const active = btn.getAttribute("data-tab") === tab;
-          btn.className = active
-            ? "calcTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-slate-900 text-white border-slate-900"
-            : "calcTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50";
-        });
-
-        renderList();
-        syncTotals();
-        save();
-      }
-
-      function buttonPill(active) {
-        return active
-          ? "rounded-full px-3 py-2 text-[11px] font-extrabold border lift bg-emerald-600 text-white border-emerald-600"
-          : "rounded-full px-3 py-2 text-[11px] font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50";
-      }
-
-      function renderRow(item) {
-        const row = getRow(item.id);
-        const q = clampQty(row.qty);
-
-        return `
-          <div class="rounded-2xl border border-slate-200 bg-white shadow-soft p-3 sm:p-4">
-            <div class="sm:grid sm:grid-cols-12 sm:gap-3 sm:items-center">
-              <div class="sm:col-span-5">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <div class="text-sm font-extrabold text-slate-900">${item.name}</div>
-                    <div class="text-[11px] text-slate-600">${item.note || ""}</div>
-                  </div>
-                  <div class="text-right sm:hidden">
-                    <div class="text-[11px] text-slate-500">Base</div>
-                    <div class="text-sm font-extrabold text-slate-900">${fmt(item.price)}</div>
-                  </div>
-                </div>
-
-                <div class="mt-2 flex items-center gap-2 text-[11px] text-slate-600">
-                  <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-200 px-3 py-1">
-                    Base ${fmt(item.price)} each
-                  </span>
-                  <span class="inline-flex items-center gap-2 rounded-full bg-slate-50 border border-slate-200 px-3 py-1">
-                    Line ${fmt(lineTotal(item, row))}
-                  </span>
-                </div>
-              </div>
-
-              <div class="sm:col-span-3 mt-3 sm:mt-0">
-                <div class="flex items-center justify-center sm:justify-center gap-2">
-                  <button type="button" class="calcMinus h-10 w-10 rounded-full bg-slate-900 text-white text-lg font-extrabold lift"
-                    aria-label="Decrease ${item.name}" data-id="${item.id}">−</button>
-
-                  <div class="min-w-[64px] text-center">
-                    <div class="text-[11px] text-slate-500">Qty</div>
-                    <div class="calcQty text-xl font-extrabold text-slate-900" data-id="${item.id}">${q}</div>
-                  </div>
-
-                  <button type="button" class="calcPlus h-10 w-10 rounded-full bg-emerald-600 text-white text-lg font-extrabold lift"
-                    aria-label="Increase ${item.name}" data-id="${item.id}">+</button>
-                </div>
-              </div>
-
-              <div class="sm:col-span-4 mt-3 sm:mt-0">
-                <div class="grid grid-cols-3 gap-2">
-                  <button type="button" class="addonBtn ${buttonPill(!!row.stain_guard)}" data-addon="stain_guard" data-id="${item.id}">
-                    Stain guard
-                    <div class="text-[10px] font-semibold opacity-90">${fmt(ADDONS.stain_guard.price)} ea</div>
-                  </button>
-
-                  <button type="button" class="addonBtn ${buttonPill(!!row.deodorise)}" data-addon="deodorise" data-id="${item.id}">
-                    Deodorise
-                    <div class="text-[10px] font-semibold opacity-90">${fmt(ADDONS.deodorise.price)} ea</div>
-                  </button>
-
-                  <button type="button" class="addonBtn ${buttonPill(!!row.insecticide)}" data-addon="insecticide" data-id="${item.id}">
-                    Insecticide
-                    <div class="text-[10px] font-semibold opacity-90">${fmt(ADDONS.insecticide.price)} ea</div>
-                  </button>
-                </div>
-
-                <div class="mt-2 text-[11px] text-slate-500 text-center sm:text-right">
-                  Add ons apply per selected item
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      function renderList() {
-        const items = PRICES[state.tab] || [];
-        els.list.innerHTML = items.map(renderRow).join("");
-
-        // Wire qty buttons
-        els.list.querySelectorAll(".calcPlus").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const id = btn.getAttribute("data-id");
-            const row = getRow(id);
-            row.qty = clampQty(row.qty + 1);
-            save();
-            renderList();
-            syncTotals(true);
-          });
-        });
-
-        els.list.querySelectorAll(".calcMinus").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const id = btn.getAttribute("data-id");
-            const row = getRow(id);
-            row.qty = clampQty(row.qty - 1);
-            save();
-            renderList();
-            syncTotals(true);
-          });
-        });
-
-        // Wire add ons
-        els.list.querySelectorAll(".addonBtn").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const id = btn.getAttribute("data-id");
-            const addon = btn.getAttribute("data-addon");
-            const row = getRow(id);
-
-            // If qty is zero and they tap an add on, auto set qty to 1
-            if (!row.qty) row.qty = 1;
-
-            row[addon] = !row[addon];
-            save();
-            renderList();
-            syncTotals(true);
-          });
-        });
-      }
-
-      function syncTotals(pop) {
-        const total = grandTotal();
-        const bd = buildBreakdown();
-
-        els.total.textContent = fmt(total);
-        els.breakdown.textContent = bd.text;
-
-        if (els.hiddenTotal) els.hiddenTotal.value = fmt(total);
-        if (els.hiddenBreakdown) els.hiddenBreakdown.value = bd.text;
-
-        if (pop) {
-          els.total.classList.remove("qty-pop");
-          void els.total.offsetWidth;
-          els.total.classList.add("qty-pop");
-        }
-      }
-
-      function resetAll() {
-        state.tab = "carpets";
-        state.items = {};
-        save();
-        setTab("carpets");
-        syncTotals();
-      }
-
-      // Tabs
-      els.tabs.forEach(btn => {
-        btn.addEventListener("click", () => setTab(btn.getAttribute("data-tab")));
-      });
-
-      // Reset
-      if (els.resetBtn) els.resetBtn.addEventListener("click", resetAll);
-
-      // Copy
-      if (els.copyBtn) {
-        els.copyBtn.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(els.breakdown.textContent || "");
-            els.copyBtn.textContent = "Copied";
-            setTimeout(() => els.copyBtn.textContent = "Copy breakdown", 900);
-          } catch (e) {
-            alert("Could not copy. You can select and copy the text instead.");
-          }
-        });
-      }
-
-      load();
-      setTab(state.tab || "carpets");
-      syncTotals();
-    })();
-
-    /* =========================
-       REVIEWS SCRIPT (unchanged)
-       ========================= */
     const REVIEWS = [
       { name:"Diana Roach", when:"2 weeks ago", stars:5, text:"Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!" },
       { name:"Carolyn Mills", when:"a week ago", stars:5, text:"Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars." },
