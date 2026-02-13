@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -136,23 +137,12 @@
     }
     .reveal-wrap.is-open { max-height: 560px; opacity: 1; transform: translateY(0); }
 
-    /* Calculator visuals */
-    .iq-pill { transition: transform .14s ease, box-shadow .14s ease; }
-    .iq-pill:active { transform: scale(.98); }
-
-    @keyframes bump {
-      0% { transform: scale(.96); }
-      100% { transform: scale(1); }
-    }
-    .bump { animation: bump 140ms ease-out; }
-
     @media (prefers-reduced-motion: reduce) {
       [data-anim], #satisfactionBadge { opacity: 1 !important; transform: none !important; animation: none !important; }
       .badge-wrap:before { display:none !important; }
       #heroGlow { transition: none !important; }
       .shimmer:after { animation: none !important; }
       .reveal-wrap { transition:none !important; max-height:none !important; opacity:1 !important; transform:none !important; }
-      .bump { animation:none !important; }
     }
   </style>
 
@@ -215,13 +205,8 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <a href="#instantCalculator"
-           class="hidden sm:inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-4 py-2 text-sm font-semibold lift">
-          Instant calculator
-        </a>
-        <a href="tel:07802563213"
-           class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold lift">
+      <div class="flex items-center gap-3">
+        <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold lift">
           <span class="inline-block h-2 w-2 rounded-full bg-emerald-300"></span>
           07802 563213
         </a>
@@ -254,7 +239,7 @@
         <div class="pt-2">
           <h1 data-anim="hero-title" class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">
             Carpet and Upholstery Cleaning
-            <span class="block text-slate-200 mt-2">Beautiful carpets. Instant calculator. Guaranteed results.</span>
+            <span class="block text-slate-200 mt-2">Beautiful carpets. Fast quotes. Guaranteed results.</span>
           </h1>
 
           <p data-anim="hero-copy" class="mt-4 text-base md:text-lg text-slate-200 max-w-xl">
@@ -281,11 +266,11 @@
           </div>
 
           <div data-anim="hero-cta" class="mt-6 flex flex-wrap gap-3">
-            <a href="#instantCalculator" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-              Instant calculator
+            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
+              Get my quote
             </a>
-            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
-              Request call back
+            <a href="#videos" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
+              Watch videos
             </a>
             <a href="#reviews" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
               Read reviews first
@@ -306,8 +291,8 @@
             <div class="relative p-6 md:p-7">
               <div class="flex items-start justify-between gap-4">
                 <div class="min-w-0">
-                  <div class="text-xl font-extrabold">Call Back Request</div>
-                  <p class="mt-1 text-sm text-slate-600">Use the calculator first, then send your details</p>
+                  <div class="text-xl font-extrabold">Instant Quote Request</div>
+                  <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
                 </div>
 
                 <span class="badge-wrap shrink-0">
@@ -330,28 +315,7 @@
                 <input type="hidden" name="_subject" value="New Quote Request - The Carpet Cleaning Company" />
                 <input type="hidden" name="_format" value="plain" />
 
-                <!-- Calculator payload -->
-                <input type="hidden" name="instant_calculator_total" id="instant_calculator_total" value="£0.00" />
-                <input type="hidden" name="instant_calculator_items" id="instant_calculator_items" value="" />
-
                 <div class="space-y-4">
-                  <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 shadow-soft">
-                    <div class="text-xs font-semibold text-emerald-800 uppercase">Selected total</div>
-                    <div class="mt-1 text-3xl font-extrabold text-emerald-950" id="miniTotal">£0.00</div>
-                    <div class="mt-2 text-[11px] text-emerald-900/80">
-                      This updates from the calculator. If nothing is selected, use the calculator first.
-                    </div>
-                    <div class="mt-3 flex flex-wrap gap-2">
-                      <a href="#instantCalculator"
-                         class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">
-                        Open calculator
-                      </a>
-                      <button type="button" id="miniCopy"
-                         class="inline-flex items-center justify-center rounded-full bg-white border border-emerald-200 hover:bg-emerald-100 px-4 py-2 text-xs font-extrabold lift">
-                        Copy items
-                      </button>
-                    </div>
-                  </div>
 
                   <div class="grid sm:grid-cols-2 gap-4">
                     <label class="block">
@@ -362,16 +326,25 @@
                     </label>
 
                     <label class="block">
-                      <span class="text-sm font-semibold text-slate-700">Preferred timing</span>
-                      <select name="timing"
+                      <span class="text-sm font-semibold text-slate-700">Rooms or areas</span>
+                      <select name="areas"
                         class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
-                        <option>As soon as possible</option>
-                        <option>This week</option>
-                        <option>Next week</option>
-                        <option>Just pricing</option>
+                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
                       </select>
                     </label>
                   </div>
+
+                  <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span>
+                    <select required name="service"
+                      class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+                      <option value="" selected disabled>Select a service</option>
+                      <option>Carpet cleaning</option>
+                      <option>Upholstery cleaning</option>
+                      <option>Carpets and upholstery</option>
+                      <option>Commercial cleaning</option>
+                    </select>
+                  </label>
 
                   <label class="block">
                     <span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span>
@@ -425,7 +398,7 @@
 
                   <button id="submitBtn" type="submit"
                     class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">
-                    Request call back
+                    Get my quote
                   </button>
 
                   <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
@@ -436,164 +409,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- INSTANT CALCULATOR (separate from form, no item prices shown) -->
-  <section id="instantCalculator" class="py-14 bg-white text-slate-900">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="relative overflow-hidden rounded-3xl border border-slate-200 shadow-soft bg-gradient-to-br from-slate-50 via-white to-emerald-50">
-        <div class="absolute -top-28 -right-28 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
-
-        <div class="relative p-6 md:p-8">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-            <div class="min-w-0">
-              <div class="inline-flex items-center gap-2 rounded-full bg-white border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">
-                Instant Price Calculator
-              </div>
-              <h2 class="mt-3 text-3xl font-extrabold">Tap your rooms and add ons</h2>
-              <p class="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
-                You will not see per item pricing here. Your total updates instantly and your selected items carry into the call back request.
-              </p>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700">
-                  <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
-                  No hidden extras
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700">
-                  <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
-                  Fast booking
-                </span>
-                <span class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700">
-                  <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
-                  100 percent satisfaction guarantee
-                </span>
-              </div>
-            </div>
-
-            <div class="w-full lg:w-[420px]">
-              <div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 shadow-soft">
-                <div class="text-xs font-semibold text-emerald-800 uppercase">Estimated total</div>
-                <div class="mt-1 text-5xl font-extrabold text-emerald-700" id="iqTotal">£0.00</div>
-                <div class="mt-2 text-[11px] text-emerald-900/80">Final price confirmed on booking. No obligation.</div>
-
-                <div class="mt-4 flex flex-wrap gap-2">
-                  <button type="button" id="iqReset"
-                    class="inline-flex items-center justify-center rounded-full bg-white border border-emerald-200 hover:bg-emerald-100 px-4 py-2 text-xs font-extrabold lift">
-                    Reset
-                  </button>
-                  <button type="button" id="iqCopy"
-                    class="inline-flex items-center justify-center rounded-full bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 text-xs font-extrabold lift">
-                    Copy selection
-                  </button>
-                  <a href="#heroQuoteForm"
-                    class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">
-                    Request call back
-                  </a>
-                </div>
-
-                <div class="mt-4 rounded-2xl border border-emerald-200 bg-white p-4">
-                  <div class="text-xs font-extrabold text-slate-900">Selected items</div>
-                  <div class="text-[11px] text-slate-600 mt-1">This will be sent with your enquiry</div>
-                  <div class="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <pre id="iqSummary" class="whitespace-pre-wrap text-[12px] leading-5 text-slate-800">No items selected yet.</pre>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- Tabs -->
-          <div class="mt-8 flex flex-wrap gap-2">
-            <button type="button" class="iqTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-slate-900 text-white border-slate-900" data-tab="carpets">
-              Carpets and rugs
-            </button>
-            <button type="button" class="iqTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50" data-tab="upholstery">
-              Sofas and upholstery
-            </button>
-            <button type="button" class="iqTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50" data-tab="addons">
-              Optional add ons
-            </button>
-          </div>
-
-          <!-- Panels -->
-          <div class="mt-4">
-            <!-- Carpets -->
-            <div class="iqPanel" data-panel="carpets">
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="iqCarpets"></div>
-            </div>
-
-            <!-- Upholstery -->
-            <div class="iqPanel hidden" data-panel="upholstery">
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="iqUpholstery"></div>
-            </div>
-
-            <!-- Add ons -->
-            <div class="iqPanel hidden" data-panel="addons">
-              <div class="rounded-3xl border border-slate-200 bg-white shadow-soft p-6">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <div class="text-xl font-extrabold">Optional add ons</div>
-                    <div class="text-sm text-slate-600 mt-1">Enable these, then apply them to any selected item</div>
-                  </div>
-
-                  <div class="flex flex-wrap gap-2">
-                    <button type="button" class="iqAddonMaster iq-pill rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50" data-addon="scotchgard">
-                      Stain guard
-                    </button>
-                    <button type="button" class="iqAddonMaster iq-pill rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50" data-addon="deodorise">
-                      Deodorise
-                    </button>
-                    <button type="button" class="iqAddonMaster iq-pill rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50" data-addon="insecticide">
-                      Insecticide
-                    </button>
-                  </div>
-                </div>
-
-                <div class="mt-6 grid md:grid-cols-3 gap-4">
-                  <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                    <div class="text-sm font-extrabold text-emerald-950">Stain guard</div>
-                    <div class="text-xs text-emerald-900/80 mt-1">Adds protection to help resist future staining and makes maintenance easier.</div>
-                  </div>
-                  <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                    <div class="text-sm font-extrabold text-emerald-950">Deodorise</div>
-                    <div class="text-xs text-emerald-900/80 mt-1">Neutralises odours at fibre level for a fresher finish.</div>
-                  </div>
-                  <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
-                    <div class="text-sm font-extrabold text-emerald-950">Insecticide</div>
-                    <div class="text-xs text-emerald-900/80 mt-1">For textile insect pests where required as part of a professional treatment.</div>
-                  </div>
-                </div>
-
-                <div class="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <div class="text-sm font-extrabold text-slate-900">Apply add ons to selected items</div>
-                  <div class="text-xs text-slate-600 mt-1">Go back to carpets or upholstery and toggle add ons per item</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 rounded-3xl border border-slate-200 bg-slate-900 text-white p-6 shadow-soft">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <div class="text-xl font-extrabold">Ready to book</div>
-                <div class="text-sm text-white/80 mt-1">Send your details and we will confirm a fixed price and next available dates</div>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <a href="#heroQuoteForm" class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-                  Request call back
-                </a>
-                <a href="tel:07802563213" class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
-                  Call 07802 563213
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </div>
   </section>
@@ -639,6 +454,7 @@
     </div>
   </section>
 
+  <!-- ADDED: YOUR 3 VIDEOS SECTION -->
   <section id="videos" class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <h2 data-anim="reveal" class="text-3xl font-extrabold">Watch the results</h2>
@@ -698,9 +514,9 @@
           </div>
 
           <div class="mt-3 flex flex-wrap gap-2">
-            <a href="#instantCalculator"
+            <a href="#heroQuoteForm"
               class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">
-              Instant calculator
+              Get a quick quote
             </a>
             <button type="button" id="expandAllBtn"
               class="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 hover:bg-slate-50 px-4 py-2 text-xs font-bold lift">
@@ -722,7 +538,7 @@
           Load 10 more reviews
         </button>
 
-        <a href="#instantCalculator"
+        <a href="#heroQuoteForm"
           class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-sm font-extrabold lift shimmer">
           Get my quote
         </a>
@@ -759,12 +575,12 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h2 class="text-2xl md:text-3xl font-extrabold">Want a fixed price quote</h2>
-            <p class="mt-1 text-slate-200 text-sm md:text-base">Use the instant calculator and request a call back at the top.</p>
+            <p class="mt-1 text-slate-200 text-sm md:text-base">Use the form at the top and we will reply with a clear price and next available dates.</p>
           </div>
           <div class="flex gap-3 flex-wrap">
-            <a href="#instantCalculator"
+            <a href="#heroQuoteForm"
               class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">
-              Instant calculator
+              Get a fast quote
             </a>
             <a href="tel:07802563213"
               class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">
@@ -888,7 +704,7 @@
 
         if (!res.ok) throw new Error("Formspree submit failed");
 
-        alert("Thank you. Your request has been received.");
+        alert("Thank you. Your quote request has been received.");
         form.reset();
 
         const wrap = document.getElementById("extraFields");
@@ -896,387 +712,10 @@
       } catch (err) {
         alert("Sorry, it didn’t send. Please try again, or call 07802 563213.");
       } finally {
-        if (btn) { btn.disabled = false; btn.textContent = "Request call back"; }
+        if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
       }
     }
 
-    /* =========================
-       INSTANT CALCULATOR LOGIC
-       No item prices shown, totals only.
-       Change internal prices below to match your real rates.
-       ========================= */
-    (function () {
-      const STORAGE_KEY = "tccc_calc_v2";
-
-      const PRICES = {
-        carpets: [
-          { id:"hallway",      title:"Hallway",     subtitle:"Downstairs corridor", price:45 },
-          { id:"landing",      title:"Landing",     subtitle:"Upstairs passage",    price:45 },
-          { id:"bathroom",     title:"Bathroom",    subtitle:"or shower room",      price:45 },
-          { id:"box_room",     title:"Box Room",    subtitle:"Box bedroom or study",price:30 },
-          { id:"study",        title:"Study",       subtitle:"Office or study",     price:30 },
-          { id:"staircase",    title:"Staircase",   subtitle:"Per flight",          price:45 },
-          { id:"bedroom",      title:"Bedroom",     subtitle:"Regular or large",    price:45 },
-          { id:"dining_room",  title:"Dining Room", subtitle:"or breakfast room",   price:75 },
-          { id:"rugs",         title:"Rugs",        subtitle:"Steam clean",         price:35 },
-          { id:"living_room",  title:"Living Room", subtitle:"Family room",         price:75 },
-          { id:"lounge_diner", title:"Lounge Diner",subtitle:"Joined through room", price:90 }
-        ],
-        upholstery: [
-          { id:"armchair",   title:"Armchair",    subtitle:"Single chair",           price:55 },
-          { id:"2_seater",   title:"2 Seater",    subtitle:"Fabric or leather",      price:85 },
-          { id:"3_seater",   title:"3 Seater",    subtitle:"Fabric or leather",      price:105 },
-          { id:"corner",     title:"Corner Sofa", subtitle:"Typical L shape",        price:145 },
-          { id:"footstool",  title:"Footstool",   subtitle:"Small item",             price:25 },
-          { id:"dining_ch",  title:"Dining Chair",subtitle:"Per chair",              price:15 }
-        ]
-      };
-
-      const ADDON_PRICES = {
-        scotchgard: 30,
-        deodorise:  15,
-        insecticide:25
-      };
-
-      const els = {
-        iqTotal: document.getElementById("iqTotal"),
-        iqSummary: document.getElementById("iqSummary"),
-        iqReset: document.getElementById("iqReset"),
-        iqCopy: document.getElementById("iqCopy"),
-        tabs: Array.from(document.querySelectorAll(".iqTab")),
-        panels: Array.from(document.querySelectorAll(".iqPanel")),
-        carpetsGrid: document.getElementById("iqCarpets"),
-        upholsteryGrid: document.getElementById("iqUpholstery"),
-        addonMasters: Array.from(document.querySelectorAll(".iqAddonMaster")),
-
-        miniTotal: document.getElementById("miniTotal"),
-        miniCopy: document.getElementById("miniCopy"),
-
-        hiddenTotal: document.getElementById("instant_calculator_total"),
-        hiddenItems: document.getElementById("instant_calculator_items")
-      };
-
-      if (!els.iqTotal || !els.iqSummary || !els.carpetsGrid || !els.upholsteryGrid) return;
-
-      const state = {
-        tab: "carpets",
-        items: {},     // id -> { qty, addons: {scotchgard,deodorise,insecticide} }
-        addonOn: { scotchgard:false, deodorise:false, insecticide:false } // master toggles
-      };
-
-      const fmt = (n) => "£" + (Math.round((Number(n)||0) * 100) / 100).toFixed(2);
-
-      function load() {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return;
-          const data = JSON.parse(raw);
-          if (!data || typeof data !== "object") return;
-          if (data.tab) state.tab = data.tab;
-          if (data.items) state.items = data.items;
-          if (data.addonOn) state.addonOn = data.addonOn;
-        } catch (e) {}
-      }
-
-      function save() {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-      }
-
-      function getItem(id) {
-        if (!state.items[id]) {
-          state.items[id] = { qty: 0, addons: { scotchgard:false, deodorise:false, insecticide:false } };
-        }
-        return state.items[id];
-      }
-
-      function allCatalog() {
-        return [...PRICES.carpets, ...PRICES.upholstery];
-      }
-
-      function calcLine(catalogItem, itemState) {
-        const q = Math.max(0, Math.min(99, Number(itemState.qty)||0));
-        if (!q) return 0;
-        let t = catalogItem.price * q;
-        if (itemState.addons.scotchgard)  t += ADDON_PRICES.scotchgard * q;
-        if (itemState.addons.deodorise)   t += ADDON_PRICES.deodorise * q;
-        if (itemState.addons.insecticide) t += ADDON_PRICES.insecticide * q;
-        return t;
-      }
-
-      function calcTotal() {
-        const cat = allCatalog();
-        let total = 0;
-        for (const c of cat) {
-          const it = getItem(c.id);
-          total += calcLine(c, it);
-        }
-        return total;
-      }
-
-      function niceAddonLabel(key) {
-        if (key === "scotchgard") return "Stain guard";
-        if (key === "deodorise") return "Deodorise";
-        if (key === "insecticide") return "Insecticide";
-        return key;
-      }
-
-      function buildSummary() {
-        const lines = [];
-        const cat = allCatalog();
-
-        for (const c of cat) {
-          const it = getItem(c.id);
-          const q = Math.max(0, Math.min(99, Number(it.qty)||0));
-          if (!q) continue;
-
-          const add = [];
-          Object.keys(it.addons || {}).forEach(k => { if (it.addons[k]) add.push(niceAddonLabel(k)); });
-
-          lines.push(`${q} x ${c.title}`);
-          if (add.length) lines.push(`  Add ons: ${add.join(", ")}`);
-          lines.push("");
-        }
-
-        if (!lines.length) return "No items selected yet.";
-        lines.push(`Estimated total: ${fmt(calcTotal())}`);
-        return lines.join("\n").trim();
-      }
-
-      function syncOutputs(pop) {
-        const total = calcTotal();
-        const summary = buildSummary();
-
-        els.iqTotal.textContent = fmt(total);
-        els.iqSummary.textContent = summary;
-
-        if (els.miniTotal) els.miniTotal.textContent = fmt(total);
-
-        if (els.hiddenTotal) els.hiddenTotal.value = fmt(total);
-        if (els.hiddenItems) els.hiddenItems.value = summary;
-
-        if (pop) {
-          els.iqTotal.classList.remove("bump");
-          void els.iqTotal.offsetWidth;
-          els.iqTotal.classList.add("bump");
-        }
-
-        save();
-      }
-
-      function tabClass(active) {
-        return active
-          ? "iqTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-slate-900 text-white border-slate-900"
-          : "iqTab rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50";
-      }
-
-      function setTab(tab) {
-        state.tab = tab;
-
-        els.tabs.forEach(b => {
-          const t = b.getAttribute("data-tab");
-          b.className = tabClass(t === tab);
-        });
-
-        els.panels.forEach(p => {
-          const name = p.getAttribute("data-panel");
-          p.classList.toggle("hidden", name !== tab);
-        });
-
-        save();
-      }
-
-      function addonMasterClass(active) {
-        return active
-          ? "iqAddonMaster iq-pill rounded-full px-4 py-2 text-xs font-extrabold border lift bg-emerald-600 text-white border-emerald-600"
-          : "iqAddonMaster iq-pill rounded-full px-4 py-2 text-xs font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50";
-      }
-
-      function addonChipClass(active) {
-        return active
-          ? "iqAddon iq-pill rounded-full px-3 py-1.5 text-[11px] font-extrabold border lift bg-emerald-600 text-white border-emerald-600"
-          : "iqAddon iq-pill rounded-full px-3 py-1.5 text-[11px] font-extrabold border lift bg-white text-slate-900 border-slate-200 hover:bg-slate-50";
-      }
-
-      function cardHtml(c) {
-        const it = getItem(c.id);
-        const q = Math.max(0, Math.min(99, Number(it.qty)||0));
-
-        const a = it.addons || { scotchgard:false, deodorise:false, insecticide:false };
-
-        return `
-          <div class="rounded-3xl border border-slate-200 bg-white shadow-soft p-5 lift">
-            <div class="flex items-start justify-between gap-3">
-              <div class="min-w-0">
-                <div class="text-lg font-extrabold text-slate-900">${c.title}</div>
-                <div class="text-xs text-slate-600 mt-0.5">${c.subtitle || ""}</div>
-              </div>
-              <div class="shrink-0">
-                <div class="inline-flex items-center justify-center h-10 w-10 rounded-2xl bg-slate-900 text-white font-extrabold" data-qty="${c.id}">${q}</div>
-              </div>
-            </div>
-
-            <div class="mt-4 flex items-center justify-between gap-3">
-              <div class="flex items-center gap-2">
-                <button type="button" class="iqMinus h-11 w-11 rounded-full bg-slate-900 text-white text-lg font-extrabold lift" data-id="${c.id}" aria-label="Decrease">−</button>
-                <button type="button" class="iqPlus h-11 w-11 rounded-full bg-emerald-600 text-white text-lg font-extrabold lift" data-id="${c.id}" aria-label="Increase">+</button>
-              </div>
-
-              <div class="text-right">
-                <div class="text-[11px] text-slate-500">Included in total</div>
-                <div class="text-sm font-extrabold text-emerald-700">Instant updates</div>
-              </div>
-            </div>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              <button type="button" class="iqAddon ${addonChipClass(!!a.scotchgard)}" data-addon="scotchgard" data-id="${c.id}">Stain guard</button>
-              <button type="button" class="iqAddon ${addonChipClass(!!a.deodorise)}" data-addon="deodorise" data-id="${c.id}">Deodorise</button>
-              <button type="button" class="iqAddon ${addonChipClass(!!a.insecticide)}" data-addon="insecticide" data-id="${c.id}">Insecticide</button>
-            </div>
-
-            <div class="mt-3 text-[11px] text-slate-500">Add ons apply per selected item</div>
-          </div>
-        `;
-      }
-
-      function render() {
-        els.carpetsGrid.innerHTML = PRICES.carpets.map(cardHtml).join("");
-        els.upholsteryGrid.innerHTML = PRICES.upholstery.map(cardHtml).join("");
-
-        const wireWithin = (root) => {
-          root.querySelectorAll(".iqPlus").forEach(btn => {
-            btn.addEventListener("click", () => {
-              const id = btn.getAttribute("data-id");
-              const it = getItem(id);
-              it.qty = Math.max(0, Math.min(99, (Number(it.qty)||0) + 1));
-
-              // apply any master add ons to new items
-              Object.keys(state.addonOn).forEach(k => {
-                if (state.addonOn[k]) it.addons[k] = true;
-              });
-
-              root.querySelector(`[data-qty="${id}"]`).textContent = it.qty;
-              syncOutputs(true);
-            });
-          });
-
-          root.querySelectorAll(".iqMinus").forEach(btn => {
-            btn.addEventListener("click", () => {
-              const id = btn.getAttribute("data-id");
-              const it = getItem(id);
-              it.qty = Math.max(0, Math.min(99, (Number(it.qty)||0) - 1));
-
-              // if qty hits zero, keep add ons remembered, but it will not count
-              root.querySelector(`[data-qty="${id}"]`).textContent = it.qty;
-              syncOutputs(true);
-            });
-          });
-
-          root.querySelectorAll(".iqAddon").forEach(btn => {
-            btn.addEventListener("click", () => {
-              const id = btn.getAttribute("data-id");
-              const addon = btn.getAttribute("data-addon");
-              const it = getItem(id);
-
-              // if they toggle an add on before qty, set qty to 1
-              if (!it.qty) it.qty = 1;
-
-              it.addons[addon] = !it.addons[addon];
-              btn.className = "iqAddon iq-pill " + addonChipClass(it.addons[addon]);
-
-              // sync qty badge in case it was auto set to 1
-              const badge = document.querySelector(`[data-qty="${id}"]`);
-              if (badge) badge.textContent = it.qty;
-
-              syncOutputs(true);
-            });
-          });
-        };
-
-        wireWithin(els.carpetsGrid);
-        wireWithin(els.upholsteryGrid);
-      }
-
-      function resetAll() {
-        state.items = {};
-        state.addonOn = { scotchgard:false, deodorise:false, insecticide:false };
-        els.addonMasters.forEach(b => {
-          const k = b.getAttribute("data-addon");
-          b.className = addonMasterClass(false);
-          state.addonOn[k] = false;
-        });
-        render();
-        syncOutputs(true);
-      }
-
-      // Tabs
-      els.tabs.forEach(btn => btn.addEventListener("click", () => setTab(btn.getAttribute("data-tab"))));
-
-      // Master add ons
-      els.addonMasters.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const k = btn.getAttribute("data-addon");
-          state.addonOn[k] = !state.addonOn[k];
-          btn.className = addonMasterClass(state.addonOn[k]);
-
-          // if master is on, apply to all already selected items
-          if (state.addonOn[k]) {
-            Object.keys(state.items).forEach(id => {
-              if ((state.items[id]?.qty||0) > 0) {
-                state.items[id].addons[k] = true;
-              }
-            });
-          }
-
-          render();
-          syncOutputs(true);
-        });
-      });
-
-      // Reset
-      if (els.iqReset) els.iqReset.addEventListener("click", resetAll);
-
-      // Copy selection
-      const copyText = async () => {
-        const text = buildSummary();
-        try {
-          await navigator.clipboard.writeText(text);
-          if (els.iqCopy) {
-            const old = els.iqCopy.textContent;
-            els.iqCopy.textContent = "Copied";
-            setTimeout(() => els.iqCopy.textContent = old, 900);
-          }
-          if (els.miniCopy) {
-            const old2 = els.miniCopy.textContent;
-            els.miniCopy.textContent = "Copied";
-            setTimeout(() => els.miniCopy.textContent = old2, 900);
-          }
-        } catch (e) {
-          alert("Could not copy. You can select the text in the box and copy it instead.");
-        }
-      };
-
-      if (els.iqCopy) els.iqCopy.addEventListener("click", copyText);
-      if (els.miniCopy) els.miniCopy.addEventListener("click", copyText);
-
-      load();
-      render();
-      setTab(state.tab || "carpets");
-      els.addonMasters.forEach(b => {
-        const k = b.getAttribute("data-addon");
-        b.className = addonMasterClass(!!state.addonOn[k]);
-      });
-      syncOutputs(false);
-
-      // Keep the mini total in sync after page load
-      setInterval(() => {
-        const total = fmt(calcTotal());
-        if (els.miniTotal && els.miniTotal.textContent !== total) els.miniTotal.textContent = total;
-      }, 800);
-    })();
-
-    /* =========================
-       REVIEWS SCRIPT (your original)
-       ========================= */
     const REVIEWS = [
       { name:"Diana Roach", when:"2 weeks ago", stars:5, text:"Being new to the area we feel very fortunate to have chosen Paul of the Carpet Cleaning Company. From the 1st point of contact through to completion Paul was highly professional and very clear on pricing. We'd recently moved to a large house whose carpets were good quality but with a variety of unsightly stains. We were amazed at how Paul managed to remove all the incredibly stubborn stains which had seemingly ruined the carpets. We are so delighted with the results and have saved a fortune not having to replace them. Also more sustainable! We highly recommend Paul and what a lovely man he is too!" },
       { name:"Carolyn Mills", when:"a week ago", stars:5, text:"Paul did a super job. Very thorough. Moved all the furniture, left no stone unturned. Had a lot of carpet cleaning equipment to do a good job. Very pleasant hard working chap and reasonably priced for the work involved. Deserves the five stars." },
@@ -1467,3 +906,4 @@
   </script>
 </body>
 </html>
+```
