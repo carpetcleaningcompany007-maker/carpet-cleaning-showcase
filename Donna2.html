@@ -3415,6 +3415,37 @@
         <span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span><!-- FLOATING CALL + WHATSAPP BUTTONS -->
 <a id="float-call" class="mobile-float-btn" href="tel:07725866860">📞</a>
 <a id="float-whatsapp" class="mobile-float-btn" href="https://api.whatsapp.com/send?phone=07725866860">💬</a>
+
+<!-- 1) LIGHTEN THE HERO A TAD -->
+<style>
+  .hero-video-bg video{
+    filter: brightness(0.58) !important; /* was 0.45 */
+  }
+  .hero-video-overlay{
+    background: radial-gradient(circle at center, rgba(255, 210, 235, 0.25), rgba(6, 12, 30, 0.30)) !important; /* slightly softer */
+  }
+</style>
+
+<!-- 2) REMOVE THE SNOW COMPLETELY -->
+<style>
+  #snow-canvas, #snowbank { display: none !important; }
+</style>
+
+<script>
+  // kill any snow scripts that might still be running
+  (function(){
+    var c = document.getElementById('snow-canvas');
+    if (c) c.remove();
+
+    var b = document.getElementById('snowbank');
+    if (b) b.remove();
+
+    var s = document.getElementById('clean-snow-script');
+    if (s) s.remove();
+  })();
+</script>
+
+      
 </body></html>
         
 
