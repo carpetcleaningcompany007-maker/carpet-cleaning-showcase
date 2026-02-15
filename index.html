@@ -1,178 +1,782 @@
-<script>
-/* =============================
-   CONFIG
-============================= */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-const EXTRAS = {
-  scotchgard: 15,   // HALF PRICE
-  deodorise: 10,
-  insecticide: 20
-};
+  <title>Instant Carpet Cleaning Quote Shrewsbury | The Carpet Cleaning Company</title>
+  <meta name="description" content="Instant carpet cleaning quote for Shrewsbury and Shropshire. Tap plus and minus to build your quote. VAT included. Fast booking and call back." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/shrewsbury-instant-quote.html" />
 
-const ITEMS = {
-  carpets: [
-    { id:"staircase",name:"Staircase",desc:"Per flight",price:42 },
-    { id:"hallway",name:"Hallway",desc:"Downstairs corridor",price:22 },
-    { id:"landing",name:"Landing",desc:"Upstairs passage",price:22 },
-    { id:"living",name:"Living Room",desc:"Family room",price:79 },
-    { id:"bedroom",name:"Bedroom",desc:"Regular or large",price:37 },
-    { id:"dining",name:"Dining Room",desc:"Or breakfast room",price:57 },
-    { id:"bathroom",name:"Bathroom",desc:"Or shower room",price:22 },
-    { id:"boxroom",name:"Box Room",desc:"Box bedroom or study",price:27 },
-    { id:"study",name:"Study",desc:"Office or spare room",price:27 },
-    { id:"loungediner",name:"Lounge Diner",desc:"Joined through room",price:99 }
-  ],
-  rugs:[
-    { id:"rug_small",name:"Rug Small",desc:"Steam clean",price:25 },
-    { id:"rug_medium",name:"Rug Medium",desc:"Steam clean",price:35 },
-    { id:"rug_large",name:"Rug Large",desc:"Steam clean",price:49 }
-  ],
-  upholstery:[
-    { id:"sofa2",name:"2 Seat Sofa",desc:"Fabric or leather",price:65 },
-    { id:"sofa3",name:"3 Seat Sofa",desc:"Fabric or leather",price:85 },
-    { id:"corner",name:"Corner Sofa",desc:"Standard size",price:120 },
-    { id:"armchair",name:"Armchair",desc:"Single seat",price:45 }
-  ]
-};
+  <meta property="og:title" content="Instant Carpet Cleaning Quote in Shrewsbury" />
+  <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
+  <meta property="og:type" content="website" />
 
-/* =============================
-   STATE
-============================= */
+  <style>
+    :root{
+      --bg1:#eef3fb;
+      --bg2:#f7f9fe;
+      --card:#ffffff;
+      --ink:#0b1220;
+      --muted:#5b677a;
+      --line:#dbe3ef;
+      --brand:#0b4aa2;
+      --brand2:#0a3a7e;
+      --accent:#d0182e;   /* keep red for CTA only */
+      --money:#0ea35a;    /* green for all prices */
+      --shadow: 0 18px 50px rgba(10, 18, 32, .12);
+      --shadow2: 0 10px 26px rgba(10, 18, 32, .10);
+      --r: 18px;
+      --r2: 22px;
+      --max: 1220px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
 
-const state = {
-  qty:{},
-  extras:{ scotchgard:false,deodorise:false,insecticide:false }
-};
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0}
+    body{
+      font-family: var(--font);
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 10% 10%, #e6efff 0%, transparent 60%),
+                  radial-gradient(900px 520px at 90% 30%, #ffe8ee 0%, transparent 55%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width: var(--max); margin:0 auto; padding: 18px 16px 40px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding: 10px 0 16px;
+    }
+    .brand{display:flex; flex-direction:column; gap:4px;}
+    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; color:#1e2b40;}
+    .brand span{font-size:13px; color: var(--muted)}
+    .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.75);
+      border:1px solid rgba(219,227,239,.9);
+      box-shadow: 0 10px 22px rgba(10, 18, 32, .07);
+      color:#21314b; font-size:13px;
+      backdrop-filter: blur(10px);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:999px; border:1px solid rgba(219,227,239,.95);
+      background:#fff; box-shadow: 0 12px 28px rgba(10,18,32,.08);
+      font-weight:700; font-size:13px; cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 40px rgba(10,18,32,.12)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff; border-color: rgba(255,255,255,.18);
+    }
+    .btn.call{background:#fff; color:#111; border-color: rgba(219,227,239,.95);}
 
-/* =============================
-   HELPERS
-============================= */
+    .hero{
+      border-radius: 24px;
+      padding: 18px;
+      background: linear-gradient(135deg, #0a2f66 0%, #0b4aa2 55%, #133c74 100%);
+      color:#fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:380px; height:380px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 55%);
+      transform: rotate(20deg);
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+      position:relative;
+      z-index:1;
+    }
+    .hero h1{margin:0; font-size:28px; line-height:1.15}
+    .hero p{margin:8px 0 0; color: rgba(255,255,255,.88); font-size:14px; max-width: 70ch}
+    .hero-badges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.22);
+      font-size:12px;
+    }
 
-const fmt=n=>"£"+n.toFixed(2);
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      align-items:start;
+    }
 
-function totalItems(){
-  return Object.values(state.qty).reduce((a,b)=>a+b,0);
-}
+    .card{
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(219,227,239,.95);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      overflow: visible;
+    }
+    .card-h{
+      padding: 14px 16px;
+      border-bottom:1px solid rgba(219,227,239,.9);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .card-h h2{margin:0; font-size:16px;}
+    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:500}
+    .card-b{padding: 14px 16px 16px}
 
-/* =============================
-   CALCULATOR (FIXED)
-============================= */
+    .summary-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+    .total-box{
+      background: linear-gradient(135deg, #e9f0ff, #f7fbff);
+      border:1px solid rgba(160,186,230,.55);
+      border-radius: 16px;
+      padding: 12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .total-box b{font-size:26px}
+    .total-box span{font-size:12px; color: var(--muted)}
+    .vat-box{
+      border:1px solid rgba(219,227,239,.95);
+      border-radius: 16px;
+      padding: 12px;
+      background:#fff;
+    }
+    .vat-chip{
+      display:inline-flex; align-items:center; gap:8px;
+      background: rgba(14,163,90,.12);
+      color: #0a7a43;
+      border:1px solid rgba(14,163,90,.25);
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:800;
+      font-size:12px;
+      margin-right:8px;
+    }
+    .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45}
 
-function calculate(){
+    .extras{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 4px;}
+    .toggle{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius: 999px;
+      background:#fff;
+      border:1px solid rgba(219,227,239,.95);
+      cursor:pointer;
+      user-select:none;
+      font-size:13px;
+      font-weight:700;
+    }
+    .toggle input{width:16px; height:16px}
+    .toggle small{font-weight:800; color: var(--money)} /* green */
+    .toggle .mut{font-weight:600; color: var(--muted)}
 
-  let subtotal=0;
-  let breakdown=[];
+    .section-head{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top:1px dashed rgba(219,227,239,.95);
+      cursor: default;
+    }
+    .section-head.is-toggle{cursor:pointer;}
+    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:900;}
+    .plus-dot{
+      width:28px; height:28px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 10px 22px rgba(11,74,162,.25);
+      font-weight:900;
+      flex:0 0 auto;
+    }
+    .section-head .right{
+      color: var(--muted);
+      font-size:12px;
+      display:flex; align-items:center; gap:10px;
+      white-space:nowrap;
+    }
+    .chev{
+      width:28px; height:28px; border-radius:10px;
+      border:1px solid rgba(219,227,239,.95);
+      background:#fff;
+      display:grid; place-items:center;
+      box-shadow: 0 10px 22px rgba(10,18,32,.06);
+      font-weight:900;
+      line-height:1;
+    }
 
-  const all=[...ITEMS.carpets,...ITEMS.rugs,...ITEMS.upholstery];
+    .items{
+      padding: 12px 2px 0;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      max-width: 100%;
+    }
+    .items.is-collapsed{display:none;}
 
-  all.forEach(it=>{
-    let q=state.qty[it.id]||0;
-    if(!q) return;
+    .item{
+      min-width:0;
+      background: linear-gradient(135deg, #fff, #fff7fb);
+      border:1px solid rgba(219,227,239,.95);
+      border-radius: 16px;
+      padding: 12px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      box-shadow: 0 10px 22px rgba(10,18,32,.06);
+    }
+    .item h3{margin:0; font-size:14px; line-height:1.2;}
+    .item p{margin:6px 0 0; font-size:12px; color: var(--muted)}
+    .price{
+      margin-top:8px;
+      font-weight:900;
+      color: var(--money);
+      font-size:14px;
+      letter-spacing:.02em;
+    }
+    .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto;}
+    .qbtn{
+      width:34px; height:34px; border-radius: 10px;
+      border:1px solid rgba(219,227,239,.95);
+      background:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(10,18,32,.06);
+    }
+    .qnum{
+      width:34px;
+      text-align:center;
+      font-weight:900;
+      font-variant-numeric: tabular-nums;
+    }
 
-    let line=q*it.price;
-    subtotal+=line;
+    .list{display:flex; flex-direction:column; gap:10px;}
+    .line{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(219,227,239,.95);
+      border-radius: 14px;
+      background:#fff;
+    }
+    .line b{font-size:13px}
+    .line small{display:block; color: var(--muted); margin-top:4px}
+    .money{font-weight:900; font-variant-numeric: tabular-nums; color: var(--money)}
+    .hr{height:1px; background: rgba(219,227,239,.9); margin: 10px 0}
 
-    breakdown.push({name:it.name,qty:q,unit:it.price,total:line});
-  });
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .field{display:flex; flex-direction:column; gap:6px;}
+    label{font-size:12px; color: var(--muted); font-weight:700}
+    input, select, textarea{
+      width:100%;
+      padding:11px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(219,227,239,.98);
+      background:#fff;
+      outline:none;
+      font: inherit;
+      font-size:13px;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(11,74,162,.45);
+      box-shadow: 0 0 0 4px rgba(11,74,162,.10);
+    }
 
-  /* extras per selected item */
-  let itemsCount=totalItems();
-  let extrasTotal=0;
+    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .btn.danger{
+      background: linear-gradient(135deg, #d0182e, #b70f24);
+      color:#fff;
+      border-color: rgba(255,255,255,.18);
+    }
+    .mutebox{
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f3f6ff, #ffffff);
+      border:1px solid rgba(219,227,239,.95);
+      color: var(--muted);
+      font-size:12.5px;
+      line-height:1.5;
+    }
 
-  Object.entries(state.extras).forEach(([key,on])=>{
-    if(!on||!itemsCount) return;
+    footer{
+      text-align:center;
+      color: var(--muted);
+      font-size:12px;
+      margin-top: 18px;
+      padding: 10px 0 0;
+    }
 
-    let price=EXTRAS[key];
-    let line=price*itemsCount;
-    extrasTotal+=line;
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-badges{justify-content:flex-start}
+      .grid{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 420px){
+      .item{padding: 12px 10px}
+      .qbtn{width:32px; height:32px}
+      .qnum{width:30px}
+      .total-box b{font-size:24px}
+      .hero h1{font-size:24px}
+    }
+  </style>
 
-    breakdown.push({
-      name:key.charAt(0).toUpperCase()+key.slice(1),
-      qty:itemsCount,
-      unit:price,
-      total:line
-    });
-  });
-
-  let grand=subtotal+extrasTotal;
-
-  return{grand,breakdown};
-}
-
-/* =============================
-   RENDER
-============================= */
-
-function render(){
-
-  const r=calculate();
-  document.getElementById("total").textContent=fmt(r.grand);
-
-  const list=document.getElementById("selectedList");
-  const empty=document.getElementById("emptyState");
-
-  if(!r.breakdown.length){
-    list.innerHTML="";
-    list.appendChild(empty);
-    empty.style.display="block";
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"The Carpet Cleaning Company",
+    "areaServed":["Shrewsbury","Shropshire"],
+    "telephone":"07802563213",
+    "url":"https://www.thecarpetcleaningcrew.co.uk",
+    "description":"Professional carpet and upholstery cleaning in Shrewsbury and Shropshire. Instant quote calculator and fast booking."
   }
-  else{
-    empty.style.display="none";
-    list.innerHTML=r.breakdown.map(x=>`
-      <div class="line">
-        <div>
-          <b>${x.name}</b>
-          <small>${x.qty} × ${fmt(x.unit)}</small>
-        </div>
-        <div class="money">${fmt(x.total)}</div>
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <b>Instant Quote</b>
+        <span>Carpet cleaning in Shrewsbury and surrounding areas. VAT included.</span>
       </div>
-    `).join("")+
-    `<div class="hr"></div>
-     <div class="line">
-       <b>Total</b>
-       <div class="money">${fmt(r.grand)}</div>
-     </div>`;
-  }
 
-  document.getElementById("breakdown").value=r.breakdown.map(x=>`${x.name} ${x.qty}x`).join(", ");
-  document.getElementById("totalHidden").value=fmt(r.grand);
-}
+      <div class="top-actions">
+        <span class="pill">Tap plus and minus to build your quote</span>
+        <a class="btn primary" href="#callback">Request callback</a>
+        <a class="btn call" href="tel:07802563213">Call</a>
+      </div>
+    </div>
 
-/* =============================
-   BUTTONS
-============================= */
+    <section class="hero" aria-label="Instant quote hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Instant Carpet Cleaning Quote in Shrewsbury</h1>
+          <p>Select rooms, add optional extras, and see your total instantly. Then request a callback to confirm availability and get your clean booked in.</p>
+        </div>
+        <div class="hero-badges">
+          <span class="tag">VAT included</span>
+          <span class="tag">Professional equipment</span>
+          <span class="tag">Fast booking</span>
+        </div>
+      </div>
+    </section>
 
-document.querySelectorAll(".items").forEach(group=>{
-  group.addEventListener("click",e=>{
-    const btn=e.target.closest(".qbtn");
-    if(!btn) return;
+    <div class="grid">
+      <section class="card" aria-label="Build your quote">
+        <div class="card-h">
+          <div>
+            <h2>Build your quote</h2>
+            <small>Choose items below. Extras apply per item selected.</small>
+          </div>
+        </div>
 
-    const card=e.target.closest(".item");
-    const id=card.dataset.id;
+        <div class="card-b">
+          <div class="summary-row">
+            <div class="total-box">
+              <div>
+                <div style="font-size:12px; color:var(--muted); font-weight:800;">Total cost</div>
+                <b id="total">£0.00</b>
+              </div>
+              <div style="text-align:right;">
+                <span>Instant estimate</span>
+              </div>
+            </div>
 
-    let q=state.qty[id]||0;
-    if(btn.dataset.act==="inc") q++;
-    else q=Math.max(0,q-1);
+            <div class="vat-box">
+              <div>
+                <span class="vat-chip">VAT included</span>
+                <span class="note" style="display:inline; color:var(--muted);">
+                  No hidden extras. Total may vary if rooms are unusually large, heavily soiled, or access is difficult.
+                </span>
+              </div>
+            </div>
+          </div>
 
-    state.qty[id]=q;
-    card.querySelector(".qnum").textContent=q;
+          <p class="note">
+            Scotchgard is protection. Deodorise is an odour neutraliser. Insecticide is textile pest treatment where needed.
+          </p>
 
-    render();
-  });
-});
+          <div class="extras" role="group" aria-label="Optional extras">
+            <label class="toggle" title="Adds per selected item">
+              <input type="checkbox" id="x_scotch" />
+              Scotchgard <span class="mut">(+</span><small id="scotchPriceTxt">£15</small><span class="mut"> per item)</span>
+            </label>
+            <label class="toggle" title="Adds per selected item">
+              <input type="checkbox" id="x_deo" />
+              Deodorise <span class="mut">(+</span><small id="deoPriceTxt">£10</small><span class="mut"> per item)</span>
+            </label>
+            <label class="toggle" title="Adds per selected item">
+              <input type="checkbox" id="x_insect" />
+              Insecticide <span class="mut">(+</span><small id="insectPriceTxt">£20</small><span class="mut"> per item)</span>
+            </label>
+          </div>
 
-/* extras toggles */
-document.getElementById("x_scotch").onchange=e=>{state.extras.scotchgard=e.target.checked;render();}
-document.getElementById("x_deo").onchange=e=>{state.extras.deodorise=e.target.checked;render();}
-document.getElementById("x_insect").onchange=e=>{state.extras.insecticide=e.target.checked;render();}
+          <div class="section-head">
+            <div class="left"><div class="plus-dot">+</div> Carpets</div>
+            <div class="right"><span><b id="carpetCount">0</b> items</span></div>
+          </div>
+          <div class="items" id="carpets"></div>
 
-render();
+          <div class="section-head is-toggle" data-toggle="rugs">
+            <div class="left"><div class="plus-dot">+</div> Rugs</div>
+            <div class="right">
+              <span><b id="rugCount">0</b> items</span>
+              <div class="chev" id="chev_rugs">+</div>
+            </div>
+          </div>
+          <div class="items is-collapsed" id="rugs"></div>
 
-/* submit demo */
-function handleSubmit(e){
- e.preventDefault();
- alert("Form captured. Connect Formspree later.");
- return false;
-}
-window.handleSubmit=handleSubmit;
-</script>
+          <div class="section-head is-toggle" data-toggle="upholstery">
+            <div class="left"><div class="plus-dot">+</div> Sofas and Upholstery</div>
+            <div class="right">
+              <span><b id="upCount">0</b> items</span>
+              <div class="chev" id="chev_upholstery">+</div>
+            </div>
+          </div>
+          <div class="items is-collapsed" id="upholstery"></div>
+
+          <div class="hr"></div>
+          <div class="mutebox">
+            Tip: if you have hall, stairs and landing together, you can add each item you need and the breakdown will show on the right.
+          </div>
+        </div>
+      </section>
+
+      <aside class="card" aria-label="Your selected items and callback form">
+        <div class="card-h">
+          <div>
+            <h2>Your selected items</h2>
+            <small>Line items update as you add rooms.</small>
+          </div>
+        </div>
+
+        <div class="card-b">
+          <div class="list" id="selectedList">
+            <div class="mutebox" id="emptyState">No items selected yet. Add rooms to see the breakdown.</div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="card" style="box-shadow:none; border-radius:16px; overflow:visible;">
+            <div class="card-h" style="border-radius:16px 16px 0 0;">
+              <div>
+                <h2 id="callback">Arranging the clean is easy</h2>
+                <small>Enter your details and we will call you to arrange a date. If you prefer, call now on <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>.</small>
+              </div>
+            </div>
+            <div class="card-b">
+              <form id="quoteForm" action="#" method="post" onsubmit="return handleSubmit(event)">
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" placeholder="Your name" required />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" placeholder="Best number" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="email">Email (optional)</label>
+                    <input id="email" name="email" type="email" placeholder="Optional email address" />
+                  </div>
+
+                  <div class="field">
+                    <label for="postcode">Postcode starts with</label>
+                    <select id="postcode" name="postcode">
+                      <option value="">Select</option>
+                      <option>SY1</option><option>SY2</option><option>SY3</option><option>SY4</option>
+                      <option>SY5</option><option>SY6</option><option>SY7</option><option>SY8</option>
+                      <option>TF</option><option>WV</option><option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field" style="margin-top:10px;">
+                  <label for="notes">Anything we should know</label>
+                  <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
+                </div>
+
+                <input type="hidden" id="breakdown" name="breakdown" />
+                <input type="hidden" id="totalHidden" name="total" />
+
+                <div class="cta">
+                  <button class="btn danger" type="submit">Request callback</button>
+                  <a class="btn" href="tel:07802563213">Call now</a>
+                </div>
+
+                <p class="note" style="margin-top:10px;">
+                  Submitting sends your selected items and total with your message.
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="card" style="box-shadow:none; border-radius:16px;">
+            <div class="card-h" style="border-radius:16px 16px 0 0;">
+              <div>
+                <h2>Carpet cleaning Shrewsbury</h2>
+                <small>Local carpet and upholstery cleaning for Shrewsbury and Shropshire. Fast quotes, clear pricing, simple booking.</small>
+              </div>
+            </div>
+            <div class="card-b">
+              <div class="mutebox">
+                This page is built specifically for local searches in Shrewsbury and Shropshire, with instant pricing, fast loading and clear booking steps.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      © The Carpet Cleaning Company. Instant quote is an estimate. Final price may vary if rooms are unusually large, heavily soiled, or have access issues.
+      <div style="margin-top:6px;">
+        <a href="https://www.thecarpetcleaningcrew.co.uk" style="text-decoration:underline;">thecarpetcleaningcrew.co.uk</a> ·
+        <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const EXTRAS = {
+      scotchgard: 15,  // half price
+      deodorise: 10,
+      insecticide: 20
+    };
+
+    const ITEMS = {
+      carpets: [
+        { id:"staircase",  name:"Staircase",   desc:"Per flight",           price:42 },
+        { id:"hallway",    name:"Hallway",     desc:"Downstairs corridor",  price:22 },
+        { id:"landing",    name:"Landing",     desc:"Upstairs passage",     price:22 },
+        { id:"living",     name:"Living Room", desc:"Family room",          price:79 },
+        { id:"bedroom",    name:"Bedroom",     desc:"Regular or large",     price:37 },
+        { id:"dining",     name:"Dining Room", desc:"Or breakfast room",    price:57 },
+        { id:"bathroom",   name:"Bathroom",    desc:"Or shower room",       price:22 },
+        { id:"boxroom",    name:"Box Room",    desc:"Box bedroom or study", price:27 },
+        { id:"study",      name:"Study",       desc:"Office or spare room", price:27 },
+        { id:"loungediner",name:"Lounge Diner",desc:"Joined through room",  price:99 }
+      ],
+      rugs: [
+        { id:"rug_small",  name:"Rug Small",   desc:"Steam clean",          price:25 },
+        { id:"rug_medium", name:"Rug Medium",  desc:"Steam clean",          price:35 },
+        { id:"rug_large",  name:"Rug Large",   desc:"Steam clean",          price:49 }
+      ],
+      upholstery: [
+        { id:"sofa_2",   name:"2 Seat Sofa",   desc:"Fabric or leather",    price:65 },
+        { id:"sofa_3",   name:"3 Seat Sofa",   desc:"Fabric or leather",    price:85 },
+        { id:"corner",   name:"Corner Sofa",   desc:"Standard size",        price:120 },
+        { id:"armchair", name:"Armchair",      desc:"Single seat",          price:45 }
+      ]
+    };
+
+    const state = {
+      qty: {},
+      extras: { scotchgard:false, deodorise:false, insecticide:false } // scotch OFF by default
+    };
+
+    const fmt = n => "£" + (Math.round(n * 100) / 100).toFixed(2);
+    const getCount = (group) => group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
+    const totalSelectedItems = () => Object.values(state.qty).reduce((s,v)=>s+v,0);
+
+    function calc(){
+      let subtotal = 0;
+      const lines = [];
+
+      const allGroups = [
+        ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
+        ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
+        ...ITEMS.upholstery.map(it => ({...it, group:"Sofas and Upholstery"}))
+      ];
+
+      for (const it of allGroups){
+        const q = state.qty[it.id] || 0;
+        if (!q) continue;
+        const lineTotal = it.price * q;
+        subtotal += lineTotal;
+        lines.push({ label: it.name, group: it.group, qty: q, unit: it.price, total: lineTotal });
+      }
+
+      const itemsCount = totalSelectedItems();
+
+      const extrasLines = [];
+      let extrasTotal = 0;
+
+      if (itemsCount > 0){
+        if (state.extras.scotchgard){
+          const t = EXTRAS.scotchgard * itemsCount;
+          extrasTotal += t;
+          extrasLines.push({ label:"Scotchgard protection", group:"Extras", qty:itemsCount, unit:EXTRAS.scotchgard, total:t });
+        }
+        if (state.extras.deodorise){
+          const t = EXTRAS.deodorise * itemsCount;
+          extrasTotal += t;
+          extrasLines.push({ label:"Deodorise", group:"Extras", qty:itemsCount, unit:EXTRAS.deodorise, total:t });
+        }
+        if (state.extras.insecticide){
+          const t = EXTRAS.insecticide * itemsCount;
+          extrasTotal += t;
+          extrasLines.push({ label:"Insecticide", group:"Extras", qty:itemsCount, unit:EXTRAS.insecticide, total:t });
+        }
+      }
+
+      const grand = subtotal + extrasTotal;
+      return { lines, extrasLines, subtotal, extrasTotal, grand };
+    }
+
+    function renderGroup(el, groupItems){
+      el.innerHTML = groupItems.map(it => {
+        const q = state.qty[it.id] || 0;
+        return `
+          <article class="item" data-id="${it.id}">
+            <div style="min-width:0">
+              <h3>${it.name}</h3>
+              <p>${it.desc}</p>
+              <div class="price">${fmt(it.price)}</div>
+            </div>
+            <div class="qty" aria-label="Quantity controls for ${it.name}">
+              <button class="qbtn" data-act="dec" type="button" aria-label="Decrease ${it.name}">−</button>
+              <div class="qnum" aria-label="Quantity">${q}</div>
+              <button class="qbtn" data-act="inc" type="button" aria-label="Increase ${it.name}">+</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderSelected(){
+      const r = calc();
+      document.getElementById("total").textContent = fmt(r.grand);
+
+      document.getElementById("carpetCount").textContent = getCount(ITEMS.carpets);
+      document.getElementById("rugCount").textContent = getCount(ITEMS.rugs);
+      document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
+
+      const list = document.getElementById("selectedList");
+      const empty = document.getElementById("emptyState");
+
+      const all = [...r.lines, ...r.extrasLines];
+
+      if (!all.length){
+        list.innerHTML = "";
+        list.appendChild(empty);
+        empty.style.display = "block";
+      } else {
+        empty.style.display = "none";
+        list.innerHTML = all.map(x => `
+          <div class="line">
+            <div>
+              <b>${x.label}</b>
+              <small>${x.group} · ${x.qty} × ${fmt(x.unit)}</small>
+            </div>
+            <div class="money">${fmt(x.total)}</div>
+          </div>
+        `).join("") + `
+          <div class="hr"></div>
+          <div class="line" style="background:linear-gradient(135deg,#f3f6ff,#ffffff);">
+            <div>
+              <b>Total</b>
+              <small>Instant estimate</small>
+            </div>
+            <div class="money">${fmt(r.grand)}</div>
+          </div>
+        `;
+      }
+
+      const breakdownText = all.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`).join("\n");
+      document.getElementById("breakdown").value = breakdownText;
+      document.getElementById("totalHidden").value = fmt(r.grand);
+    }
+
+    function attachQtyHandlers(container){
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest("button.qbtn");
+        if (!btn) return;
+
+        const card = e.target.closest(".item");
+        if (!card) return;
+
+        const id = card.getAttribute("data-id");
+        const act = btn.getAttribute("data-act");
+        const cur = state.qty[id] || 0;
+
+        if (act === "inc") state.qty[id] = cur + 1;
+        if (act === "dec") state.qty[id] = Math.max(0, cur - 1);
+
+        card.querySelector(".qnum").textContent = state.qty[id];
+        renderSelected();
+      });
+    }
+
+    function setupCollapsers(){
+      document.querySelectorAll(".section-head.is-toggle").forEach(head=>{
+        head.addEventListener("click", ()=>{
+          const id = head.getAttribute("data-toggle");
+          const body = document.getElementById(id);
+          const chev = document.getElementById("chev_" + id);
+          const isCollapsed = body.classList.toggle("is-collapsed");
+          if (chev) chev.textContent = isCollapsed ? "+" : "−";
+        });
+      });
+    }
+
+    document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
+    document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
+    document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
+
+    const carpetsEl = document.getElementById("carpets");
+    const rugsEl = document.getElementById("rugs");
+    const upEl = document.getElementById("upholstery");
+
+    renderGroup(carpetsEl, ITEMS.carpets);
+    renderGroup(rugsEl, ITEMS.rugs);
+    renderGroup(upEl, ITEMS.upholstery);
+
+    attachQtyHandlers(carpetsEl);
+    attachQtyHandlers(rugsEl);
+    attachQtyHandlers(upEl);
+
+    document.getElementById("x_scotch").addEventListener("change", (e)=>{ state.extras.scotchgard = e.target.checked; renderSelected(); });
+    document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
+    document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
+
+    setupCollapsers();
+    renderSelected();
+
+    function handleSubmit(event){
+      event.preventDefault();
+      alert("Callback request captured on this page. If you want it to email you, I will wire in your Formspree endpoint.");
+      return false;
+    }
+    window.handleSubmit = handleSubmit;
+  </script>
+</body>
+</html>
