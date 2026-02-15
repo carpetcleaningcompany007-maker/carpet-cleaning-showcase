@@ -1,846 +1,453 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Instant Carpet Cleaning Quote | Shrewsbury | The Carpet Cleaning Company</title>
-  <meta name="description" content="Instant carpet cleaning quote calculator for Shrewsbury. Pick rooms, add Scotchgard, deodorise or insecticide, then request a callback. VAT included." />
-  <link rel="canonical" href="./instant-quote.html" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta property="og:title" content="Instant Carpet Cleaning Quote Calculator | Shrewsbury" />
-  <meta property="og:description" content="Select rooms and extras to get an instant total. VAT included. Request a callback in seconds." />
+  <title>Cleaning Services Shrewsbury | DS Professional Cleaning</title>
+  <meta name="description" content="Professional domestic and commercial cleaning in Shrewsbury. Regular cleans, offices, end of tenancy, medical and veterinary cleaning. Call or WhatsApp Donna for a quote." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://carpetcleaningcompany007-maker.github.io/carpet-cleaning-showcase/shrewsbury-cleaning.html" />
+
+  <meta property="og:title" content="Cleaning Services Shrewsbury | DS Professional Cleaning" />
+  <meta property="og:description" content="Domestic and commercial cleaning in Shrewsbury. Regular cleans, offices, end of tenancy, medical and veterinary cleaning. Call or WhatsApp Donna." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://carpetcleaningcompany007-maker.github.io/carpet-cleaning-showcase/shrewsbury-cleaning.html" />
 
   <style>
     :root{
-      --ink:#0b1220;
-      --muted:#475569;
-      --bg:#f4f7fb;
-      --card:#ffffff;
-      --line:#e5e7eb;
-      --brand:#0b5cab;
-      --brand2:#0b3f74;
-      --accent:#b00020;
-      --accent2:#e11d48;
-      --good:#16a34a;
-      --radius:16px;
-      --shadow:0 18px 46px rgba(2,6,23,.12);
-      --shadow2:0 10px 26px rgba(2,6,23,.10);
-      --font:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      --bg1:#0b1220; --bg2:#070b14;
+      --ink:#f7f7fb; --muted:rgba(247,247,251,0.78); --muted2:rgba(247,247,251,0.62);
+      --pink:#ff7db7; --pink2:#ffb6d7; --mint:#7cf7d4; --gold:#ffd48a;
+      --shadow:0 22px 70px rgba(0,0,0,0.55); --soft:0 16px 40px rgba(0,0,0,0.35);
+      --radius:22px; --radiusLg:28px; --max:1180px;
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ margin:0; padding:0; box-sizing:border-box; }
     body{
-      margin:0;
       font-family:var(--font);
       color:var(--ink);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(11,92,171,.14), transparent 55%),
-        radial-gradient(900px 500px at 90% 0%, rgba(176,0,32,.10), transparent 55%),
-        var(--bg);
+        radial-gradient(1000px 700px at 15% 10%, rgba(255,125,183,0.22), rgba(255,125,183,0) 55%),
+        radial-gradient(900px 650px at 85% 20%, rgba(124,247,212,0.18), rgba(124,247,212,0) 55%),
+        radial-gradient(950px 680px at 50% 90%, rgba(255,212,138,0.12), rgba(255,212,138,0) 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
     }
-    a{color:inherit}
-    .wrap{
-      max-width:1120px;
-      margin:0 auto;
-      padding:28px 18px 36px;
-    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
 
-    .topbar{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    .brand strong{
-      font-size:14px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--brand2);
-    }
-    .brand span{
-      font-size:13px;
-      color:var(--muted);
-    }
-    .top-ctas{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.75);
-      backdrop-filter:blur(10px);
-      border-radius:999px;
-      box-shadow:0 10px 24px rgba(2,6,23,.08);
-      font-size:13px;
-      color:var(--muted);
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow:0 10px 22px rgba(2,6,23,.08);
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .btn.primary{
-      border-color:transparent;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#fff;
-    }
-    .btn.accent{
-      border-color:transparent;
-      background:linear-gradient(135deg,var(--accent2),var(--accent));
-      color:#fff;
-    }
+    .shell{ max-width:var(--max); margin:0 auto; padding:0 18px; position:relative; z-index:2; }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:18px;
-      align-items:stretch;
-      margin-bottom:18px;
-    }
-    @media (max-width:920px){
-      .hero{grid-template-columns:1fr}
-    }
+    .orb{ position:fixed; width:420px; height:420px; border-radius:50%; filter:blur(70px); opacity:.55; pointer-events:none; z-index:0; mix-blend-mode:screen; animation:float 16s ease-in-out infinite alternate; }
+    .orb.one{ top:-160px; left:-160px; background:rgba(255,125,183,0.55); }
+    .orb.two{ top:-160px; right:-160px; background:rgba(124,247,212,0.45); animation-duration:20s; }
+    .orb.three{ bottom:-180px; left:10%; background:rgba(255,212,138,0.35); animation-duration:24s; }
+    @keyframes float{ 0%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(35px,18px) scale(1.05);} 100%{ transform:translate(-18px,28px) scale(.98);} }
 
-    .panel{
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(229,231,235,.9);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .panel-head{
-      padding:18px 18px 14px;
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(900px 260px at 10% 0%, rgba(11,92,171,.14), transparent 55%),
-        radial-gradient(900px 260px at 90% 0%, rgba(176,0,32,.12), transparent 55%),
-        #fff;
-    }
-    .panel-head h1{
-      margin:0 0 8px;
-      font-size:28px;
-      letter-spacing:-.02em;
-      line-height:1.15;
-    }
-    .panel-head p{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.55;
-    }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(16px); background:linear-gradient(to bottom, rgba(10,16,30,0.78), rgba(10,16,30,0.32)); border-bottom:1px solid rgba(255,255,255,0.08); }
+    .header.scrolled{ background:rgba(10,16,30,0.86); box-shadow:0 14px 40px rgba(0,0,0,0.45); }
+    .navInner{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0; }
+    .brandTop{ font-weight:900; letter-spacing:0.14em; text-transform:uppercase; font-size:13px; color:rgba(255,255,255,0.92); }
+    .brandSub{ font-size:12px; color:var(--muted2); margin-top:2px; }
+    .navLinks{ display:flex; align-items:center; gap:14px; font-size:14px; color:rgba(255,255,255,0.86); }
+    .navLinks a{ padding:8px 10px; border-radius:999px; transition:background .2s ease, transform .2s ease; }
+    .navLinks a:hover{ background:rgba(255,255,255,0.07); transform:translateY(-1px); }
+    .navCtas{ display:flex; gap:10px; align-items:center; }
+    .pillBtn{ display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.06); font-weight:800; font-size:14px; box-shadow:0 12px 28px rgba(0,0,0,0.28); transition:transform .2s ease; white-space:nowrap; }
+    .pillBtn:hover{ transform:translateY(-2px); }
+    .pillBtn.primary{ background:linear-gradient(135deg, rgba(255,125,183,0.95), rgba(255,182,215,0.88)); border-color:rgba(255,125,183,0.55); color:#1a0f17; }
+    @media (max-width:900px){ .navLinks{ display:none; } }
 
-    .summary{
-      padding:16px 18px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      align-items:center;
-    }
-    @media (max-width:520px){
-      .summary{grid-template-columns:1fr}
-    }
-    .totalbox{
-      border-radius:14px;
-      background:linear-gradient(135deg, rgba(11,92,171,.12), rgba(11,92,171,.06));
-      border:1px solid rgba(11,92,171,.22);
-      padding:14px 14px;
-      box-shadow:var(--shadow2);
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .totalbox .label{
-      font-size:13px;
-      color:var(--muted);
-      font-weight:700;
-    }
-    .totalbox .value{
-      font-size:30px;
-      font-weight:900;
-      letter-spacing:-.02em;
-      color:var(--ink);
-    }
-    .vatnote{
-      border-radius:14px;
-      background:rgba(255,255,255,.85);
-      border:1px solid var(--line);
-      padding:14px 14px;
-      box-shadow:var(--shadow2);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .vatnote b{
-      color:var(--good);
-      font-size:13px;
-    }
-    .vatnote span{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-    }
+    .hero{ padding:124px 0 70px; }
+    .heroGrid{ display:grid; gap:18px; align-items:center; }
+    @media (min-width:980px){ .heroGrid{ grid-template-columns:1.18fr 0.82fr; gap:26px; } }
 
-    .toolbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 18px 18px;
-    }
-    .toolbar .hint{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-    .mini{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .toggle{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      box-shadow:0 10px 22px rgba(2,6,23,.06);
-      font-size:13px;
-      color:var(--muted);
-    }
-    .toggle input{width:18px;height:18px}
+    .glass{ background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06)); border:1px solid rgba(255,255,255,0.14); border-radius:var(--radiusLg); box-shadow:var(--shadow); backdrop-filter:blur(18px) saturate(1.25); overflow:hidden; position:relative; }
+    .glass.pad{ padding:26px; }
 
-    .section{
-      border-top:1px solid var(--line);
-    }
-    details{
-      border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.65);
-    }
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding:14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      user-select:none;
-      font-weight:900;
-      color:var(--brand2);
-    }
-    summary::-webkit-details-marker{display:none}
-    .sum-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:30px;
-      height:30px;
-      border-radius:10px;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#fff;
-      font-weight:900;
-      font-size:14px;
-    }
-    .sum-right{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color:var(--muted);
-      font-weight:700;
-      font-size:13px;
-    }
+    .kicker{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); width:max-content; font-size:13px; color:rgba(255,255,255,0.88); font-weight:800; box-shadow:0 14px 34px rgba(0,0,0,0.25); margin-bottom:14px; }
+    .kdot{ width:10px; height:10px; border-radius:50%; background:var(--mint); box-shadow:0 0 18px rgba(124,247,212,0.85); }
 
-    .items{
-      padding:14px 18px 18px;
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width:900px){
-      .items{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:560px){
-      .items{grid-template-columns:1fr}
-    }
-    .item{
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:#fff;
-      box-shadow:0 10px 22px rgba(2,6,23,.06);
-      padding:12px 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      min-height:74px;
-    }
-    .item .meta{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      min-width:0;
-    }
-    .item .name{
-      font-weight:900;
-      font-size:14px;
-      color:var(--ink);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .item .desc{
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.35;
-    }
-    .item .price{
-      font-weight:900;
-      color:var(--accent);
-      font-size:13px;
-      white-space:nowrap;
-    }
+    h1{ font-size:38px; line-height:1.08; letter-spacing:-0.02em; margin-bottom:12px; }
+    @media (min-width:980px){ h1{ font-size:46px; } }
+    .lead{ color:var(--muted); line-height:1.75; font-size:16px; max-width:64ch; margin-bottom:16px; }
 
-    .qty{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex:0 0 auto;
-    }
-    .qty button{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      border:1px solid var(--line);
-      background:#fff;
-      cursor:pointer;
-      font-size:18px;
-      font-weight:900;
-      box-shadow:0 10px 18px rgba(2,6,23,.06);
-    }
-    .qty .count{
-      width:34px;
-      text-align:center;
-      font-weight:900;
-      color:var(--ink);
-    }
+    .ticks{ list-style:none; display:grid; gap:10px; margin:0 0 18px; }
+    .ticks li{ display:flex; gap:10px; align-items:flex-start; color:rgba(255,255,255,0.88); font-size:14px; line-height:1.6; }
+    .t{ width:22px; height:22px; border-radius:50%; background:rgba(255,125,183,0.18); border:1px solid rgba(255,125,183,0.35); display:flex; align-items:center; justify-content:center; font-weight:900; flex:0 0 auto; margin-top:1px; }
 
-    .right{
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:rgba(255,255,255,.9);
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-    }
-    .card .head{
-      padding:14px 14px;
-      border-bottom:1px solid var(--line);
-      background:linear-gradient(135deg, rgba(176,0,32,.10), rgba(11,92,171,.08));
-    }
-    .card .head h2{
-      margin:0;
-      font-size:16px;
-      letter-spacing:-.01em;
-    }
-    .card .body{
-      padding:14px 14px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-    }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 16px; border-radius:999px; font-weight:900; font-size:15px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.92); cursor:pointer; box-shadow:0 14px 34px rgba(0,0,0,0.28); transition:transform .2s ease; white-space:nowrap; }
+    .btn:hover{ transform:translateY(-2px); }
+    .btn.primary{ background:linear-gradient(135deg, rgba(255,125,183,0.98), rgba(255,182,215,0.90)); border-color:rgba(255,125,183,0.60); color:#1a0f17; }
+    .btn.whats{ background:#25D366; border-color:rgba(37,211,102,0.60); color:#08120c; }
 
-    .lineitems{
-      margin-top:10px;
-      border-top:1px dashed rgba(148,163,184,.6);
-      padding-top:10px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .li{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      font-size:13px;
-      color:var(--muted);
-    }
-    .li b{color:var(--ink)}
-    .li i{font-style:normal;color:var(--accent);font-weight:900}
+    .profile{ display:flex; gap:14px; align-items:center; margin-bottom:14px; }
+    .avatarWrap{ width:74px; height:74px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,0.18); box-shadow:0 18px 46px rgba(0,0,0,0.40); background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
+    .avatar{ width:74px; height:74px; object-fit:cover; }
+    .avatarFallback{ font-weight:900; color:rgba(255,255,255,0.82); font-size:18px; letter-spacing:.08em; }
+    .pTitle{ font-weight:900; font-size:16px; }
+    .pSub{ color:var(--muted2); font-size:13px; line-height:1.5; }
 
-    form{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      margin-top:10px;
-    }
-    @media (max-width:560px){
-      form{grid-template-columns:1fr}
-    }
-    label{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      font-size:12px;
-      color:var(--muted);
-      font-weight:800;
-    }
-    input,select,textarea{
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:12px 12px;
-      font:inherit;
-      font-size:14px;
-      outline:none;
-      background:#fff;
-    }
-    textarea{min-height:96px;resize:vertical;grid-column:1 / -1}
-    .submit{
-      grid-column:1 / -1;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-      margin-top:6px;
-    }
-    .smallnote{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.4;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .chip{ padding:9px 12px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.88); font-size:13px; font-weight:900; box-shadow:0 12px 28px rgba(0,0,0,0.25); }
 
-    .footer{
-      margin-top:18px;
-      color:var(--muted);
-      font-size:12px;
-      text-align:center;
-      line-height:1.5;
-    }
+    .section{ padding:76px 0; }
+    .sectionAlt{ background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); }
+    .head{ text-align:center; margin-bottom:34px; }
+    .eyebrow{ font-size:12px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.60); margin-bottom:10px; }
+    h2{ font-size:30px; letter-spacing:-0.02em; margin-bottom:10px; }
+    .sublead{ color:var(--muted); line-height:1.75; max-width:70ch; margin:0 auto; font-size:16px; }
 
-    .stickybar{
-      position:fixed;
-      left:0; right:0; bottom:0;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(12px);
-      border-top:1px solid var(--line);
-      box-shadow:0 -18px 46px rgba(2,6,23,.14);
-      padding:10px 12px;
-      z-index:50;
+    .grid3{ display:grid; gap:16px; }
+    @media (min-width:900px){ .grid3{ grid-template-columns:repeat(3, minmax(0,1fr)); } }
+
+    .card{ background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06)); border:1px solid rgba(255,255,255,0.14); border-radius:var(--radius); box-shadow:var(--soft); padding:20px; backdrop-filter:blur(16px); transition:transform .22s ease; }
+    .card:hover{ transform:translateY(-6px); }
+    .tag{ display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:999px; background:rgba(255,125,183,0.14); border:1px solid rgba(255,125,183,0.30); color:rgba(255,255,255,0.90); font-size:12px; font-weight:900; margin-bottom:10px; }
+    h3{ font-size:18px; margin-bottom:10px; font-weight:900; }
+    .text{ color:var(--muted); line-height:1.75; font-size:14px; }
+
+    .split{ display:grid; gap:16px; }
+    @media (min-width:980px){ .split{ grid-template-columns:1.15fr 0.85fr; gap:22px; } }
+
+    label{ display:block; font-size:13px; font-weight:900; color:rgba(255,255,255,0.76); margin-bottom:6px; }
+    input, textarea{ width:100%; padding:12px 12px; border-radius:16px; border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.90); outline:none; font-size:14px; }
+    textarea{ min-height:120px; resize:vertical; }
+
+    .footer{ padding:62px 0 92px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+    .fine{ color:rgba(255,255,255,0.62); font-size:13px; margin-top:14px; }
+
+    .floatBtn{ position:fixed; right:16px; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 18px 46px rgba(0,0,0,0.45); z-index:70; border:1px solid rgba(255,255,255,0.14); backdrop-filter:blur(10px); transition:transform .2s ease; }
+    .floatBtn:hover{ transform:scale(1.06); }
+    .floatCall{ bottom:116px; background:linear-gradient(135deg, rgba(255,125,183,0.95), rgba(255,182,215,0.88)); color:#1a0f17; }
+    .floatWhats{ bottom:44px; background:#25D366; color:#06110b; border-color:rgba(37,211,102,0.55); }
+
+    .callBar{ position:fixed; left:0; right:0; bottom:0; background:rgba(10,16,30,0.90); border-top:1px solid rgba(255,255,255,0.08); box-shadow:0 -14px 40px rgba(0,0,0,0.45); padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px; z-index:80; backdrop-filter:blur(16px); }
+    .callBar span{ font-size:14px; color:rgba(255,255,255,0.86); font-weight:900; }
+    .callBar a{ padding:10px 14px; border-radius:999px; background:linear-gradient(135deg, rgba(255,125,183,0.95), rgba(255,182,215,0.88)); font-weight:900; color:#1a0f17; white-space:nowrap; border:1px solid rgba(255,125,183,0.55); }
+    @media (min-width:860px){ .callBar{ display:none; } }
+
+    .reveal{ opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
+    .reveal.show{ opacity:1; transform:translateY(0); }
+
+    .sent{
       display:none;
-    }
-    .stickybar .inner{
-      max-width:1120px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .stickybar .t{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .stickybar .t span{font-size:12px;color:var(--muted);font-weight:800}
-    .stickybar .t b{font-size:18px}
-    @media (max-width:860px){
-      .stickybar{display:block}
-      .wrap{padding-bottom:92px}
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(124,247,212,0.12);
+      border:1px solid rgba(124,247,212,0.28);
+      color:rgba(255,255,255,0.88);
+      font-weight:900;
+      font-size:14px;
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "The Carpet Cleaning Company",
-    "areaServed": ["Shrewsbury", "Shropshire"],
-    "serviceType": ["Carpet Cleaning", "Upholstery Cleaning", "Rug Cleaning"],
-    "url": "./instant-quote.html"
-  }
-  </script>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <strong>Instant Quote</strong>
-        <span>Carpet cleaning in Shrewsbury and surrounding areas. VAT included.</span>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <header class="header" id="siteHeader">
+    <div class="shell navInner">
+      <div aria-label="DS Professional Cleaning">
+        <div class="brandTop">DS Professional Cleaning</div>
+        <div class="brandSub">Cleaning services in Shrewsbury</div>
       </div>
-      <div class="top-ctas">
-        <div class="chip">Tap plus and minus to build your quote</div>
-        <a class="btn primary" href="#callback">Request callback</a>
-        <a class="btn" href="tel:07802563213">Call</a>
+
+      <nav class="navLinks" aria-label="Page">
+        <a href="#services">Services</a>
+        <a href="#areas">Areas</a>
+        <a href="#why">Why choose us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="navCtas">
+        <a class="pillBtn" href="https://api.whatsapp.com/send?phone=447725866860">WhatsApp</a>
+        <a class="pillBtn primary" href="tel:07725866860">Call 07725 866860</a>
       </div>
     </div>
+  </header>
 
-    <div class="hero">
-      <section class="panel" aria-label="Instant Quote Calculator">
-        <div class="panel-head">
-          <h1>Instant Carpet Cleaning Quote</h1>
-          <p>Select rooms and extras below. Your total updates instantly. If you want, send your details and we will confirm availability and lock it in.</p>
-        </div>
+  <main>
+    <section class="hero">
+      <div class="shell heroGrid">
+        <section class="glass pad reveal">
+          <div class="kicker"><span class="kdot"></span><span>Local, reliable, detail driven cleaning</span></div>
+          <h1>Beautifully clean homes and workplaces in Shrewsbury</h1>
+          <p class="lead">
+            Domestic and commercial cleaning across Shrewsbury.
+            Regular cleans, office cleaning, end of tenancy, plus specialist hygiene environments delivered with consistent standards.
+          </p>
 
-        <div class="summary">
-          <div class="totalbox">
+          <ul class="ticks">
+            <li><span class="t">✓</span><span>Weekly or fortnightly domestic cleaning</span></li>
+            <li><span class="t">✓</span><span>Office and workplace cleaning</span></li>
+            <li><span class="t">✓</span><span>End of tenancy cleans for landlords and letting agents</span></li>
+            <li><span class="t">✓</span><span>Medical and veterinary cleaning</span></li>
+          </ul>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="tel:07725866860">Call Donna</a>
+            <a class="btn whats" href="https://api.whatsapp.com/send?phone=447725866860">WhatsApp Donna</a>
+            <a class="btn" href="#contact">Request a quote</a>
+          </div>
+        </section>
+
+        <aside class="glass pad reveal">
+          <div class="profile">
+            <div class="avatarWrap" aria-label="Donna photo">
+              <img class="avatar" src="donna.jpg" alt="Donna from DS Professional Cleaning" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;avatarFallback&quot;>DONNA</div>';">
+            </div>
             <div>
-              <div class="label">Total cost</div>
-              <div class="value" id="totalDisplay">£0.00</div>
-            </div>
-            <div class="label" style="text-align:right;">Instant estimate</div>
-          </div>
-          <div class="vatnote">
-            <b>VAT included</b>
-            <span>No hidden extras. You only pay what you see here, subject to access and condition.</span>
-          </div>
-        </div>
-
-        <div class="toolbar">
-          <div class="hint">
-            Extras apply per item selected.
-            Scotchgard is protection.
-            Deodorise is odour neutraliser.
-            Insecticide is textile pest treatment where needed.
-          </div>
-          <div class="mini">
-            <div class="toggle">
-              <input id="optScotch" type="checkbox" checked />
-              <label for="optScotch" style="all:unset; cursor:pointer;">Scotchgard</label>
-            </div>
-            <div class="toggle">
-              <input id="optDeod" type="checkbox" />
-              <label for="optDeod" style="all:unset; cursor:pointer;">Deodorise</label>
-            </div>
-            <div class="toggle">
-              <input id="optInsect" type="checkbox" />
-              <label for="optInsect" style="all:unset; cursor:pointer;">Insecticide</label>
+              <div class="pTitle">Donna Jones</div>
+              <div class="pSub">Shrewsbury based cleaner. Friendly, organised, consistently thorough.</div>
             </div>
           </div>
+
+          <div class="chips">
+            <div class="chip">Fully insured</div>
+            <div class="chip">DBS checked staff</div>
+            <div class="chip">COSHH trained</div>
+            <div class="chip">First aid certified</div>
+            <div class="chip">Reliable scheduling</div>
+            <div class="chip">Commercial standards</div>
+          </div>
+
+          <p class="text" style="margin-top:14px;">
+            Looking for carpet and upholstery cleaning too. Donna works alongside a specialist technician for deep carpet cleaning and stain removal.
+          </p>
+
+          <div class="ctaRow" style="margin-top:14px;">
+            <a class="btn" href="https://www.facebook.com/profile.php?id=100083053186560">Facebook page</a>
+            <a class="btn" href="#services">See services</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section sectionAlt" id="services">
+      <div class="shell">
+        <div class="head reveal">
+          <div class="eyebrow">Services</div>
+          <h2>Cleaning services in Shrewsbury</h2>
+          <p class="sublead">Regular plans or one off deep cleans tailored to your routine and your priorities.</p>
         </div>
 
-        <div class="section">
-          <details open>
-            <summary>
-              <div class="sum-left"><span class="badge">+</span> Carpets</div>
-              <div class="sum-right"><span>Most popular</span><span id="carpetCount">0 items</span></div>
-            </summary>
-            <div class="items" id="carpetsList"></div>
-          </details>
+        <div class="grid3">
+          <article class="card reveal">
+            <div class="tag">Domestic</div>
+            <h3>Regular home cleaning</h3>
+            <p class="text">Weekly or fortnightly cleaning for kitchens, bathrooms, floors and living areas.</p>
+          </article>
 
-          <details>
-            <summary>
-              <div class="sum-left"><span class="badge">+</span> Rugs</div>
-              <div class="sum-right"><span>Steam clean</span><span id="rugCount">0 items</span></div>
-            </summary>
-            <div class="items" id="rugsList"></div>
-          </details>
+          <article class="card reveal">
+            <div class="tag">Commercial</div>
+            <h3>Office and workplace cleaning</h3>
+            <p class="text">Scheduled cleaning for offices, studios and workplaces across Shrewsbury.</p>
+          </article>
 
-          <details>
-            <summary>
-              <div class="sum-left"><span class="badge">+</span> Sofas and Upholstery</div>
-              <div class="sum-right"><span>Fabric or leather</span><span id="sofaCount">0 items</span></div>
-            </summary>
-            <div class="items" id="sofasList"></div>
-          </details>
+          <article class="card reveal">
+            <div class="tag">Lettings</div>
+            <h3>End of tenancy cleaning</h3>
+            <p class="text">Deep reset cleans for landlords and letting agents focusing on handover critical areas.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="tag">Clinical</div>
+            <h3>Medical and clinical cleaning</h3>
+            <p class="text">Consistent hygiene standards for clinical spaces with careful attention to touch points.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="tag">Veterinary</div>
+            <h3>Veterinary practice cleaning</h3>
+            <p class="text">Cleaning for treatment rooms, reception areas and staff spaces.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="tag">Specialist</div>
+            <h3>Carpet and upholstery cleaning</h3>
+            <p class="text">Deep carpet cleaning and stain removal through a specialist technician working with Donna.</p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <aside class="right">
-        <div class="card">
-          <div class="head">
-            <h2>Your selected items</h2>
-          </div>
-          <div class="body">
-            <div>Line items update as you add rooms.</div>
-            <div class="lineitems" id="lineItems"></div>
-          </div>
+    <section class="section" id="areas">
+      <div class="shell">
+        <div class="head reveal">
+          <div class="eyebrow">Areas</div>
+          <h2>Shrewsbury and nearby areas covered</h2>
+          <p class="sublead">Shrewsbury town and nearby areas by arrangement.</p>
         </div>
 
-        <div class="card" id="callback">
-          <div class="head">
-            <h2>Arranging the clean is easy</h2>
+        <div class="split">
+          <div class="card reveal">
+            <div class="tag">Local coverage</div>
+            <h3>Where we clean</h3>
+            <p class="text">
+              Shrewsbury including Meole Brace, Harlescott, Copthorne, Kingsland and Bayston Hill.
+              Nearby areas including Atcham, Bomere Heath, Rodington and Pontesbury.
+            </p>
           </div>
-          <div class="body">
-            Enter your details and we will call you to arrange a date. If you prefer, call now on <b>07802 563213</b>.
+
+          <div class="card reveal">
+            <div class="tag">Fast quotes</div>
+            <h3>What to send</h3>
+            <p class="text">Property type, how often you want cleaning, key priorities, best times for visits.</p>
+            <div class="ctaRow" style="margin-top:14px;">
+              <a class="btn primary" href="#contact">Send details</a>
+              <a class="btn whats" href="https://api.whatsapp.com/send?phone=447725866860">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sectionAlt" id="why">
+      <div class="shell">
+        <div class="head reveal">
+          <div class="eyebrow">Why choose us</div>
+          <h2>Reliable, consistent, professional</h2>
+          <p class="sublead">Clear communication and consistent standards.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card reveal">
+            <div class="tag">Consistency</div>
+            <h3>Same standard every visit</h3>
+            <p class="text">A repeatable method keeps quality steady over time.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="tag">Trust</div>
+            <h3>Respectful and dependable</h3>
+            <p class="text">Reliable arrival times and careful attention to detail.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="tag">Local</div>
+            <h3>Shrewsbury based</h3>
+            <p class="text">Local service makes scheduling easier and faster.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="shell">
+        <div class="head reveal">
+          <div class="eyebrow">Contact</div>
+          <h2>Request a quote</h2>
+          <p class="sublead">Share a few details and Donna will reply.</p>
+        </div>
+
+        <div class="split">
+          <div class="card reveal">
+            <h3>Send an enquiry</h3>
+
+            <div class="sent" id="sentMsg">Thanks, your enquiry has been sent.</div>
+
             <form action="https://formspree.io/f/xkgdzkqk" method="POST">
-              <input type="hidden" name="_subject" value="New Instant Quote Enquiry" />
+              <input type="hidden" name="_subject" value="New Cleaning Enquiry Shrewsbury Page" />
               <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="Quote_Total" id="formTotal" value="£0.00" />
-              <input type="hidden" name="Quote_Items" id="formItems" value="" />
-              <label>
-                Name
-                <input name="name" autocomplete="name" placeholder="Your name" required />
-              </label>
-              <label>
-                Phone
-                <input name="phone" autocomplete="tel" placeholder="Best number" required />
-              </label>
-              <label>
-                Email
-                <input name="email" autocomplete="email" placeholder="Optional email address" />
-              </label>
-              <label>
-                Postcode starts with
-                <select name="postcode_area">
-                  <option value="">Select</option>
-                  <option>SY</option>
-                  <option>TF</option>
-                  <option>WV</option>
-                  <option>WR</option>
-                  <option>LD</option>
-                  <option>Other</option>
-                </select>
-              </label>
-              <textarea name="message" placeholder="Anything we should know, parking, access, stains, pets, preferred days"></textarea>
-              <div class="submit">
-                <button class="btn accent" type="submit">Request callback</button>
-                <div class="smallnote">Submitting sends your selected items and total with your message.</div>
+              <input type="hidden" name="_redirect" value="https://carpetcleaningcompany007-maker.github.io/carpet-cleaning-showcase/shrewsbury-cleaning.html?sent=1#contact" />
+
+              <div style="display:grid; gap:12px; margin-top:12px;">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name" required />
+                </div>
+
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="Your email address" required />
+                </div>
+
+                <div>
+                  <label for="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="Best number to reach you on" />
+                </div>
+
+                <div>
+                  <label for="message">What do you need cleaned</label>
+                  <textarea id="message" name="message" placeholder="Property type, frequency, and any priorities" required></textarea>
+                </div>
+
+                <button class="btn primary" type="submit" style="width:100%;">Send enquiry</button>
               </div>
             </form>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="head">
-            <h2>Shrewsbury carpet cleaning</h2>
+          <div class="card reveal">
+            <h3>Contact Donna</h3>
+            <p class="text" style="margin-top:10px;">Call or WhatsApp for availability and pricing.</p>
+
+            <div class="ctaRow" style="margin-top:14px;">
+              <a class="btn primary" href="tel:07725866860">Call 07725 866860</a>
+              <a class="btn whats" href="https://api.whatsapp.com/send?phone=447725866860">WhatsApp</a>
+              <a class="btn" href="mailto:info@dsprofessionalcleaning.co.uk">Email</a>
+            </div>
           </div>
-          <div class="body">
-            This page is built specifically for local searches in Shrewsbury and Shropshire, with instant pricing, fast loading and clear booking steps.
-            If you want, I can also make a separate service page for each area you target.
-          </div>
         </div>
-      </aside>
-    </div>
-
-    <div class="footer">
-      © The Carpet Cleaning Company. Instant quote is an estimate. Final price may vary if rooms are unusually large, heavily soiled, or have access issues.
-    </div>
-  </div>
-
-  <div class="stickybar" aria-hidden="false">
-    <div class="inner">
-      <div class="t">
-        <span>Total</span>
-        <b id="totalSticky">£0.00</b>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn primary" href="#callback">Request callback</a>
-        <a class="btn" href="tel:07802563213">Call</a>
+    </section>
+
+    <footer class="footer">
+      <div class="shell reveal">
+        <h2 style="font-size:28px; margin-bottom:10px;">Ready for a cleaner, calmer space</h2>
+        <p class="sublead" style="margin-bottom:18px;">Call or WhatsApp Donna and get a straightforward quote.</p>
+        <div class="ctaRow" style="justify-content:center;">
+          <a class="btn primary" href="tel:07725866860">Call Donna</a>
+          <a class="btn whats" href="https://api.whatsapp.com/send?phone=447725866860">WhatsApp Donna</a>
+        </div>
+        <div class="fine">© DS Professional Cleaning. Cleaning services in Shrewsbury, Shropshire.</div>
       </div>
+    </footer>
+
+    <a class="floatBtn floatCall" href="tel:07725866860" aria-label="Call Donna">📞</a>
+    <a class="floatBtn floatWhats" href="https://api.whatsapp.com/send?phone=447725866860" aria-label="WhatsApp Donna">💬</a>
+
+    <div class="callBar" aria-label="Mobile call bar">
+      <span>Tap to call Donna</span>
+      <a href="tel:07725866860">07725 866860</a>
     </div>
-  </div>
+  </main>
 
   <script>
-    const PRICES = {
-      extras: {
-        scotchgard: 5,
-        deodorise: 5,
-        insecticide: 9
-      },
-      carpets: [
-        { id:"staircase", name:"Staircase", desc:"Per flight", price:42 },
-        { id:"hallway", name:"Hallway", desc:"Downstairs corridor", price:22 },
-        { id:"landing", name:"Landing", desc:"Upstairs passage", price:22 },
-        { id:"living", name:"Living Room", desc:"Family room", price:79 },
-        { id:"bedroom", name:"Bedroom", desc:"Regular or large", price:37 },
-        { id:"dining", name:"Dining Room", desc:"Or breakfast room", price:57 },
-        { id:"bathroom", name:"Bathroom", desc:"Or shower room", price:22 },
-        { id:"box", name:"Box Room", desc:"Box bedroom or study", price:27 },
-        { id:"study", name:"Study", desc:"Office or spare", price:27 },
-        { id:"loungediner", name:"Lounge Diner", desc:"Joined through room", price:99 }
-      ],
-      rugs: [
-        { id:"rug", name:"Rug", desc:"Steam clean", price:9, note:"from" }
-      ],
-      sofas: [
-        { id:"sofa2", name:"2 Seater Sofa", desc:"Fabric or leather", price:59 },
-        { id:"sofa3", name:"3 Seater Sofa", desc:"Fabric or leather", price:79 },
-        { id:"corner", name:"Corner Sofa", desc:"Size dependent", price:109, note:"from" },
-        { id:"armchair", name:"Armchair", desc:"Single seat", price:35 },
-        { id:"diningchair", name:"Dining Chair", desc:"Per chair", price:12 }
-      ]
-    };
+    (function(){
+      var header = document.getElementById("siteHeader");
+      function onScroll(){
+        if(window.scrollY > 30) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+      }
+      window.addEventListener("scroll", onScroll);
+      onScroll();
 
-    const state = {};
-    const fmt = n => "£" + (Math.round(n * 100) / 100).toFixed(2);
+      var params = new URLSearchParams(window.location.search);
+      if(params.get("sent") === "1"){
+        var msg = document.getElementById("sentMsg");
+        if(msg) msg.style.display = "block";
+      }
 
-    const elTotal = document.getElementById("totalDisplay");
-    const elTotalSticky = document.getElementById("totalSticky");
-    const elLineItems = document.getElementById("lineItems");
-    const elFormTotal = document.getElementById("formTotal");
-    const elFormItems = document.getElementById("formItems");
-
-    const optScotch = document.getElementById("optScotch");
-    const optDeod = document.getElementById("optDeod");
-    const optInsect = document.getElementById("optInsect");
-
-    function countSelected(list){
-      let c = 0;
-      list.forEach(i => c += (state[i.id] || 0));
-      return c;
-    }
-
-    function setCounts(){
-      document.getElementById("carpetCount").textContent = countSelected(PRICES.carpets) + " items";
-      document.getElementById("rugCount").textContent = countSelected(PRICES.rugs) + " items";
-      document.getElementById("sofaCount").textContent = countSelected(PRICES.sofas) + " items";
-    }
-
-    function calcTotal(){
-      let base = 0;
-      const lines = [];
-
-      function addLines(groupName, items){
-        items.forEach(it => {
-          const q = state[it.id] || 0;
-          if(!q) return;
-          base += it.price * q;
-
-          const label = it.note === "from" ? `${it.name} (from)` : it.name;
-          lines.push({ label: `${label} x${q}`, value: it.price * q });
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
         });
-      }
+      }, { threshold: 0.12 });
 
-      addLines("Carpets", PRICES.carpets);
-      addLines("Rugs", PRICES.rugs);
-      addLines("Sofas", PRICES.sofas);
-
-      const itemCount = lines.reduce((acc,l)=>acc + parseInt((l.label.match(/x(\d+)/)||["x0","0"])[1],10), 0);
-
-      let extrasTotal = 0;
-      const extras = [];
-      if(optScotch.checked){ extrasTotal += PRICES.extras.scotchgard * itemCount; if(itemCount) extras.push({label:`Scotchgard x${itemCount}`, value: PRICES.extras.scotchgard * itemCount}); }
-      if(optDeod.checked){ extrasTotal += PRICES.extras.deodorise * itemCount; if(itemCount) extras.push({label:`Deodorise x${itemCount}`, value: PRICES.extras.deodorise * itemCount}); }
-      if(optInsect.checked){ extrasTotal += PRICES.extras.insecticide * itemCount; if(itemCount) extras.push({label:`Insecticide x${itemCount}`, value: PRICES.extras.insecticide * itemCount}); }
-
-      const total = base + extrasTotal;
-
-      elTotal.textContent = fmt(total);
-      elTotalSticky.textContent = fmt(total);
-      elFormTotal.value = fmt(total);
-
-      const allLines = [...lines, ...extras];
-      renderLines(allLines);
-
-      const itemsText = allLines.map(x => `${x.label} = ${fmt(x.value)}`).join(" | ");
-      elFormItems.value = itemsText;
-
-      setCounts();
-    }
-
-    function renderLines(lines){
-      if(!lines.length){
-        elLineItems.innerHTML = "<div class='li'><b>No items selected yet</b><span>Add rooms to see the breakdown</span></div>";
-        return;
-      }
-      elLineItems.innerHTML = lines.map(l => {
-        return `<div class="li"><b>${escapeHtml(l.label)}</b><i>${fmt(l.value)}</i></div>`;
-      }).join("");
-    }
-
-    function escapeHtml(s){
-      return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-    }
-
-    function buildItemCard(it){
-      const q = state[it.id] || 0;
-      const priceText = it.note === "from" ? `from £${it.price}` : `£${it.price}`;
-      return `
-        <div class="item" data-id="${it.id}">
-          <div class="meta">
-            <div class="name">${escapeHtml(it.name)}</div>
-            <div class="desc">${escapeHtml(it.desc)}</div>
-            <div class="price">${escapeHtml(priceText)}</div>
-          </div>
-          <div class="qty">
-            <button type="button" class="dec" aria-label="decrease">−</button>
-            <div class="count" aria-label="count">${q}</div>
-            <button type="button" class="inc" aria-label="increase">+</button>
-          </div>
-        </div>
-      `;
-    }
-
-    function mount(listId, items){
-      const root = document.getElementById(listId);
-      root.innerHTML = items.map(buildItemCard).join("");
-      root.addEventListener("click", (e) => {
-        const card = e.target.closest(".item");
-        if(!card) return;
-        const id = card.getAttribute("data-id");
-        const isInc = e.target.classList.contains("inc");
-        const isDec = e.target.classList.contains("dec");
-        if(!isInc && !isDec) return;
-
-        const cur = state[id] || 0;
-        const next = isInc ? (cur + 1) : Math.max(0, cur - 1);
-        state[id] = next;
-
-        card.querySelector(".count").textContent = next;
-        calcTotal();
+      document.querySelectorAll(".reveal").forEach(function(el){
+        observer.observe(el);
       });
-    }
-
-    function init(){
-      PRICES.carpets.forEach(x => state[x.id] = 0);
-      PRICES.rugs.forEach(x => state[x.id] = 0);
-      PRICES.sofas.forEach(x => state[x.id] = 0);
-
-      mount("carpetsList", PRICES.carpets);
-      mount("rugsList", PRICES.rugs);
-      mount("sofasList", PRICES.sofas);
-
-      optScotch.addEventListener("change", calcTotal);
-      optDeod.addEventListener("change", calcTotal);
-      optInsect.addEventListener("change", calcTotal);
-
-      calcTotal();
-    }
-
-    init();
+    })();
   </script>
 </body>
 </html>
