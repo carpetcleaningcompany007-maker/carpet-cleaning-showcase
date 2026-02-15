@@ -9,7 +9,6 @@
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/shrewsbury-instant-quote.html" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Instant Carpet Cleaning Quote in Shrewsbury" />
   <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
   <meta property="og:type" content="website" />
@@ -99,7 +98,6 @@
       width:380px; height:380px;
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 55%);
       transform: rotate(20deg);
-      filter: blur(0px);
       pointer-events:none;
     }
     .hero-grid{
@@ -145,9 +143,7 @@
       border-bottom:1px solid rgba(219,227,239,.9);
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
     }
-    .card-h h2{
-      margin:0; font-size:16px;
-    }
+    .card-h h2{margin:0; font-size:16px}
     .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:500}
     .card-b{padding: 14px 16px 16px}
 
@@ -230,7 +226,30 @@
       white-space:nowrap;
     }
 
-    /* FIX: responsive grid, never clips */
+    /* Collapsible sections */
+    .section-head.collapsible{ cursor:pointer; user-select:none; }
+    .section-head .chev{
+      font-size:14px;
+      opacity:.75;
+      transition: transform .18s ease;
+      display:inline-flex;
+      width:18px;
+      justify-content:center;
+    }
+    .collapse{
+      overflow:hidden;
+      max-height:0;
+      opacity:0;
+      transform: translateY(-4px);
+      transition: max-height .25s ease, opacity .2s ease, transform .2s ease;
+    }
+    .collapse.open{
+      max-height: 2000px;
+      opacity:1;
+      transform: translateY(0);
+    }
+    .section-head[aria-expanded="false"] .chev{ transform: rotate(-90deg); }
+
     .items{
       padding: 12px 2px 0;
       display:grid;
@@ -247,23 +266,16 @@
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
       box-shadow: 0 10px 22px rgba(10,18,32,.06);
     }
-    .item h3{
-      margin:0;
-      font-size:14px;
-      line-height:1.2;
-    }
+    .item h3{margin:0; font-size:14px; line-height:1.2}
     .item p{margin:6px 0 0; font-size:12px; color: var(--muted)}
     .price{
       margin-top:8px;
       font-weight:900;
-      color: var(--accent);
+      color: var(--good);
       font-size:14px;
       letter-spacing:.02em;
     }
-    .qty{
-      display:flex; align-items:center; gap:8px;
-      flex:0 0 auto;
-    }
+    .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto}
     .qbtn{
       width:34px; height:34px; border-radius: 10px;
       border:1px solid rgba(219,227,239,.95);
@@ -280,9 +292,7 @@
       font-variant-numeric: tabular-nums;
     }
 
-    .list{
-      display:flex; flex-direction:column; gap:10px;
-    }
+    .list{display:flex; flex-direction:column; gap:10px}
     .line{
       display:flex; align-items:flex-start; justify-content:space-between;
       gap:10px;
@@ -293,7 +303,7 @@
     }
     .line b{font-size:13px}
     .line small{display:block; color: var(--muted); margin-top:4px}
-    .money{font-weight:900; font-variant-numeric: tabular-nums}
+    .money{font-weight:900; font-variant-numeric: tabular-nums; color: var(--good);}
     .hr{height:1px; background: rgba(219,227,239,.9); margin: 10px 0}
 
     .form-grid{
@@ -302,9 +312,7 @@
       gap:10px;
       margin-top: 10px;
     }
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-    }
+    .field{display:flex; flex-direction:column; gap:6px}
     label{font-size:12px; color: var(--muted); font-weight:700}
     input, select, textarea{
       width:100%;
@@ -322,11 +330,7 @@
       box-shadow: 0 0 0 4px rgba(11,74,162,.10);
     }
 
-    .cta{
-      margin-top: 12px;
-      display:flex; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
+    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .btn.danger{
       background: linear-gradient(135deg, #d0182e, #b70f24);
       color:#fff;
@@ -350,14 +354,12 @@
       padding: 10px 0 0;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
     }
-
     @media (max-width: 420px){
       .item{padding: 12px 10px}
       .qbtn{width:32px; height:32px}
@@ -367,7 +369,6 @@
     }
   </style>
 
-  <!-- LocalBusiness JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -461,29 +462,36 @@
             </label>
           </div>
 
-          <!-- CARPETS -->
+          <!-- CARPETS (always open) -->
           <div class="section-head">
             <div class="left"><div class="plus-dot">+</div> Carpets</div>
             <div class="right"><span><b id="carpetCount">0</b> items</span></div>
           </div>
-
           <div class="items" id="carpets"></div>
 
-          <!-- RUGS -->
-          <div class="section-head">
+          <!-- RUGS (collapsible, default minimised) -->
+          <div class="section-head collapsible" data-target="rugsWrap" role="button" tabindex="0" aria-expanded="false">
             <div class="left"><div class="plus-dot">+</div> Rugs</div>
-            <div class="right"><span><b id="rugCount">0</b> items</span></div>
+            <div class="right">
+              <span><b id="rugCount">0</b> items</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </div>
+          </div>
+          <div id="rugsWrap" class="collapse">
+            <div class="items" id="rugs"></div>
           </div>
 
-          <div class="items" id="rugs"></div>
-
-          <!-- UPHOLSTERY -->
-          <div class="section-head">
+          <!-- UPHOLSTERY (collapsible, default minimised) -->
+          <div class="section-head collapsible" data-target="upWrap" role="button" tabindex="0" aria-expanded="false">
             <div class="left"><div class="plus-dot">+</div> Sofas and Upholstery</div>
-            <div class="right"><span><b id="upCount">0</b> items</span></div>
+            <div class="right">
+              <span><b id="upCount">0</b> items</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </div>
           </div>
-
-          <div class="items" id="upholstery"></div>
+          <div id="upWrap" class="collapse">
+            <div class="items" id="upholstery"></div>
+          </div>
 
           <div class="hr"></div>
           <div class="mutebox">
@@ -516,7 +524,6 @@
               </div>
             </div>
             <div class="card-b">
-              <!-- Change this action to your Formspree endpoint if you want -->
               <form id="quoteForm" action="#" method="post" onsubmit="return handleSubmit(event)">
                 <div class="form-grid">
                   <div class="field">
@@ -549,7 +556,6 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <!-- Hidden breakdown fields -->
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
@@ -595,16 +601,8 @@
   </div>
 
   <script>
-    // =============================
-    // CONFIG
-    // =============================
-    const EXTRAS = {
-      scotchgard: 15,
-      deodorise: 10,
-      insecticide: 20
-    };
+    const EXTRAS = { scotchgard: 15, deodorise: 10, insecticide: 20 };
 
-    // Prices (edit these if you want)
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",  desc:"Per flight",              price:42 },
@@ -631,17 +629,11 @@
       ]
     };
 
-    // =============================
-    // STATE
-    // =============================
     const state = {
-      qty: {}, // id -> count
+      qty: {},
       extras: { scotchgard:true, deodorise:false, insecticide:false }
     };
 
-    // =============================
-    // HELPERS
-    // =============================
     const fmt = n => "£" + (Math.round(n * 100) / 100).toFixed(2);
     const getCount = (group) => group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
 
@@ -667,13 +659,7 @@
         if (!q) continue;
         const lineTotal = it.price * q;
         subtotal += lineTotal;
-        lines.push({
-          label: it.name,
-          group: it.group,
-          qty: q,
-          unit: it.price,
-          total: lineTotal
-        });
+        lines.push({ label: it.name, group: it.group, qty: q, unit: it.price, total: lineTotal });
       }
 
       const ex = extrasPerItemTotal();
@@ -686,7 +672,6 @@
       }));
 
       const grand = subtotal + ex.total;
-
       return { lines, extrasLines, subtotal, extrasTotal: ex.total, grand, itemsCount: ex.itemsCount };
     }
 
@@ -714,7 +699,6 @@
       const r = calc();
       document.getElementById("total").textContent = fmt(r.grand);
 
-      // counts
       document.getElementById("carpetCount").textContent = getCount(ITEMS.carpets);
       document.getElementById("rugCount").textContent = getCount(ITEMS.rugs);
       document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
@@ -750,7 +734,6 @@
         `;
       }
 
-      // hidden form fields
       const breakdownText = all.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`).join("\n");
       document.getElementById("breakdown").value = breakdownText;
       document.getElementById("totalHidden").value = fmt(r.grand);
@@ -771,16 +754,30 @@
         if (act === "inc") state.qty[id] = cur + 1;
         if (act === "dec") state.qty[id] = Math.max(0, cur - 1);
 
-        // re-render only that number
         card.querySelector(".qnum").textContent = state.qty[id];
-
         renderSelected();
       });
     }
 
-    // =============================
+    function wireCollapsibles(){
+      document.querySelectorAll(".section-head.collapsible").forEach(h => {
+        const targetId = h.getAttribute("data-target");
+        const panel = document.getElementById(targetId);
+        if (!panel) return;
+
+        function toggle(){
+          const isOpen = panel.classList.toggle("open");
+          h.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        }
+
+        h.addEventListener("click", toggle);
+        h.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+        });
+      });
+    }
+
     // INIT
-    // =============================
     document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
@@ -797,23 +794,15 @@
     attachQtyHandlers(rugsEl);
     attachQtyHandlers(upEl);
 
-    // extras toggles
     document.getElementById("x_scotch").addEventListener("change", (e)=>{ state.extras.scotchgard = e.target.checked; renderSelected(); });
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
+    wireCollapsibles();
     renderSelected();
 
-    // =============================
-    // FORM SUBMIT (demo)
-    // =============================
     function handleSubmit(event){
       event.preventDefault();
-
-      // If you want this to actually send:
-      // 1) Create a Formspree form
-      // 2) Put the Formspree URL in the form action=""
-      // 3) Remove this handler (or do a fetch POST)
       alert("Callback request captured on this page. If you want it to email you, tell me your Formspree endpoint and I will wire it in.");
       return false;
     }
