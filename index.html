@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,6 +9,7 @@
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/shrewsbury-instant-quote.html" />
 
+  <!-- Open Graph -->
   <meta property="og:title" content="Instant Carpet Cleaning Quote in Shrewsbury" />
   <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
   <meta property="og:type" content="website" />
@@ -22,15 +22,15 @@
       --ink:#0b1220;
       --muted:#5b677a;
       --line:#dbe3ef;
-
       --brand:#0b4aa2;
       --brand2:#0a3a7e;
+      --accent:#d0182e;
       --good:#0ea35a;
-
       --shadow: 0 18px 50px rgba(10, 18, 32, .12);
       --shadow2: 0 10px 26px rgba(10, 18, 32, .10);
       --r: 18px;
       --r2: 22px;
+      --pad: 18px;
       --max: 1220px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
@@ -40,24 +40,25 @@
     body{
       font-family: var(--font);
       color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 10% 10%, #e6efff 0%, transparent 60%),
-        radial-gradient(900px 520px at 90% 30%, #ffe8ee 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+      background: radial-gradient(1200px 600px at 10% 10%, #e6efff 0%, transparent 60%),
+                  radial-gradient(900px 520px at 90% 30%, #ffe8ee 0%, transparent 55%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
       overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width: var(--max); margin:0 auto; padding: 18px 16px 40px}
-
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding: 10px 0 16px;
     }
-    .brand{display:flex; flex-direction:column; gap:4px;}
-    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; color:#1e2b40;}
+    .brand{
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .brand b{
+      letter-spacing:.16em; text-transform:uppercase; font-size:12px; color:#1e2b40;
+    }
     .brand span{font-size:13px; color: var(--muted)}
     .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.75);
@@ -70,7 +71,7 @@
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px; border-radius:999px; border:1px solid rgba(219,227,239,.95);
       background:#fff; box-shadow: 0 12px 28px rgba(10,18,32,.08);
-      font-weight:800; font-size:13px; cursor:pointer;
+      font-weight:700; font-size:13px; cursor:pointer;
       transition: transform .12s ease, box-shadow .12s ease;
       white-space:nowrap;
     }
@@ -79,11 +80,13 @@
       background: linear-gradient(135deg, var(--brand), var(--brand2));
       color:#fff; border-color: rgba(255,255,255,.18);
     }
-    .btn.call{background:#fff; color:#111; border-color: rgba(219,227,239,.95);}
+    .btn.call{
+      background:#fff; color:#111; border-color: rgba(219,227,239,.95);
+    }
 
     .hero{
       border-radius: 24px;
-      padding: 18px;
+      padding: 18px 18px 18px;
       background: linear-gradient(135deg, #0a2f66 0%, #0b4aa2 55%, #133c74 100%);
       color:#fff;
       box-shadow: var(--shadow);
@@ -96,6 +99,7 @@
       width:380px; height:380px;
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 55%);
       transform: rotate(20deg);
+      filter: blur(0px);
       pointer-events:none;
     }
     .hero-grid{
@@ -108,7 +112,9 @@
     }
     .hero h1{margin:0; font-size:28px; line-height:1.15}
     .hero p{margin:8px 0 0; color: rgba(255,255,255,.88); font-size:14px; max-width: 70ch}
-    .hero-badges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .hero-badges{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+    }
     .tag{
       display:inline-flex; align-items:center; gap:8px;
       padding:9px 12px;
@@ -139,8 +145,10 @@
       border-bottom:1px solid rgba(219,227,239,.9);
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
     }
-    .card-h h2{margin:0; font-size:16px;}
-    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:600}
+    .card-h h2{
+      margin:0; font-size:16px;
+    }
+    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:500}
     .card-b{padding: 14px 16px 16px}
 
     .summary-row{
@@ -153,7 +161,7 @@
       background: linear-gradient(135deg, #e9f0ff, #f7fbff);
       border:1px solid rgba(160,186,230,.55);
       border-radius: 16px;
-      padding: 12px;
+      padding: 12px 12px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
     .total-box b{font-size:26px}
@@ -161,7 +169,7 @@
     .vat-box{
       border:1px solid rgba(219,227,239,.95);
       border-radius: 16px;
-      padding: 12px;
+      padding: 12px 12px;
       background:#fff;
     }
     .vat-chip{
@@ -171,13 +179,16 @@
       border:1px solid rgba(14,163,90,.25);
       border-radius:999px;
       padding:6px 10px;
-      font-weight:900;
+      font-weight:800;
       font-size:12px;
       margin-right:8px;
     }
     .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45}
 
-    .extras{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 4px;}
+    .extras{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin: 12px 0 4px;
+    }
     .toggle{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 12px;
@@ -187,11 +198,11 @@
       cursor:pointer;
       user-select:none;
       font-size:13px;
-      font-weight:800;
+      font-weight:700;
     }
     .toggle input{width:16px; height:16px}
-    .toggle small{font-weight:900; color: var(--good)}
-    .toggle .mut{font-weight:700; color: var(--muted)}
+    .toggle small{font-weight:700; color: var(--accent)}
+    .toggle .mut{font-weight:600; color: var(--muted)}
 
     .section-head{
       display:flex; align-items:center; justify-content:space-between;
@@ -200,22 +211,26 @@
       padding-top: 10px;
       border-top:1px dashed rgba(219,227,239,.95);
     }
-    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:950;}
+    .section-head .left{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+    }
     .plus-dot{
       width:28px; height:28px; border-radius:10px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
       color:#fff; display:flex; align-items:center; justify-content:center;
       box-shadow: 0 10px 22px rgba(11,74,162,.25);
-      font-weight:950; flex:0 0 auto;
+      font-weight:900;
+      flex:0 0 auto;
     }
     .section-head .right{
       color: var(--muted);
       font-size:12px;
       display:flex; align-items:center; gap:10px;
       white-space:nowrap;
-      font-weight:700;
     }
 
+    /* FIX: responsive grid, never clips */
     .items{
       padding: 12px 2px 0;
       display:grid;
@@ -228,37 +243,46 @@
       background: linear-gradient(135deg, #fff, #fff7fb);
       border:1px solid rgba(219,227,239,.95);
       border-radius: 16px;
-      padding: 12px;
+      padding: 12px 12px;
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
       box-shadow: 0 10px 22px rgba(10,18,32,.06);
     }
-    .item h3{margin:0; font-size:14px; line-height:1.2;}
+    .item h3{
+      margin:0;
+      font-size:14px;
+      line-height:1.2;
+    }
     .item p{margin:6px 0 0; font-size:12px; color: var(--muted)}
     .price{
       margin-top:8px;
-      font-weight:950;
-      color: var(--good);
+      font-weight:900;
+      color: var(--accent);
       font-size:14px;
       letter-spacing:.02em;
     }
-    .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto;}
+    .qty{
+      display:flex; align-items:center; gap:8px;
+      flex:0 0 auto;
+    }
     .qbtn{
       width:34px; height:34px; border-radius: 10px;
       border:1px solid rgba(219,227,239,.95);
       background:#fff;
       display:flex; align-items:center; justify-content:center;
-      font-weight:950;
+      font-weight:900;
       cursor:pointer;
       box-shadow: 0 10px 22px rgba(10,18,32,.06);
     }
     .qnum{
       width:34px;
       text-align:center;
-      font-weight:950;
+      font-weight:900;
       font-variant-numeric: tabular-nums;
     }
 
-    .list{display:flex; flex-direction:column; gap:10px;}
+    .list{
+      display:flex; flex-direction:column; gap:10px;
+    }
     .line{
       display:flex; align-items:flex-start; justify-content:space-between;
       gap:10px;
@@ -268,8 +292,8 @@
       background:#fff;
     }
     .line b{font-size:13px}
-    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:650}
-    .money{font-weight:950; font-variant-numeric: tabular-nums; color: var(--good);}
+    .line small{display:block; color: var(--muted); margin-top:4px}
+    .money{font-weight:900; font-variant-numeric: tabular-nums}
     .hr{height:1px; background: rgba(219,227,239,.9); margin: 10px 0}
 
     .form-grid{
@@ -278,8 +302,10 @@
       gap:10px;
       margin-top: 10px;
     }
-    .field{display:flex; flex-direction:column; gap:6px;}
-    label{font-size:12px; color: var(--muted); font-weight:800}
+    .field{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    label{font-size:12px; color: var(--muted); font-weight:700}
     input, select, textarea{
       width:100%;
       padding:11px 12px;
@@ -296,13 +322,16 @@
       box-shadow: 0 0 0 4px rgba(11,74,162,.10);
     }
 
-    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .cta{
+      margin-top: 12px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
     .btn.danger{
-      background: linear-gradient(135deg, #0ea35a, #0b7b44);
+      background: linear-gradient(135deg, #d0182e, #b70f24);
       color:#fff;
       border-color: rgba(255,255,255,.18);
     }
-
     .mutebox{
       padding: 12px 14px;
       border-radius: 16px;
@@ -321,98 +350,14 @@
       padding: 10px 0 0;
     }
 
-    /* Collapsible sections */
-    details.acc{
-      margin-top: 10px;
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 26px rgba(10, 18, 32, .08);
-      overflow:hidden;
-    }
-    details.acc > summary{
-      list-style:none;
-      cursor:pointer;
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      font-weight:950;
-      color:#14223a;
-      user-select:none;
-    }
-    details.acc > summary::-webkit-details-marker{display:none}
-    .acc-meta{color:var(--muted); font-weight:800; font-size:12px; white-space:nowrap;}
-    .acc-body{padding: 12px 14px 14px; border-top:1px solid rgba(219,227,239,.9);}
-
-    /* Commercial tiles + calculator */
-    .rate-tiles{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:12px;
-      margin: 10px 0 0;
-    }
-    .tile{
-      background:#fff;
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
-      padding: 12px 12px;
-      box-shadow: 0 10px 22px rgba(10,18,32,.06);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      min-width:0;
-    }
-    .tile b{font-size:14px}
-    .tile small{display:block; color:var(--muted); margin-top:6px; font-weight:700}
-    .bubble{
-      flex:0 0 auto;
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-weight:950;
-      color:#fff;
-      background: linear-gradient(135deg, var(--good), #0b7b44);
-      box-shadow: 0 10px 22px rgba(14,163,90,.22);
-      font-size:12px;
-      white-space:nowrap;
-    }
-
-    .calc-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top: 10px;
-    }
-    .big-total{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-    }
-    .big-pill{
-      flex: 1 1 220px;
-      background: #0b4aa2;
-      color:#fff;
-      border-radius: 14px;
-      padding: 12px 12px;
-      font-weight:950;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      box-shadow: 0 14px 34px rgba(11,74,162,.18);
-    }
-    .big-pill span{opacity:.9; font-weight:850}
-    .big-pill b{font-variant-numeric: tabular-nums; font-size:18px}
-
+    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
-      .calc-row{grid-template-columns:1fr}
     }
+
     @media (max-width: 420px){
       .item{padding: 12px 10px}
       .qbtn{width:32px; height:32px}
@@ -422,6 +367,7 @@
     }
   </style>
 
+  <!-- LocalBusiness JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -478,7 +424,7 @@
           <div class="summary-row">
             <div class="total-box">
               <div>
-                <div style="font-size:12px; color:var(--muted); font-weight:900;">Total cost</div>
+                <div style="font-size:12px; color:var(--muted); font-weight:800;">Total cost</div>
                 <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
@@ -502,7 +448,7 @@
 
           <div class="extras" role="group" aria-label="Optional extras">
             <label class="toggle" title="Adds per selected item">
-              <input type="checkbox" id="x_scotch" />
+              <input type="checkbox" id="x_scotch" checked />
               Scotchgard <span class="mut">(+</span><small id="scotchPriceTxt">£15</small><span class="mut"> per item)</span>
             </label>
             <label class="toggle" title="Adds per selected item">
@@ -520,166 +466,28 @@
             <div class="left"><div class="plus-dot">+</div> Carpets</div>
             <div class="right"><span><b id="carpetCount">0</b> items</span></div>
           </div>
+
           <div class="items" id="carpets"></div>
 
-          <!-- RUGS (collapsible) -->
-          <details class="acc" id="accRugs">
-            <summary>
-              <span style="display:flex;align-items:center;gap:10px;">
-                <span class="plus-dot" aria-hidden="true">+</span>
-                <span>Rugs</span>
-              </span>
-              <span class="acc-meta"><b id="rugCount">0</b> items</span>
-            </summary>
-            <div class="acc-body">
-              <div class="items" id="rugs"></div>
-            </div>
-          </details>
+          <!-- RUGS -->
+          <div class="section-head">
+            <div class="left"><div class="plus-dot">+</div> Rugs</div>
+            <div class="right"><span><b id="rugCount">0</b> items</span></div>
+          </div>
 
-          <!-- UPHOLSTERY (collapsible) -->
-          <details class="acc" id="accUp">
-            <summary>
-              <span style="display:flex;align-items:center;gap:10px;">
-                <span class="plus-dot" aria-hidden="true">+</span>
-                <span>Sofas and Upholstery</span>
-              </span>
-              <span class="acc-meta"><b id="upCount">0</b> items</span>
-            </summary>
-            <div class="acc-body">
-              <div class="items" id="upholstery"></div>
-            </div>
-          </details>
+          <div class="items" id="rugs"></div>
 
-          <!-- COMMERCIAL (hidden dropdown section) -->
-          <details class="acc" id="accCommercial">
-            <summary>
-              <span style="display:flex;align-items:center;gap:10px;">
-                <span class="plus-dot" aria-hidden="true">+</span>
-                <span>Commercial quote calculator</span>
-              </span>
-              <span class="acc-meta">Optional</span>
-            </summary>
+          <!-- UPHOLSTERY -->
+          <div class="section-head">
+            <div class="left"><div class="plus-dot">+</div> Sofas and Upholstery</div>
+            <div class="right"><span><b id="upCount">0</b> items</span></div>
+          </div>
 
-            <div class="acc-body">
-              <div class="mutebox" style="margin-bottom:10px;">
-                Enter total square metres for an instant commercial estimate. It auto picks the correct £ per m2 band. Add chairs and optional Scotchgard per m2 if needed.
-              </div>
-
-              <div class="rate-tiles" aria-label="Commercial price bands">
-                <div class="tile">
-                  <div>
-                    <b>Up to 150</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandA">£3.50 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>151 to 499</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandB">£3.00 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>500 to 999</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandC">£2.50 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>1,000 plus</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandD">£2.00 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>Office chairs</b>
-                    <small>Fabric or leather</small>
-                  </div>
-                  <div class="bubble" id="chairRate">£5.00 each</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>Scotchgard</b>
-                    <small>Protector</small>
-                  </div>
-                  <div class="bubble" id="commScotchRate">£1.00 per m2</div>
-                </div>
-              </div>
-
-              <div class="calc-row">
-                <div class="field">
-                  <label for="commSqm">Total in square metres</label>
-                  <input id="commSqm" type="number" min="0" step="0.01" value="0" />
-                </div>
-                <div class="field">
-                  <label for="commSteps">Stairs number of steps</label>
-                  <input id="commSteps" type="number" min="0" step="1" value="0" />
-                </div>
-
-                <div class="field">
-                  <label for="commChairs">Office chairs quantity</label>
-                  <input id="commChairs" type="number" min="0" step="1" value="0" />
-                </div>
-
-                <div class="field">
-                  <label for="commStairRate">Stairs price per step (£)</label>
-                  <input id="commStairRate" type="number" min="0" step="0.01" value="0" />
-                </div>
-              </div>
-
-              <div class="extras" style="margin-top:10px;">
-                <label class="toggle" title="Commercial scotchgard is per m2">
-                  <input type="checkbox" id="commScotch" />
-                  Scotchgard <span class="mut">(+</span><small>£1</small><span class="mut"> per m2)</span>
-                </label>
-
-                <label class="toggle" title="Show VAT split">
-                  <input type="checkbox" id="commVatOn" />
-                  Include VAT split <span class="mut">(</span><small>20%</small><span class="mut">)</span>
-                </label>
-              </div>
-
-              <div class="big-total" aria-label="Commercial totals">
-                <div class="big-pill">
-                  <span>Net</span>
-                  <b id="commNet">£0.00</b>
-                </div>
-                <div class="big-pill" style="background:#0a3a7e;">
-                  <span>VAT</span>
-                  <b id="commVat">£0.00</b>
-                </div>
-                <div class="big-pill" style="background:#0ea35a;">
-                  <span>Total</span>
-                  <b id="commTotal">£0.00</b>
-                </div>
-              </div>
-
-              <div class="hr"></div>
-
-              <div class="calc-row">
-                <div class="field">
-                  <label for="convFt">Convert square ft to m2</label>
-                  <input id="convFt" type="number" min="0" step="0.01" value="0" />
-                </div>
-                <div class="field">
-                  <label for="convM2">Convert m2 to square ft</label>
-                  <input id="convM2" type="number" min="0" step="0.01" value="0" />
-                </div>
-              </div>
-
-              <div class="mutebox" style="margin-top:10px;">
-                Commercial rates are banded by total area. If you want different bands or chair pricing, tell me and I’ll edit them.
-              </div>
-            </div>
-          </details>
+          <div class="items" id="upholstery"></div>
 
           <div class="hr"></div>
           <div class="mutebox">
-            Tip: if you have hall, stairs and landing together, add each item you need and the breakdown will show on the right.
+            Tip: if you have hall, stairs and landing together, you can add each item you need and the breakdown will show on the right.
           </div>
         </div>
       </section>
@@ -694,7 +502,9 @@
         </div>
 
         <div class="card-b">
-          <div class="list" id="selectedList"></div>
+          <div class="list" id="selectedList">
+            <div class="mutebox" id="emptyState">No items selected yet. Add rooms to see the breakdown.</div>
+          </div>
 
           <div class="hr"></div>
 
@@ -706,6 +516,7 @@
               </div>
             </div>
             <div class="card-b">
+              <!-- Change this action to your Formspree endpoint if you want -->
               <form id="quoteForm" action="#" method="post" onsubmit="return handleSubmit(event)">
                 <div class="form-grid">
                   <div class="field">
@@ -738,6 +549,7 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
+                <!-- Hidden breakdown fields -->
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
@@ -784,26 +596,27 @@
 
   <script>
     // =============================
-    // CONFIG (Scotchgard is HALF PRICE: £15)
+    // CONFIG
     // =============================
     const EXTRAS = {
-      scotchgard: 15,     // was 30, now 15
+      scotchgard: 15,
       deodorise: 10,
       insecticide: 20
     };
 
+    // Prices (edit these if you want)
     const ITEMS = {
       carpets: [
-        { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:42 },
-        { id:"hallway",    name:"Hallway",     desc:"Downstairs corridor",     price:22 },
-        { id:"landing",    name:"Landing",     desc:"Upstairs passage",        price:22 },
-        { id:"living",     name:"Living Room", desc:"Family room",             price:79 },
-        { id:"bedroom",    name:"Bedroom",     desc:"Regular or large",        price:37 },
-        { id:"dining",     name:"Dining Room", desc:"Or breakfast room",       price:57 },
-        { id:"bathroom",   name:"Bathroom",    desc:"Or shower room",          price:22 },
-        { id:"boxroom",    name:"Box Room",    desc:"Box bedroom or study",    price:27 },
-        { id:"study",      name:"Study",       desc:"Office or spare room",    price:27 },
-        { id:"loungediner",name:"Lounge Diner",desc:"Joined through room",     price:99 }
+        { id:"staircase",  name:"Staircase",  desc:"Per flight",              price:42 },
+        { id:"hallway",    name:"Hallway",    desc:"Downstairs corridor",     price:22 },
+        { id:"landing",    name:"Landing",    desc:"Upstairs passage",        price:22 },
+        { id:"living",     name:"Living Room",desc:"Family room",             price:79 },
+        { id:"bedroom",    name:"Bedroom",    desc:"Regular or large",        price:37 },
+        { id:"dining",     name:"Dining Room",desc:"Or breakfast room",       price:57 },
+        { id:"bathroom",   name:"Bathroom",   desc:"Or shower room",          price:22 },
+        { id:"boxroom",    name:"Box Room",   desc:"Box bedroom or study",    price:27 },
+        { id:"study",      name:"Study",      desc:"Office or spare room",    price:27 },
+        { id:"loungediner",name:"Lounge Diner",desc:"Joined through room",    price:99 }
       ],
       rugs: [
         { id:"rug_small",  name:"Rug (Small)",  desc:"Steam clean", price:25 },
@@ -811,10 +624,10 @@
         { id:"rug_large",  name:"Rug (Large)",  desc:"Steam clean", price:49 }
       ],
       upholstery: [
-        { id:"sofa_2",   name:"2 Seat Sofa",  desc:"Fabric or leather", price:65 },
-        { id:"sofa_3",   name:"3 Seat Sofa",  desc:"Fabric or leather", price:85 },
-        { id:"corner",   name:"Corner Sofa",  desc:"Standard size",      price:120 },
-        { id:"armchair", name:"Armchair",     desc:"Single seat",        price:45 }
+        { id:"sofa_2",   name:"2 Seat Sofa",    desc:"Fabric or leather", price:65 },
+        { id:"sofa_3",   name:"3 Seat Sofa",    desc:"Fabric or leather", price:85 },
+        { id:"corner",   name:"Corner Sofa",    desc:"Standard size",      price:120 },
+        { id:"armchair", name:"Armchair",       desc:"Single seat",        price:45 }
       ]
     };
 
@@ -823,25 +636,19 @@
     // =============================
     const state = {
       qty: {}, // id -> count
-      extras: { scotchgard:false, deodorise:false, insecticide:false } // start unticked
+      extras: { scotchgard:true, deodorise:false, insecticide:false }
     };
 
     // =============================
     // HELPERS
     // =============================
-    const fmt = n => "£" + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
-
-    const getCount = (group) =>
-      group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
-
-    function itemsCountTotal(){
-      return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
-    }
+    const fmt = n => "£" + (Math.round(n * 100) / 100).toFixed(2);
+    const getCount = (group) => group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
 
     function extrasPerItemTotal(){
-      const enabled = Object.entries(state.extras).filter(([,on]) => !!on);
-      const perItem = enabled.reduce((s,[k]) => s + (EXTRAS[k] || 0), 0);
-      const itemsCount = itemsCountTotal();
+      const enabled = Object.entries(state.extras).filter(([,on]) => on);
+      const perItem = enabled.reduce((s,[k]) => s + EXTRAS[k], 0);
+      const itemsCount = Object.values(state.qty).reduce((s,v)=> s+v, 0);
       return { enabled, perItem, itemsCount, total: perItem * itemsCount };
     }
 
@@ -856,24 +663,30 @@
       ];
 
       for (const it of allGroups){
-        const q = Number(state.qty[it.id] || 0);
+        const q = state.qty[it.id] || 0;
         if (!q) continue;
-        const lineTotal = (Number(it.price) || 0) * q;
+        const lineTotal = it.price * q;
         subtotal += lineTotal;
-        lines.push({ label: it.name, group: it.group, qty: q, unit: Number(it.price)||0, total: lineTotal });
+        lines.push({
+          label: it.name,
+          group: it.group,
+          qty: q,
+          unit: it.price,
+          total: lineTotal
+        });
       }
 
       const ex = extrasPerItemTotal();
-
       const extrasLines = ex.enabled.map(([k]) => ({
         label: k === "scotchgard" ? "Scotchgard protection" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
         group: "Extras",
         qty: ex.itemsCount,
-        unit: Number(EXTRAS[k] || 0),
-        total: Number(EXTRAS[k] || 0) * ex.itemsCount
-      })).filter(x => x.qty > 0 && x.unit > 0);
+        unit: EXTRAS[k],
+        total: EXTRAS[k] * ex.itemsCount
+      }));
 
       const grand = subtotal + ex.total;
+
       return { lines, extrasLines, subtotal, extrasTotal: ex.total, grand, itemsCount: ex.itemsCount };
     }
 
@@ -897,30 +710,26 @@
       }).join("");
     }
 
-    function makeEmptyState(){
-      const d = document.createElement("div");
-      d.className = "mutebox";
-      d.textContent = "No items selected yet. Add rooms to see the breakdown.";
-      return d;
-    }
-
     function renderSelected(){
       const r = calc();
-
       document.getElementById("total").textContent = fmt(r.grand);
 
+      // counts
       document.getElementById("carpetCount").textContent = getCount(ITEMS.carpets);
       document.getElementById("rugCount").textContent = getCount(ITEMS.rugs);
       document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
 
       const list = document.getElementById("selectedList");
-      const all = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
+      const empty = document.getElementById("emptyState");
 
-      list.innerHTML = "";
+      const all = [...r.lines, ...r.extrasLines].filter(x => x.total > 0);
 
       if (!all.length){
-        list.appendChild(makeEmptyState());
+        list.innerHTML = "";
+        list.appendChild(empty);
+        empty.style.display = "block";
       } else {
+        empty.style.display = "none";
         list.innerHTML = all.map(x => `
           <div class="line">
             <div>
@@ -941,6 +750,7 @@
         `;
       }
 
+      // hidden form fields
       const breakdownText = all.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`).join("\n");
       document.getElementById("breakdown").value = breakdownText;
       document.getElementById("totalHidden").value = fmt(r.grand);
@@ -951,67 +761,21 @@
         const btn = e.target.closest("button.qbtn");
         if (!btn) return;
 
-        const card = btn.closest(".item");
+        const card = e.target.closest(".item");
         if (!card) return;
 
         const id = card.getAttribute("data-id");
         const act = btn.getAttribute("data-act");
-        const cur = Number(state.qty[id] || 0);
+        const cur = state.qty[id] || 0;
 
         if (act === "inc") state.qty[id] = cur + 1;
         if (act === "dec") state.qty[id] = Math.max(0, cur - 1);
 
+        // re-render only that number
         card.querySelector(".qnum").textContent = state.qty[id];
+
         renderSelected();
       });
-    }
-
-    // =============================
-    // COMMERCIAL CALC
-    // =============================
-    const COMM = {
-      bands: [
-        { max: 150, rate: 3.50 },
-        { max: 499, rate: 3.00 },
-        { max: 999, rate: 2.50 },
-        { max: Infinity, rate: 2.00 }
-      ],
-      chairEach: 5.00,
-      scotchPerM2: 1.00,
-      vatRate: 0.20
-    };
-
-    function pickCommRate(sqm){
-      const x = Number(sqm || 0);
-      for (const b of COMM.bands){
-        if (x <= b.max) return b.rate;
-      }
-      return COMM.bands[COMM.bands.length-1].rate;
-    }
-
-    function calcCommercial(){
-      const sqm = Number(document.getElementById("commSqm").value || 0);
-      const steps = Number(document.getElementById("commSteps").value || 0);
-      const chairs = Number(document.getElementById("commChairs").value || 0);
-      const stairRate = Number(document.getElementById("commStairRate").value || 0);
-
-      const rate = pickCommRate(sqm);
-
-      const areaNet = sqm * rate;
-      const stairNet = steps * stairRate;
-      const chairNet = chairs * COMM.chairEach;
-      const scotchOn = document.getElementById("commScotch").checked;
-      const scotchNet = scotchOn ? (sqm * COMM.scotchPerM2) : 0;
-
-      const net = areaNet + stairNet + chairNet + scotchNet;
-
-      const vatOn = document.getElementById("commVatOn").checked;
-      const vat = vatOn ? (net * COMM.vatRate) : 0;
-      const total = net + vat;
-
-      document.getElementById("commNet").textContent = fmt(net);
-      document.getElementById("commVat").textContent = fmt(vat);
-      document.getElementById("commTotal").textContent = fmt(total);
     }
 
     // =============================
@@ -1033,52 +797,27 @@
     attachQtyHandlers(rugsEl);
     attachQtyHandlers(upEl);
 
+    // extras toggles
     document.getElementById("x_scotch").addEventListener("change", (e)=>{ state.extras.scotchgard = e.target.checked; renderSelected(); });
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
     renderSelected();
 
-    // Commercial listeners
-    ["commSqm","commSteps","commChairs","commStairRate"].forEach(id=>{
-      document.getElementById(id).addEventListener("input", calcCommercial);
-    });
-    document.getElementById("commScotch").addEventListener("change", calcCommercial);
-    document.getElementById("commVatOn").addEventListener("change", calcCommercial);
-
-    // Converters (live)
-    const FT_PER_M2 = 10.763910416709722;
-    const convFt = document.getElementById("convFt");
-    const convM2 = document.getElementById("convM2");
-
-    let lock = false;
-    convFt.addEventListener("input", () => {
-      if (lock) return;
-      lock = true;
-      const ft = Number(convFt.value || 0);
-      convM2.value = (ft / FT_PER_M2).toFixed(2);
-      lock = false;
-    });
-    convM2.addEventListener("input", () => {
-      if (lock) return;
-      lock = true;
-      const m2 = Number(convM2.value || 0);
-      convFt.value = (m2 * FT_PER_M2).toFixed(2);
-      lock = false;
-    });
-
-    calcCommercial();
-
     // =============================
     // FORM SUBMIT (demo)
     // =============================
     function handleSubmit(event){
       event.preventDefault();
-      alert("Callback request captured on this page. If you want it to email you, send me your Formspree endpoint and I will wire it in.");
+
+      // If you want this to actually send:
+      // 1) Create a Formspree form
+      // 2) Put the Formspree URL in the form action=""
+      // 3) Remove this handler (or do a fetch POST)
+      alert("Callback request captured on this page. If you want it to email you, tell me your Formspree endpoint and I will wire it in.");
       return false;
     }
     window.handleSubmit = handleSubmit;
   </script>
 </body>
 </html>
-```
