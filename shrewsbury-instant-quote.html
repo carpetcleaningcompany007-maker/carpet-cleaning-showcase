@@ -1,14 +1,3 @@
-Alright. Here’s a full redo as ONE complete file, built exactly how you described:
-
-* Step 1 is the first thing they see and it’s big, bold, and unavoidable.
-* They must choose the clean level before the calculator section feels “active”.
-* The 3 options are written like “you’re choosing the technician and equipment level” (not just a price).
-* The wording educates them and nudges them toward Deluxe or Elite.
-* Budget option is your “£30 carpet clean” style: £30 per carpet item, wand only, in tank detergent, no CRB.
-* Elite auto enables stain guard and locks it on. Otherwise stain guard is off and disabled.
-
-Copy paste this whole HTML over your page:
-
 ```html
 <!doctype html>
 <html lang="en">
@@ -237,7 +226,7 @@ Copy paste this whole HTML over your page:
       color: rgba(255,255,255,.92);
     }
 
-    /* Service cards */
+    /* PREMIUM SERVICE CARDS */
     .service-row{
       margin-top: 12px;
       display:grid;
@@ -246,28 +235,50 @@ Copy paste this whole HTML over your page:
       position:relative;
       z-index:1;
     }
+
     .svc{
-      border-radius: 20px;
-      padding: 16px;
+      border-radius: 22px;
+      padding: 18px;
       background: rgba(255,255,255,.09);
       border:1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(12px);
       box-shadow: 0 16px 36px rgba(0,0,0,.22);
       cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease, filter .14s ease;
       position:relative;
       overflow:hidden;
       user-select:none;
-      min-height: 250px;
       display:flex;
       flex-direction:column;
+      min-height: 280px;
     }
-    .svc:hover{transform: translateY(-1px); background: rgba(255,255,255,.11)}
-    .svc.active{
-      border-color: rgba(255,191,60,.42);
-      background: linear-gradient(135deg, rgba(255,191,60,.16), rgba(43,123,255,.10));
+
+    .svc::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: 24px;
+      background: radial-gradient(700px 260px at 20% 15%, rgba(43,123,255,.18), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
     }
-    .svc-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+
+    .svc:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 22px 52px rgba(0,0,0,.28);
+      background: rgba(255,255,255,.11);
+    }
+
+    .svc-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:1;
+    }
+
     .svc-pill{
       display:inline-flex;
       align-items:center;
@@ -281,43 +292,79 @@ Copy paste this whole HTML over your page:
       white-space:nowrap;
     }
     .svc-pill em{font-style:normal; color: var(--accent);}
-    .svc h3{margin:12px 0 0; font-size:16px; letter-spacing:-.01em;}
-    .svc p{margin:10px 0 0; font-size:13px; line-height:1.6; color: rgba(255,255,255,.86);}
+
+    .svc h3{
+      margin:12px 0 0;
+      font-size:18px;
+      letter-spacing:-.01em;
+      position:relative;
+      z-index:1;
+    }
+
+    .svc p, .svc ul{position:relative; z-index:1;}
+
+    .svc p{
+      margin:10px 0 0;
+      font-size:13.6px;
+      line-height:1.6;
+      color: rgba(255,255,255,.88);
+    }
+
     .svc ul{
       margin:10px 0 0;
       padding:0 0 0 16px;
-      color: rgba(255,255,255,.88);
-      font-size:13px;
+      color: rgba(255,255,255,.90);
+      font-size:13.4px;
       line-height:1.55;
     }
     .svc li{margin:6px 0}
+
     .svc .nudge{
       margin-top:auto;
       padding-top: 12px;
       display:flex;
       flex-direction:column;
       gap:10px;
+      position:relative;
+      z-index:1;
     }
+
     .pick{
       width:100%;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:11px 12px;
-      border-radius: 14px;
+      padding:12px 12px;
+      border-radius: 15px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
       border:1px solid rgba(255,255,255,.18);
       color:#fff;
       font-weight:950;
-      font-size:13px;
+      font-size:13.8px;
       cursor:pointer;
       box-shadow: 0 14px 34px rgba(43,123,255,.18);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .pick:active{transform: translateY(1px)}
+
+    .svc.active{
+      border-color: rgba(255,191,60,.42);
+      background: linear-gradient(135deg, rgba(255,191,60,.16), rgba(43,123,255,.10));
+      box-shadow: 0 26px 70px rgba(0,0,0,.32);
+    }
+    .svc.active::before{
+      background:
+        radial-gradient(700px 260px at 20% 15%, rgba(255,191,60,.22), transparent 60%),
+        radial-gradient(700px 260px at 80% 15%, rgba(43,123,255,.18), transparent 60%);
+      opacity: 1;
     }
     .svc.active .pick{
       background: linear-gradient(135deg, #13b46a, #0b7b44);
-      box-shadow: 0 14px 34px rgba(19,180,106,.20);
+      box-shadow: 0 16px 40px rgba(19,180,106,.22);
+      filter: saturate(1.05);
     }
+
     .ribbon{
       position:absolute;
       top:12px;
@@ -329,8 +376,36 @@ Copy paste this whole HTML over your page:
       background: rgba(0,0,0,.28);
       border:1px solid rgba(255,255,255,.14);
       display:none;
+      z-index:2;
     }
     .svc.active .ribbon{display:inline-flex}
+
+    /* Make Budget look "basic" */
+    .svc[data-level="budget30"]{
+      filter: saturate(.85) brightness(.95);
+    }
+    .svc[data-level="budget30"] .svc-pill em{
+      color: rgba(255,255,255,.85);
+    }
+
+    /* Make Deluxe and Elite look premium */
+    .svc[data-level="deluxe"]{
+      border-color: rgba(255,255,255,.18);
+    }
+    .svc[data-level="deluxe"] .svc-pill{
+      background: rgba(255,191,60,.18);
+      border-color: rgba(255,191,60,.22);
+    }
+    .svc[data-level="elite"]{
+      border-color: rgba(255,255,255,.20);
+    }
+    .svc[data-level="elite"]::before{
+      background: radial-gradient(720px 260px at 20% 15%, rgba(255,122,89,.18), transparent 60%);
+    }
+    .svc[data-level="elite"] .svc-pill{
+      background: rgba(255,122,89,.18);
+      border-color: rgba(255,122,89,.22);
+    }
 
     /* Main grid */
     .grid{
@@ -725,7 +800,7 @@ Copy paste this whole HTML over your page:
         <div>
           <h1>The Carpet Cleaning Company Instant Quote</h1>
           <p>
-            You are not just hiring “a carpet clean”. You are hiring a professional carpet cleaning technician and the equipment they bring.
+            You are not just hiring a carpet clean. You are hiring a professional carpet cleaning technician and the equipment they bring.
             Choose the level of equipment and cleaning method you want first. That choice sets the pricing and the result you get.
           </p>
         </div>
@@ -772,7 +847,7 @@ Copy paste this whole HTML over your page:
             <span class="svc-pill">CRB agitation</span>
           </div>
           <h3>Proper deep clean</h3>
-          <p>This is the clean most customers actually want when they say “I want them as clean as possible”.</p>
+          <p>This is the clean most customers actually want when they say I want them as clean as possible.</p>
           <ul>
             <li>Pre spray tailored to the carpet type</li>
             <li>Counter rotating brush scrubs deep into the pile</li>
@@ -1005,9 +1080,6 @@ Copy paste this whole HTML over your page:
   </div>
 
   <script>
-    // =============================
-    // CONFIG
-    // =============================
     const EXTRAS = { scotchgard: 15, deodorise: 10, insecticide: 20 };
 
     const SERVICE = {
@@ -1016,7 +1088,6 @@ Copy paste this whole HTML over your page:
       elite:    { label:"Elite Stain Guard", mode:"elite", forceGuard:true }
     };
 
-    // Deluxe base prices
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -1046,7 +1117,7 @@ Copy paste this whole HTML over your page:
     const state = {
       qty: {},
       extras: { scotchgard:false, deodorise:false, insecticide:false },
-      serviceChosen: true,
+      serviceChosen: false,
       service: "deluxe"
     };
 
@@ -1237,22 +1308,18 @@ Copy paste this whole HTML over your page:
     }
 
     function unlockBuilder(){
-      const card = document.getElementById("builderCard");
-      card.classList.remove("locked");
+      document.getElementById("builderCard").classList.remove("locked");
     }
 
     function initLock(){
-      const card = document.getElementById("builderCard");
-      card.classList.add("locked");
+      document.getElementById("builderCard").classList.add("locked");
       state.serviceChosen = false;
     }
 
-    // Init labels
     document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    // Render groups once
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1264,12 +1331,11 @@ Copy paste this whole HTML over your page:
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
-    // Force Step 1 choice first (locked until they click)
     initLock();
+    setActiveServiceCard("deluxe");
+    renderSelected();
 
-    // Service selection
-    const serviceRow = document.getElementById("serviceRow");
-    serviceRow.addEventListener("click", (e) => {
+    document.getElementById("serviceRow").addEventListener("click", (e) => {
       const svc = e.target.closest(".svc");
       if (!svc) return;
 
@@ -1281,15 +1347,8 @@ Copy paste this whole HTML over your page:
       unlockBuilder();
       renderSelected();
 
-      // Nudge them down to the calculator once chosen
       document.getElementById("builderCard").scrollIntoView({behavior:"smooth", block:"start"});
     });
-
-    // Default to Deluxe selected visually but still require a click to unlock
-    setActiveServiceCard("deluxe");
-
-    // First paint
-    renderSelected();
 
     function handleSubmit(event){
       event.preventDefault();
@@ -1301,5 +1360,3 @@ Copy paste this whole HTML over your page:
 </body>
 </html>
 ```
-
-
