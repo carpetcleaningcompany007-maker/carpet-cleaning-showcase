@@ -1,3 +1,15 @@
+Alright. Here’s a full redo as ONE complete file, built exactly how you described:
+
+* Step 1 is the first thing they see and it’s big, bold, and unavoidable.
+* They must choose the clean level before the calculator section feels “active”.
+* The 3 options are written like “you’re choosing the technician and equipment level” (not just a price).
+* The wording educates them and nudges them toward Deluxe or Elite.
+* Budget option is your “£30 carpet clean” style: £30 per carpet item, wand only, in tank detergent, no CRB.
+* Elite auto enables stain guard and locks it on. Otherwise stain guard is off and disabled.
+
+Copy paste this whole HTML over your page:
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,12 +17,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>The Carpet Cleaning Company Instant Quote</title>
-  <meta name="description" content="Instant carpet cleaning quote. Choose a clean level, add rooms, and see your total instantly. Clear pricing. Fast booking and call back." />
+  <meta name="description" content="Choose your level of clean first, then build your quote instantly. Clear pricing, fast booking, professional equipment." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/instant-quote.html" />
 
   <meta property="og:title" content="The Carpet Cleaning Company Instant Quote" />
-  <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
+  <meta property="og:description" content="Pick a clean level first, then add rooms and see your total instantly." />
   <meta property="og:type" content="website" />
 
   <style>
@@ -36,9 +48,6 @@
       --shadow: 0 28px 70px rgba(0,0,0,.35);
       --shadow2: 0 12px 26px rgba(10,18,32,.12);
 
-      --r: 18px;
-      --r2: 22px;
-
       --max: 1180px;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
@@ -57,9 +66,8 @@
       overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
-    .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 90px}
+    .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 110px}
 
-    /* Top */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px;
@@ -130,7 +138,7 @@
     }
     .btn.call{background: rgba(255,255,255,.14);}
 
-    /* Hero */
+    /* HERO */
     .hero{
       border-radius: 26px;
       padding: 18px;
@@ -155,21 +163,20 @@
     }
     .hero-top{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.1fr .9fr;
       gap:14px;
       align-items:start;
       position:relative;
       z-index:1;
     }
-    .hero h1{margin:0; font-size:30px; line-height:1.12; letter-spacing:-.02em}
+    .hero h1{margin:0; font-size:32px; line-height:1.08; letter-spacing:-.02em}
     .hero p{
       margin:10px 0 0;
       color: rgba(255,255,255,.86);
       font-size:14px;
-      max-width: 70ch;
+      max-width: 75ch;
       line-height:1.55;
     }
-
     .hero-badges{
       display:flex;
       gap:8px;
@@ -192,33 +199,56 @@
     }
     .tag strong{color: var(--accent); font-weight:950;}
 
-    /* Service cards */
-    .service-wrap{
+    /* STEP 1 banner */
+    .step-banner{
       margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,191,60,.22), rgba(43,123,255,.12));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 16px 36px rgba(0,0,0,.22);
       position:relative;
       z-index:1;
     }
-    .service-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
+    .step-banner b{
+      display:block;
+      font-size:17px;
+      letter-spacing:.02em;
     }
-    .service-head b{font-size:14px; letter-spacing:.02em;}
-    .service-head span{font-size:12px; color: rgba(255,255,255,.82);}
+    .step-banner span{
+      display:block;
+      margin-top:6px;
+      font-size:13px;
+      color: rgba(255,255,255,.90);
+      line-height:1.45;
+      max-width: 80ch;
+    }
+    .step-banner .warn{
+      margin-top:10px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:12px;
+      font-weight:950;
+      color: rgba(255,255,255,.92);
+    }
 
+    /* Service cards */
     .service-row{
+      margin-top: 12px;
       display:grid;
-      grid-template-columns: repeat(3, minmax(240px, 1fr));
-      gap:12px;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap:14px;
+      position:relative;
+      z-index:1;
     }
     .svc{
-      border-radius: 18px;
-      padding: 12px;
+      border-radius: 20px;
+      padding: 16px;
       background: rgba(255,255,255,.09);
       border:1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(12px);
@@ -228,6 +258,9 @@
       position:relative;
       overflow:hidden;
       user-select:none;
+      min-height: 250px;
+      display:flex;
+      flex-direction:column;
     }
     .svc:hover{transform: translateY(-1px); background: rgba(255,255,255,.11)}
     .svc.active{
@@ -239,17 +272,65 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:7px 10px;
+      padding:8px 11px;
       border-radius:999px;
       background: rgba(0,0,0,.22);
       border:1px solid rgba(255,255,255,.12);
-      font-size:12px;
+      font-size:12.5px;
       font-weight:950;
       white-space:nowrap;
     }
     .svc-pill em{font-style:normal; color: var(--accent);}
-    .svc h3{margin:10px 0 0; font-size:14px; letter-spacing:-.01em;}
-    .svc p{margin:8px 0 0; font-size:12px; line-height:1.55; color: rgba(255,255,255,.84);}
+    .svc h3{margin:12px 0 0; font-size:16px; letter-spacing:-.01em;}
+    .svc p{margin:10px 0 0; font-size:13px; line-height:1.6; color: rgba(255,255,255,.86);}
+    .svc ul{
+      margin:10px 0 0;
+      padding:0 0 0 16px;
+      color: rgba(255,255,255,.88);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .svc li{margin:6px 0}
+    .svc .nudge{
+      margin-top:auto;
+      padding-top: 12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .pick{
+      width:100%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 12px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      font-weight:950;
+      font-size:13px;
+      cursor:pointer;
+      box-shadow: 0 14px 34px rgba(43,123,255,.18);
+    }
+    .svc.active .pick{
+      background: linear-gradient(135deg, #13b46a, #0b7b44);
+      box-shadow: 0 14px 34px rgba(19,180,106,.20);
+    }
+    .ribbon{
+      position:absolute;
+      top:12px;
+      right:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      background: rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.14);
+      display:none;
+    }
+    .svc.active .ribbon{display:inline-flex}
 
     /* Main grid */
     .grid{
@@ -266,6 +347,35 @@
       box-shadow: var(--shadow2);
       overflow: visible;
     }
+    .card.hard-lock{
+      position:relative;
+      overflow:hidden;
+    }
+    .lock-overlay{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(11,22,48,.65), rgba(7,11,20,.55));
+      backdrop-filter: blur(6px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      text-align:center;
+      color:#fff;
+      z-index:9;
+    }
+    .hard-lock.locked .lock-overlay{display:flex}
+    .lock-overlay .lockbox{
+      max-width: 520px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 18px 46px rgba(0,0,0,.25);
+    }
+    .lock-overlay b{display:block; font-size:16px; letter-spacing:-.01em}
+    .lock-overlay span{display:block; margin-top:8px; opacity:.92; font-size:13px; line-height:1.5}
+
     .card-h{
       padding: 14px 16px;
       border-bottom:1px solid rgba(12,24,40,.08);
@@ -305,8 +415,7 @@
       letter-spacing:-.02em;
       font-variant-numeric: tabular-nums;
     }
-    .total-box span{font-size:12px; color: var(--muted); font-weight:800}
-
+    .total-box span{font-size:12px; color: var(--muted); font-weight:900}
     .info-box{
       border:1px solid rgba(12,24,40,.10);
       border-radius: 18px;
@@ -352,11 +461,7 @@
     .toggle input{width:16px; height:16px}
     .toggle small{font-weight:950; color: var(--good)}
     .toggle .mut{font-weight:800; color: var(--muted)}
-    .toggle.disabled{
-      opacity:.55;
-      cursor:not-allowed;
-      filter: grayscale(.15);
-    }
+    .toggle.disabled{opacity:.55; cursor:not-allowed}
 
     .section-head{
       display:flex;
@@ -394,7 +499,7 @@
       align-items:center;
       gap:10px;
       white-space:nowrap;
-      font-weight:800;
+      font-weight:900;
     }
 
     .items{
@@ -420,7 +525,7 @@
       box-shadow: 0 12px 24px rgba(10,18,32,.06);
     }
     .item h3{margin:0; font-size:14px; line-height:1.2; color: var(--ink2)}
-    .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:650}
+    .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:700}
     .price{margin-top:8px; font-weight:950; color: var(--good); font-size:14px; letter-spacing:.02em}
     .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto;}
     .qbtn{
@@ -458,7 +563,7 @@
       background: linear-gradient(135deg, #ffffff, #f8faff);
     }
     .line b{font-size:13px; color: var(--ink2)}
-    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:700}
+    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:800}
     .money{font-weight:950; font-variant-numeric: tabular-nums; color: var(--good);}
     .hr{height:1px; background: rgba(12,24,40,.10); margin: 10px 0}
 
@@ -484,7 +589,7 @@
       background: linear-gradient(135deg, rgba(43,123,255,.06), rgba(255,191,60,.05));
     }
     details.acc > summary::-webkit-details-marker{display:none}
-    .acc-meta{color:var(--muted); font-weight:900; font-size:12px; white-space:nowrap;}
+    .acc-meta{color:var(--muted); font-weight:950; font-size:12px; white-space:nowrap;}
     .acc-body{padding: 12px 14px 14px; border-top:1px solid rgba(12,24,40,.08);}
 
     .mutebox{
@@ -507,7 +612,7 @@
       margin-top: 10px;
     }
     .field{display:flex; flex-direction:column; gap:6px;}
-    label{font-size:12px; color: var(--muted); font-weight:900}
+    label{font-size:12px; color: var(--muted); font-weight:950}
     input, select, textarea{
       width:100%;
       padding:11px 12px;
@@ -523,7 +628,6 @@
       border-color: rgba(43,123,255,.50);
       box-shadow: 0 0 0 4px rgba(43,123,255,.12);
     }
-
     .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
     .btn.green{
       background: linear-gradient(135deg, #13b46a, #0b7b44);
@@ -541,7 +645,7 @@
       padding: 14px 0 0;
     }
 
-    /* Mobile sticky bar */
+    /* Sticky bar */
     .sticky-bar{
       position: fixed;
       left: 0;
@@ -569,7 +673,7 @@
       flex-direction:column;
       gap:2px;
     }
-    .sticky-total span{font-size:11px; opacity:.78; font-weight:850; letter-spacing:.02em}
+    .sticky-total span{font-size:11px; opacity:.78; font-weight:950; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
     .sticky-actions{display:flex; gap:10px; align-items:center}
     .sticky-actions .btn{box-shadow:none}
@@ -580,8 +684,6 @@
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
     }
-
-    /* Mobile: make badges + service cards fit properly */
     @media (max-width: 820px){
       .pill{display:none}
       .hero-badges{
@@ -590,36 +692,17 @@
         padding-bottom: 2px;
         -webkit-overflow-scrolling: touch;
       }
-
-      .service-row{
-        grid-template-columns: 1fr;
-      }
-
+      .service-row{grid-template-columns:1fr}
       .sticky-bar{display:block}
-      .wrap{padding-bottom: 120px}
+      .wrap{padding-bottom: 125px}
+      .svc{min-height: 0}
     }
-
     @media (max-width: 420px){
       .hero h1{font-size:24px}
-      .item{padding: 12px 10px}
-      .qbtn{width:32px; height:32px}
-      .qnum{width:30px}
-      .total-box b{font-size:24px}
       .btn{padding:10px 12px}
+      .total-box b{font-size:24px}
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"The Carpet Cleaning Company",
-    "areaServed":["Shropshire","Herefordshire","Worcestershire"],
-    "telephone":"07802563213",
-    "url":"https://www.thecarpetcleaningcrew.co.uk",
-    "description":"Professional carpet and upholstery cleaning. Instant quote calculator and fast booking."
-  }
-  </script>
 </head>
 
 <body>
@@ -627,11 +710,11 @@
     <div class="topbar">
       <div class="brand">
         <b>Instant Quote</b>
-        <span>The Carpet Cleaning Company. Choose your clean level and build your quote instantly.</span>
+        <span>The Carpet Cleaning Company. Step 1 choose your clean level, then build your quote.</span>
       </div>
 
       <div class="top-actions">
-        <span class="pill">Tap plus and minus to build your quote</span>
+        <span class="pill">Choose a clean level first, then add rooms</span>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
@@ -641,71 +724,100 @@
       <div class="hero-top">
         <div>
           <h1>The Carpet Cleaning Company Instant Quote</h1>
-          <p>Pick a clean level, add rooms, and see your total instantly. Then request a callback to confirm availability and get booked in.</p>
+          <p>
+            You are not just hiring “a carpet clean”. You are hiring a professional carpet cleaning technician and the equipment they bring.
+            Choose the level of equipment and cleaning method you want first. That choice sets the pricing and the result you get.
+          </p>
         </div>
         <div class="hero-badges">
-          <span class="tag"><strong>Clear</strong> pricing</span>
-          <span class="tag"><strong>Fast</strong> booking</span>
-          <span class="tag"><strong>Professional</strong> equipment</span>
+          <span class="tag"><strong>Step 1</strong> choose clean</span>
+          <span class="tag"><strong>Step 2</strong> add rooms</span>
+          <span class="tag"><strong>Step 3</strong> request callback</span>
         </div>
       </div>
 
-      <div class="service-wrap" aria-label="Choose service level">
-        <div class="service-head">
-          <b>Choose service level</b>
-          <span>This changes the prices and what’s included</span>
+      <div class="step-banner" id="step1">
+        <b>Step 1: Choose your level of clean</b>
+        <span>
+          Each option below is a different clean, using different equipment and a different level of workmanship.
+          If you want the best result, choose Deluxe or Elite.
+        </span>
+        <div class="warn">Pick one option below to continue</div>
+      </div>
+
+      <div class="service-row" id="serviceRow" aria-label="Service levels">
+        <div class="svc" data-level="budget30">
+          <div class="ribbon">Selected</div>
+          <div class="svc-top">
+            <span class="svc-pill">Budget Clean <em>£30 per room</em></span>
+            <span class="svc-pill">Detergent wand only</span>
+          </div>
+          <h3>Your typical £30 carpet clean</h3>
+          <p>This is the quick, basic clean you see advertised everywhere. It is not a deep clean.</p>
+          <ul>
+            <li>In tank detergent</li>
+            <li>Hot water extraction with the wand only</li>
+            <li>No CRB scrubbing or agitation</li>
+            <li>Best for light soiling and routine maintenance</li>
+          </ul>
+          <div class="nudge">
+            <button class="pick" type="button">Select Budget Clean</button>
+          </div>
         </div>
 
-        <div class="service-row" id="serviceRow">
-          <div class="svc active" data-level="budget30">
-            <div class="svc-top">
-              <span class="svc-pill">Budget Clean <em>£30 per room</em></span>
-              <span class="svc-pill">Wand only</span>
-            </div>
-            <h3>Your typical £30 carpet clean</h3>
-            <p>
-              This is a simple maintenance clean using in tank detergent and hot water extraction with the wand only.
-              No scrubbing. No CRB. No deep agitation.
-              It’s a quick freshen up for light soiling and routine upkeep.
-            </p>
+        <div class="svc active" data-level="deluxe">
+          <div class="ribbon">Selected</div>
+          <div class="svc-top">
+            <span class="svc-pill">Deluxe Deep Clean <em>recommended</em></span>
+            <span class="svc-pill">CRB agitation</span>
           </div>
-
-          <div class="svc" data-level="deluxe">
-            <div class="svc-top">
-              <span class="svc-pill">Deluxe Deep Clean <em>recommended</em></span>
-              <span class="svc-pill">CRB scrub</span>
-            </div>
-            <h3>Proper deep clean</h3>
-            <p>
-              Pre spray tailored to the carpet, dwell time, counter rotating brush agitation to scrub deep into the pile,
-              then a full rinse and extract to flush out soil and residues.
-              Best for dirty carpets and the best possible result.
-            </p>
+          <h3>Proper deep clean</h3>
+          <p>This is the clean most customers actually want when they say “I want them as clean as possible”.</p>
+          <ul>
+            <li>Pre spray tailored to the carpet type</li>
+            <li>Counter rotating brush scrubs deep into the pile</li>
+            <li>Dwell time for maximum soil breakdown</li>
+            <li>Full rinse and extract to flush out dirt and residues</li>
+          </ul>
+          <div class="nudge">
+            <button class="pick" type="button">Select Deluxe Deep Clean</button>
           </div>
+        </div>
 
-          <div class="svc" data-level="elite">
-            <div class="svc-top">
-              <span class="svc-pill">Elite Stain Guard <em>premium</em></span>
-              <span class="svc-pill">Protection</span>
-            </div>
-            <h3>Deep clean plus stain guard</h3>
-            <p>
-              Everything in Deluxe Deep Clean, plus stain guard applied after cleaning.
-              Helps slow down re soiling, improves vacuuming, and gives extra spill resistance.
-              Added per item automatically when selected.
-            </p>
+        <div class="svc" data-level="elite">
+          <div class="ribbon">Selected</div>
+          <div class="svc-top">
+            <span class="svc-pill">Elite Stain Guard <em>premium</em></span>
+            <span class="svc-pill">Protection added</span>
+          </div>
+          <h3>Deep clean plus stain guard</h3>
+          <p>If you want maximum long term protection, this is the best option.</p>
+          <ul>
+            <li>Everything included in Deluxe Deep Clean</li>
+            <li>Stain guard applied after cleaning</li>
+            <li>Helps slow down re soiling and improves vacuuming</li>
+            <li>Extra spill resistance for day to day life</li>
+          </ul>
+          <div class="nudge">
+            <button class="pick" type="button">Select Elite Stain Guard</button>
           </div>
         </div>
       </div>
     </section>
 
     <div class="grid">
-      <!-- LEFT -->
-      <section class="card" aria-label="Build your quote">
+      <section class="card hard-lock" id="builderCard" aria-label="Build your quote">
+        <div class="lock-overlay" id="lockOverlay">
+          <div class="lockbox">
+            <b>Choose your level of clean first</b>
+            <span>Scroll up and pick Budget, Deluxe, or Elite. This sets the pricing and what is included, then you can add rooms.</span>
+          </div>
+        </div>
+
         <div class="card-h">
           <div>
-            <h2>Build your quote</h2>
-            <small>Deodorise and insecticide are optional add ons. Stain guard is Elite only.</small>
+            <h2>Step 2: Build your quote</h2>
+            <small>Add rooms and extras below. Stain guard is Elite only.</small>
           </div>
         </div>
 
@@ -713,11 +825,11 @@
           <div class="summary-row">
             <div class="total-box">
               <div>
-                <div style="font-size:12px; color:var(--muted); font-weight:950;">Total cost</div>
-                <b id="total" aria-live="polite">£0.00</b>
+                <div style="font-size:12px; color:var(--muted); font-weight:950;">Total estimate</div>
+                <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span id="serviceBadge">Budget Clean</span>
+                <span id="serviceBadge">Deluxe Deep Clean</span>
               </div>
             </div>
 
@@ -725,14 +837,14 @@
               <div>
                 <span class="chip">No VAT charged</span>
                 <span class="note" style="display:inline; color:var(--muted);">
-                  Total may vary if rooms are unusually large, heavily soiled, or access is difficult.
+                  Estimate may vary if rooms are unusually large, heavily soiled, or access is difficult.
                 </span>
               </div>
             </div>
           </div>
 
           <p class="note" id="serviceNote">
-            Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No scrubbing or CRB. Ideal for routine maintenance.
+            Deluxe selected. Pre spray, CRB agitation, dwell time, then rinse and extract.
           </p>
 
           <div class="extras" role="group" aria-label="Optional extras">
@@ -752,14 +864,12 @@
             </label>
           </div>
 
-          <!-- CARPETS -->
           <div class="section-head">
             <div class="left"><div class="plus-dot">+</div> Carpets</div>
             <div class="right"><span><b id="carpetCount">0</b> items</span></div>
           </div>
           <div class="items" id="carpets"></div>
 
-          <!-- RUGS -->
           <details class="acc" id="accRugs">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
@@ -773,7 +883,6 @@
             </div>
           </details>
 
-          <!-- UPHOLSTERY -->
           <details class="acc" id="accUp">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
@@ -789,17 +898,16 @@
 
           <div class="hr"></div>
           <div class="mutebox">
-            Tip: If you have hall, stairs and landing together, add each item you need and the breakdown will show on the right.
+            Tip: Add hall, stairs and landing as separate items and the breakdown will show on the right.
           </div>
         </div>
       </section>
 
-      <!-- RIGHT -->
-      <aside class="card" aria-label="Your selected items and callback form">
+      <aside class="card" aria-label="Selected items and callback">
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
-            <small>Line items update as you add rooms.</small>
+            <small>Step 3: Request callback to book in.</small>
           </div>
         </div>
 
@@ -812,7 +920,7 @@
             <div class="card-h" style="border-radius:18px 18px 0 0;">
               <div>
                 <h2 id="callback">Arranging the clean is easy</h2>
-                <small>Enter your details and we will call you to arrange a date. If you prefer, call now on <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>.</small>
+                <small>Enter your details and we will call you to arrange a date. Or call <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>.</small>
               </div>
             </div>
             <div class="card-b">
@@ -829,7 +937,7 @@
 
                   <div class="field">
                     <label for="email">Email (optional)</label>
-                    <input id="email" name="email" type="email" placeholder="Optional email address" autocomplete="email" />
+                    <input id="email" name="email" type="email" placeholder="Optional email" autocomplete="email" />
                   </div>
 
                   <div class="field">
@@ -851,7 +959,7 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <input type="hidden" id="serviceLevel" name="serviceLevel" value="budget30" />
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deluxe" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
@@ -860,19 +968,16 @@
                   <a class="btn call" href="tel:07802563213">Call now</a>
                 </div>
 
-                <p class="note" style="margin-top:10px;">
-                  Submitting sends your selected items and total with your message.
-                </p>
+                <p class="note" style="margin-top:10px;">Submitting sends your selected items and total.</p>
               </form>
             </div>
           </div>
 
           <div class="hr"></div>
-
           <div class="mutebox">
-            Professional carpet and upholstery cleaning. Clear pricing, simple booking, proper results.
+            You don’t need to shop around. These options cover everything from a simple maintenance clean to a full deep clean with protection.
+            Choose the level that matches what you actually want your carpets to look like.
           </div>
-
         </div>
       </aside>
     </div>
@@ -901,21 +1006,14 @@
 
   <script>
     // =============================
-    // PRICING RULES
+    // CONFIG
     // =============================
-    // Budget Clean: carpets are £30 per selected carpet item
-    // Deluxe: uses your base prices (deep clean)
-    // Elite: Deluxe plus stain guard per item (auto)
-    const SERVICE = {
-      budget30: { key:"budget30", label:"Budget Clean (£30 per room)", mode:"budget30", forceStainGuard:false },
-      deluxe:   { key:"deluxe",   label:"Deluxe Deep Clean",          mode:"deluxe",   forceStainGuard:false },
-      elite:    { key:"elite",    label:"Elite Stain Guard",          mode:"elite",    forceStainGuard:true  }
-    };
+    const EXTRAS = { scotchgard: 15, deodorise: 10, insecticide: 20 };
 
-    const EXTRAS = {
-      scotchgard: 15,
-      deodorise: 10,
-      insecticide: 20
+    const SERVICE = {
+      budget30: { label:"Budget Clean (£30 per room)", mode:"budget30", forceGuard:false },
+      deluxe:   { label:"Deluxe Deep Clean", mode:"deluxe", forceGuard:false },
+      elite:    { label:"Elite Stain Guard", mode:"elite", forceGuard:true }
     };
 
     // Deluxe base prices
@@ -945,81 +1043,65 @@
       ]
     };
 
-    // =============================
-    // STATE
-    // =============================
     const state = {
       qty: {},
       extras: { scotchgard:false, deodorise:false, insecticide:false },
-      service: "budget30"
+      serviceChosen: true,
+      service: "deluxe"
     };
 
     const fmt = n => "£" + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
+    const itemsCountTotal = () => Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
+    const getCount = (group) => group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
 
-    function itemsCountTotal(){
-      return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
-    }
-
-    const getCount = (group) =>
-      group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
-
-    function unitPrice(it){
+    function unitPrice(groupName, basePrice){
       const s = SERVICE[state.service];
-
-      // Budget clean: carpets are £30 per item
-      if (s.mode === "budget30" && it.group === "Carpets"){
-        return 30;
-      }
-
-      // Deluxe and Elite: use base price
-      return Number(it.basePrice) || 0;
+      if (s.mode === "budget30" && groupName === "Carpets") return 30;
+      return Number(basePrice) || 0;
     }
 
     function extrasPerItemTotal(){
       const enabled = Object.entries(state.extras).filter(([,on]) => !!on);
       const perItem = enabled.reduce((s,[k]) => s + (EXTRAS[k] || 0), 0);
       const itemsCount = itemsCountTotal();
-      return { enabled, perItem, itemsCount, total: perItem * itemsCount };
+      return { enabled, itemsCount, total: perItem * itemsCount };
     }
 
     function calc(){
       let subtotal = 0;
       const lines = [];
 
-      const allGroups = [
-        ...ITEMS.carpets.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Carpets" })),
-        ...ITEMS.rugs.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Rugs" })),
-        ...ITEMS.upholstery.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Sofas and Upholstery" }))
+      const all = [
+        ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
+        ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
+        ...ITEMS.upholstery.map(it => ({...it, group:"Sofas and Upholstery"}))
       ];
 
-      for (const it of allGroups){
+      for (const it of all){
         const q = Number(state.qty[it.id] || 0);
         if (!q) continue;
-
-        const unit = unitPrice(it);
-        const lineTotal = unit * q;
-        subtotal += lineTotal;
-        lines.push({ label: it.name, group: it.group, qty: q, unit, total: lineTotal });
+        const unit = unitPrice(it.group, it.price);
+        const total = unit * q;
+        subtotal += total;
+        lines.push({ label: it.name, group: it.group, qty: q, unit, total });
       }
 
       const ex = extrasPerItemTotal();
-
       const extrasLines = ex.enabled.map(([k]) => ({
-        label: k === "scotchgard" ? "Stain guard (Elite)" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
+        label: k === "scotchgard" ? "Stain guard" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
         group: "Extras",
         qty: ex.itemsCount,
         unit: Number(EXTRAS[k] || 0),
         total: Number(EXTRAS[k] || 0) * ex.itemsCount
       })).filter(x => x.qty > 0 && x.unit > 0);
 
-      const grand = subtotal + ex.total;
-      return { lines, extrasLines, grand, itemsCount: ex.itemsCount };
+      return { lines, extrasLines, grand: subtotal + ex.total };
     }
 
-    function renderGroup(el, groupItems, groupName){
+    function renderGroup(el, groupName, groupItems){
       el.innerHTML = groupItems.map(it => {
         const q = state.qty[it.id] || 0;
-        const unitNow = unitPrice({ id:it.id, basePrice:it.price, group: groupName });
+        const unitNow = unitPrice(groupName, it.price);
         return `
           <article class="item" data-id="${it.id}">
             <div style="min-width:0">
@@ -1027,10 +1109,10 @@
               <p>${it.desc}</p>
               <div class="price">${fmt(unitNow)}</div>
             </div>
-            <div class="qty" aria-label="Quantity controls for ${it.name}">
-              <button class="qbtn" data-act="dec" type="button" aria-label="Decrease ${it.name}">−</button>
-              <div class="qnum" aria-label="Quantity">${q}</div>
-              <button class="qbtn" data-act="inc" type="button" aria-label="Increase ${it.name}">+</button>
+            <div class="qty">
+              <button class="qbtn" data-act="dec" type="button">−</button>
+              <div class="qnum">${q}</div>
+              <button class="qbtn" data-act="inc" type="button">+</button>
             </div>
           </article>
         `;
@@ -1044,49 +1126,44 @@
       return d;
     }
 
-    function setServiceUI(){
+    function applyServiceRules(){
       const s = SERVICE[state.service];
       document.getElementById("serviceBadge").textContent = s.label;
       document.getElementById("serviceLevel").value = state.service;
 
       const note = document.getElementById("serviceNote");
       if (state.service === "budget30"){
-        note.textContent = "Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No scrubbing or CRB. Best for routine maintenance and light soiling.";
+        note.textContent = "Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No CRB scrubbing. Routine maintenance clean.";
       } else if (state.service === "deluxe"){
-        note.textContent = "Deluxe Deep Clean selected. Pre spray, dwell time, counter rotating brush agitation, then rinse and extract to flush out soil and residues. Best results for dirty carpets.";
+        note.textContent = "Deluxe selected. Pre spray, CRB agitation, dwell time, then rinse and extract for proper deep cleaning.";
       } else {
-        note.textContent = "Elite Stain Guard selected. Deluxe deep clean plus stain guard applied after cleaning. Protection is added per item automatically.";
+        note.textContent = "Elite selected. Deluxe deep clean plus stain guard applied after cleaning. Stain guard is added per item automatically.";
       }
 
-      // Stain guard behaviour (Elite only)
       const scotch = document.getElementById("x_scotch");
-      const scotchWrap = document.getElementById("tg_scotch");
+      const wrap = document.getElementById("tg_scotch");
 
-      if (s.forceStainGuard){
+      if (s.forceGuard){
         state.extras.scotchgard = true;
         scotch.checked = true;
         scotch.disabled = true;
-        scotchWrap.classList.remove("disabled");
-        scotchWrap.title = "Included with Elite (added per item)";
+        wrap.classList.remove("disabled");
       } else {
         state.extras.scotchgard = false;
         scotch.checked = false;
         scotch.disabled = true;
-        scotchWrap.classList.add("disabled");
-        scotchWrap.title = "Elite only";
+        wrap.classList.add("disabled");
       }
     }
 
     function renderSelected(){
-      setServiceUI();
+      applyServiceRules();
 
-      // re-render groups so prices update with service selection
-      renderGroup(document.getElementById("carpets"), ITEMS.carpets, "Carpets");
-      renderGroup(document.getElementById("rugs"), ITEMS.rugs, "Rugs");
-      renderGroup(document.getElementById("upholstery"), ITEMS.upholstery, "Sofas and Upholstery");
+      renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
+      renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
+      renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
 
       const r = calc();
-
       document.getElementById("total").textContent = fmt(r.grand);
       document.getElementById("totalSticky").textContent = fmt(r.grand);
 
@@ -1095,11 +1172,10 @@
       document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
 
       const list = document.getElementById("selectedList");
-      const all = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
+      const allLines = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
 
       list.innerHTML = "";
-
-      if (!all.length){
+      if (!allLines.length){
         list.appendChild(makeEmptyState());
       } else {
         list.innerHTML =
@@ -1110,7 +1186,7 @@
             </div>
             <div></div>
           </div>` +
-          all.map(x => `
+          allLines.map(x => `
             <div class="line">
               <div>
                 <b>${x.label}</b>
@@ -1119,24 +1195,19 @@
               <div class="money">${fmt(x.total)}</div>
             </div>
           `).join("") +
-          `
-          <div class="hr"></div>
-          <div class="line" style="background:linear-gradient(135deg,#f3f6ff,#ffffff);">
-            <div>
-              <b>Total</b>
-              <small>Instant estimate</small>
-            </div>
-            <div class="money">${fmt(r.grand)}</div>
-          </div>
-        `;
+          `<div class="hr"></div>
+           <div class="line" style="background:linear-gradient(135deg,#f3f6ff,#ffffff);">
+             <div><b>Total</b><small>Instant estimate</small></div>
+             <div class="money">${fmt(r.grand)}</div>
+           </div>`;
       }
 
-      const breakdownText = [
+      const breakdown = [
         `Service level: ${SERVICE[state.service].label}`,
-        ...all.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`)
+        ...allLines.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`)
       ].join("\n");
 
-      document.getElementById("breakdown").value = breakdownText;
+      document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
     }
 
@@ -1144,7 +1215,6 @@
       container.addEventListener("click", (e) => {
         const btn = e.target.closest("button.qbtn");
         if (!btn) return;
-
         const card = btn.closest(".item");
         if (!card) return;
 
@@ -1159,46 +1229,68 @@
       });
     }
 
-    // =============================
-    // INIT
-    // =============================
+    function setActiveServiceCard(level){
+      const row = document.getElementById("serviceRow");
+      [...row.querySelectorAll(".svc")].forEach(x => x.classList.remove("active"));
+      const target = row.querySelector(`.svc[data-level="${level}"]`);
+      if (target) target.classList.add("active");
+    }
+
+    function unlockBuilder(){
+      const card = document.getElementById("builderCard");
+      card.classList.remove("locked");
+    }
+
+    function initLock(){
+      const card = document.getElementById("builderCard");
+      card.classList.add("locked");
+      state.serviceChosen = false;
+    }
+
+    // Init labels
     document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
     // Render groups once
-    renderGroup(document.getElementById("carpets"), ITEMS.carpets, "Carpets");
-    renderGroup(document.getElementById("rugs"), ITEMS.rugs, "Rugs");
-    renderGroup(document.getElementById("upholstery"), ITEMS.upholstery, "Sofas and Upholstery");
+    renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
+    renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
+    renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
 
-    // Qty handlers
     attachQtyHandlers(document.getElementById("carpets"));
     attachQtyHandlers(document.getElementById("rugs"));
     attachQtyHandlers(document.getElementById("upholstery"));
 
-    // Extras (stain guard controlled by service)
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
+
+    // Force Step 1 choice first (locked until they click)
+    initLock();
 
     // Service selection
     const serviceRow = document.getElementById("serviceRow");
     serviceRow.addEventListener("click", (e) => {
-      const card = e.target.closest(".svc");
-      if (!card) return;
+      const svc = e.target.closest(".svc");
+      if (!svc) return;
 
-      const level = card.getAttribute("data-level");
+      const level = svc.getAttribute("data-level");
       state.service = level;
+      state.serviceChosen = true;
 
-      [...serviceRow.querySelectorAll(".svc")].forEach(x => x.classList.remove("active"));
-      card.classList.add("active");
-
+      setActiveServiceCard(level);
+      unlockBuilder();
       renderSelected();
+
+      // Nudge them down to the calculator once chosen
+      document.getElementById("builderCard").scrollIntoView({behavior:"smooth", block:"start"});
     });
+
+    // Default to Deluxe selected visually but still require a click to unlock
+    setActiveServiceCard("deluxe");
 
     // First paint
     renderSelected();
 
-    // Demo submit
     function handleSubmit(event){
       event.preventDefault();
       alert("Callback request captured on this page. If you want it to email you, send me your Formspree endpoint and I will wire it in.");
@@ -1208,3 +1300,6 @@
   </script>
 </body>
 </html>
+```
+
+If you want, next tweak I can do is make Deluxe and Elite look even more “premium” than the Budget one (so it visually pushes people to the right choice).
