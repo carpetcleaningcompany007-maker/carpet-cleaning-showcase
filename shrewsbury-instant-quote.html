@@ -1,3 +1,6 @@
+Yep. Paste this whole file instead. I’ve removed the “Tap to open details” strip and the Open buttons, and made the flip obvious with a clean “Read more” hint plus a subtle flip icon. Tap the tile anywhere to flip. Select button is on the back.
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,7 +33,6 @@
       --shadow: 0 28px 70px rgba(0,0,0,.35);
       --shadow2: 0 12px 26px rgba(10,18,32,.12);
 
-      --r: 22px;
       --max: 1180px;
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -53,7 +55,6 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
 
-    /* Top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding: 10px 0 14px;
@@ -64,7 +65,6 @@
     .brand span{font-size:13px; opacity:.80; max-width:58ch;}
 
     .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px; border-radius:999px;
@@ -79,6 +79,13 @@
     .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
     .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand2));}
     .btn.call{background: rgba(255,255,255,.14);}
+    .btn.green{
+      background: linear-gradient(135deg, #13b46a, #0b7b44);
+      color:#fff;
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      backdrop-filter:none;
+    }
     .btn[aria-disabled="true"]{opacity:.45; cursor:not-allowed; pointer-events:none}
 
     .pill{
@@ -93,7 +100,6 @@
       white-space:nowrap;
     }
 
-    /* HERO */
     .hero{
       border-radius: 26px;
       padding: 18px;
@@ -146,13 +152,7 @@
       white-space:nowrap;
     }
 
-    /* Chooser */
-    .chooser{
-      margin-top: 16px;
-      position:relative;
-      z-index:2;
-    }
-
+    .chooser{margin-top: 16px; position:relative; z-index:2;}
     .chooser-head{
       margin-top: 10px;
       border-radius: 18px;
@@ -171,23 +171,16 @@
       gap:14px;
     }
 
-    /* Flip container */
-    .flip{
-      perspective: 1400px;
-      position:relative;
-      min-height: 330px;
-    }
+    /* FLIP */
+    .flip{perspective: 1400px; position:relative; min-height: 320px;}
     .flipInner{
-      position:relative;
-      width:100%;
-      height:100%;
+      position:relative; width:100%; height:100%;
       transform-style: preserve-3d;
       transition: transform .55s cubic-bezier(.2,.8,.2,1);
     }
     .flip[data-open="true"] .flipInner{transform: rotateY(180deg);}
     .face{
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       border-radius: 20px;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -195,62 +188,36 @@
       box-shadow: 0 18px 50px rgba(0,0,0,.22);
       border:1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.92);
-      display:flex;
-      flex-direction:column;
-      min-height: 330px;
+      display:flex; flex-direction:column;
+      min-height: 320px;
+      cursor:pointer;
     }
-
-    .front{
-      transform: rotateY(0deg);
-    }
-    .back{
-      transform: rotateY(180deg);
-      background: #fff;
-    }
+    .front{transform: rotateY(0deg);}
+    .back{transform: rotateY(180deg); background:#fff;}
 
     .planTop{
-      padding: 14px 14px 10px;
+      padding: 14px 14px 12px;
       background: linear-gradient(135deg, #ffffff, #f6f8ff);
       border-bottom:1px solid rgba(12,24,40,.10);
       position:relative;
     }
-    .planTitle{
-      font-weight:950;
-      font-size:16px;
-      color: var(--ink2);
-      letter-spacing:-.01em;
-    }
-    .planSub{
-      margin-top:6px;
-      color: var(--muted);
-      font-weight:850;
-      font-size:12.5px;
-      line-height:1.4;
-    }
+    .planTitle{font-weight:950; font-size:16px; color: var(--ink2); letter-spacing:-.01em;}
+    .planSub{margin-top:6px; color: var(--muted); font-weight:850; font-size:12.5px; line-height:1.4;}
 
-    .tapStrip{
+    .readMore{
       margin-top:10px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
       padding:10px 12px;
       border-radius: 14px;
-      border:1px dashed rgba(12,24,40,.18);
-      background:
-        radial-gradient(520px 220px at 0% 0%, rgba(43,123,255,.10), transparent 55%),
-        radial-gradient(520px 220px at 100% 0%, rgba(255,191,60,.08), transparent 60%),
-        linear-gradient(135deg, #ffffff, #f7f9ff);
+      border:1px solid rgba(12,24,40,.10);
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      box-shadow: 0 10px 18px rgba(10,18,32,.06);
       font-weight:950;
       color: var(--ink2);
     }
-    .tapStrip small{
-      font-weight:900;
-      color: var(--muted);
-    }
-    .chev{
-      width:34px; height:34px;
-      border-radius: 12px;
+    .readMore small{font-weight:850; color: var(--muted);}
+    .flipIcon{
+      width:34px; height:34px; border-radius: 12px;
       display:flex; align-items:center; justify-content:center;
       border:1px solid rgba(12,24,40,.12);
       background:#fff;
@@ -258,39 +225,18 @@
       font-weight:980;
     }
 
-    .planMid{
-      padding: 12px 14px 12px;
-      flex:1;
-    }
-    .planMid ul{
-      margin:0; padding:0 0 0 16px;
-      color: #2a3a55;
-      font-size:13px;
-      line-height:1.5;
-    }
+    .planMid{padding: 12px 14px 12px; flex:1;}
+    .planMid ul{margin:0; padding:0 0 0 16px; color:#2a3a55; font-size:13px; line-height:1.5;}
     .planMid li{margin:7px 0}
 
     .planFoot{
       padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
       border-top:1px solid rgba(12,24,40,.10);
       background: linear-gradient(135deg, #ffffff, #f7f9ff);
     }
-    .priceBig{
-      font-weight:980;
-      font-size:20px;
-      color: var(--ink2);
-      font-variant-numeric: tabular-nums;
-      letter-spacing:-.01em;
-    }
-    .priceSmall{
-      font-size:12px;
-      color: var(--muted);
-      font-weight:950;
-    }
+    .priceBig{font-weight:980; font-size:20px; color: var(--ink2); font-variant-numeric: tabular-nums;}
+    .priceSmall{font-size:12px; color: var(--muted); font-weight:950;}
 
     .chooseBtn{
       padding: 12px 12px;
@@ -303,20 +249,15 @@
       white-space:nowrap;
     }
     .chooseBtn:active{transform: translateY(1px)}
-
     .basic .chooseBtn{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
     .deep .chooseBtn{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
     .restore .chooseBtn{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
 
     .most{
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform: translateX(-50%);
+      position:absolute; top:10px; left:50%; transform: translateX(-50%);
       background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
       color:#2b1b00;
-      font-weight:980;
-      font-size:12px;
+      font-weight:980; font-size:12px;
       padding:6px 10px;
       border-radius: 999px;
       box-shadow: 0 12px 26px rgba(0,0,0,.20);
@@ -324,12 +265,9 @@
       z-index:3;
       white-space:nowrap;
     }
-
     .selectedPill{
       display:none;
-      position:absolute;
-      top:10px;
-      right:10px;
+      position:absolute; top:10px; right:10px;
       background: rgba(43,123,255,.14);
       border:1px solid rgba(43,123,255,.25);
       color:#0a2a6b;
@@ -338,19 +276,11 @@
       font-weight:980;
       font-size:12px;
       box-shadow: 0 12px 26px rgba(10,18,32,.10);
+      z-index:4;
     }
     .flip[data-selected="true"] .selectedPill{display:inline-flex;}
 
-    .hint{
-      display:none;
-      margin-top:10px;
-      color: rgba(255,255,255,.86);
-      font-size:12.5px;
-      font-weight:900;
-      opacity:.95;
-    }
-
-    /* Lock overlay */
+    /* Lock bar */
     .lock{
       margin-top: 14px;
       border-radius: 22px;
@@ -360,10 +290,7 @@
       box-shadow: 0 16px 40px rgba(0,0,0,.22);
       color: var(--ink2);
       font-weight:950;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
     .lock span{font-weight:850; color: var(--muted); font-size:13px; line-height:1.4}
     .lock b{color: var(--ink2)}
@@ -379,7 +306,6 @@
       white-space:nowrap;
     }
 
-    /* Main grid */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -406,17 +332,12 @@
     .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:850}
     .card-b{padding: 14px 16px 16px}
 
-    /* Disable calculator until plan chosen */
-    .lockedZone{
-      position:relative;
-    }
-    .lockedZone[data-locked="true"]{
-      filter: grayscale(.08) opacity(.88);
-    }
+    /* Locked overlay */
+    .lockedZone{position:relative;}
+    .lockedZone[data-locked="true"]{filter: grayscale(.08) opacity(.88);}
     .lockedZone[data-locked="true"]::after{
       content:"";
-      position:absolute;
-      inset:0;
+      position:absolute; inset:0;
       border-radius: 22px;
       background: rgba(255,255,255,.65);
       backdrop-filter: blur(3px);
@@ -424,10 +345,7 @@
     }
     .lockedZone[data-locked="true"]::before{
       content:"Choose a clean level above to unlock the calculator";
-      position:absolute;
-      left:12px;
-      right:12px;
-      top:12px;
+      position:absolute; left:12px; right:12px; top:12px;
       z-index:3;
       padding:12px 12px;
       border-radius: 16px;
@@ -439,12 +357,7 @@
       pointer-events:none;
     }
 
-    .summary-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-bottom: 10px;
-    }
+    .summary-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom: 10px;}
     .total-box{
       background:
         radial-gradient(600px 220px at 0% 0%, rgba(43,123,255,.12), transparent 55%),
@@ -455,19 +368,9 @@
       padding: 12px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .total-box b{
-      font-size:28px;
-      color: var(--ink2);
-      font-variant-numeric: tabular-nums;
-      letter-spacing:-.02em;
-    }
+    .total-box b{font-size:28px; color: var(--ink2); font-variant-numeric: tabular-nums;}
     .total-box span{font-size:12px; color: var(--muted); font-weight:950; white-space:nowrap}
-    .info-box{
-      border:1px solid rgba(12,24,40,.10);
-      border-radius: 18px;
-      padding: 12px;
-      background:#fff;
-    }
+    .info-box{border:1px solid rgba(12,24,40,.10); border-radius: 18px; padding: 12px; background:#fff;}
     .chip{
       display:inline-flex; align-items:center; gap:8px;
       background: rgba(255,191,60,.18);
@@ -513,12 +416,7 @@
       box-shadow: 0 10px 22px rgba(43,123,255,.25);
       font-weight:980; flex:0 0 auto;
     }
-    .section-head .right{
-      color: var(--muted);
-      font-size:12px;
-      display:flex; align-items:center; gap:10px;
-      white-space:nowrap; font-weight:950;
-    }
+    .section-head .right{color: var(--muted); font-size:12px; display:flex; align-items:center; gap:10px; white-space:nowrap; font-weight:950;}
 
     .items{
       padding: 12px 2px 0;
@@ -549,12 +447,7 @@
       font-weight:980; cursor:pointer;
       box-shadow: 0 10px 18px rgba(10,18,32,.08);
     }
-    .qnum{
-      width:34px; text-align:center;
-      font-weight:980;
-      font-variant-numeric: tabular-nums;
-      color: var(--ink2);
-    }
+    .qnum{width:34px; text-align:center; font-weight:980; font-variant-numeric: tabular-nums; color: var(--ink2);}
 
     details.acc{
       margin-top: 10px;
@@ -609,12 +502,7 @@
       font-weight:700;
     }
 
-    .form-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top: 10px;
-    }
+    .form-grid{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top: 10px;}
     .field{display:flex; flex-direction:column; gap:6px;}
     label{font-size:12px; color: var(--muted); font-weight:980}
     input, select, textarea{
@@ -633,13 +521,6 @@
       box-shadow: 0 0 0 4px rgba(43,123,255,.12);
     }
     .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-    .btn.green{
-      background: linear-gradient(135deg, #13b46a, #0b7b44);
-      color:#fff;
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,.10);
-      backdrop-filter:none;
-    }
 
     footer{
       text-align:center;
@@ -650,12 +531,8 @@
       font-weight:700;
     }
 
-    /* Sticky bar */
     .sticky-bar{
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: fixed; left: 0; right: 0; bottom: 0;
       z-index: 50;
       padding: 10px 12px;
       background: linear-gradient(135deg, rgba(11,22,48,.94), rgba(7,11,20,.92));
@@ -664,19 +541,11 @@
       box-shadow: 0 -18px 50px rgba(0,0,0,.30);
       display:none;
     }
-    .sticky-inner{
-      max-width: var(--max);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
+    .sticky-inner{max-width: var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:10px;}
     .sticky-total{color:#fff; display:flex; flex-direction:column; gap:2px;}
     .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
 
-    /* Mobile */
     @media (max-width: 980px){
       .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
@@ -687,7 +556,6 @@
       .pill{display:none}
       .sticky-bar{display:block}
       .wrap{padding-bottom: 128px}
-
       .plans{
         display:flex;
         gap:12px;
@@ -696,25 +564,12 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
       }
-      .flip{
-        min-width: 90%;
-        scroll-snap-align: center;
-      }
-      .hint{display:block}
+      .flip{min-width: 90%; scroll-snap-align: center;}
     }
     @media (max-width: 420px){
       .hero h1{font-size:26px}
       .total-box b{font-size:24px}
     }
-
-    /* Little bounce hint on first load */
-    @keyframes nudge {
-      0%{transform: translateX(0)}
-      35%{transform: translateX(-8px)}
-      70%{transform: translateX(8px)}
-      100%{transform: translateX(0)}
-    }
-    .nudgeOnce{animation: nudge .9s ease-in-out 1;}
   </style>
 </head>
 
@@ -738,10 +593,9 @@
         <div>
           <h1>Choose your <span>level of clean</span> first</h1>
           <p>
-            You’re not just paying for “a clean”. You’re choosing the method and the equipment.
-            Pick your level below, then the calculator unlocks.
+            You’re choosing the method and the equipment. Tap a tile to flip it and read the full details.
+            You must select one to unlock the calculator.
           </p>
-          <div class="hint" id="hintText">Tip on mobile: tap a tile to open the full description, then tap Select.</div>
         </div>
 
         <div class="hero-badges">
@@ -753,15 +607,13 @@
 
       <div class="chooser" id="choose">
         <div class="chooser-head">
-          <b>Tap a tile to see the full explanation</b>
-          <span>
-            Each tile opens into a bigger card. You must select one to continue.
-          </span>
+          <b>Choose the clean you actually want</b>
+          <span>Tap a tile to flip it. Select one plan to continue.</span>
         </div>
 
         <div class="plans" id="plans">
           <!-- BASIC -->
-          <div class="flip basic" data-level="basic" data-open="false" data-selected="false" aria-label="Basic plan">
+          <div class="flip basic" data-level="basic" data-open="false" data-selected="false">
             <div class="flipInner">
               <div class="face front">
                 <div class="planTop">
@@ -770,12 +622,9 @@
                   <div class="selectedPill">Selected</div>
                 </div>
                 <div class="planMid">
-                  <div class="tapStrip">
-                    <div>
-                      Tap to open details
-                      <small>what you actually get</small>
-                    </div>
-                    <div class="chev">›</div>
+                  <div class="readMore">
+                    <div>Read more <small>tap to flip</small></div>
+                    <div class="flipIcon">↺</div>
                   </div>
                 </div>
                 <div class="planFoot">
@@ -783,7 +632,7 @@
                     <div class="priceBig">£30</div>
                     <div class="priceSmall">per carpet item</div>
                   </div>
-                  <button class="chooseBtn" type="button" data-act="open">Open</button>
+                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
                 </div>
               </div>
 
@@ -811,7 +660,7 @@
           </div>
 
           <!-- DEEP -->
-          <div class="flip deep" data-level="deep" data-open="false" data-selected="false" aria-label="Deep plan">
+          <div class="flip deep" data-level="deep" data-open="false" data-selected="false">
             <div class="flipInner">
               <div class="face front">
                 <div class="planTop">
@@ -821,12 +670,9 @@
                   <div class="selectedPill">Selected</div>
                 </div>
                 <div class="planMid">
-                  <div class="tapStrip">
-                    <div>
-                      Tap to open details
-                      <small>professional method</small>
-                    </div>
-                    <div class="chev">›</div>
+                  <div class="readMore">
+                    <div>Read more <small>tap to flip</small></div>
+                    <div class="flipIcon">↺</div>
                   </div>
                 </div>
                 <div class="planFoot">
@@ -834,7 +680,7 @@
                     <div class="priceBig" id="deepFrom">From £55</div>
                     <div class="priceSmall">per item</div>
                   </div>
-                  <button class="chooseBtn" type="button" data-act="open">Open</button>
+                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
                 </div>
               </div>
 
@@ -863,7 +709,7 @@
           </div>
 
           <!-- RESTORE -->
-          <div class="flip restore" data-level="restore" data-open="false" data-selected="false" aria-label="Restore plan">
+          <div class="flip restore" data-level="restore" data-open="false" data-selected="false">
             <div class="flipInner">
               <div class="face front">
                 <div class="planTop">
@@ -872,12 +718,9 @@
                   <div class="selectedPill">Selected</div>
                 </div>
                 <div class="planMid">
-                  <div class="tapStrip">
-                    <div>
-                      Tap to open details
-                      <small>best long lasting result</small>
-                    </div>
-                    <div class="chev">›</div>
+                  <div class="readMore">
+                    <div>Read more <small>tap to flip</small></div>
+                    <div class="flipIcon">↺</div>
                   </div>
                 </div>
                 <div class="planFoot">
@@ -885,14 +728,14 @@
                     <div class="priceBig" id="restoreFrom">From £85</div>
                     <div class="priceSmall">per item</div>
                   </div>
-                  <button class="chooseBtn" type="button" data-act="open">Open</button>
+                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
                 </div>
               </div>
 
               <div class="face back">
                 <div class="planTop">
                   <div class="planTitle">Deep clean plus stain guard</div>
-                  <div class="planSub">Deep clean plus protection on every selected item.</div>
+                  <div class="planSub">Protection on every selected item.</div>
                   <div class="selectedPill">Selected</div>
                 </div>
                 <div class="planMid">
@@ -900,8 +743,8 @@
                     <li>Everything in Proper deep clean</li>
                     <li>Stain guard on every selected item</li>
                     <li>Helps resist spills and slows resoiling</li>
-                    <li>Better hoovering and easier maintenance</li>
-                    <li>Best for families and high traffic areas</li>
+                    <li>Better maintenance after the clean</li>
+                    <li>Best for families and high traffic</li>
                   </ul>
                 </div>
                 <div class="planFoot">
@@ -923,9 +766,9 @@
       </div>
     </section>
 
-    <div class="grid lockedZone" id="quoteGrid" data-locked="true" aria-label="Quote builder (locked until plan selected)">
+    <div class="grid lockedZone" id="quoteGrid" data-locked="true">
       <!-- LEFT -->
-      <section class="card" aria-label="Build quote">
+      <section class="card">
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
@@ -955,11 +798,9 @@
             </div>
           </div>
 
-          <p class="note" id="serviceNote">
-            Choose a plan above to unlock the quote builder.
-          </p>
+          <p class="note" id="serviceNote">Choose a plan above to unlock the quote builder.</p>
 
-          <div class="extras" role="group" aria-label="Extras">
+          <div class="extras">
             <label class="toggle disabled" id="tg_guard" title="Restore only">
               <input type="checkbox" id="x_guard" disabled />
               Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Restore only)</span>
@@ -1016,7 +857,7 @@
       </section>
 
       <!-- RIGHT -->
-      <aside class="card" aria-label="Selected and callback">
+      <aside class="card">
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
@@ -1101,7 +942,7 @@
     </footer>
   </div>
 
-  <div class="sticky-bar" role="region" aria-label="Quick actions">
+  <div class="sticky-bar">
     <div class="sticky-inner">
       <div class="sticky-total">
         <span>Total estimate</span>
@@ -1115,17 +956,14 @@
   </div>
 
   <script>
-    // Extras
     const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
 
-    // Service levels
     const SERVICE = {
       basic:   { label:"Basic Clean",   guardForced:false },
       deep:    { label:"Deep Clean",    guardForced:false },
       restore: { label:"Deep Clean + Stain Guard", guardForced:true }
     };
 
-    // Items
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -1155,7 +993,7 @@
     const state = {
       qty: {},
       extras: { guard:false, deodorise:false, insecticide:false },
-      service: null,           // MUST choose first
+      service: null,
       unlocked: false
     };
 
@@ -1181,7 +1019,6 @@
     function calc(){
       let subtotal = 0;
       const lines = [];
-
       const all = [
         ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
         ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
@@ -1292,11 +1129,7 @@
       topCb.setAttribute("aria-disabled", locked ? "true" : "false");
       stCb.setAttribute("aria-disabled", locked ? "true" : "false");
 
-      if (locked){
-        submitBtn.type = "button";
-      } else {
-        submitBtn.type = "submit";
-      }
+      submitBtn.type = locked ? "button" : "submit";
     }
 
     function renderSelected(){
@@ -1401,16 +1234,15 @@
       document.getElementById("lockBar").style.display = "none";
 
       renderSelected();
-
       document.getElementById("quoteGrid").scrollIntoView({behavior:"smooth", block:"start"});
     }
 
-    // Init prices text
+    // Init extras text
     document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    // Render groups
+    // Render item groups
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1429,7 +1261,7 @@
       state.extras.insecticide = e.target.checked; renderSelected();
     });
 
-    // Flip behaviour
+    // Flip + select behaviour
     document.getElementById("plans").addEventListener("click", (e) => {
       const flip = e.target.closest(".flip");
       if (!flip) return;
@@ -1438,37 +1270,27 @@
       const actBtn = e.target.closest("[data-act]");
       const act = actBtn ? actBtn.getAttribute("data-act") : null;
 
-      if (act === "open"){
-        closeAllFlips();
-        flip.setAttribute("data-open","true");
+      if (act === "select"){
+        unlockWithPlan(level);
         return;
       }
       if (act === "close"){
         flip.setAttribute("data-open","false");
         return;
       }
-      if (act === "select"){
-        unlockWithPlan(level);
-        return;
-      }
 
-      // tap anywhere on tile toggles open/close (unless already unlocked and selected)
+      // Tap anywhere else toggles flip
       const isOpen = flip.getAttribute("data-open") === "true";
       closeAllFlips();
       flip.setAttribute("data-open", isOpen ? "false" : "true");
     });
 
-    // Lock bar jump
+    // Lock jump
     document.getElementById("lockJump").addEventListener("click", () => {
       document.getElementById("choose").scrollIntoView({behavior:"smooth", block:"start"});
-      // nudge the plan row once to show swipe
-      const plans = document.getElementById("plans");
-      plans.classList.remove("nudgeOnce");
-      void plans.offsetWidth;
-      plans.classList.add("nudgeOnce");
     });
 
-    // First load: locked
+    // Locked on load
     setLockedUI(true);
     renderSelected();
 
@@ -1488,3 +1310,4 @@
   </script>
 </body>
 </html>
+```
