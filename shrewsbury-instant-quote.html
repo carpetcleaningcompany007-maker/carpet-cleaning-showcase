@@ -1,6 +1,3 @@
-Yep. Paste this whole file instead. I’ve removed the “Tap to open details” strip and the Open buttons, and made the flip obvious with a clean “Read more” hint plus a subtle flip icon. Tap the tile anywhere to flip. Select button is on the back.
-
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,6 +30,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       --shadow: 0 28px 70px rgba(0,0,0,.35);
       --shadow2: 0 12px 26px rgba(10,18,32,.12);
 
+      --r: 22px;
       --max: 1180px;
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -55,6 +53,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     a{color:inherit; text-decoration:none}
     .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
 
+    /* Top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding: 10px 0 14px;
@@ -65,6 +64,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     .brand span{font-size:13px; opacity:.80; max-width:58ch;}
 
     .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:10px 14px; border-radius:999px;
@@ -74,19 +74,11 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       cursor:pointer; white-space:nowrap;
       box-shadow: 0 12px 28px rgba(0,0,0,.18);
       backdrop-filter: blur(12px);
-      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      transition: transform .12s ease, box-shadow .12s ease;
     }
     .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
     .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand2));}
     .btn.call{background: rgba(255,255,255,.14);}
-    .btn.green{
-      background: linear-gradient(135deg, #13b46a, #0b7b44);
-      color:#fff;
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,.10);
-      backdrop-filter:none;
-    }
-    .btn[aria-disabled="true"]{opacity:.45; cursor:not-allowed; pointer-events:none}
 
     .pill{
       display:inline-flex; align-items:center; gap:8px;
@@ -100,6 +92,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       white-space:nowrap;
     }
 
+    /* HERO */
     .hero{
       border-radius: 26px;
       padding: 18px;
@@ -152,7 +145,13 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       white-space:nowrap;
     }
 
-    .chooser{margin-top: 16px; position:relative; z-index:2;}
+    /* The interactive "phone style" selector */
+    .chooser{
+      margin-top: 16px;
+      position:relative;
+      z-index:2;
+    }
+
     .chooser-head{
       margin-top: 10px;
       border-radius: 18px;
@@ -171,141 +170,171 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       gap:14px;
     }
 
-    /* FLIP */
-    .flip{perspective: 1400px; position:relative; min-height: 320px;}
-    .flipInner{
-      position:relative; width:100%; height:100%;
-      transform-style: preserve-3d;
-      transition: transform .55s cubic-bezier(.2,.8,.2,1);
-    }
-    .flip[data-open="true"] .flipInner{transform: rotateY(180deg);}
-    .face{
-      position:absolute; inset:0;
+    .plan{
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.14);
       border-radius: 20px;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
       overflow:hidden;
       box-shadow: 0 18px 50px rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.92);
-      display:flex; flex-direction:column;
-      min-height: 320px;
+      position:relative;
       cursor:pointer;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, filter .14s ease;
+      display:flex;
+      flex-direction:column;
+      min-height: 310px;
     }
-    .front{transform: rotateY(0deg);}
-    .back{transform: rotateY(180deg); background:#fff;}
-
-    .planTop{
-      padding: 14px 14px 12px;
+    .plan:hover{transform: translateY(-2px); box-shadow: 0 26px 70px rgba(0,0,0,.26)}
+    .plan .top{
+      padding: 14px 14px 10px;
       background: linear-gradient(135deg, #ffffff, #f6f8ff);
       border-bottom:1px solid rgba(12,24,40,.10);
-      position:relative;
     }
-    .planTitle{font-weight:950; font-size:16px; color: var(--ink2); letter-spacing:-.01em;}
-    .planSub{margin-top:6px; color: var(--muted); font-weight:850; font-size:12.5px; line-height:1.4;}
-
-    .readMore{
-      margin-top:10px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(12,24,40,.10);
-      background: linear-gradient(135deg, #ffffff, #f7f9ff);
-      box-shadow: 0 10px 18px rgba(10,18,32,.06);
+    .plan .title{
       font-weight:950;
+      font-size:16px;
       color: var(--ink2);
+      letter-spacing:-.01em;
     }
-    .readMore small{font-weight:850; color: var(--muted);}
-    .flipIcon{
-      width:34px; height:34px; border-radius: 12px;
-      display:flex; align-items:center; justify-content:center;
-      border:1px solid rgba(12,24,40,.12);
-      background:#fff;
-      box-shadow: 0 10px 18px rgba(10,18,32,.08);
-      font-weight:980;
+    .plan .sub{
+      margin-top:6px;
+      color: var(--muted);
+      font-weight:800;
+      font-size:12.5px;
+      line-height:1.4;
     }
-
-    .planMid{padding: 12px 14px 12px; flex:1;}
-    .planMid ul{margin:0; padding:0 0 0 16px; color:#2a3a55; font-size:13px; line-height:1.5;}
-    .planMid li{margin:7px 0}
-
-    .planFoot{
+    .plan .mid{
+      padding: 12px 14px 12px;
+      background: #fff;
+      flex:1;
+    }
+    .plan ul{
+      margin:0; padding:0 0 0 16px;
+      color: #2a3a55;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .plan li{margin:7px 0}
+    .plan .priceRow{
       padding: 12px 14px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
       border-top:1px solid rgba(12,24,40,.10);
       background: linear-gradient(135deg, #ffffff, #f7f9ff);
     }
-    .priceBig{font-weight:980; font-size:20px; color: var(--ink2); font-variant-numeric: tabular-nums;}
-    .priceSmall{font-size:12px; color: var(--muted); font-weight:950;}
+    .plan .priceBig{
+      font-weight:980;
+      font-size:20px;
+      color: var(--ink2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing:-.01em;
+    }
+    .plan .priceSmall{
+      font-size:12px;
+      color: var(--muted);
+      font-weight:900;
+    }
 
     .chooseBtn{
+      width:100%;
       padding: 12px 12px;
       border:0;
       border-radius: 14px;
-      font-weight:980;
+      font-weight:950;
       cursor:pointer;
       box-shadow: 0 12px 26px rgba(10,18,32,.14);
       transition: transform .10s ease;
-      white-space:nowrap;
     }
     .chooseBtn:active{transform: translateY(1px)}
-    .basic .chooseBtn{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
-    .deep .chooseBtn{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
-    .restore .chooseBtn{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
 
+    .plan.basic .chooseBtn{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .plan.deep .chooseBtn{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
+    .plan.restore .chooseBtn{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
+
+    .plan.deep{
+      transform: translateY(-6px);
+      border-color: rgba(255,191,60,.40);
+    }
+    .plan.deep:hover{transform: translateY(-8px)}
     .most{
-      position:absolute; top:10px; left:50%; transform: translateX(-50%);
+      position:absolute;
+      top:10px;
+      left:50%;
+      transform: translateX(-50%);
       background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
       color:#2b1b00;
-      font-weight:980; font-size:12px;
+      font-weight:980;
+      font-size:12px;
       padding:6px 10px;
       border-radius: 999px;
       box-shadow: 0 12px 26px rgba(0,0,0,.20);
       border:1px solid rgba(255,255,255,.35);
       z-index:3;
-      white-space:nowrap;
-    }
-    .selectedPill{
       display:none;
-      position:absolute; top:10px; right:10px;
-      background: rgba(43,123,255,.14);
-      border:1px solid rgba(43,123,255,.25);
-      color:#0a2a6b;
-      padding:6px 10px;
-      border-radius:999px;
-      font-weight:980;
-      font-size:12px;
-      box-shadow: 0 12px 26px rgba(10,18,32,.10);
-      z-index:4;
-    }
-    .flip[data-selected="true"] .selectedPill{display:inline-flex;}
-
-    /* Lock bar */
-    .lock{
-      margin-top: 14px;
-      border-radius: 22px;
-      padding: 12px 14px;
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
-      color: var(--ink2);
-      font-weight:950;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-    }
-    .lock span{font-weight:850; color: var(--muted); font-size:13px; line-height:1.4}
-    .lock b{color: var(--ink2)}
-    .lockBtn{
-      border:0;
-      border-radius: 999px;
-      padding:10px 14px;
-      font-weight:980;
-      cursor:pointer;
-      color:#fff;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 12px 28px rgba(0,0,0,.18);
       white-space:nowrap;
     }
+    .plan.deep .most{display:inline-flex}
 
+    .plan.active{
+      outline: 4px solid rgba(43,123,255,.22);
+      box-shadow: 0 30px 90px rgba(0,0,0,.30);
+      filter: saturate(1.03);
+    }
+    .plan.active .top{
+      background:
+        radial-gradient(540px 220px at 0% 0%, rgba(43,123,255,.10), transparent 55%),
+        radial-gradient(540px 220px at 100% 0%, rgba(255,191,60,.10), transparent 60%),
+        linear-gradient(135deg, #ffffff, #f6f8ff);
+    }
+
+    /* Why prices vary block */
+    .why{
+      margin-top: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .why .h{
+      padding: 14px 16px;
+      border-bottom:1px solid rgba(12,24,40,.08);
+      background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
+    }
+    .why .h b{color: var(--ink2); font-size:16px}
+    .why .b{padding: 14px 16px 16px}
+    .whyGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap:12px;
+    }
+    .whyTile{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      padding: 12px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+    }
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:980;
+      color:#fff;
+      flex:0 0 auto;
+      box-shadow: 0 12px 24px rgba(10,18,32,.12);
+    }
+    .i1{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .i2{background: linear-gradient(135deg, #2b7bff, #1b4fd6);}
+    .i3{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .whyTile b{display:block; color: var(--ink2); font-size:14px}
+    .whyTile span{display:block; margin-top:6px; color: var(--muted); font-weight:800; font-size:12.5px; line-height:1.4}
+
+    /* Main grid for calculator */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -329,35 +358,15 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       border-radius: 22px 22px 0 0;
     }
     .card-h h2{margin:0; font-size:16px; color: var(--ink2)}
-    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:850}
+    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:800}
     .card-b{padding: 14px 16px 16px}
 
-    /* Locked overlay */
-    .lockedZone{position:relative;}
-    .lockedZone[data-locked="true"]{filter: grayscale(.08) opacity(.88);}
-    .lockedZone[data-locked="true"]::after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius: 22px;
-      background: rgba(255,255,255,.65);
-      backdrop-filter: blur(3px);
-      pointer-events:auto;
+    .summary-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-bottom: 10px;
     }
-    .lockedZone[data-locked="true"]::before{
-      content:"Choose a clean level above to unlock the calculator";
-      position:absolute; left:12px; right:12px; top:12px;
-      z-index:3;
-      padding:12px 12px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(43,123,255,.12), rgba(255,191,60,.10));
-      border:1px solid rgba(12,24,40,.10);
-      color: var(--ink2);
-      font-weight:980;
-      box-shadow: 0 12px 26px rgba(10,18,32,.10);
-      pointer-events:none;
-    }
-
-    .summary-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom: 10px;}
     .total-box{
       background:
         radial-gradient(600px 220px at 0% 0%, rgba(43,123,255,.12), transparent 55%),
@@ -368,9 +377,19 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       padding: 12px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .total-box b{font-size:28px; color: var(--ink2); font-variant-numeric: tabular-nums;}
+    .total-box b{
+      font-size:28px;
+      color: var(--ink2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing:-.02em;
+    }
     .total-box span{font-size:12px; color: var(--muted); font-weight:950; white-space:nowrap}
-    .info-box{border:1px solid rgba(12,24,40,.10); border-radius: 18px; padding: 12px; background:#fff;}
+    .info-box{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
+      padding: 12px;
+      background:#fff;
+    }
     .chip{
       display:inline-flex; align-items:center; gap:8px;
       background: rgba(255,191,60,.18);
@@ -416,7 +435,12 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       box-shadow: 0 10px 22px rgba(43,123,255,.25);
       font-weight:980; flex:0 0 auto;
     }
-    .section-head .right{color: var(--muted); font-size:12px; display:flex; align-items:center; gap:10px; white-space:nowrap; font-weight:950;}
+    .section-head .right{
+      color: var(--muted);
+      font-size:12px;
+      display:flex; align-items:center; gap:10px;
+      white-space:nowrap; font-weight:950;
+    }
 
     .items{
       padding: 12px 2px 0;
@@ -447,7 +471,12 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       font-weight:980; cursor:pointer;
       box-shadow: 0 10px 18px rgba(10,18,32,.08);
     }
-    .qnum{width:34px; text-align:center; font-weight:980; font-variant-numeric: tabular-nums; color: var(--ink2);}
+    .qnum{
+      width:34px; text-align:center;
+      font-weight:980;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink2);
+    }
 
     details.acc{
       margin-top: 10px;
@@ -502,7 +531,12 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       font-weight:700;
     }
 
-    .form-grid{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top: 10px;}
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
     .field{display:flex; flex-direction:column; gap:6px;}
     label{font-size:12px; color: var(--muted); font-weight:980}
     input, select, textarea{
@@ -521,6 +555,13 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       box-shadow: 0 0 0 4px rgba(43,123,255,.12);
     }
     .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .btn.green{
+      background: linear-gradient(135deg, #13b46a, #0b7b44);
+      color:#fff;
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      backdrop-filter:none;
+    }
 
     footer{
       text-align:center;
@@ -531,8 +572,12 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       font-weight:700;
     }
 
+    /* Sticky bar */
     .sticky-bar{
-      position: fixed; left: 0; right: 0; bottom: 0;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 50;
       padding: 10px 12px;
       background: linear-gradient(135deg, rgba(11,22,48,.94), rgba(7,11,20,.92));
@@ -541,30 +586,45 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       box-shadow: 0 -18px 50px rgba(0,0,0,.30);
       display:none;
     }
-    .sticky-inner{max-width: var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .sticky-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
     .sticky-total{color:#fff; display:flex; flex-direction:column; gap:2px;}
     .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
 
+    /* Mobile: make the 3 plan cards swipe */
     @media (max-width: 980px){
       .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
+      .whyGrid{grid-template-columns:1fr}
     }
     @media (max-width: 860px){
       .pill{display:none}
       .sticky-bar{display:block}
       .wrap{padding-bottom: 128px}
+
       .plans{
         display:flex;
         gap:12px;
         overflow-x:auto;
-        padding-bottom: 8px;
+        padding-bottom: 6px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
       }
-      .flip{min-width: 90%; scroll-snap-align: center;}
+      .plan{
+        min-width: 88%;
+        scroll-snap-align: center;
+      }
+      .plan.deep{transform:none}
+      .plan.deep:hover{transform:none}
     }
     @media (max-width: 420px){
       .hero h1{font-size:26px}
@@ -583,7 +643,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
 
       <div class="top-actions">
         <span class="pill">Choose your clean level, then build your quote</span>
-        <a class="btn primary" id="btnCallbackTop" href="#callback" aria-disabled="true">Request callback</a>
+        <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
     </div>
@@ -591,184 +651,133 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     <section class="hero" aria-label="Hero">
       <div class="hero-top">
         <div>
-          <h1>Choose your <span>level of clean</span> first</h1>
+          <h1>Stop guessing the <span>price</span> of carpet cleaning</h1>
           <p>
-            You’re choosing the method and the equipment. Tap a tile to flip it and read the full details.
-            You must select one to unlock the calculator.
+            Choose the level of clean you actually want. Each option is a different method and different equipment.
+            Your choice sets the pricing, the process, and the end result.
           </p>
         </div>
 
         <div class="hero-badges">
-          <span class="tag">Pick level first</span>
+          <span class="tag">Choose level first</span>
           <span class="tag">Then add rooms</span>
-          <span class="tag">Book by callback</span>
+          <span class="tag">Request callback to book</span>
         </div>
       </div>
 
       <div class="chooser" id="choose">
         <div class="chooser-head">
-          <b>Choose the clean you actually want</b>
-          <span>Tap a tile to flip it. Select one plan to continue.</span>
+          <b>Choose the level of clean you actually want</b>
+          <span>
+            Basic is the quick wand only detergent clean.
+            Deep is the proper professional clean with agitation and a full rinse and extract.
+            Restore adds stain guard protection on every item.
+          </span>
         </div>
 
         <div class="plans" id="plans">
-          <!-- BASIC -->
-          <div class="flip basic" data-level="basic" data-open="false" data-selected="false">
-            <div class="flipInner">
-              <div class="face front">
-                <div class="planTop">
-                  <div class="planTitle">Your typical £30 carpet clean</div>
-                  <div class="planSub">Wand only. Quick in tank detergent refresh.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <div class="readMore">
-                    <div>Read more <small>tap to flip</small></div>
-                    <div class="flipIcon">↺</div>
-                  </div>
-                </div>
-                <div class="planFoot">
-                  <div>
-                    <div class="priceBig">£30</div>
-                    <div class="priceSmall">per carpet item</div>
-                  </div>
-                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
-                </div>
+          <div class="plan basic" data-level="basic">
+            <div class="top">
+              <div class="title">Basic Clean</div>
+              <div class="sub">Quick refresh for surface dirt</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>In tank detergent</li>
+                <li>Hot water extraction with wand only</li>
+                <li>No scrubbing or CRB agitation</li>
+                <li>Best for routine maintenance</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig">£30</div>
+                <div class="priceSmall">per carpet item</div>
               </div>
-
-              <div class="face back">
-                <div class="planTop">
-                  <div class="planTitle">Your typical £30 carpet clean</div>
-                  <div class="planSub">Cheapest option for routine maintenance.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <ul>
-                    <li>In tank detergent</li>
-                    <li>Hot water extraction with wand only</li>
-                    <li>No scrubbing or CRB agitation</li>
-                    <li>Quick refresh, not a deep clean</li>
-                    <li>Best for lightly soiled carpets</li>
-                  </ul>
-                </div>
-                <div class="planFoot">
-                  <button class="chooseBtn" type="button" data-act="select">Select this plan</button>
-                  <button class="chooseBtn" type="button" data-act="close" style="background:rgba(12,24,40,.08); color:var(--ink2); box-shadow:none;">Back</button>
-                </div>
-              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
             </div>
           </div>
 
-          <!-- DEEP -->
-          <div class="flip deep" data-level="deep" data-open="false" data-selected="false">
-            <div class="flipInner">
-              <div class="face front">
-                <div class="planTop">
-                  <div class="most">Most Popular</div>
-                  <div class="planTitle">Proper deep clean</div>
-                  <div class="planSub">Agitation and full rinse and extract.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <div class="readMore">
-                    <div>Read more <small>tap to flip</small></div>
-                    <div class="flipIcon">↺</div>
-                  </div>
-                </div>
-                <div class="planFoot">
-                  <div>
-                    <div class="priceBig" id="deepFrom">From £55</div>
-                    <div class="priceSmall">per item</div>
-                  </div>
-                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
-                </div>
+          <div class="plan deep active" data-level="deep">
+            <div class="most">Most Popular</div>
+            <div class="top">
+              <div class="title">Deep Clean</div>
+              <div class="sub">Proper professional clean</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>Pre spray to break down dirt</li>
+                <li>Agitation to scrub fibres</li>
+                <li>Dwell time for better results</li>
+                <li>Full rinse and extract flush out</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig" id="deepFrom">From £55</div>
+                <div class="priceSmall">per item</div>
               </div>
-
-              <div class="face back">
-                <div class="planTop">
-                  <div class="most">Most Popular</div>
-                  <div class="planTitle">Proper deep clean</div>
-                  <div class="planSub">This is the clean people want.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <ul>
-                    <li>Pre spray to break down soil</li>
-                    <li>Agitation to scrub the fibres</li>
-                    <li>Dwell time for better results</li>
-                    <li>Full rinse and extract to flush it out</li>
-                    <li>Leaves carpets looking and feeling new</li>
-                  </ul>
-                </div>
-                <div class="planFoot">
-                  <button class="chooseBtn" type="button" data-act="select">Select this plan</button>
-                  <button class="chooseBtn" type="button" data-act="close" style="background:rgba(12,24,40,.08); color:var(--ink2); box-shadow:none;">Back</button>
-                </div>
-              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
             </div>
           </div>
 
-          <!-- RESTORE -->
-          <div class="flip restore" data-level="restore" data-open="false" data-selected="false">
-            <div class="flipInner">
-              <div class="face front">
-                <div class="planTop">
-                  <div class="planTitle">Deep clean plus stain guard</div>
-                  <div class="planSub">Deep clean plus protection on every item.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <div class="readMore">
-                    <div>Read more <small>tap to flip</small></div>
-                    <div class="flipIcon">↺</div>
-                  </div>
-                </div>
-                <div class="planFoot">
-                  <div>
-                    <div class="priceBig" id="restoreFrom">From £85</div>
-                    <div class="priceSmall">per item</div>
-                  </div>
-                  <div style="font-weight:950; color:var(--muted); font-size:12px;">Tap to flip</div>
-                </div>
+          <div class="plan restore" data-level="restore">
+            <div class="top">
+              <div class="title">Full Restore + Protect</div>
+              <div class="sub">Like new condition plus protection</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>Everything in Deep Clean</li>
+                <li>Stain guard on every selected item</li>
+                <li>Helps resist spills and slows resoiling</li>
+                <li>Best long lasting result</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig" id="restoreFrom">From £85</div>
+                <div class="priceSmall">per item</div>
               </div>
-
-              <div class="face back">
-                <div class="planTop">
-                  <div class="planTitle">Deep clean plus stain guard</div>
-                  <div class="planSub">Protection on every selected item.</div>
-                  <div class="selectedPill">Selected</div>
-                </div>
-                <div class="planMid">
-                  <ul>
-                    <li>Everything in Proper deep clean</li>
-                    <li>Stain guard on every selected item</li>
-                    <li>Helps resist spills and slows resoiling</li>
-                    <li>Better maintenance after the clean</li>
-                    <li>Best for families and high traffic</li>
-                  </ul>
-                </div>
-                <div class="planFoot">
-                  <button class="chooseBtn" type="button" data-act="select">Select this plan</button>
-                  <button class="chooseBtn" type="button" data-act="close" style="background:rgba(12,24,40,.08); color:var(--ink2); box-shadow:none;">Back</button>
-                </div>
-              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
             </div>
           </div>
-        </div>
-
-        <div class="lock" id="lockBar">
-          <div>
-            <b>Step 1: choose a level of clean</b>
-            <span>You must select one plan to unlock the quote builder.</span>
-          </div>
-          <button class="lockBtn" type="button" id="lockJump">Pick a plan</button>
         </div>
       </div>
     </section>
 
-    <div class="grid lockedZone" id="quoteGrid" data-locked="true">
+    <section class="why" aria-label="Why prices vary">
+      <div class="h"><b>Why prices vary between carpet cleaners</b></div>
+      <div class="b">
+        <div class="whyGrid">
+          <div class="whyTile">
+            <div class="icon i1">£</div>
+            <div>
+              <b>Cheap machines</b>
+              <span>Basic setups and quick wand only cleans. Limited soil removal.</span>
+            </div>
+          </div>
+          <div class="whyTile">
+            <div class="icon i2">HP</div>
+            <div>
+              <b>Professional systems</b>
+              <span>Better heat, better extraction, better agitation and better results.</span>
+            </div>
+          </div>
+          <div class="whyTile">
+            <div class="icon i3">✓</div>
+            <div>
+              <b>Long lasting results</b>
+              <span>Proper rinse and extract plus optional protection treatments.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
       <!-- LEFT -->
-      <section class="card">
+      <section class="card" aria-label="Build quote">
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
@@ -784,7 +793,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
                 <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span id="serviceBadge">Choose a plan</span>
+                <span id="serviceBadge">Deep Clean</span>
               </div>
             </div>
 
@@ -798,9 +807,11 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
             </div>
           </div>
 
-          <p class="note" id="serviceNote">Choose a plan above to unlock the quote builder.</p>
+          <p class="note" id="serviceNote">
+            Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract.
+          </p>
 
-          <div class="extras">
+          <div class="extras" role="group" aria-label="Extras">
             <label class="toggle disabled" id="tg_guard" title="Restore only">
               <input type="checkbox" id="x_guard" disabled />
               Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Restore only)</span>
@@ -857,7 +868,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       </section>
 
       <!-- RIGHT -->
-      <aside class="card">
+      <aside class="card" aria-label="Selected and callback">
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
@@ -911,12 +922,12 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <input type="hidden" id="serviceLevel" name="serviceLevel" value="" />
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deep" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
                 <div class="cta">
-                  <button class="btn green" id="btnSubmit" type="submit" aria-disabled="true">Request callback</button>
+                  <button class="btn green" type="submit">Request callback</button>
                   <a class="btn call" href="tel:07802563213">Call now</a>
                 </div>
 
@@ -942,28 +953,31 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     </footer>
   </div>
 
-  <div class="sticky-bar">
+  <div class="sticky-bar" role="region" aria-label="Quick actions">
     <div class="sticky-inner">
       <div class="sticky-total">
         <span>Total estimate</span>
         <b id="totalSticky">£0.00</b>
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
-        <a class="btn primary" id="btnCallbackSticky" href="#callback" aria-disabled="true">Request callback</a>
+        <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
     </div>
   </div>
 
   <script>
+    // Extras
     const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
 
+    // Service levels
     const SERVICE = {
       basic:   { label:"Basic Clean",   guardForced:false },
       deep:    { label:"Deep Clean",    guardForced:false },
-      restore: { label:"Deep Clean + Stain Guard", guardForced:true }
+      restore: { label:"Full Restore + Protect", guardForced:true }
     };
 
+    // Items (your current list)
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -993,8 +1007,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     const state = {
       qty: {},
       extras: { guard:false, deodorise:false, insecticide:false },
-      service: null,
-      unlocked: false
+      service: "deep"
     };
 
     const fmt = n => "£" + (Math.round((Number(n)||0)*100)/100).toFixed(2);
@@ -1005,7 +1018,9 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     const getCount = group => group.reduce((sum,it)=> sum + (state.qty[it.id]||0), 0);
 
     function unitPrice(groupName, basePrice){
+      // Basic: carpets only are £30 per carpet item
       if (state.service === "basic" && groupName === "Carpets") return 30;
+      // Deep and Restore use your normal prices
       return Number(basePrice) || 0;
     }
 
@@ -1019,6 +1034,7 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     function calc(){
       let subtotal = 0;
       const lines = [];
+
       const all = [
         ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
         ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
@@ -1071,34 +1087,22 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     function makeEmptyState(){
       const d = document.createElement("div");
       d.className = "mutebox";
-      d.textContent = state.unlocked
-        ? "No items selected yet. Add rooms to see the breakdown."
-        : "Choose a clean level above to unlock the quote builder.";
+      d.textContent = "No items selected yet. Add rooms to see the breakdown.";
       return d;
     }
 
     function applyServiceRules(){
-      const badge = document.getElementById("serviceBadge");
-      const note = document.getElementById("serviceNote");
-      const hidden = document.getElementById("serviceLevel");
-
-      if (!state.service){
-        badge.textContent = "Choose a plan";
-        note.textContent = "Choose a plan above to unlock the quote builder.";
-        hidden.value = "";
-        return;
-      }
-
       const s = SERVICE[state.service];
-      badge.textContent = s.label;
-      hidden.value = state.service;
+      document.getElementById("serviceBadge").textContent = s.label;
+      document.getElementById("serviceLevel").value = state.service;
 
+      const note = document.getElementById("serviceNote");
       if (state.service === "basic"){
-        note.textContent = "Basic selected. In tank detergent and wand only hot water extraction. No scrubbing, no agitation. Routine maintenance refresh.";
+        note.textContent = "Basic selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Routine maintenance refresh.";
       } else if (state.service === "deep"){
         note.textContent = "Deep selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
       } else {
-        note.textContent = "Deep + Stain Guard selected. Deep clean plus stain guard protection on every selected item automatically.";
+        note.textContent = "Restore selected. Deep clean plus stain guard protection on every selected item automatically.";
       }
 
       const guard = document.getElementById("x_guard");
@@ -1117,21 +1121,6 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       }
     }
 
-    function setLockedUI(locked){
-      const grid = document.getElementById("quoteGrid");
-      grid.setAttribute("data-locked", locked ? "true" : "false");
-
-      const submitBtn = document.getElementById("btnSubmit");
-      const topCb = document.getElementById("btnCallbackTop");
-      const stCb = document.getElementById("btnCallbackSticky");
-
-      submitBtn.setAttribute("aria-disabled", locked ? "true" : "false");
-      topCb.setAttribute("aria-disabled", locked ? "true" : "false");
-      stCb.setAttribute("aria-disabled", locked ? "true" : "false");
-
-      submitBtn.type = locked ? "button" : "submit";
-    }
-
     function renderSelected(){
       applyServiceRules();
 
@@ -1148,12 +1137,10 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
 
       const list = document.getElementById("selectedList");
-      const allLines = state.unlocked ? [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0) : [];
+      const allLines = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
 
       list.innerHTML = "";
-      if (!state.unlocked){
-        list.appendChild(makeEmptyState());
-      } else if (!allLines.length){
+      if (!allLines.length){
         list.appendChild(makeEmptyState());
       } else {
         list.innerHTML =
@@ -1180,14 +1167,15 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
            </div>`;
       }
 
-      const breakdown = state.unlocked ? [
+      const breakdown = [
         `Service level: ${SERVICE[state.service].label}`,
         ...allLines.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`)
-      ].join("\n") : "";
+      ].join("\n");
 
       document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
 
+      // Update the "From" numbers on the cards based on your current list
       const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
       document.getElementById("deepFrom").textContent = "From " + fmt(deepMin).replace(".00","");
       document.getElementById("restoreFrom").textContent = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
@@ -1195,8 +1183,6 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
 
     function attachQtyHandlers(container){
       container.addEventListener("click", (e) => {
-        if (!state.unlocked) return;
-
         const btn = e.target.closest("button.qbtn");
         if (!btn) return;
         const card = btn.closest(".item");
@@ -1213,36 +1199,26 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
       });
     }
 
-    function closeAllFlips(){
-      document.querySelectorAll(".flip").forEach(f => f.setAttribute("data-open","false"));
+    function setActivePlan(level){
+      document.querySelectorAll(".plan").forEach(p => p.classList.remove("active"));
+      const t = document.querySelector(`.plan[data-level="${level}"]`);
+      if (t) t.classList.add("active");
     }
 
-    function setSelectedFlip(level){
-      document.querySelectorAll(".flip").forEach(f => {
-        f.setAttribute("data-selected", f.getAttribute("data-level") === level ? "true" : "false");
-      });
-    }
-
-    function unlockWithPlan(level){
+    function setService(level){
       state.service = level;
-      state.unlocked = true;
-
-      setSelectedFlip(level);
-      closeAllFlips();
-
-      setLockedUI(false);
-      document.getElementById("lockBar").style.display = "none";
-
+      setActivePlan(level);
       renderSelected();
-      document.getElementById("quoteGrid").scrollIntoView({behavior:"smooth", block:"start"});
+      // jump them to the calculator after picking a level
+      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
     }
 
-    // Init extras text
+    // Init prices text
     document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    // Render item groups
+    // Render groups
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1252,57 +1228,24 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
     attachQtyHandlers(document.getElementById("upholstery"));
 
     // Extras listeners
-    document.getElementById("x_deo").addEventListener("change", (e)=>{
-      if (!state.unlocked) { e.target.checked = false; return; }
-      state.extras.deodorise = e.target.checked; renderSelected();
-    });
-    document.getElementById("x_insect").addEventListener("change", (e)=>{
-      if (!state.unlocked) { e.target.checked = false; return; }
-      state.extras.insecticide = e.target.checked; renderSelected();
-    });
+    document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
+    document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
-    // Flip + select behaviour
+    // Plan selection (tap card or button)
     document.getElementById("plans").addEventListener("click", (e) => {
-      const flip = e.target.closest(".flip");
-      if (!flip) return;
-
-      const level = flip.getAttribute("data-level");
-      const actBtn = e.target.closest("[data-act]");
-      const act = actBtn ? actBtn.getAttribute("data-act") : null;
-
-      if (act === "select"){
-        unlockWithPlan(level);
-        return;
-      }
-      if (act === "close"){
-        flip.setAttribute("data-open","false");
-        return;
-      }
-
-      // Tap anywhere else toggles flip
-      const isOpen = flip.getAttribute("data-open") === "true";
-      closeAllFlips();
-      flip.setAttribute("data-open", isOpen ? "false" : "true");
+      const btn = e.target.closest(".chooseBtn");
+      const card = e.target.closest(".plan");
+      if (!card) return;
+      const level = card.getAttribute("data-level");
+      setService(level);
     });
 
-    // Lock jump
-    document.getElementById("lockJump").addEventListener("click", () => {
-      document.getElementById("choose").scrollIntoView({behavior:"smooth", block:"start"});
-    });
-
-    // Locked on load
-    setLockedUI(true);
+    // First load
+    setActivePlan("deep");
     renderSelected();
 
     function handleSubmit(event){
       event.preventDefault();
-
-      if (!state.unlocked || !state.service){
-        alert("Choose a clean level first, then build your quote.");
-        document.getElementById("choose").scrollIntoView({behavior:"smooth", block:"start"});
-        return false;
-      }
-
       alert("Callback request captured on this page. If you want it to email you, send me your Formspree endpoint and I will wire it in.");
       return false;
     }
@@ -1310,4 +1253,3 @@ Yep. Paste this whole file instead. I’ve removed the “Tap to open details”
   </script>
 </body>
 </html>
-```
