@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,38 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>The Carpet Cleaning Company Instant Quote</title>
-  <meta name="description" content="Choose your level of clean first, then build your quote instantly. Clear pricing, fast booking, professional equipment." />
+  <meta name="description" content="Stop guessing the price. Choose the level of clean you actually want, then build your quote instantly." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/instant-quote.html" />
-
-  <meta property="og:title" content="The Carpet Cleaning Company Instant Quote" />
-  <meta property="og:description" content="Pick a clean level first, then add rooms and see your total instantly." />
-  <meta property="og:type" content="website" />
 
   <style>
     :root{
       --bg0:#070b14;
       --bg1:#0b1630;
 
-      --card:#ffffff;
       --ink:#0b1220;
       --ink2:#0f1b33;
-      --muted:#6b7a93;
-
-      --line: rgba(12,24,40,.10);
+      --muted:#667690;
 
       --brand:#2b7bff;
       --brand2:#1b4fd6;
 
-      --accent:#ffbf3c;
-      --accent2:#ff7a59;
+      --gold:#ffbf3c;
+      --green:#13b46a;
 
-      --good:#13b46a;
+      --card:#ffffff;
+      --line: rgba(12,24,40,.12);
 
       --shadow: 0 28px 70px rgba(0,0,0,.35);
       --shadow2: 0 12px 26px rgba(10,18,32,.12);
 
+      --r: 22px;
       --max: 1180px;
+
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
 
@@ -47,85 +42,55 @@
       font-family: var(--font);
       color: var(--ink);
       background:
-        radial-gradient(900px 520px at 12% 12%, rgba(43,123,255,.22) 0%, transparent 60%),
-        radial-gradient(700px 520px at 86% 18%, rgba(255,191,60,.18) 0%, transparent 60%),
-        radial-gradient(900px 640px at 50% 105%, rgba(255,122,89,.14) 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #f4f7ff 100%);
+        radial-gradient(900px 520px at 12% 10%, rgba(43,123,255,.22) 0%, transparent 60%),
+        radial-gradient(700px 520px at 86% 16%, rgba(255,191,60,.18) 0%, transparent 60%),
+        radial-gradient(900px 640px at 50% 105%, rgba(19,180,106,.12) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 58%, #f4f7ff 100%);
       min-height:100vh;
       overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 110px}
 
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
+
+    /* Top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
-      padding: 10px 0 14px;
-      position:relative;
-      z-index:5;
+      gap:12px; padding: 10px 0 14px;
+      position:relative; z-index:5;
     }
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      color:#fff;
+    .brand{display:flex; flex-direction:column; gap:4px; color:#fff;}
+    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; opacity:.92;}
+    .brand span{font-size:13px; opacity:.80; max-width:58ch;}
+
+    .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
+      color:#fff; font-weight:900; font-size:13px;
+      cursor:pointer; white-space:nowrap;
+      box-shadow: 0 12px 28px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+      transition: transform .12s ease, box-shadow .12s ease;
     }
-    .brand b{
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-size:12px;
-      opacity:.92;
-    }
-    .brand span{
-      font-size:13px;
-      opacity:.80;
-      max-width: 58ch;
-    }
-    .top-actions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end
-    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
+    .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand2));}
+    .btn.call{background: rgba(255,255,255,.14);}
+
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
       background: rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.14);
       color: rgba(255,255,255,.92);
-      font-size:13px;
+      font-size:13px; font-weight:850;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 26px rgba(0,0,0,.18);
       white-space:nowrap;
     }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      box-shadow: 0 12px 28px rgba(0,0,0,.18);
-      font-weight:900;
-      font-size:13px;
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-      white-space:nowrap;
-      backdrop-filter: blur(12px);
-    }
-    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
-    .btn.primary{
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      border-color: rgba(255,255,255,.18);
-    }
-    .btn.call{background: rgba(255,255,255,.14);}
 
     /* HERO */
     .hero{
@@ -142,272 +107,234 @@
     }
     .hero::after{
       content:"";
-      position:absolute;
-      inset:-140px -140px auto auto;
-      width:420px;
-      height:420px;
+      position:absolute; inset:-140px -140px auto auto;
+      width:420px; height:420px;
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.20), transparent 58%);
       transform: rotate(18deg);
       pointer-events:none;
     }
+
     .hero-top{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:14px;
       align-items:start;
       position:relative;
       z-index:1;
     }
-    .hero h1{margin:0; font-size:32px; line-height:1.08; letter-spacing:-.02em}
+    .hero h1{margin:0; font-size:34px; line-height:1.05; letter-spacing:-.02em}
+    .hero h1 span{color: var(--gold)}
     .hero p{
       margin:10px 0 0;
       color: rgba(255,255,255,.86);
       font-size:14px;
-      max-width: 75ch;
       line-height:1.55;
+      max-width: 75ch;
     }
     .hero-badges{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-content:flex-start;
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-content:flex-start;
     }
     .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px; border-radius:999px;
       background: rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.16);
-      font-size:12px;
+      font-size:12px; font-weight:900;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 22px rgba(0,0,0,.16);
       white-space:nowrap;
     }
-    .tag strong{color: var(--accent); font-weight:950;}
 
-    /* STEP 1 banner */
-    .step-banner{
-      margin-top: 14px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,191,60,.22), rgba(43,123,255,.12));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 16px 36px rgba(0,0,0,.22);
+    /* The interactive "phone style" selector */
+    .chooser{
+      margin-top: 16px;
       position:relative;
-      z-index:1;
-    }
-    .step-banner b{
-      display:block;
-      font-size:17px;
-      letter-spacing:.02em;
-    }
-    .step-banner span{
-      display:block;
-      margin-top:6px;
-      font-size:13px;
-      color: rgba(255,255,255,.90);
-      line-height:1.45;
-      max-width: 80ch;
-    }
-    .step-banner .warn{
-      margin-top:10px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.14);
-      font-size:12px;
-      font-weight:950;
-      color: rgba(255,255,255,.92);
+      z-index:2;
     }
 
-    /* PREMIUM SERVICE CARDS */
-    .service-row{
+    .chooser-head{
+      margin-top: 10px;
+      border-radius: 18px;
+      padding: 14px 14px;
+      background: linear-gradient(135deg, rgba(255,191,60,.20), rgba(43,123,255,.10));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 16px 36px rgba(0,0,0,.22);
+    }
+    .chooser-head b{display:block; font-size:16px; letter-spacing:-.01em}
+    .chooser-head span{display:block; margin-top:6px; font-size:13px; opacity:.92; line-height:1.45}
+
+    .plans{
       margin-top: 12px;
       display:grid;
-      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
       gap:14px;
-      position:relative;
-      z-index:1;
     }
 
-    .svc{
-      border-radius: 22px;
-      padding: 18px;
-      background: rgba(255,255,255,.09);
+    .plan{
+      background: rgba(255,255,255,.92);
       border:1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 16px 36px rgba(0,0,0,.22);
-      cursor:pointer;
-      transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease, filter .14s ease;
-      position:relative;
+      border-radius: 20px;
       overflow:hidden;
-      user-select:none;
+      box-shadow: 0 18px 50px rgba(0,0,0,.22);
+      position:relative;
+      cursor:pointer;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, filter .14s ease;
       display:flex;
       flex-direction:column;
-      min-height: 280px;
+      min-height: 310px;
     }
-
-    .svc::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      border-radius: 24px;
-      background: radial-gradient(700px 260px at 20% 15%, rgba(43,123,255,.18), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
+    .plan:hover{transform: translateY(-2px); box-shadow: 0 26px 70px rgba(0,0,0,.26)}
+    .plan .top{
+      padding: 14px 14px 10px;
+      background: linear-gradient(135deg, #ffffff, #f6f8ff);
+      border-bottom:1px solid rgba(12,24,40,.10);
     }
-
-    .svc:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 22px 52px rgba(0,0,0,.28);
-      background: rgba(255,255,255,.11);
+    .plan .title{
+      font-weight:950;
+      font-size:16px;
+      color: var(--ink2);
+      letter-spacing:-.01em;
     }
-
-    .svc-top{
+    .plan .sub{
+      margin-top:6px;
+      color: var(--muted);
+      font-weight:800;
+      font-size:12.5px;
+      line-height:1.4;
+    }
+    .plan .mid{
+      padding: 12px 14px 12px;
+      background: #fff;
+      flex:1;
+    }
+    .plan ul{
+      margin:0; padding:0 0 0 16px;
+      color: #2a3a55;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .plan li{margin:7px 0}
+    .plan .priceRow{
+      padding: 12px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      flex-wrap:wrap;
-      position:relative;
-      z-index:1;
+      border-top:1px solid rgba(12,24,40,.10);
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+    }
+    .plan .priceBig{
+      font-weight:980;
+      font-size:20px;
+      color: var(--ink2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing:-.01em;
+    }
+    .plan .priceSmall{
+      font-size:12px;
+      color: var(--muted);
+      font-weight:900;
     }
 
-    .svc-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 11px;
-      border-radius:999px;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(255,255,255,.12);
-      font-size:12.5px;
+    .chooseBtn{
+      width:100%;
+      padding: 12px 12px;
+      border:0;
+      border-radius: 14px;
       font-weight:950;
+      cursor:pointer;
+      box-shadow: 0 12px 26px rgba(10,18,32,.14);
+      transition: transform .10s ease;
+    }
+    .chooseBtn:active{transform: translateY(1px)}
+
+    .plan.basic .chooseBtn{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .plan.deep .chooseBtn{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
+    .plan.restore .chooseBtn{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
+
+    .plan.deep{
+      transform: translateY(-6px);
+      border-color: rgba(255,191,60,.40);
+    }
+    .plan.deep:hover{transform: translateY(-8px)}
+    .most{
+      position:absolute;
+      top:10px;
+      left:50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
+      color:#2b1b00;
+      font-weight:980;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.20);
+      border:1px solid rgba(255,255,255,.35);
+      z-index:3;
+      display:none;
       white-space:nowrap;
     }
-    .svc-pill em{font-style:normal; color: var(--accent);}
+    .plan.deep .most{display:inline-flex}
 
-    .svc h3{
-      margin:12px 0 0;
-      font-size:18px;
-      letter-spacing:-.01em;
-      position:relative;
-      z-index:1;
+    .plan.active{
+      outline: 4px solid rgba(43,123,255,.22);
+      box-shadow: 0 30px 90px rgba(0,0,0,.30);
+      filter: saturate(1.03);
     }
-
-    .svc p, .svc ul{position:relative; z-index:1;}
-
-    .svc p{
-      margin:10px 0 0;
-      font-size:13.6px;
-      line-height:1.6;
-      color: rgba(255,255,255,.88);
-    }
-
-    .svc ul{
-      margin:10px 0 0;
-      padding:0 0 0 16px;
-      color: rgba(255,255,255,.90);
-      font-size:13.4px;
-      line-height:1.55;
-    }
-    .svc li{margin:6px 0}
-
-    .svc .nudge{
-      margin-top:auto;
-      padding-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      position:relative;
-      z-index:1;
-    }
-
-    .pick{
-      width:100%;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:12px 12px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;
-      font-weight:950;
-      font-size:13.8px;
-      cursor:pointer;
-      box-shadow: 0 14px 34px rgba(43,123,255,.18);
-      transition: transform .12s ease, filter .12s ease;
-    }
-    .pick:active{transform: translateY(1px)}
-
-    .svc.active{
-      border-color: rgba(255,191,60,.42);
-      background: linear-gradient(135deg, rgba(255,191,60,.16), rgba(43,123,255,.10));
-      box-shadow: 0 26px 70px rgba(0,0,0,.32);
-    }
-    .svc.active::before{
+    .plan.active .top{
       background:
-        radial-gradient(700px 260px at 20% 15%, rgba(255,191,60,.22), transparent 60%),
-        radial-gradient(700px 260px at 80% 15%, rgba(43,123,255,.18), transparent 60%);
-      opacity: 1;
-    }
-    .svc.active .pick{
-      background: linear-gradient(135deg, #13b46a, #0b7b44);
-      box-shadow: 0 16px 40px rgba(19,180,106,.22);
-      filter: saturate(1.05);
+        radial-gradient(540px 220px at 0% 0%, rgba(43,123,255,.10), transparent 55%),
+        radial-gradient(540px 220px at 100% 0%, rgba(255,191,60,.10), transparent 60%),
+        linear-gradient(135deg, #ffffff, #f6f8ff);
     }
 
-    .ribbon{
-      position:absolute;
-      top:12px;
-      right:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:950;
-      background: rgba(0,0,0,.28);
-      border:1px solid rgba(255,255,255,.14);
-      display:none;
-      z-index:2;
+    /* Why prices vary block */
+    .why{
+      margin-top: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
     }
-    .svc.active .ribbon{display:inline-flex}
+    .why .h{
+      padding: 14px 16px;
+      border-bottom:1px solid rgba(12,24,40,.08);
+      background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
+    }
+    .why .h b{color: var(--ink2); font-size:16px}
+    .why .b{padding: 14px 16px 16px}
+    .whyGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap:12px;
+    }
+    .whyTile{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      padding: 12px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+    }
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:980;
+      color:#fff;
+      flex:0 0 auto;
+      box-shadow: 0 12px 24px rgba(10,18,32,.12);
+    }
+    .i1{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .i2{background: linear-gradient(135deg, #2b7bff, #1b4fd6);}
+    .i3{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .whyTile b{display:block; color: var(--ink2); font-size:14px}
+    .whyTile span{display:block; margin-top:6px; color: var(--muted); font-weight:800; font-size:12.5px; line-height:1.4}
 
-    /* Make Budget look "basic" */
-    .svc[data-level="budget30"]{
-      filter: saturate(.85) brightness(.95);
-    }
-    .svc[data-level="budget30"] .svc-pill em{
-      color: rgba(255,255,255,.85);
-    }
-
-    /* Make Deluxe and Elite look premium */
-    .svc[data-level="deluxe"]{
-      border-color: rgba(255,255,255,.18);
-    }
-    .svc[data-level="deluxe"] .svc-pill{
-      background: rgba(255,191,60,.18);
-      border-color: rgba(255,191,60,.22);
-    }
-    .svc[data-level="elite"]{
-      border-color: rgba(255,255,255,.20);
-    }
-    .svc[data-level="elite"]::before{
-      background: radial-gradient(720px 260px at 20% 15%, rgba(255,122,89,.18), transparent 60%);
-    }
-    .svc[data-level="elite"] .svc-pill{
-      background: rgba(255,122,89,.18);
-      border-color: rgba(255,122,89,.22);
-    }
-
-    /* Main grid */
+    /* Main grid for calculator */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -415,6 +342,7 @@
       gap:14px;
       align-items:start;
     }
+
     .card{
       background: rgba(255,255,255,.92);
       border:1px solid var(--line);
@@ -422,47 +350,15 @@
       box-shadow: var(--shadow2);
       overflow: visible;
     }
-    .card.hard-lock{
-      position:relative;
-      overflow:hidden;
-    }
-    .lock-overlay{
-      position:absolute;
-      inset:0;
-      background: linear-gradient(135deg, rgba(11,22,48,.65), rgba(7,11,20,.55));
-      backdrop-filter: blur(6px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:16px;
-      text-align:center;
-      color:#fff;
-      z-index:9;
-    }
-    .hard-lock.locked .lock-overlay{display:flex}
-    .lock-overlay .lockbox{
-      max-width: 520px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 18px 46px rgba(0,0,0,.25);
-    }
-    .lock-overlay b{display:block; font-size:16px; letter-spacing:-.01em}
-    .lock-overlay span{display:block; margin-top:8px; opacity:.92; font-size:13px; line-height:1.5}
-
     .card-h{
       padding: 14px 16px;
       border-bottom:1px solid rgba(12,24,40,.08);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
       background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
       border-radius: 22px 22px 0 0;
     }
     .card-h h2{margin:0; font-size:16px; color: var(--ink2)}
-    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:700}
+    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:800}
     .card-b{padding: 14px 16px 16px}
 
     .summary-row{
@@ -479,18 +375,15 @@
       border:1px solid rgba(43,123,255,.18);
       border-radius: 18px;
       padding: 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
     .total-box b{
       font-size:28px;
       color: var(--ink2);
-      letter-spacing:-.02em;
       font-variant-numeric: tabular-nums;
+      letter-spacing:-.02em;
     }
-    .total-box span{font-size:12px; color: var(--muted); font-weight:900}
+    .total-box span{font-size:12px; color: var(--muted); font-weight:950; white-space:nowrap}
     .info-box{
       border:1px solid rgba(12,24,40,.10);
       border-radius: 18px;
@@ -498,9 +391,7 @@
       background:#fff;
     }
     .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      display:inline-flex; align-items:center; gap:8px;
       background: rgba(255,191,60,.18);
       color: #6b4b00;
       border:1px solid rgba(255,191,60,.34);
@@ -511,18 +402,11 @@
       margin-right:8px;
       white-space:nowrap;
     }
-    .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45}
+    .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45; font-weight:700}
 
-    .extras{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 12px 0 4px;
-    }
+    .extras{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 4px;}
     .toggle{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      display:inline-flex; align-items:center; gap:10px;
       padding:10px 12px;
       border-radius: 999px;
       background: linear-gradient(135deg, #ffffff, #f7f9ff);
@@ -534,47 +418,28 @@
       box-shadow: 0 10px 20px rgba(10,18,32,.06);
     }
     .toggle input{width:16px; height:16px}
-    .toggle small{font-weight:950; color: var(--good)}
-    .toggle .mut{font-weight:800; color: var(--muted)}
+    .toggle small{font-weight:950; color: var(--green)}
+    .toggle .mut{font-weight:850; color: var(--muted)}
     .toggle.disabled{opacity:.55; cursor:not-allowed}
 
     .section-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-top: 14px;
-      padding-top: 10px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin-top: 14px; padding-top: 10px;
       border-top:1px dashed rgba(12,24,40,.12);
     }
-    .section-head .left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:950;
-      color: var(--ink2);
-    }
+    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:980; color: var(--ink2);}
     .plus-dot{
-      width:28px;
-      height:28px;
-      border-radius:10px;
+      width:28px; height:28px; border-radius:10px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      color:#fff; display:flex; align-items:center; justify-content:center;
       box-shadow: 0 10px 22px rgba(43,123,255,.25);
-      font-weight:950;
-      flex:0 0 auto;
+      font-weight:980; flex:0 0 auto;
     }
     .section-head .right{
       color: var(--muted);
       font-size:12px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      white-space:nowrap;
-      font-weight:900;
+      display:flex; align-items:center; gap:10px;
+      white-space:nowrap; font-weight:950;
     }
 
     .items{
@@ -582,10 +447,8 @@
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 12px;
-      max-width: 100%;
     }
     .item{
-      min-width:0;
       background:
         radial-gradient(420px 220px at 0% 0%, rgba(43,123,255,.08), transparent 55%),
         radial-gradient(420px 220px at 100% 0%, rgba(255,191,60,.06), transparent 60%),
@@ -593,54 +456,27 @@
       border:1px solid rgba(12,24,40,.10);
       border-radius: 18px;
       padding: 12px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
       box-shadow: 0 12px 24px rgba(10,18,32,.06);
     }
     .item h3{margin:0; font-size:14px; line-height:1.2; color: var(--ink2)}
-    .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:700}
-    .price{margin-top:8px; font-weight:950; color: var(--good); font-size:14px; letter-spacing:.02em}
-    .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto;}
+    .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:800}
+    .price{margin-top:8px; font-weight:980; color: var(--green); font-size:14px; letter-spacing:.02em}
+    .qty{display:flex; align-items:center; gap:8px;}
     .qbtn{
-      width:34px;
-      height:34px;
-      border-radius: 12px;
+      width:34px; height:34px; border-radius: 12px;
       border:1px solid rgba(12,24,40,.10);
       background: #fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:950;
-      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:980; cursor:pointer;
       box-shadow: 0 10px 18px rgba(10,18,32,.08);
-      transition: transform .08s ease, box-shadow .08s ease;
     }
-    .qbtn:active{transform: translateY(1px); box-shadow: 0 6px 12px rgba(10,18,32,.10)}
     .qnum{
-      width:34px;
-      text-align:center;
-      font-weight:950;
+      width:34px; text-align:center;
+      font-weight:980;
       font-variant-numeric: tabular-nums;
       color: var(--ink2);
     }
-
-    .list{display:flex; flex-direction:column; gap:10px;}
-    .line{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border:1px solid rgba(12,24,40,.10);
-      border-radius: 16px;
-      background: linear-gradient(135deg, #ffffff, #f8faff);
-    }
-    .line b{font-size:13px; color: var(--ink2)}
-    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:800}
-    .money{font-weight:950; font-variant-numeric: tabular-nums; color: var(--good);}
-    .hr{height:1px; background: rgba(12,24,40,.10); margin: 10px 0}
 
     details.acc{
       margin-top: 10px;
@@ -658,14 +494,28 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      font-weight:950;
+      font-weight:980;
       color: var(--ink2);
       user-select:none;
       background: linear-gradient(135deg, rgba(43,123,255,.06), rgba(255,191,60,.05));
     }
     details.acc > summary::-webkit-details-marker{display:none}
-    .acc-meta{color:var(--muted); font-weight:950; font-size:12px; white-space:nowrap;}
+    .acc-meta{color:var(--muted); font-weight:980; font-size:12px; white-space:nowrap;}
     .acc-body{padding: 12px 14px 14px; border-top:1px solid rgba(12,24,40,.08);}
+
+    .list{display:flex; flex-direction:column; gap:10px;}
+    .line{
+      display:flex; align-items:flex-start; justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ffffff, #f8faff);
+    }
+    .line b{font-size:13px; color: var(--ink2)}
+    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:850}
+    .money{font-weight:980; font-variant-numeric: tabular-nums; color: var(--green);}
+    .hr{height:1px; background: rgba(12,24,40,.10); margin: 10px 0}
 
     .mutebox{
       padding: 12px 14px;
@@ -678,6 +528,7 @@
       font-size:12.5px;
       line-height:1.5;
       box-shadow: 0 12px 24px rgba(10,18,32,.05);
+      font-weight:700;
     }
 
     .form-grid{
@@ -687,7 +538,7 @@
       margin-top: 10px;
     }
     .field{display:flex; flex-direction:column; gap:6px;}
-    label{font-size:12px; color: var(--muted); font-weight:950}
+    label{font-size:12px; color: var(--muted); font-weight:980}
     input, select, textarea{
       width:100%;
       padding:11px 12px;
@@ -714,10 +565,11 @@
 
     footer{
       text-align:center;
-      color: rgba(12,24,40,.60);
+      color: rgba(12,24,40,.62);
       font-size:12px;
       margin-top: 18px;
       padding: 14px 0 0;
+      font-weight:700;
     }
 
     /* Sticky bar */
@@ -742,39 +594,40 @@
       justify-content:space-between;
       gap:10px;
     }
-    .sticky-total{
-      color:#fff;
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .sticky-total span{font-size:11px; opacity:.78; font-weight:950; letter-spacing:.02em}
+    .sticky-total{color:#fff; display:flex; flex-direction:column; gap:2px;}
+    .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
-    .sticky-actions{display:flex; gap:10px; align-items:center}
-    .sticky-actions .btn{box-shadow:none}
 
+    /* Mobile: make the 3 plan cards swipe */
     @media (max-width: 980px){
       .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
+      .whyGrid{grid-template-columns:1fr}
     }
-    @media (max-width: 820px){
+    @media (max-width: 860px){
       .pill{display:none}
-      .hero-badges{
+      .sticky-bar{display:block}
+      .wrap{padding-bottom: 128px}
+
+      .plans{
+        display:flex;
+        gap:12px;
         overflow-x:auto;
-        flex-wrap:nowrap;
-        padding-bottom: 2px;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
       }
-      .service-row{grid-template-columns:1fr}
-      .sticky-bar{display:block}
-      .wrap{padding-bottom: 125px}
-      .svc{min-height: 0}
+      .plan{
+        min-width: 88%;
+        scroll-snap-align: center;
+      }
+      .plan.deep{transform:none}
+      .plan.deep:hover{transform:none}
     }
     @media (max-width: 420px){
-      .hero h1{font-size:24px}
-      .btn{padding:10px 12px}
+      .hero h1{font-size:26px}
       .total-box b{font-size:24px}
     }
   </style>
@@ -785,114 +638,150 @@
     <div class="topbar">
       <div class="brand">
         <b>Instant Quote</b>
-        <span>The Carpet Cleaning Company. Step 1 choose your clean level, then build your quote.</span>
+        <span>The Carpet Cleaning Company. Choose the level of clean first, then add rooms.</span>
       </div>
 
       <div class="top-actions">
-        <span class="pill">Choose a clean level first, then add rooms</span>
+        <span class="pill">Choose your clean level, then build your quote</span>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
     </div>
 
-    <section class="hero" aria-label="Instant quote hero">
+    <section class="hero" aria-label="Hero">
       <div class="hero-top">
         <div>
-          <h1>The Carpet Cleaning Company Instant Quote</h1>
+          <h1>Stop guessing the <span>price</span> of carpet cleaning</h1>
           <p>
-            You are not just hiring a carpet clean. You are hiring a professional carpet cleaning technician and the equipment they bring.
-            Choose the level of equipment and cleaning method you want first. That choice sets the pricing and the result you get.
+            Choose the level of clean you actually want. Each option is a different method and different equipment.
+            Your choice sets the pricing, the process, and the end result.
           </p>
         </div>
+
         <div class="hero-badges">
-          <span class="tag"><strong>Step 1</strong> choose clean</span>
-          <span class="tag"><strong>Step 2</strong> add rooms</span>
-          <span class="tag"><strong>Step 3</strong> request callback</span>
+          <span class="tag">Choose level first</span>
+          <span class="tag">Then add rooms</span>
+          <span class="tag">Request callback to book</span>
         </div>
       </div>
 
-      <div class="step-banner" id="step1">
-        <b>Step 1: Choose your level of clean</b>
-        <span>
-          Each option below is a different clean, using different equipment and a different level of workmanship.
-          If you want the best result, choose Deluxe or Elite.
-        </span>
-        <div class="warn">Pick one option below to continue</div>
+      <div class="chooser" id="choose">
+        <div class="chooser-head">
+          <b>Choose the level of clean you actually want</b>
+          <span>
+            Basic is the quick wand only detergent clean.
+            Deep is the proper professional clean with agitation and a full rinse and extract.
+            Restore adds stain guard protection on every item.
+          </span>
+        </div>
+
+        <div class="plans" id="plans">
+          <div class="plan basic" data-level="basic">
+            <div class="top">
+              <div class="title">Basic Clean</div>
+              <div class="sub">Quick refresh for surface dirt</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>In tank detergent</li>
+                <li>Hot water extraction with wand only</li>
+                <li>No scrubbing or CRB agitation</li>
+                <li>Best for routine maintenance</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig">£30</div>
+                <div class="priceSmall">per carpet item</div>
+              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
+            </div>
+          </div>
+
+          <div class="plan deep active" data-level="deep">
+            <div class="most">Most Popular</div>
+            <div class="top">
+              <div class="title">Deep Clean</div>
+              <div class="sub">Proper professional clean</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>Pre spray to break down dirt</li>
+                <li>Agitation to scrub fibres</li>
+                <li>Dwell time for better results</li>
+                <li>Full rinse and extract flush out</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig" id="deepFrom">From £55</div>
+                <div class="priceSmall">per item</div>
+              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
+            </div>
+          </div>
+
+          <div class="plan restore" data-level="restore">
+            <div class="top">
+              <div class="title">Full Restore + Protect</div>
+              <div class="sub">Like new condition plus protection</div>
+            </div>
+            <div class="mid">
+              <ul>
+                <li>Everything in Deep Clean</li>
+                <li>Stain guard on every selected item</li>
+                <li>Helps resist spills and slows resoiling</li>
+                <li>Best long lasting result</li>
+              </ul>
+            </div>
+            <div class="priceRow">
+              <div>
+                <div class="priceBig" id="restoreFrom">From £85</div>
+                <div class="priceSmall">per item</div>
+              </div>
+              <button class="chooseBtn" type="button">Choose This</button>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="service-row" id="serviceRow" aria-label="Service levels">
-        <div class="svc" data-level="budget30">
-          <div class="ribbon">Selected</div>
-          <div class="svc-top">
-            <span class="svc-pill">Budget Clean <em>£30 per room</em></span>
-            <span class="svc-pill">Detergent wand only</span>
+    <section class="why" aria-label="Why prices vary">
+      <div class="h"><b>Why prices vary between carpet cleaners</b></div>
+      <div class="b">
+        <div class="whyGrid">
+          <div class="whyTile">
+            <div class="icon i1">£</div>
+            <div>
+              <b>Cheap machines</b>
+              <span>Basic setups and quick wand only cleans. Limited soil removal.</span>
+            </div>
           </div>
-          <h3>Your typical £30 carpet clean</h3>
-          <p>This is the quick, basic clean you see advertised everywhere. It is not a deep clean.</p>
-          <ul>
-            <li>In tank detergent</li>
-            <li>Hot water extraction with the wand only</li>
-            <li>No CRB scrubbing or agitation</li>
-            <li>Best for light soiling and routine maintenance</li>
-          </ul>
-          <div class="nudge">
-            <button class="pick" type="button">Select Budget Clean</button>
+          <div class="whyTile">
+            <div class="icon i2">HP</div>
+            <div>
+              <b>Professional systems</b>
+              <span>Better heat, better extraction, better agitation and better results.</span>
+            </div>
           </div>
-        </div>
-
-        <div class="svc active" data-level="deluxe">
-          <div class="ribbon">Selected</div>
-          <div class="svc-top">
-            <span class="svc-pill">Deluxe Deep Clean <em>recommended</em></span>
-            <span class="svc-pill">CRB agitation</span>
-          </div>
-          <h3>Proper deep clean</h3>
-          <p>This is the clean most customers actually want when they say I want them as clean as possible.</p>
-          <ul>
-            <li>Pre spray tailored to the carpet type</li>
-            <li>Counter rotating brush scrubs deep into the pile</li>
-            <li>Dwell time for maximum soil breakdown</li>
-            <li>Full rinse and extract to flush out dirt and residues</li>
-          </ul>
-          <div class="nudge">
-            <button class="pick" type="button">Select Deluxe Deep Clean</button>
-          </div>
-        </div>
-
-        <div class="svc" data-level="elite">
-          <div class="ribbon">Selected</div>
-          <div class="svc-top">
-            <span class="svc-pill">Elite Stain Guard <em>premium</em></span>
-            <span class="svc-pill">Protection added</span>
-          </div>
-          <h3>Deep clean plus stain guard</h3>
-          <p>If you want maximum long term protection, this is the best option.</p>
-          <ul>
-            <li>Everything included in Deluxe Deep Clean</li>
-            <li>Stain guard applied after cleaning</li>
-            <li>Helps slow down re soiling and improves vacuuming</li>
-            <li>Extra spill resistance for day to day life</li>
-          </ul>
-          <div class="nudge">
-            <button class="pick" type="button">Select Elite Stain Guard</button>
+          <div class="whyTile">
+            <div class="icon i3">✓</div>
+            <div>
+              <b>Long lasting results</b>
+              <span>Proper rinse and extract plus optional protection treatments.</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <div class="grid">
-      <section class="card hard-lock" id="builderCard" aria-label="Build your quote">
-        <div class="lock-overlay" id="lockOverlay">
-          <div class="lockbox">
-            <b>Choose your level of clean first</b>
-            <span>Scroll up and pick Budget, Deluxe, or Elite. This sets the pricing and what is included, then you can add rooms.</span>
-          </div>
-        </div>
-
+      <!-- LEFT -->
+      <section class="card" aria-label="Build quote">
         <div class="card-h">
           <div>
-            <h2>Step 2: Build your quote</h2>
-            <small>Add rooms and extras below. Stain guard is Elite only.</small>
+            <h2>Build your quote</h2>
+            <small>Add items below. Restore adds stain guard automatically.</small>
           </div>
         </div>
 
@@ -900,18 +789,18 @@
           <div class="summary-row">
             <div class="total-box">
               <div>
-                <div style="font-size:12px; color:var(--muted); font-weight:950;">Total estimate</div>
+                <div style="font-size:12px; color:var(--muted); font-weight:980;">Total estimate</div>
                 <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span id="serviceBadge">Deluxe Deep Clean</span>
+                <span id="serviceBadge">Deep Clean</span>
               </div>
             </div>
 
             <div class="info-box">
               <div>
                 <span class="chip">No VAT charged</span>
-                <span class="note" style="display:inline; color:var(--muted);">
+                <span class="note" style="display:inline;">
                   Estimate may vary if rooms are unusually large, heavily soiled, or access is difficult.
                 </span>
               </div>
@@ -919,13 +808,13 @@
           </div>
 
           <p class="note" id="serviceNote">
-            Deluxe selected. Pre spray, CRB agitation, dwell time, then rinse and extract.
+            Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract.
           </p>
 
-          <div class="extras" role="group" aria-label="Optional extras">
-            <label class="toggle disabled" id="tg_scotch" title="Elite only">
-              <input type="checkbox" id="x_scotch" disabled />
-              Stain guard <span class="mut">(</span><small id="scotchPriceTxt">£15</small><span class="mut"> per item, Elite only)</span>
+          <div class="extras" role="group" aria-label="Extras">
+            <label class="toggle disabled" id="tg_guard" title="Restore only">
+              <input type="checkbox" id="x_guard" disabled />
+              Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Restore only)</span>
             </label>
 
             <label class="toggle" title="Adds per selected item">
@@ -945,7 +834,7 @@
           </div>
           <div class="items" id="carpets"></div>
 
-          <details class="acc" id="accRugs">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -958,7 +847,7 @@
             </div>
           </details>
 
-          <details class="acc" id="accUp">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -978,11 +867,12 @@
         </div>
       </section>
 
-      <aside class="card" aria-label="Selected items and callback">
+      <!-- RIGHT -->
+      <aside class="card" aria-label="Selected and callback">
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
-            <small>Step 3: Request callback to book in.</small>
+            <small>Updates instantly as you add rooms.</small>
           </div>
         </div>
 
@@ -1009,12 +899,10 @@
                     <label for="phone">Phone</label>
                     <input id="phone" name="phone" type="tel" placeholder="Best number" inputmode="tel" autocomplete="tel" required />
                   </div>
-
                   <div class="field">
                     <label for="email">Email (optional)</label>
                     <input id="email" name="email" type="email" placeholder="Optional email" autocomplete="email" />
                   </div>
-
                   <div class="field">
                     <label for="postcode">Postcode starts with</label>
                     <select id="postcode" name="postcode" autocomplete="postal-code">
@@ -1034,7 +922,7 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deluxe" />
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deep" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
@@ -1050,8 +938,7 @@
 
           <div class="hr"></div>
           <div class="mutebox">
-            You don’t need to shop around. These options cover everything from a simple maintenance clean to a full deep clean with protection.
-            Choose the level that matches what you actually want your carpets to look like.
+            Deep and Restore are the ones that deliver the real result. Basic is a quick maintenance refresh.
           </div>
         </div>
       </aside>
@@ -1072,7 +959,7 @@
         <span>Total estimate</span>
         <b id="totalSticky">£0.00</b>
       </div>
-      <div class="sticky-actions">
+      <div style="display:flex; gap:10px; align-items:center;">
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
@@ -1080,14 +967,17 @@
   </div>
 
   <script>
-    const EXTRAS = { scotchgard: 15, deodorise: 10, insecticide: 20 };
+    // Extras
+    const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
 
+    // Service levels
     const SERVICE = {
-      budget30: { label:"Budget Clean (£30 per room)", mode:"budget30", forceGuard:false },
-      deluxe:   { label:"Deluxe Deep Clean", mode:"deluxe", forceGuard:false },
-      elite:    { label:"Elite Stain Guard", mode:"elite", forceGuard:true }
+      basic:   { label:"Basic Clean",   guardForced:false },
+      deep:    { label:"Deep Clean",    guardForced:false },
+      restore: { label:"Full Restore + Protect", guardForced:true }
     };
 
+    // Items (your current list)
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -1116,18 +1006,21 @@
 
     const state = {
       qty: {},
-      extras: { scotchgard:false, deodorise:false, insecticide:false },
-      serviceChosen: false,
-      service: "deluxe"
+      extras: { guard:false, deodorise:false, insecticide:false },
+      service: "deep"
     };
 
-    const fmt = n => "£" + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
-    const itemsCountTotal = () => Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
-    const getCount = (group) => group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
+    const fmt = n => "£" + (Math.round((Number(n)||0)*100)/100).toFixed(2);
+
+    function itemsCountTotal(){
+      return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
+    }
+    const getCount = group => group.reduce((sum,it)=> sum + (state.qty[it.id]||0), 0);
 
     function unitPrice(groupName, basePrice){
-      const s = SERVICE[state.service];
-      if (s.mode === "budget30" && groupName === "Carpets") return 30;
+      // Basic: carpets only are £30 per carpet item
+      if (state.service === "basic" && groupName === "Carpets") return 30;
+      // Deep and Restore use your normal prices
       return Number(basePrice) || 0;
     }
 
@@ -1158,8 +1051,9 @@
       }
 
       const ex = extrasPerItemTotal();
+
       const extrasLines = ex.enabled.map(([k]) => ({
-        label: k === "scotchgard" ? "Stain guard" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
+        label: k === "guard" ? "Stain guard" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
         group: "Extras",
         qty: ex.itemsCount,
         unit: Number(EXTRAS[k] || 0),
@@ -1203,26 +1097,26 @@
       document.getElementById("serviceLevel").value = state.service;
 
       const note = document.getElementById("serviceNote");
-      if (state.service === "budget30"){
-        note.textContent = "Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No CRB scrubbing. Routine maintenance clean.";
-      } else if (state.service === "deluxe"){
-        note.textContent = "Deluxe selected. Pre spray, CRB agitation, dwell time, then rinse and extract for proper deep cleaning.";
+      if (state.service === "basic"){
+        note.textContent = "Basic selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Routine maintenance refresh.";
+      } else if (state.service === "deep"){
+        note.textContent = "Deep selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
       } else {
-        note.textContent = "Elite selected. Deluxe deep clean plus stain guard applied after cleaning. Stain guard is added per item automatically.";
+        note.textContent = "Restore selected. Deep clean plus stain guard protection on every selected item automatically.";
       }
 
-      const scotch = document.getElementById("x_scotch");
-      const wrap = document.getElementById("tg_scotch");
+      const guard = document.getElementById("x_guard");
+      const wrap = document.getElementById("tg_guard");
 
-      if (s.forceGuard){
-        state.extras.scotchgard = true;
-        scotch.checked = true;
-        scotch.disabled = true;
+      if (s.guardForced){
+        state.extras.guard = true;
+        guard.checked = true;
+        guard.disabled = true;
         wrap.classList.remove("disabled");
       } else {
-        state.extras.scotchgard = false;
-        scotch.checked = false;
-        scotch.disabled = true;
+        state.extras.guard = false;
+        guard.checked = false;
+        guard.disabled = true;
         wrap.classList.add("disabled");
       }
     }
@@ -1280,6 +1174,11 @@
 
       document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
+
+      // Update the "From" numbers on the cards based on your current list
+      const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
+      document.getElementById("deepFrom").textContent = "From " + fmt(deepMin).replace(".00","");
+      document.getElementById("restoreFrom").textContent = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
     }
 
     function attachQtyHandlers(container){
@@ -1300,26 +1199,26 @@
       });
     }
 
-    function setActiveServiceCard(level){
-      const row = document.getElementById("serviceRow");
-      [...row.querySelectorAll(".svc")].forEach(x => x.classList.remove("active"));
-      const target = row.querySelector(`.svc[data-level="${level}"]`);
-      if (target) target.classList.add("active");
+    function setActivePlan(level){
+      document.querySelectorAll(".plan").forEach(p => p.classList.remove("active"));
+      const t = document.querySelector(`.plan[data-level="${level}"]`);
+      if (t) t.classList.add("active");
     }
 
-    function unlockBuilder(){
-      document.getElementById("builderCard").classList.remove("locked");
+    function setService(level){
+      state.service = level;
+      setActivePlan(level);
+      renderSelected();
+      // jump them to the calculator after picking a level
+      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
     }
 
-    function initLock(){
-      document.getElementById("builderCard").classList.add("locked");
-      state.serviceChosen = false;
-    }
-
-    document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
+    // Init prices text
+    document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
+    // Render groups
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1328,27 +1227,22 @@
     attachQtyHandlers(document.getElementById("rugs"));
     attachQtyHandlers(document.getElementById("upholstery"));
 
+    // Extras listeners
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
-    initLock();
-    setActiveServiceCard("deluxe");
-    renderSelected();
-
-    document.getElementById("serviceRow").addEventListener("click", (e) => {
-      const svc = e.target.closest(".svc");
-      if (!svc) return;
-
-      const level = svc.getAttribute("data-level");
-      state.service = level;
-      state.serviceChosen = true;
-
-      setActiveServiceCard(level);
-      unlockBuilder();
-      renderSelected();
-
-      document.getElementById("builderCard").scrollIntoView({behavior:"smooth", block:"start"});
+    // Plan selection (tap card or button)
+    document.getElementById("plans").addEventListener("click", (e) => {
+      const btn = e.target.closest(".chooseBtn");
+      const card = e.target.closest(".plan");
+      if (!card) return;
+      const level = card.getAttribute("data-level");
+      setService(level);
     });
+
+    // First load
+    setActivePlan("deep");
+    renderSelected();
 
     function handleSubmit(event){
       event.preventDefault();
@@ -1359,4 +1253,3 @@
   </script>
 </body>
 </html>
-```
