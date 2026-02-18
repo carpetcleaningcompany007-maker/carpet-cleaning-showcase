@@ -1,27 +1,15 @@
-Yep. Here’s the full, redone file with everything working properly.
-
-What’s fixed:
-
-* Clicking Quick, Deluxe, Elite now changes the actual prices (the maths).
-* Stain guard is locked off unless Elite is selected.
-* If Elite is selected, stain guard is automatically added per item (and the toggle locks on).
-* Quick Refresh wording is exactly what you said: in tank detergent, wand only, no scrubbing, no CRB, routine maintenance.
-
-Copy and paste this whole file over your current HTML.
-
-```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Instant Carpet Cleaning Quote Shrewsbury | The Carpet Cleaning Company</title>
-  <meta name="description" content="Instant carpet cleaning quote for Shrewsbury and Shropshire. Tap plus and minus to build your quote. Clear pricing. Fast booking and call back." />
+  <title>The Carpet Cleaning Company Instant Quote</title>
+  <meta name="description" content="Instant carpet cleaning quote. Choose a clean level, add rooms, and see your total instantly. Clear pricing. Fast booking and call back." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/shrewsbury-instant-quote.html" />
+  <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/instant-quote.html" />
 
-  <meta property="og:title" content="Instant Carpet Cleaning Quote in Shrewsbury" />
+  <meta property="og:title" content="The Carpet Cleaning Company Instant Quote" />
   <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
   <meta property="og:type" content="website" />
 
@@ -181,6 +169,7 @@ Copy and paste this whole file over your current HTML.
       max-width: 70ch;
       line-height:1.55;
     }
+
     .hero-badges{
       display:flex;
       gap:8px;
@@ -199,6 +188,7 @@ Copy and paste this whole file over your current HTML.
       font-size:12px;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 22px rgba(0,0,0,.16);
+      white-space:nowrap;
     }
     .tag strong{color: var(--accent); font-weight:950;}
 
@@ -244,7 +234,7 @@ Copy and paste this whole file over your current HTML.
       border-color: rgba(255,191,60,.42);
       background: linear-gradient(135deg, rgba(255,191,60,.16), rgba(43,123,255,.10));
     }
-    .svc-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .svc-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
     .svc-pill{
       display:inline-flex;
       align-items:center;
@@ -259,18 +249,7 @@ Copy and paste this whole file over your current HTML.
     }
     .svc-pill em{font-style:normal; color: var(--accent);}
     .svc h3{margin:10px 0 0; font-size:14px; letter-spacing:-.01em;}
-    .svc p{margin:8px 0 0; font-size:12px; line-height:1.5; color: rgba(255,255,255,.84);}
-    .svc-foot{margin-top: 10px; display:flex; gap:8px; flex-wrap:wrap;}
-    .mini-tag{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 9px;
-      border-radius:999px;
-      background: rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.12);
-      font-size:11px;
-      font-weight:900;
-    }
+    .svc p{margin:8px 0 0; font-size:12px; line-height:1.55; color: rgba(255,255,255,.84);}
 
     /* Main grid */
     .grid{
@@ -602,17 +581,22 @@ Copy and paste this whole file over your current HTML.
       .form-grid{grid-template-columns:1fr}
     }
 
+    /* Mobile: make badges + service cards fit properly */
     @media (max-width: 820px){
-      .service-row{
-        grid-template-columns: repeat(3, minmax(270px, 1fr));
+      .pill{display:none}
+      .hero-badges{
         overflow-x:auto;
+        flex-wrap:nowrap;
         padding-bottom: 2px;
-        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
       }
-      .svc{scroll-snap-align:start}
+
+      .service-row{
+        grid-template-columns: 1fr;
+      }
+
       .sticky-bar{display:block}
       .wrap{padding-bottom: 120px}
-      .pill{display:none}
     }
 
     @media (max-width: 420px){
@@ -630,10 +614,10 @@ Copy and paste this whole file over your current HTML.
     "@context":"https://schema.org",
     "@type":"LocalBusiness",
     "name":"The Carpet Cleaning Company",
-    "areaServed":["Shrewsbury","Shropshire"],
+    "areaServed":["Shropshire","Herefordshire","Worcestershire"],
     "telephone":"07802563213",
     "url":"https://www.thecarpetcleaningcrew.co.uk",
-    "description":"Professional carpet and upholstery cleaning in Shrewsbury and Shropshire. Instant quote calculator and fast booking."
+    "description":"Professional carpet and upholstery cleaning. Instant quote calculator and fast booking."
   }
   </script>
 </head>
@@ -643,7 +627,7 @@ Copy and paste this whole file over your current HTML.
     <div class="topbar">
       <div class="brand">
         <b>Instant Quote</b>
-        <span>Carpet cleaning in Shrewsbury and surrounding areas. Prices shown are the total you pay. No VAT charged.</span>
+        <span>The Carpet Cleaning Company. Choose your clean level and build your quote instantly.</span>
       </div>
 
       <div class="top-actions">
@@ -656,49 +640,47 @@ Copy and paste this whole file over your current HTML.
     <section class="hero" aria-label="Instant quote hero">
       <div class="hero-top">
         <div>
-          <h1>Instant Carpet Cleaning Quote in Shrewsbury</h1>
-          <p>Select a service level, add rooms, and see your total instantly. Then request a callback to confirm availability and get booked in.</p>
+          <h1>The Carpet Cleaning Company Instant Quote</h1>
+          <p>Pick a clean level, add rooms, and see your total instantly. Then request a callback to confirm availability and get booked in.</p>
         </div>
         <div class="hero-badges">
           <span class="tag"><strong>Clear</strong> pricing</span>
           <span class="tag"><strong>Fast</strong> booking</span>
-          <span class="tag"><strong>Local</strong> service</span>
+          <span class="tag"><strong>Professional</strong> equipment</span>
         </div>
       </div>
 
       <div class="service-wrap" aria-label="Choose service level">
         <div class="service-head">
           <b>Choose service level</b>
-          <span>Service level changes the item prices and what is included</span>
+          <span>This changes the prices and what’s included</span>
         </div>
 
         <div class="service-row" id="serviceRow">
-          <div class="svc active" data-level="quick">
+          <div class="svc active" data-level="budget30">
             <div class="svc-top">
-              <span class="svc-pill">Quick Refresh <em>basic</em></span>
-              <span class="svc-pill">Routine maintenance</span>
+              <span class="svc-pill">Budget Clean <em>£30 per room</em></span>
+              <span class="svc-pill">Wand only</span>
             </div>
-            <h3>Detergent hot water extraction</h3>
-            <p>In tank detergent clean with the wand only. One pass hot water extraction. No scrubbing and no CRB. Ideal for routine maintenance and light soiling.</p>
-            <div class="svc-foot">
-              <span class="mini-tag">Quick</span>
-              <span class="mini-tag">Simple</span>
-              <span class="mini-tag">Maintenance</span>
-            </div>
+            <h3>Your typical £30 carpet clean</h3>
+            <p>
+              This is a simple maintenance clean using in tank detergent and hot water extraction with the wand only.
+              No scrubbing. No CRB. No deep agitation.
+              It’s a quick freshen up for light soiling and routine upkeep.
+            </p>
           </div>
 
           <div class="svc" data-level="deluxe">
             <div class="svc-top">
               <span class="svc-pill">Deluxe Deep Clean <em>recommended</em></span>
-              <span class="svc-pill">Deep scrub</span>
+              <span class="svc-pill">CRB scrub</span>
             </div>
-            <h3>CRB agitation plus hot water extraction</h3>
-            <p>Pre spray, counter rotating brush agitation, then rinse and extract. Designed for maximum soil removal and pile lift.</p>
-            <div class="svc-foot">
-              <span class="mini-tag">Deep clean</span>
-              <span class="mini-tag">Agitation</span>
-              <span class="mini-tag">Best results</span>
-            </div>
+            <h3>Proper deep clean</h3>
+            <p>
+              Pre spray tailored to the carpet, dwell time, counter rotating brush agitation to scrub deep into the pile,
+              then a full rinse and extract to flush out soil and residues.
+              Best for dirty carpets and the best possible result.
+            </p>
           </div>
 
           <div class="svc" data-level="elite">
@@ -707,12 +689,11 @@ Copy and paste this whole file over your current HTML.
               <span class="svc-pill">Protection</span>
             </div>
             <h3>Deep clean plus stain guard</h3>
-            <p>Everything in Deluxe, plus stain guard applied after cleaning to help protect against future spills and make hoovering easier.</p>
-            <div class="svc-foot">
-              <span class="mini-tag">Protection</span>
-              <span class="mini-tag">Premium finish</span>
-              <span class="mini-tag">Longer lasting</span>
-            </div>
+            <p>
+              Everything in Deluxe Deep Clean, plus stain guard applied after cleaning.
+              Helps slow down re soiling, improves vacuuming, and gives extra spill resistance.
+              Added per item automatically when selected.
+            </p>
           </div>
         </div>
       </div>
@@ -724,7 +705,7 @@ Copy and paste this whole file over your current HTML.
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
-            <small>Choose items below. Deodorise and insecticide are optional add ons. Stain guard is Elite only.</small>
+            <small>Deodorise and insecticide are optional add ons. Stain guard is Elite only.</small>
           </div>
         </div>
 
@@ -736,7 +717,7 @@ Copy and paste this whole file over your current HTML.
                 <b id="total" aria-live="polite">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span id="serviceBadge">Quick Refresh</span>
+                <span id="serviceBadge">Budget Clean</span>
               </div>
             </div>
 
@@ -751,7 +732,7 @@ Copy and paste this whole file over your current HTML.
           </div>
 
           <p class="note" id="serviceNote">
-            Quick Refresh selected. In tank detergent, wand only, no scrubbing or CRB. Ideal for routine maintenance.
+            Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No scrubbing or CRB. Ideal for routine maintenance.
           </p>
 
           <div class="extras" role="group" aria-label="Optional extras">
@@ -855,9 +836,12 @@ Copy and paste this whole file over your current HTML.
                     <label for="postcode">Postcode starts with</label>
                     <select id="postcode" name="postcode" autocomplete="postal-code">
                       <option value="">Select</option>
-                      <option>SY1</option><option>SY2</option><option>SY3</option><option>SY4</option>
-                      <option>SY5</option><option>SY6</option><option>SY7</option><option>SY8</option>
-                      <option>TF</option><option>WV</option><option>Other</option>
+                      <option>SY</option>
+                      <option>TF</option>
+                      <option>WV</option>
+                      <option>WR</option>
+                      <option>HR</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
@@ -867,7 +851,7 @@ Copy and paste this whole file over your current HTML.
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <input type="hidden" id="serviceLevel" name="serviceLevel" value="quick" />
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="budget30" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
@@ -886,7 +870,7 @@ Copy and paste this whole file over your current HTML.
           <div class="hr"></div>
 
           <div class="mutebox">
-            Local carpet and upholstery cleaning for Shrewsbury and Shropshire. Clear pricing, simple booking, professional results.
+            Professional carpet and upholstery cleaning. Clear pricing, simple booking, proper results.
           </div>
 
         </div>
@@ -902,7 +886,6 @@ Copy and paste this whole file over your current HTML.
     </footer>
   </div>
 
-  <!-- Mobile sticky bar -->
   <div class="sticky-bar" role="region" aria-label="Quick actions">
     <div class="sticky-inner">
       <div class="sticky-total">
@@ -918,25 +901,24 @@ Copy and paste this whole file over your current HTML.
 
   <script>
     // =============================
-    // SERVICE PRICING MODEL
+    // PRICING RULES
     // =============================
-    // Base prices are the Deluxe Deep Clean prices.
-    // Quick Refresh is cheaper (wand only, detergent in tank, no agitation).
-    // Elite uses Deluxe prices + stain guard per item (auto added and locked on).
+    // Budget Clean: carpets are £30 per selected carpet item
+    // Deluxe: uses your base prices (deep clean)
+    // Elite: Deluxe plus stain guard per item (auto)
     const SERVICE = {
-      quick:  { key:"quick",  label:"Quick Refresh",       multiplier: 0.82, forceStainGuard:false },
-      deluxe: { key:"deluxe", label:"Deluxe Deep Clean",   multiplier: 1.00, forceStainGuard:false },
-      elite:  { key:"elite",  label:"Elite Stain Guard",   multiplier: 1.00, forceStainGuard:true  }
+      budget30: { key:"budget30", label:"Budget Clean (£30 per room)", mode:"budget30", forceStainGuard:false },
+      deluxe:   { key:"deluxe",   label:"Deluxe Deep Clean",          mode:"deluxe",   forceStainGuard:false },
+      elite:    { key:"elite",    label:"Elite Stain Guard",          mode:"elite",    forceStainGuard:true  }
     };
 
-    // Extras per item
     const EXTRAS = {
-      scotchgard: 15,     // stain guard per item (Elite only, auto)
+      scotchgard: 15,
       deodorise: 10,
       insecticide: 20
     };
 
-    // Deluxe base prices (your previous set)
+    // Deluxe base prices
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -969,27 +951,28 @@ Copy and paste this whole file over your current HTML.
     const state = {
       qty: {},
       extras: { scotchgard:false, deodorise:false, insecticide:false },
-      service: "quick"
+      service: "budget30"
     };
 
-    // =============================
-    // HELPERS
-    // =============================
     const fmt = n => "£" + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
-
-    const getCount = (group) =>
-      group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
 
     function itemsCountTotal(){
       return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
     }
 
-    function effectiveUnitPrice(base){
-      const m = SERVICE[state.service]?.multiplier ?? 1;
-      // keep it clean: round to nearest £1 for quick so it looks intentional
-      const raw = (Number(base)||0) * m;
-      if (state.service === "quick") return Math.round(raw);
-      return Math.round(raw * 100) / 100;
+    const getCount = (group) =>
+      group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
+
+    function unitPrice(it){
+      const s = SERVICE[state.service];
+
+      // Budget clean: carpets are £30 per item
+      if (s.mode === "budget30" && it.group === "Carpets"){
+        return 30;
+      }
+
+      // Deluxe and Elite: use base price
+      return Number(it.basePrice) || 0;
     }
 
     function extrasPerItemTotal(){
@@ -1004,19 +987,18 @@ Copy and paste this whole file over your current HTML.
       const lines = [];
 
       const allGroups = [
-        ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
-        ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
-        ...ITEMS.upholstery.map(it => ({...it, group:"Sofas and Upholstery"}))
+        ...ITEMS.carpets.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Carpets" })),
+        ...ITEMS.rugs.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Rugs" })),
+        ...ITEMS.upholstery.map(it => ({ id:it.id, name:it.name, desc:it.desc, basePrice:it.price, group:"Sofas and Upholstery" }))
       ];
 
       for (const it of allGroups){
         const q = Number(state.qty[it.id] || 0);
         if (!q) continue;
 
-        const unit = effectiveUnitPrice(it.price);
+        const unit = unitPrice(it);
         const lineTotal = unit * q;
         subtotal += lineTotal;
-
         lines.push({ label: it.name, group: it.group, qty: q, unit, total: lineTotal });
       }
 
@@ -1031,13 +1013,13 @@ Copy and paste this whole file over your current HTML.
       })).filter(x => x.qty > 0 && x.unit > 0);
 
       const grand = subtotal + ex.total;
-      return { lines, extrasLines, subtotal, extrasTotal: ex.total, grand, itemsCount: ex.itemsCount };
+      return { lines, extrasLines, grand, itemsCount: ex.itemsCount };
     }
 
-    function renderGroup(el, groupItems){
+    function renderGroup(el, groupItems, groupName){
       el.innerHTML = groupItems.map(it => {
         const q = state.qty[it.id] || 0;
-        const unitNow = effectiveUnitPrice(it.price);
+        const unitNow = unitPrice({ id:it.id, basePrice:it.price, group: groupName });
         return `
           <article class="item" data-id="${it.id}">
             <div style="min-width:0">
@@ -1068,10 +1050,10 @@ Copy and paste this whole file over your current HTML.
       document.getElementById("serviceLevel").value = state.service;
 
       const note = document.getElementById("serviceNote");
-      if (state.service === "quick"){
-        note.textContent = "Quick Refresh selected. In tank detergent, wand only, no scrubbing or CRB. One pass hot water extraction. Ideal for routine maintenance and light soiling.";
+      if (state.service === "budget30"){
+        note.textContent = "Budget Clean selected. £30 per carpet item. In tank detergent and wand only hot water extraction. No scrubbing or CRB. Best for routine maintenance and light soiling.";
       } else if (state.service === "deluxe"){
-        note.textContent = "Deluxe Deep Clean selected. Pre spray, counter rotating brush agitation, then rinse and extract for maximum dirt removal and pile lift.";
+        note.textContent = "Deluxe Deep Clean selected. Pre spray, dwell time, counter rotating brush agitation, then rinse and extract to flush out soil and residues. Best results for dirty carpets.";
       } else {
         note.textContent = "Elite Stain Guard selected. Deluxe deep clean plus stain guard applied after cleaning. Protection is added per item automatically.";
       }
@@ -1098,10 +1080,10 @@ Copy and paste this whole file over your current HTML.
     function renderSelected(){
       setServiceUI();
 
-      // re-render item cards so their displayed prices update with service level
-      renderGroup(document.getElementById("carpets"), ITEMS.carpets);
-      renderGroup(document.getElementById("rugs"), ITEMS.rugs);
-      renderGroup(document.getElementById("upholstery"), ITEMS.upholstery);
+      // re-render groups so prices update with service selection
+      renderGroup(document.getElementById("carpets"), ITEMS.carpets, "Carpets");
+      renderGroup(document.getElementById("rugs"), ITEMS.rugs, "Rugs");
+      renderGroup(document.getElementById("upholstery"), ITEMS.upholstery, "Sofas and Upholstery");
 
       const r = calc();
 
@@ -1126,7 +1108,7 @@ Copy and paste this whole file over your current HTML.
               <b>Service level</b>
               <small>${SERVICE[state.service].label}</small>
             </div>
-            <div class="money">${""}</div>
+            <div></div>
           </div>` +
           all.map(x => `
             <div class="line">
@@ -1173,13 +1155,6 @@ Copy and paste this whole file over your current HTML.
         if (act === "inc") state.qty[id] = cur + 1;
         if (act === "dec") state.qty[id] = Math.max(0, cur - 1);
 
-        // update just that card qty display
-        card.querySelector(".qnum").textContent = state.qty[id];
-
-        // re-calc totals and right panel
-        const r = calc();
-        document.getElementById("total").textContent = fmt(r.grand);
-        document.getElementById("totalSticky").textContent = fmt(r.grand);
         renderSelected();
       });
     }
@@ -1192,16 +1167,16 @@ Copy and paste this whole file over your current HTML.
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
     // Render groups once
-    renderGroup(document.getElementById("carpets"), ITEMS.carpets);
-    renderGroup(document.getElementById("rugs"), ITEMS.rugs);
-    renderGroup(document.getElementById("upholstery"), ITEMS.upholstery);
+    renderGroup(document.getElementById("carpets"), ITEMS.carpets, "Carpets");
+    renderGroup(document.getElementById("rugs"), ITEMS.rugs, "Rugs");
+    renderGroup(document.getElementById("upholstery"), ITEMS.upholstery, "Sofas and Upholstery");
 
     // Qty handlers
     attachQtyHandlers(document.getElementById("carpets"));
     attachQtyHandlers(document.getElementById("rugs"));
     attachQtyHandlers(document.getElementById("upholstery"));
 
-    // Extras (stain guard is controlled by service)
+    // Extras (stain guard controlled by service)
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
@@ -1223,9 +1198,7 @@ Copy and paste this whole file over your current HTML.
     // First paint
     renderSelected();
 
-    // =============================
-    // FORM SUBMIT (demo)
-    // =============================
+    // Demo submit
     function handleSubmit(event){
       event.preventDefault();
       alert("Callback request captured on this page. If you want it to email you, send me your Formspree endpoint and I will wire it in.");
@@ -1235,6 +1208,3 @@ Copy and paste this whole file over your current HTML.
   </script>
 </body>
 </html>
-```
-
-If you tell me what you want the *actual* Quick vs Deluxe price difference to be (roughly), I’ll set the multipliers so the numbers match your real pricing perfectly. Right now Quick is 82 percent of Deluxe, and Elite is Deluxe plus stain guard per item.
