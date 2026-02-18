@@ -5,27 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>The Carpet Cleaning Company Instant Quote</title>
-  <meta name="description" content="Stop guessing the price. Choose the level of clean you actually want, then build your quote instantly." />
+  <meta name="description" content="Choose the level of clean you actually want, then build your instant quote." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/instant-quote.html" />
+
+  <meta property="og:title" content="The Carpet Cleaning Company Instant Quote" />
+  <meta property="og:description" content="Choose your clean level first, then build your quote instantly." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
       --bg0:#070b14;
       --bg1:#0b1630;
+      --card:#ffffff;
 
       --ink:#0b1220;
-      --ink2:#0f1b33;
       --muted:#667690;
+      --line: rgba(12,24,40,.12);
 
       --brand:#2b7bff;
       --brand2:#1b4fd6;
-
       --gold:#ffbf3c;
       --green:#13b46a;
-
-      --card:#ffffff;
-      --line: rgba(12,24,40,.12);
+      --red:#ff5b6e;
 
       --shadow: 0 28px 70px rgba(0,0,0,.35);
       --shadow2: 0 12px 26px rgba(10,18,32,.12);
@@ -53,15 +55,14 @@
     a{color:inherit; text-decoration:none}
     .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
 
-    /* Top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding: 10px 0 14px;
       position:relative; z-index:5;
     }
     .brand{display:flex; flex-direction:column; gap:4px; color:#fff;}
-    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; opacity:.92;}
-    .brand span{font-size:13px; opacity:.80; max-width:58ch;}
+    .brand b{letter-spacing:.14em; text-transform:uppercase; font-size:12px; opacity:.92;}
+    .brand span{font-size:13px; opacity:.80; max-width:62ch;}
 
     .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
 
@@ -92,7 +93,6 @@
       white-space:nowrap;
     }
 
-    /* HERO */
     .hero{
       border-radius: 26px;
       padding: 18px;
@@ -131,9 +131,7 @@
       line-height:1.55;
       max-width: 75ch;
     }
-    .hero-badges{
-      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-content:flex-start;
-    }
+    .hero-badges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-content:flex-start;}
     .tag{
       display:inline-flex; align-items:center; gap:8px;
       padding:9px 12px; border-radius:999px;
@@ -145,196 +143,126 @@
       white-space:nowrap;
     }
 
-    /* The interactive "phone style" selector */
-    .chooser{
-      margin-top: 16px;
-      position:relative;
-      z-index:2;
-    }
-
+    /* SERVICE CHOOSER */
+    .chooser{margin-top:16px; position:relative; z-index:2;}
     .chooser-head{
-      margin-top: 10px;
       border-radius: 18px;
       padding: 14px 14px;
-      background: linear-gradient(135deg, rgba(255,191,60,.20), rgba(43,123,255,.10));
+      background: linear-gradient(135deg, rgba(255,191,60,.22), rgba(43,123,255,.12));
       border:1px solid rgba(255,255,255,.16);
       box-shadow: 0 16px 36px rgba(0,0,0,.22);
     }
     .chooser-head b{display:block; font-size:16px; letter-spacing:-.01em}
     .chooser-head span{display:block; margin-top:6px; font-size:13px; opacity:.92; line-height:1.45}
 
-    .plans{
-      margin-top: 12px;
+    .tiles{
       display:grid;
-      grid-template-columns: repeat(3, minmax(260px, 1fr));
-      gap:14px;
-    }
-
-    .plan{
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius: 20px;
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.22);
-      position:relative;
-      cursor:pointer;
-      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, filter .14s ease;
-      display:flex;
-      flex-direction:column;
-      min-height: 310px;
-    }
-    .plan:hover{transform: translateY(-2px); box-shadow: 0 26px 70px rgba(0,0,0,.26)}
-    .plan .top{
-      padding: 14px 14px 10px;
-      background: linear-gradient(135deg, #ffffff, #f6f8ff);
-      border-bottom:1px solid rgba(12,24,40,.10);
-    }
-    .plan .title{
-      font-weight:950;
-      font-size:16px;
-      color: var(--ink2);
-      letter-spacing:-.01em;
-    }
-    .plan .sub{
-      margin-top:6px;
-      color: var(--muted);
-      font-weight:800;
-      font-size:12.5px;
-      line-height:1.4;
-    }
-    .plan .mid{
-      padding: 12px 14px 12px;
-      background: #fff;
-      flex:1;
-    }
-    .plan ul{
-      margin:0; padding:0 0 0 16px;
-      color: #2a3a55;
-      font-size:13px;
-      line-height:1.5;
-    }
-    .plan li{margin:7px 0}
-    .plan .priceRow{
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      grid-template-columns: 1fr 1fr 1fr;
       gap:10px;
-      border-top:1px solid rgba(12,24,40,.10);
-      background: linear-gradient(135deg, #ffffff, #f7f9ff);
-    }
-    .plan .priceBig{
-      font-weight:980;
-      font-size:20px;
-      color: var(--ink2);
-      font-variant-numeric: tabular-nums;
-      letter-spacing:-.01em;
-    }
-    .plan .priceSmall{
-      font-size:12px;
-      color: var(--muted);
-      font-weight:900;
+      margin-top:12px;
     }
 
-    .chooseBtn{
-      width:100%;
+    .tileBtn{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      border-radius: 18px;
       padding: 12px 12px;
-      border:0;
-      border-radius: 14px;
-      font-weight:950;
       cursor:pointer;
-      box-shadow: 0 12px 26px rgba(10,18,32,.14);
-      transition: transform .10s ease;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+      text-align:left;
+      min-width:0;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
-    .chooseBtn:active{transform: translateY(1px)}
+    .tileBtn:hover{transform: translateY(-1px); box-shadow: 0 18px 44px rgba(0,0,0,.26);}
+    .tileBtn .kicker{display:inline-flex; gap:8px; align-items:center; font-size:11px; font-weight:950; letter-spacing:.08em; text-transform:uppercase; opacity:.92;}
+    .tileBtn .title{margin-top:8px; font-weight:980; font-size:14px; line-height:1.15;}
+    .tileBtn .sub{margin-top:6px; font-weight:850; font-size:12px; opacity:.85; line-height:1.35;}
+    .tileBtn .price{margin-top:10px; display:inline-flex; align-items:baseline; gap:8px; font-weight:980;}
+    .tileBtn .price b{font-size:18px;}
+    .tileBtn .price small{opacity:.85; font-weight:900; font-size:12px;}
 
-    .plan.basic .chooseBtn{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
-    .plan.deep .chooseBtn{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
-    .plan.restore .chooseBtn{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
+    .tileBtn.basic{border-color: rgba(255,191,60,.22);}
+    .tileBtn.deep{border-color: rgba(43,123,255,.26);}
+    .tileBtn.restore{border-color: rgba(19,180,106,.28);}
 
-    .plan.deep{
-      transform: translateY(-6px);
-      border-color: rgba(255,191,60,.40);
+    .tileBtn[aria-pressed="true"]{
+      border-color: rgba(255,255,255,.36);
+      box-shadow: 0 18px 54px rgba(0,0,0,.30);
+      outline: 3px solid rgba(255,255,255,.08);
     }
-    .plan.deep:hover{transform: translateY(-8px)}
-    .most{
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
-      color:#2b1b00;
-      font-weight:980;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius: 999px;
-      box-shadow: 0 12px 26px rgba(0,0,0,.20);
-      border:1px solid rgba(255,255,255,.35);
-      z-index:3;
+
+    .expandPanel{
+      margin-top: 10px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 18px 46px rgba(0,0,0,.26);
+      padding: 14px 14px;
+      color: #0f1b33;
       display:none;
+    }
+    .expandPanel.show{display:block;}
+    .expTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start;}
+    .expTop b{font-size:15px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      font-weight:950; font-size:12px;
+      border:1px solid rgba(12,24,40,.10);
+      background: linear-gradient(135deg,#ffffff,#f7f9ff);
       white-space:nowrap;
     }
-    .plan.deep .most{display:inline-flex}
-
-    .plan.active{
-      outline: 4px solid rgba(43,123,255,.22);
-      box-shadow: 0 30px 90px rgba(0,0,0,.30);
-      filter: saturate(1.03);
-    }
-    .plan.active .top{
-      background:
-        radial-gradient(540px 220px at 0% 0%, rgba(43,123,255,.10), transparent 55%),
-        radial-gradient(540px 220px at 100% 0%, rgba(255,191,60,.10), transparent 60%),
-        linear-gradient(135deg, #ffffff, #f6f8ff);
-    }
-
-    /* Why prices vary block */
-    .why{
-      margin-top: 16px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-    .why .h{
-      padding: 14px 16px;
-      border-bottom:1px solid rgba(12,24,40,.08);
-      background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
-    }
-    .why .h b{color: var(--ink2); font-size:16px}
-    .why .b{padding: 14px 16px 16px}
-    .whyGrid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap:12px;
-    }
-    .whyTile{
+    .expBody{margin-top:10px; display:grid; grid-template-columns: 1fr 1fr; gap:12px;}
+    .box{
       border:1px solid rgba(12,24,40,.10);
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ffffff, #f7f9ff);
-      padding: 12px;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+      background: linear-gradient(135deg, #ffffff, #f8faff);
+      border-radius: 16px;
+      padding: 12px 12px;
     }
-    .icon{
-      width:44px; height:44px;
-      border-radius: 14px;
-      display:flex; align-items:center; justify-content:center;
+    .box b{display:block; font-size:13px; margin-bottom:6px;}
+    .box ul{margin:0; padding:0 0 0 18px; color:#2a3a55; font-weight:850; font-size:13px; line-height:1.5;}
+    .box li{margin:6px 0;}
+    .chooseRow{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+    .chooseBig{
+      border:0;
+      border-radius: 16px;
+      padding: 12px 14px;
       font-weight:980;
+      cursor:pointer;
       color:#fff;
-      flex:0 0 auto;
-      box-shadow: 0 12px 24px rgba(10,18,32,.12);
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 16px 40px rgba(43,123,255,.22);
+      flex: 1 1 220px;
     }
-    .i1{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
-    .i2{background: linear-gradient(135deg, #2b7bff, #1b4fd6);}
-    .i3{background: linear-gradient(135deg, #13b46a, #0b7b44);}
-    .whyTile b{display:block; color: var(--ink2); font-size:14px}
-    .whyTile span{display:block; margin-top:6px; color: var(--muted); font-weight:800; font-size:12.5px; line-height:1.4}
+    .chooseBig.green{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .chooseBig.gold{background: linear-gradient(135deg, #ffbf3c, #d88e00); color:#1a1200;}
 
-    /* Main grid for calculator */
+    .lockMsg{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.90);
+      font-weight:900;
+      font-size:13px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      box-shadow: 0 14px 34px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+    }
+    .lockDot{
+      width:28px; height:28px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      flex: 0 0 auto;
+    }
+
+    /* MAIN GRID */
     .grid{
       margin-top: 14px;
       display:grid;
@@ -357,7 +285,7 @@
       background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
       border-radius: 22px 22px 0 0;
     }
-    .card-h h2{margin:0; font-size:16px; color: var(--ink2)}
+    .card-h h2{margin:0; font-size:16px; color: #0f1b33}
     .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:800}
     .card-b{padding: 14px 16px 16px}
 
@@ -379,7 +307,7 @@
     }
     .total-box b{
       font-size:28px;
-      color: var(--ink2);
+      color: #0f1b33;
       font-variant-numeric: tabular-nums;
       letter-spacing:-.02em;
     }
@@ -427,7 +355,7 @@
       gap:10px; margin-top: 14px; padding-top: 10px;
       border-top:1px dashed rgba(12,24,40,.12);
     }
-    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:980; color: var(--ink2);}
+    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:980; color: #0f1b33;}
     .plus-dot{
       width:28px; height:28px; border-radius:10px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
@@ -459,7 +387,7 @@
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
       box-shadow: 0 12px 24px rgba(10,18,32,.06);
     }
-    .item h3{margin:0; font-size:14px; line-height:1.2; color: var(--ink2)}
+    .item h3{margin:0; font-size:14px; line-height:1.2; color:#0f1b33}
     .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:800}
     .price{margin-top:8px; font-weight:980; color: var(--green); font-size:14px; letter-spacing:.02em}
     .qty{display:flex; align-items:center; gap:8px;}
@@ -475,7 +403,7 @@
       width:34px; text-align:center;
       font-weight:980;
       font-variant-numeric: tabular-nums;
-      color: var(--ink2);
+      color:#0f1b33;
     }
 
     details.acc{
@@ -495,7 +423,7 @@
       justify-content:space-between;
       gap:10px;
       font-weight:980;
-      color: var(--ink2);
+      color:#0f1b33;
       user-select:none;
       background: linear-gradient(135deg, rgba(43,123,255,.06), rgba(255,191,60,.05));
     }
@@ -512,7 +440,7 @@
       border-radius: 16px;
       background: linear-gradient(135deg, #ffffff, #f8faff);
     }
-    .line b{font-size:13px; color: var(--ink2)}
+    .line b{font-size:13px; color:#0f1b33}
     .line small{display:block; color: var(--muted); margin-top:4px; font-weight:850}
     .money{font-weight:980; font-variant-numeric: tabular-nums; color: var(--green);}
     .hr{height:1px; background: rgba(12,24,40,.10); margin: 10px 0}
@@ -554,14 +482,6 @@
       border-color: rgba(43,123,255,.50);
       box-shadow: 0 0 0 4px rgba(43,123,255,.12);
     }
-    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-    .btn.green{
-      background: linear-gradient(135deg, #13b46a, #0b7b44);
-      color:#fff;
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,.10);
-      backdrop-filter:none;
-    }
 
     footer{
       text-align:center;
@@ -572,7 +492,45 @@
       font-weight:700;
     }
 
-    /* Sticky bar */
+    /* LOCKED CALC SECTION */
+    .locked{
+      position:relative;
+      filter: grayscale(.10) blur(0px);
+    }
+    .locked .lockOverlay{
+      position:absolute;
+      inset:0;
+      border-radius: 22px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(12,24,40,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      z-index:10;
+      backdrop-filter: blur(6px);
+    }
+    .lockCard{
+      max-width: 520px;
+      width:100%;
+      border-radius: 18px;
+      background: rgba(11,22,48,.92);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 50px rgba(0,0,0,.30);
+      color:#fff;
+      padding: 14px 14px;
+    }
+    .lockCard b{display:block; font-size:15px;}
+    .lockCard span{display:block; margin-top:6px; font-size:13px; opacity:.88; line-height:1.45;}
+    .lockCard .hint{margin-top:10px; display:flex; gap:10px; align-items:flex-start; font-weight:900;}
+    .lockCard .hint .dot{
+      width:28px; height:28px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      flex: 0 0 auto;
+    }
+
     .sticky-bar{
       position: fixed;
       left: 0;
@@ -598,51 +556,54 @@
     .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
 
-    /* Mobile: make the 3 plan cards swipe */
     @media (max-width: 980px){
       .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
-      .whyGrid{grid-template-columns:1fr}
+      .expBody{grid-template-columns:1fr}
     }
+
     @media (max-width: 860px){
       .pill{display:none}
       .sticky-bar{display:block}
       .wrap{padding-bottom: 128px}
-
-      .plans{
-        display:flex;
-        gap:12px;
-        overflow-x:auto;
-        padding-bottom: 6px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-      }
-      .plan{
-        min-width: 88%;
-        scroll-snap-align: center;
-      }
-      .plan.deep{transform:none}
-      .plan.deep:hover{transform:none}
     }
+
+    /* Mobile: 3 tiles that actually fit */
+    @media (max-width: 560px){
+      .tiles{grid-template-columns: 1fr; }
+      .tileBtn .price b{font-size:20px}
+    }
+
     @media (max-width: 420px){
       .hero h1{font-size:26px}
       .total-box b{font-size:24px}
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"The Carpet Cleaning Company",
+    "telephone":"07802563213",
+    "url":"https://www.thecarpetcleaningcrew.co.uk",
+    "description":"Professional carpet and upholstery cleaning. Instant quote calculator and fast booking."
+  }
+  </script>
 </head>
 
 <body>
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <b>Instant Quote</b>
-        <span>The Carpet Cleaning Company. Choose the level of clean first, then add rooms.</span>
+        <b>The Carpet Cleaning Company</b>
+        <span>Instant Quote. Choose your level of clean first, then add rooms.</span>
       </div>
 
       <div class="top-actions">
-        <span class="pill">Choose your clean level, then build your quote</span>
+        <span class="pill">Step 1 choose your clean level</span>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
@@ -651,137 +612,97 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-top">
         <div>
-          <h1>Stop guessing the <span>price</span> of carpet cleaning</h1>
+          <h1>Choose the level of clean you <span>actually</span> want</h1>
           <p>
-            Choose the level of clean you actually want. Each option is a different method and different equipment.
-            Your choice sets the pricing, the process, and the end result.
+            You’re not just hiring a cleaner. You’re choosing the method and the equipment.
+            Different levels give different results. Pick your level first, then build your quote.
           </p>
         </div>
 
         <div class="hero-badges">
-          <span class="tag">Choose level first</span>
-          <span class="tag">Then add rooms</span>
-          <span class="tag">Request callback to book</span>
+          <span class="tag">Step 1 choose level</span>
+          <span class="tag">Step 2 add rooms</span>
+          <span class="tag">Step 3 request callback</span>
         </div>
       </div>
 
       <div class="chooser" id="choose">
         <div class="chooser-head">
-          <b>Choose the level of clean you actually want</b>
-          <span>
-            Basic is the quick wand only detergent clean.
-            Deep is the proper professional clean with agitation and a full rinse and extract.
-            Restore adds stain guard protection on every item.
-          </span>
+          <b>Step 1 pick your clean level</b>
+          <span>Tap a tile. It expands with the full explanation. Then hit Choose to continue.</span>
         </div>
 
-        <div class="plans" id="plans">
-          <div class="plan basic" data-level="basic">
-            <div class="top">
-              <div class="title">Basic Clean</div>
-              <div class="sub">Quick refresh for surface dirt</div>
+        <div class="tiles" role="group" aria-label="Choose service level">
+          <button class="tileBtn basic" type="button" data-level="basic" aria-pressed="false">
+            <div class="kicker">budget option</div>
+            <div class="title">Basic Clean</div>
+            <div class="sub">This is the cheap £30 clean you see online.</div>
+            <div class="price"><b>£30</b> <small>per carpet item</small></div>
+          </button>
+
+          <button class="tileBtn deep" type="button" data-level="deep" aria-pressed="false">
+            <div class="kicker">most chosen</div>
+            <div class="title">Professional Deep Clean</div>
+            <div class="sub">Proper clean that actually gets results.</div>
+            <div class="price"><b>Standard</b> <small>pricing</small></div>
+          </button>
+
+          <button class="tileBtn restore" type="button" data-level="restore" aria-pressed="false">
+            <div class="kicker">best result</div>
+            <div class="title">Deep Clean + Stain Guard</div>
+            <div class="sub">Deep clean plus protection on every item.</div>
+            <div class="price"><b>+ Guard</b> <small>per item</small></div>
+          </button>
+        </div>
+
+        <div class="expandPanel" id="expandPanel">
+          <div class="expTop">
+            <b id="expTitle">Choose a level</b>
+            <span class="badge" id="expBadge">Tap a tile</span>
+          </div>
+
+          <div class="expBody">
+            <div class="box">
+              <b>What you get</b>
+              <ul id="expList"></ul>
             </div>
-            <div class="mid">
-              <ul>
-                <li>In tank detergent</li>
-                <li>Hot water extraction with wand only</li>
-                <li>No scrubbing or CRB agitation</li>
-                <li>Best for routine maintenance</li>
-              </ul>
-            </div>
-            <div class="priceRow">
-              <div>
-                <div class="priceBig">£30</div>
-                <div class="priceSmall">per carpet item</div>
-              </div>
-              <button class="chooseBtn" type="button">Choose This</button>
+            <div class="box">
+              <b>Who it’s for</b>
+              <ul id="expFor"></ul>
             </div>
           </div>
 
-          <div class="plan deep active" data-level="deep">
-            <div class="most">Most Popular</div>
-            <div class="top">
-              <div class="title">Deep Clean</div>
-              <div class="sub">Proper professional clean</div>
-            </div>
-            <div class="mid">
-              <ul>
-                <li>Pre spray to break down dirt</li>
-                <li>Agitation to scrub fibres</li>
-                <li>Dwell time for better results</li>
-                <li>Full rinse and extract flush out</li>
-              </ul>
-            </div>
-            <div class="priceRow">
-              <div>
-                <div class="priceBig" id="deepFrom">From £55</div>
-                <div class="priceSmall">per item</div>
-              </div>
-              <button class="chooseBtn" type="button">Choose This</button>
-            </div>
-          </div>
-
-          <div class="plan restore" data-level="restore">
-            <div class="top">
-              <div class="title">Full Restore + Protect</div>
-              <div class="sub">Like new condition plus protection</div>
-            </div>
-            <div class="mid">
-              <ul>
-                <li>Everything in Deep Clean</li>
-                <li>Stain guard on every selected item</li>
-                <li>Helps resist spills and slows resoiling</li>
-                <li>Best long lasting result</li>
-              </ul>
-            </div>
-            <div class="priceRow">
-              <div>
-                <div class="priceBig" id="restoreFrom">From £85</div>
-                <div class="priceSmall">per item</div>
-              </div>
-              <button class="chooseBtn" type="button">Choose This</button>
-            </div>
+          <div class="chooseRow">
+            <button class="chooseBig" type="button" id="chooseBtn">Choose this level and continue</button>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="why" aria-label="Why prices vary">
-      <div class="h"><b>Why prices vary between carpet cleaners</b></div>
-      <div class="b">
-        <div class="whyGrid">
-          <div class="whyTile">
-            <div class="icon i1">£</div>
-            <div>
-              <b>Cheap machines</b>
-              <span>Basic setups and quick wand only cleans. Limited soil removal.</span>
-            </div>
-          </div>
-          <div class="whyTile">
-            <div class="icon i2">HP</div>
-            <div>
-              <b>Professional systems</b>
-              <span>Better heat, better extraction, better agitation and better results.</span>
-            </div>
-          </div>
-          <div class="whyTile">
-            <div class="icon i3">✓</div>
-            <div>
-              <b>Long lasting results</b>
-              <span>Proper rinse and extract plus optional protection treatments.</span>
-            </div>
+        <div class="lockMsg" id="lockMsg">
+          <div class="lockDot">1</div>
+          <div>
+            You must pick a clean level before the calculator unlocks.
           </div>
         </div>
       </div>
     </section>
 
     <div class="grid">
-      <!-- LEFT -->
-      <section class="card" aria-label="Build quote">
+      <section class="card locked" id="calcCard" aria-label="Build quote">
+        <div class="lockOverlay" id="lockOverlay">
+          <div class="lockCard">
+            <b>Choose your clean level first</b>
+            <span>Tap one of the tiles at the top. It opens a full explanation. Then press Choose to unlock the quote builder.</span>
+            <div class="hint">
+              <div class="dot">↑</div>
+              <div>Scroll up and select a level to continue.</div>
+            </div>
+          </div>
+        </div>
+
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
-            <small>Add items below. Restore adds stain guard automatically.</small>
+            <small>Add items below. Extras apply per item selected.</small>
           </div>
         </div>
 
@@ -793,7 +714,7 @@
                 <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span id="serviceBadge">Deep Clean</span>
+                <span id="serviceBadge">No level selected</span>
               </div>
             </div>
 
@@ -807,14 +728,12 @@
             </div>
           </div>
 
-          <p class="note" id="serviceNote">
-            Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract.
-          </p>
+          <p class="note" id="serviceNote">Choose a level at the top to unlock pricing.</p>
 
           <div class="extras" role="group" aria-label="Extras">
-            <label class="toggle disabled" id="tg_guard" title="Restore only">
+            <label class="toggle disabled" id="tg_guard" title="Only available on Deep Clean + Stain Guard">
               <input type="checkbox" id="x_guard" disabled />
-              Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Restore only)</span>
+              Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Elite only)</span>
             </label>
 
             <label class="toggle" title="Adds per selected item">
@@ -867,8 +786,14 @@
         </div>
       </section>
 
-      <!-- RIGHT -->
-      <aside class="card" aria-label="Selected and callback">
+      <aside class="card locked" id="sideCard" aria-label="Selected and callback">
+        <div class="lockOverlay" id="sideOverlay" style="border-radius:22px;">
+          <div class="lockCard">
+            <b>Pick a clean level first</b>
+            <span>Your breakdown and callback form unlock after you choose a level at the top.</span>
+          </div>
+        </div>
+
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
@@ -922,12 +847,12 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
-                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deep" />
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
-                <div class="cta">
-                  <button class="btn green" type="submit">Request callback</button>
+                <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                  <button class="btn primary" type="submit">Request callback</button>
                   <a class="btn call" href="tel:07802563213">Call now</a>
                 </div>
 
@@ -938,7 +863,7 @@
 
           <div class="hr"></div>
           <div class="mutebox">
-            Deep and Restore are the ones that deliver the real result. Basic is a quick maintenance refresh.
+            Deep and Elite are the ones that deliver the real result. Basic is a quick maintenance refresh.
           </div>
         </div>
       </aside>
@@ -967,17 +892,10 @@
   </div>
 
   <script>
-    // Extras
+    // ===== PRICES / EXTRAS =====
     const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
 
-    // Service levels
-    const SERVICE = {
-      basic:   { label:"Basic Clean",   guardForced:false },
-      deep:    { label:"Deep Clean",    guardForced:false },
-      restore: { label:"Full Restore + Protect", guardForced:true }
-    };
-
-    // Items (your current list)
+    // ===== ITEMS =====
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -1004,23 +922,87 @@
       ]
     };
 
+    // ===== SERVICE DEFINITIONS =====
+    const SERVICE = {
+      basic: {
+        key: "basic",
+        label: "Basic Clean",
+        badge: "£30 per carpet item",
+        chooseBtnClass: "chooseBig gold",
+        chooseBtnText: "Choose Basic Clean and continue",
+        list: [
+          "This is the cheap £30 clean you see online",
+          "In tank detergent hot water extraction with wand only",
+          "No scrubbing and no CRB agitation",
+          "Fast freshen up for routine maintenance"
+        ],
+        for: [
+          "If you only want the cheapest possible clean",
+          "If you are happy with a surface refresh",
+          "If you are not expecting deep soil removal",
+          "If you just want it to look a bit better"
+        ],
+        guardForced: false
+      },
+      deep: {
+        key: "deep",
+        label: "Professional Deep Clean",
+        badge: "Proper professional clean",
+        chooseBtnClass: "chooseBig",
+        chooseBtnText: "Choose Professional Deep Clean and continue",
+        list: [
+          "Pre spray to break down dirt and traffic lane soiling",
+          "Agitation to scrub fibres and lift embedded soil",
+          "Dwell time so the solution can work properly",
+          "Full rinse and extract flush out to remove residues"
+        ],
+        for: [
+          "If you want the best clean for the money",
+          "If carpets are visibly dirty or dulled",
+          "If you want that refreshed pile feel",
+          "Most customers choose this option"
+        ],
+        guardForced: false
+      },
+      restore: {
+        key: "restore",
+        label: "Deep Clean + Stain Guard",
+        badge: "Stain guard added",
+        chooseBtnClass: "chooseBig green",
+        chooseBtnText: "Choose Deep Clean + Stain Guard and continue",
+        list: [
+          "Everything included in Professional Deep Clean",
+          "Stain guard protection applied to every selected item",
+          "Helps spills bead and makes vacuuming easier",
+          "Best long lasting finish and slower resoiling"
+        ],
+        for: [
+          "If you want the top level result",
+          "Great for homes with kids or pets",
+          "If you want added protection after cleaning",
+          "Ideal after a deep clean to keep it looking better"
+        ],
+        guardForced: true
+      }
+    };
+
+    // ===== STATE =====
     const state = {
       qty: {},
       extras: { guard:false, deodorise:false, insecticide:false },
-      service: "deep"
+      serviceSelected: false,
+      service: null,
+      pendingLevel: null
     };
 
+    // ===== HELPERS =====
     const fmt = n => "£" + (Math.round((Number(n)||0)*100)/100).toFixed(2);
-
-    function itemsCountTotal(){
-      return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
-    }
     const getCount = group => group.reduce((sum,it)=> sum + (state.qty[it.id]||0), 0);
+    function itemsCountTotal(){ return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0); }
 
+    // Basic is £30 for carpet items only. Rugs and upholstery stay at their own prices.
     function unitPrice(groupName, basePrice){
-      // Basic: carpets only are £30 per carpet item
       if (state.service === "basic" && groupName === "Carpets") return 30;
-      // Deep and Restore use your normal prices
       return Number(basePrice) || 0;
     }
 
@@ -1066,7 +1048,7 @@
     function renderGroup(el, groupName, groupItems){
       el.innerHTML = groupItems.map(it => {
         const q = state.qty[it.id] || 0;
-        const unitNow = unitPrice(groupName, it.price);
+        const unitNow = state.serviceSelected ? unitPrice(groupName, it.price) : (Number(it.price)||0);
         return `
           <article class="item" data-id="${it.id}">
             <div style="min-width:0">
@@ -1075,9 +1057,9 @@
               <div class="price">${fmt(unitNow)}</div>
             </div>
             <div class="qty">
-              <button class="qbtn" data-act="dec" type="button">−</button>
+              <button class="qbtn" data-act="dec" type="button" aria-label="Decrease">−</button>
               <div class="qnum">${q}</div>
-              <button class="qbtn" data-act="inc" type="button">+</button>
+              <button class="qbtn" data-act="inc" type="button" aria-label="Increase">+</button>
             </div>
           </article>
         `;
@@ -1091,20 +1073,56 @@
       return d;
     }
 
-    function applyServiceRules(){
-      const s = SERVICE[state.service];
+    // ===== SERVICE UI =====
+    function openServicePanel(level){
+      const s = SERVICE[level];
+      state.pendingLevel = level;
+
+      document.getElementById("expandPanel").classList.add("show");
+      document.getElementById("expTitle").textContent = s.label;
+      document.getElementById("expBadge").textContent = s.badge;
+
+      const ul1 = document.getElementById("expList");
+      const ul2 = document.getElementById("expFor");
+
+      ul1.innerHTML = s.list.map(x => `<li>${x}</li>`).join("");
+      ul2.innerHTML = s.for.map(x => `<li>${x}</li>`).join("");
+
+      const btn = document.getElementById("chooseBtn");
+      btn.className = s.chooseBtnClass;
+      btn.textContent = s.chooseBtnText;
+
+      document.querySelectorAll(".tileBtn").forEach(b=>{
+        b.setAttribute("aria-pressed", b.getAttribute("data-level") === level ? "true" : "false");
+      });
+    }
+
+    function unlockUI(){
+      state.serviceSelected = true;
+      document.getElementById("lockOverlay").style.display = "none";
+      document.getElementById("sideOverlay").style.display = "none";
+      document.getElementById("calcCard").classList.remove("locked");
+      document.getElementById("sideCard").classList.remove("locked");
+      document.getElementById("lockMsg").style.display = "none";
+    }
+
+    function applyService(level){
+      state.service = level;
+      document.getElementById("serviceLevel").value = level;
+
+      const s = SERVICE[level];
       document.getElementById("serviceBadge").textContent = s.label;
-      document.getElementById("serviceLevel").value = state.service;
 
       const note = document.getElementById("serviceNote");
-      if (state.service === "basic"){
+      if (level === "basic"){
         note.textContent = "Basic selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Routine maintenance refresh.";
-      } else if (state.service === "deep"){
+      } else if (level === "deep"){
         note.textContent = "Deep selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
       } else {
-        note.textContent = "Restore selected. Deep clean plus stain guard protection on every selected item automatically.";
+        note.textContent = "Elite selected. Deep clean plus stain guard protection on every selected item automatically.";
       }
 
+      // Guard rules: unticked normally, forced on restore only
       const guard = document.getElementById("x_guard");
       const wrap = document.getElementById("tg_guard");
 
@@ -1119,11 +1137,13 @@
         guard.disabled = true;
         wrap.classList.add("disabled");
       }
+
+      unlockUI();
+      renderSelected();
     }
 
+    // ===== RENDER SELECTED =====
     function renderSelected(){
-      applyServiceRules();
-
       renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
       renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
       renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1147,7 +1167,7 @@
           `<div class="line" style="border-color: rgba(43,123,255,.22);">
             <div>
               <b>Service level</b>
-              <small>${SERVICE[state.service].label}</small>
+              <small>${SERVICE[state.service]?.label || ""}</small>
             </div>
             <div></div>
           </div>` +
@@ -1168,21 +1188,21 @@
       }
 
       const breakdown = [
-        `Service level: ${SERVICE[state.service].label}`,
+        `Service level: ${SERVICE[state.service]?.label || ""}`,
         ...allLines.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`)
       ].join("\n");
 
       document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
-
-      // Update the "From" numbers on the cards based on your current list
-      const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
-      document.getElementById("deepFrom").textContent = "From " + fmt(deepMin).replace(".00","");
-      document.getElementById("restoreFrom").textContent = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
     }
 
     function attachQtyHandlers(container){
       container.addEventListener("click", (e) => {
+        if (!state.serviceSelected){
+          document.getElementById("choose").scrollIntoView({behavior:"smooth", block:"start"});
+          return;
+        }
+
         const btn = e.target.closest("button.qbtn");
         if (!btn) return;
         const card = btn.closest(".item");
@@ -1199,26 +1219,11 @@
       });
     }
 
-    function setActivePlan(level){
-      document.querySelectorAll(".plan").forEach(p => p.classList.remove("active"));
-      const t = document.querySelector(`.plan[data-level="${level}"]`);
-      if (t) t.classList.add("active");
-    }
-
-    function setService(level){
-      state.service = level;
-      setActivePlan(level);
-      renderSelected();
-      // jump them to the calculator after picking a level
-      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
-    }
-
-    // Init prices text
+    // ===== INIT =====
     document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    // Render groups
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1227,22 +1232,21 @@
     attachQtyHandlers(document.getElementById("rugs"));
     attachQtyHandlers(document.getElementById("upholstery"));
 
-    // Extras listeners
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
-    // Plan selection (tap card or button)
-    document.getElementById("plans").addEventListener("click", (e) => {
-      const btn = e.target.closest(".chooseBtn");
-      const card = e.target.closest(".plan");
-      if (!card) return;
-      const level = card.getAttribute("data-level");
-      setService(level);
+    document.querySelectorAll(".tileBtn").forEach(btn=>{
+      btn.addEventListener("click", () => openServicePanel(btn.getAttribute("data-level")));
     });
 
-    // First load
-    setActivePlan("deep");
-    renderSelected();
+    document.getElementById("chooseBtn").addEventListener("click", () => {
+      if (!state.pendingLevel) return;
+      applyService(state.pendingLevel);
+      document.getElementById("calcCard").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    // Open Deep by default (but do not unlock)
+    openServicePanel("deep");
 
     function handleSubmit(event){
       event.preventDefault();
