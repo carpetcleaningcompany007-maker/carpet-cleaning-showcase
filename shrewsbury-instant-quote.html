@@ -50,6 +50,7 @@
       min-height:100vh;
       overflow-x:hidden;
     }
+    body.lock{overflow:hidden; height:100vh;}
 
     a{color:inherit; text-decoration:none}
     .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
@@ -80,15 +81,12 @@
     .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
     .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand2));}
     .btn.call{background: rgba(255,255,255,.14);}
+    .btn.ghost{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
+    }
     .btn.green{
       background: linear-gradient(135deg, #13b46a, #0b7b44);
-      color:#fff;
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,.10);
-      backdrop-filter:none;
-    }
-    .btn.red{
-      background: linear-gradient(135deg, #ff5a5a, #c81e1e);
       color:#fff;
       border-color: rgba(255,255,255,.18);
       box-shadow: 0 12px 28px rgba(0,0,0,.10);
@@ -160,49 +158,6 @@
       white-space:nowrap;
     }
 
-    /* VERY CLEAR "CHANGE SERVICE" STRIP */
-    .serviceStrip{
-      margin-top: 14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 12px 12px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 16px 36px rgba(0,0,0,.22);
-      position:relative;
-      z-index:2;
-    }
-    .serviceStrip .left{
-      display:flex; flex-direction:column; gap:3px;
-      min-width:0;
-    }
-    .serviceStrip .left b{
-      font-size:13px; letter-spacing:.02em;
-    }
-    .serviceStrip .left span{
-      font-size:12px; opacity:.86;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-      max-width: 70ch;
-    }
-    .serviceStrip .right{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    .miniBadge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,191,60,.14);
-      border:1px solid rgba(255,191,60,.26);
-      color: rgba(255,255,255,.92);
-      font-weight:950;
-      font-size:12px;
-      white-space:nowrap;
-    }
-
     /* Why prices vary block */
     .why{
       margin-top: 16px;
@@ -216,6 +171,7 @@
       padding: 14px 16px;
       border-bottom:1px solid rgba(12,24,40,.08);
       background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
     }
     .why .h b{color: var(--ink2); font-size:16px}
     .why .b{padding: 14px 16px 16px}
@@ -299,7 +255,6 @@
       letter-spacing:-.02em;
     }
     .total-box span{font-size:12px; color: var(--muted); font-weight:950; white-space:nowrap}
-
     .info-box{
       border:1px solid rgba(12,24,40,.10);
       border-radius: 18px;
@@ -446,22 +401,6 @@
       box-shadow: 0 12px 24px rgba(10,18,32,.05);
       font-weight:700;
     }
-    .tinyTrust{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:10px;
-      color: rgba(255,255,255,.85);
-      font-size:12px;
-      font-weight:850;
-    }
-    .trustPill{
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      border-radius:999px;
-      padding:8px 10px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 24px rgba(0,0,0,.16);
-      white-space:nowrap;
-    }
 
     .form-grid{
       display:grid;
@@ -487,18 +426,6 @@
       box-shadow: 0 0 0 4px rgba(43,123,255,.12);
     }
     .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-
-    .whatNext{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(12,24,40,.10);
-      background: linear-gradient(135deg, #ffffff, #f7f9ff);
-      color: var(--muted);
-      font-size:12.5px;
-      font-weight:800;
-      line-height:1.45;
-    }
 
     footer{
       text-align:center;
@@ -535,183 +462,214 @@
     .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
     .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
 
-    /* ===== Service Picker Modal (FIXED + CLICKABLE) ===== */
-    .svcModal{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:16px;
-    }
-    .svcModal[hidden]{display:none}
-    .svcBackdrop{
-      position:absolute;
-      inset:0;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(6px);
-    }
-    .svcPanel{
-      position:relative;
-      z-index:2;
-      width:min(980px,100%);
-      max-height:90vh;
+    /* ---------- MODALS ---------- */
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index: 999;
+      padding: 16px;
       overflow:auto;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow:0 40px 110px rgba(0,0,0,.55);
+    }
+    .overlay.show{display:block;}
+
+    .modal{
+      width:min(980px, 100%);
+      margin: 22px auto;
+      border-radius: 22px;
       background:
-        radial-gradient(900px 520px at 15% 15%, rgba(43,123,255,.22), transparent 55%),
-        radial-gradient(700px 420px at 85% 20%, rgba(255,191,60,.18), transparent 55%),
-        linear-gradient(135deg, #0b2d5e 0%, #0a1f42 55%, #08152c 100%);
-      color:#fff;
+        radial-gradient(900px 520px at 15% 15%, rgba(43,123,255,.10), transparent 55%),
+        radial-gradient(700px 420px at 85% 15%, rgba(255,191,60,.08), transparent 55%),
+        linear-gradient(135deg, #ffffff, #f7f9ff);
+      border:1px solid rgba(255,255,255,.50);
+      box-shadow: 0 28px 70px rgba(0,0,0,.38);
+      overflow:hidden;
     }
-    .svcClose{
-      position:absolute;
-      top:12px;
-      right:12px;
-      width:38px;
-      height:38px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.25);
-      background:rgba(255,255,255,.15);
-      color:#fff;
-      font-size:20px;
+    .modalHead{
+      padding: 14px 16px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      background: linear-gradient(135deg, rgba(43,123,255,.10), rgba(255,191,60,.08));
+      border-bottom:1px solid rgba(12,24,40,.10);
+    }
+    .modalHead b{display:block; font-size:16px; color: var(--ink2); letter-spacing:-.01em}
+    .modalHead span{display:block; margin-top:6px; font-size:13px; color: var(--muted); font-weight:800; line-height:1.45}
+    .xbtn{
+      border:0;
+      width:38px; height:38px;
+      border-radius: 14px;
       cursor:pointer;
-      z-index:5;
+      background: rgba(255,255,255,.85);
+      border:1px solid rgba(12,24,40,.12);
+      box-shadow: 0 10px 22px rgba(10,18,32,.10);
+      font-weight:980;
+      color: var(--ink2);
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 auto;
     }
-    .svcHead{
-      padding:18px 18px 12px;
-    }
-    .svcHead b{
-      display:block;
-      font-size:14px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      opacity:.9;
-    }
-    .svcHead h2{
-      margin:8px 0 0;
-      font-size:22px;
-      letter-spacing:-.02em;
-      line-height:1.15;
-    }
-    .svcHead p{
-      margin:10px 0 0;
-      font-size:13px;
-      opacity:.88;
-      line-height:1.45;
-      max-width:78ch;
-    }
+    .xbtn[disabled]{opacity:.45; cursor:not-allowed;}
+
+    .modalBody{padding: 14px 16px 16px;}
 
     .svcGrid{
-      padding: 12px 18px 18px;
       display:grid;
       grid-template-columns: repeat(3, minmax(220px, 1fr));
       gap:12px;
     }
     .svcCard{
-      position:relative;
-      z-index:3;
-      pointer-events:auto;
-      background: rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.16);
-      border-radius:18px;
+      border-radius: 18px;
+      border:1px solid rgba(12,24,40,.12);
+      background: linear-gradient(135deg, #ffffff, #fbfcff);
+      box-shadow: 0 12px 26px rgba(10,18,32,.08);
       overflow:hidden;
-      box-shadow:0 18px 50px rgba(0,0,0,.22);
-      cursor:pointer;
-      transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
       display:flex;
       flex-direction:column;
-      min-height: 270px;
-      color: var(--ink2);
+      min-height: 260px;
+      position:relative;
     }
-    .svcCard:hover{transform: translateY(-2px); box-shadow:0 26px 70px rgba(0,0,0,.26)}
     .svcTop{
-      padding:14px 14px 10px;
-      background: linear-gradient(135deg, #ffffff, #f6f8ff);
+      padding: 12px 12px 10px;
       border-bottom:1px solid rgba(12,24,40,.10);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
     }
-    .svcTitle{font-weight:950; font-size:16px; letter-spacing:-.01em}
-    .svcSub{margin-top:6px; color: var(--muted); font-weight:850; font-size:12.5px}
-    .svcBody{padding:12px 14px; background:#fff; flex:1}
-    .svcBody ul{margin:0; padding:0 0 0 16px; color:#2a3a55; font-size:13px; line-height:1.5}
-    .svcBody li{margin:7px 0}
-    .svcFoot{
-      padding:12px 14px;
-      border-top:1px solid rgba(12,24,40,.10);
-      background: linear-gradient(135deg, #ffffff, #f7f9ff);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .svcPrice b{display:block; font-size:20px; font-weight:980; color: var(--ink2)}
-    .svcPrice span{display:block; font-size:12px; font-weight:900; color: var(--muted)}
-    .svcPick{
-      border:0;
-      border-radius:14px;
-      padding:11px 12px;
-      font-weight:950;
-      cursor:pointer;
-      box-shadow: 0 12px 26px rgba(10,18,32,.14);
-    }
-    .svcCard.basic .svcPick{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
-    .svcCard.deep  .svcPick{background: linear-gradient(135deg, #1d4ed8, #1239a7); color:#fff;}
-    .svcCard.restore .svcPick{background: linear-gradient(135deg, #13b46a, #0b7b44); color:#fff;}
-
+    .svcTitle{font-weight:980; font-size:16px; color: var(--ink2); letter-spacing:-.01em; line-height:1.15}
+    .svcSub{margin-top:6px; font-size:12.5px; color: var(--muted); font-weight:850; line-height:1.35}
     .svcMost{
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform: translateX(-50%);
       background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
       color:#2b1b00;
       font-weight:980;
       font-size:12px;
       padding:6px 10px;
       border-radius: 999px;
-      box-shadow: 0 12px 26px rgba(0,0,0,.20);
-      border:1px solid rgba(255,255,255,.35);
-      z-index:4;
+      border:1px solid rgba(255,255,255,.45);
+      box-shadow: 0 12px 26px rgba(0,0,0,.14);
+      white-space:nowrap;
+      margin-top: 2px;
+    }
+    .svcMid{padding: 10px 12px 10px; flex:1; background:#fff;}
+    .svcMid ul{margin:0; padding:0 0 0 16px; color:#2a3a55; font-size:13px; line-height:1.5}
+    .svcMid li{margin:7px 0}
+    .svcFoot{
+      padding: 12px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-top:1px solid rgba(12,24,40,.10);
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      flex-wrap:wrap;
+    }
+    .svcPrice b{display:block; font-size:18px; color: var(--ink2); letter-spacing:-.01em}
+    .svcPrice span{display:block; font-size:12px; color: var(--muted); font-weight:900}
+    .svcBtns{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .svcBtn{
+      border:0;
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:980;
+      cursor:pointer;
+      box-shadow: 0 12px 26px rgba(10,18,32,.12);
+      color:#fff;
       white-space:nowrap;
     }
+    .svcBtn.basic{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .svcBtn.deep{background: linear-gradient(135deg, #1d4ed8, #1239a7);}
+    .svcBtn.restore{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .svcLink{
+      background: transparent;
+      border:1px solid rgba(12,24,40,.14);
+      color: var(--ink2);
+      font-weight:980;
+      padding:10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+    }
 
-    /* Responsive */
+    .detailGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      align-items:start;
+    }
+    .detailCard{
+      border:1px solid rgba(12,24,40,.12);
+      border-radius: 18px;
+      background:#fff;
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+      overflow:hidden;
+    }
+    .detailCard .h{
+      padding: 12px 14px;
+      background: linear-gradient(135deg, rgba(43,123,255,.06), rgba(255,191,60,.05));
+      border-bottom:1px solid rgba(12,24,40,.10);
+      font-weight:980;
+      color: var(--ink2);
+    }
+    .detailCard .b{padding: 12px 14px;}
+    .proscons{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .pc{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: linear-gradient(135deg, #ffffff, #f8faff);
+    }
+    .pc b{display:block; color: var(--ink2); font-size:13px;}
+    .pc ul{margin:8px 0 0; padding:0 0 0 16px; color:#2a3a55; font-size:12.5px; line-height:1.5}
+    .equip{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:10px;
+    }
+    .equipTile{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 16px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 10px 20px rgba(10,18,32,.06);
+    }
+    .equipTile img{
+      width:100%;
+      height: 150px;
+      object-fit: cover;
+      display:block;
+      background:#f2f4ff;
+    }
+    .equipTile .cap{
+      padding: 10px 10px 10px;
+      font-weight:980;
+      font-size:12.5px;
+      color: var(--ink2);
+      line-height:1.25;
+    }
+    .detailCtas{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      padding-top: 10px;
+      border-top:1px solid rgba(12,24,40,.10);
+      margin-top: 10px;
+    }
+
+    /* Mobile */
     @media (max-width: 980px){
       .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
       .whyGrid{grid-template-columns:1fr}
+      .detailGrid{grid-template-columns:1fr}
+      .proscons{grid-template-columns:1fr}
     }
     @media (max-width: 860px){
       .pill{display:none}
       .sticky-bar{display:block}
       .wrap{padding-bottom: 128px}
-
-      .svcGrid{
-        grid-template-columns:1fr;
-      }
-      .svcCard{min-height:auto}
-
-      .serviceStrip{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-      .serviceStrip .right{width:100%; justify-content:flex-start}
+      .svcGrid{grid-template-columns: 1fr;}
+      .equip{grid-template-columns: 1fr;}
+      .equipTile img{height: 170px;}
     }
     @media (max-width: 420px){
       .hero h1{font-size:26px}
       .total-box b{font-size:24px}
-    }
-
-    /* Basic restrictions (greying out) */
-    .disabledGroup{
-      opacity:.55;
-      filter: grayscale(0.2);
-      pointer-events:none;
     }
   </style>
 </head>
@@ -726,6 +684,7 @@
 
       <div class="top-actions">
         <span class="pill">Choose your clean level, then build your quote</span>
+        <button class="btn ghost" type="button" id="changeServiceTop">Change service level</button>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
@@ -736,14 +695,9 @@
         <div>
           <h1>Stop guessing the <span>price</span> of carpet cleaning</h1>
           <p>
-            Choose the level of clean you actually want. Your choice sets the pricing, the process, and the end result.
+            Choose the level of clean you actually want, then add rooms.
+            Your choice sets the pricing, the process, and the end result.
           </p>
-
-          <div class="tinyTrust">
-            <div class="trustPill">Insured professional service</div>
-            <div class="trustPill">No VAT charged</div>
-            <div class="trustPill">Proper equipment and results</div>
-          </div>
         </div>
 
         <div class="hero-badges">
@@ -752,21 +706,13 @@
           <span class="tag">Request callback to book</span>
         </div>
       </div>
-
-      <div class="serviceStrip" aria-label="Service chooser">
-        <div class="left">
-          <b>Service level:</b>
-          <span id="svcStripText">Deep Clean selected. Click Change service if you want to switch.</span>
-        </div>
-        <div class="right">
-          <span class="miniBadge" id="svcMiniBadge">Deep Clean</span>
-          <button class="btn primary" type="button" id="openSvcModalBtn">Change service</button>
-        </div>
-      </div>
     </section>
 
     <section class="why" aria-label="Why prices vary">
-      <div class="h"><b>Why prices vary between carpet cleaners</b></div>
+      <div class="h">
+        <b>Why prices vary between carpet cleaners</b>
+        <button class="btn primary" type="button" id="changeServiceWhy">Choose service level</button>
+      </div>
       <div class="b">
         <div class="whyGrid">
           <div class="whyTile">
@@ -800,10 +746,10 @@
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
-            <small>Add items below. Restore adds stain guard automatically. Basic applies to carpets only.</small>
+            <small>Add items below. Restore adds stain guard automatically.</small>
           </div>
-          <div style="display:flex; gap:10px; align-items:center;">
-            <button class="btn red" type="button" id="resetBtn">Reset quote</button>
+          <div>
+            <button class="btn primary" type="button" id="changeServiceCard">Change service</button>
           </div>
         </div>
 
@@ -829,9 +775,7 @@
             </div>
           </div>
 
-          <p class="note" id="serviceNote">
-            Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract.
-          </p>
+          <p class="note" id="serviceNote">Choose your service level to begin.</p>
 
           <div class="extras" role="group" aria-label="Extras">
             <label class="toggle disabled" id="tg_guard" title="Restore only">
@@ -856,7 +800,7 @@
           </div>
           <div class="items" id="carpets"></div>
 
-          <details class="acc" id="rugsAcc">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -866,13 +810,10 @@
             </summary>
             <div class="acc-body">
               <div class="items" id="rugs"></div>
-              <p class="note" id="basicRugNote" style="display:none; margin-top:10px;">
-                Basic pricing applies to carpets only. Switch to Deep or Restore for rug pricing.
-              </p>
             </div>
           </details>
 
-          <details class="acc" id="upAcc">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -882,9 +823,6 @@
             </summary>
             <div class="acc-body">
               <div class="items" id="upholstery"></div>
-              <p class="note" id="basicUpNote" style="display:none; margin-top:10px;">
-                Basic pricing applies to carpets only. Switch to Deep or Restore for upholstery pricing.
-              </p>
             </div>
           </details>
 
@@ -959,10 +897,6 @@
                   <a class="btn call" href="tel:07802563213">Call now</a>
                 </div>
 
-                <div class="whatNext">
-                  What happens next: we call you to confirm the rooms, answer any questions, then book you in.
-                </div>
-
                 <p class="note" style="margin-top:10px;">Submitting sends your selected items and total.</p>
               </form>
             </div>
@@ -970,10 +904,7 @@
 
           <div class="hr"></div>
           <div class="mutebox">
-            Deep and Restore are the ones that deliver the real result. Basic is a quick maintenance refresh.
-            <div style="margin-top:10px;">
-              <button class="btn primary" type="button" id="openSvcModalBtn2">Change service level</button>
-            </div>
+            Need to change the clean level? Tap “Change service level” at the top at any time.
           </div>
         </div>
       </aside>
@@ -994,115 +925,144 @@
         <span>Total estimate</span>
         <b id="totalSticky">£0.00</b>
       </div>
-      <div style="display:flex; gap:10px; align-items:center;">
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn ghost" type="button" id="changeServiceSticky">Change service</button>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
     </div>
   </div>
 
-  <!-- ===== SERVICE PICKER MODAL ===== -->
-  <div class="svcModal" id="svcModal" hidden aria-modal="true" role="dialog" aria-label="Choose service level">
-    <div class="svcBackdrop" id="svcBackdrop"></div>
-
-    <div class="svcPanel" role="document">
-      <button class="svcClose" id="svcCloseBtn" aria-label="Close service picker">×</button>
-
-      <div class="svcHead">
-        <b>Choose your service</b>
-        <h2>Which is more important to you: the most competitive price, or the best possible job?</h2>
-        <p>
-          Pick one to set the method, the process, and the pricing. You can change it anytime using the Change service button.
-        </p>
+  <!-- SERVICE PICKER MODAL -->
+  <div class="overlay" id="serviceOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="svcTitle">
+      <div class="modalHead">
+        <div>
+          <b id="svcTitle">What’s most important to you?</b>
+          <span>Are you looking for the cheapest quote, or the best possible job? We do both. Choose your clean level below.</span>
+        </div>
+        <button class="xbtn" type="button" id="svcClose" title="Close">✕</button>
       </div>
-
-      <div class="svcGrid" id="svcGrid">
-        <div class="svcCard basic" data-level="basic">
-          <div class="svcTop">
-            <div class="svcTitle">Basic Clean</div>
-            <div class="svcSub">Cheapest option. Quick refresh.</div>
-          </div>
-          <div class="svcBody">
-            <ul>
-              <li>In tank detergent</li>
-              <li>Wand only hot water extraction</li>
-              <li>No scrubbing or agitation</li>
-              <li>Best for routine maintenance</li>
-            </ul>
-          </div>
-          <div class="svcFoot">
-            <div class="svcPrice">
-              <b>£30</b>
-              <span>per carpet item</span>
-            </div>
-            <button class="svcPick" type="button">Choose Basic</button>
-          </div>
-        </div>
-
-        <div class="svcCard deep" data-level="deep">
-          <div class="svcMost">Most Popular</div>
-          <div class="svcTop">
-            <div class="svcTitle">Deep Clean</div>
-            <div class="svcSub">Best balance of price and results.</div>
-          </div>
-          <div class="svcBody">
-            <ul>
-              <li>Pre spray to break down dirt</li>
-              <li>Agitation to scrub fibres</li>
-              <li>Dwell time for better results</li>
-              <li>Full rinse and extract flush out</li>
-            </ul>
-          </div>
-          <div class="svcFoot">
-            <div class="svcPrice">
-              <b id="deepFrom">From £22</b>
-              <span>per item</span>
-            </div>
-            <button class="svcPick" type="button">Choose Deep</button>
-          </div>
-        </div>
-
-        <div class="svcCard restore" data-level="restore">
-          <div class="svcTop">
-            <div class="svcTitle">Full Restore + Protect</div>
-            <div class="svcSub">Best possible job. Long lasting result.</div>
-          </div>
-          <div class="svcBody">
-            <ul>
-              <li>Everything in Deep Clean</li>
-              <li>Stain guard on every item</li>
-              <li>Helps resist spills and resoiling</li>
-              <li>Best long lasting result</li>
-            </ul>
-          </div>
-          <div class="svcFoot">
-            <div class="svcPrice">
-              <b id="restoreFrom">From £37</b>
-              <span>per item</span>
-            </div>
-            <button class="svcPick" type="button">Choose Restore</button>
-          </div>
-        </div>
-      </div>
-
-      <div style="padding:0 18px 18px;">
-        <div class="mutebox" style="background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.16); color: rgba(255,255,255,.88);">
-          You can change this later using “Change service”. If you just want the best result, pick Full Restore + Protect.
+      <div class="modalBody">
+        <div class="svcGrid" id="svcGrid"></div>
+        <div class="mutebox" style="margin-top:12px;">
+          You can change the service level anytime using “Change service level” at the top of the page.
         </div>
       </div>
     </div>
   </div>
 
+  <!-- SERVICE DETAILS MODAL -->
+  <div class="overlay" id="detailOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modalHead">
+        <div>
+          <b id="detailTitle">Service details</b>
+          <span id="detailSub">Pros, cons, and the equipment used.</span>
+        </div>
+        <button class="xbtn" type="button" id="detailClose" title="Close">✕</button>
+      </div>
+      <div class="modalBody" id="detailBody"></div>
+    </div>
+  </div>
+
   <script>
-    // ===== CONFIG =====
+    // Extras
     const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
 
-    const SERVICE = {
-      basic:   { label:"Basic Clean",   guardForced:false },
-      deep:    { label:"Deep Clean",    guardForced:false },
-      restore: { label:"Full Restore + Protect", guardForced:true }
+    // Images (direct links)
+    const IMAGES = {
+      airflexMini: "https://www.clean-smart.co.uk/wp-content/uploads/2019/10/miniflex.jpg",                 // compact extractor (Airflex Mini style)
+      wand:       "https://www.prestigesupplies.co.uk/wp-content/uploads/2019/05/Prestige-supplies-stainless-steel-carpet-cleaning-wand.jpg",
+      enforcer400: "https://www.carpet-cleaning-equipment.co.uk/cdn/shop/files/Ashbys_Enforcer_400_Psi_machine.jpg?v=1715170570",
+      crb:        "https://www.smart-cleaning-solutions.com/cdn/shop/products/Pro35_SQ.jpg?v=1720532618&width=1445"
     };
 
+    // Service levels
+    const SERVICE = {
+      basic:   { label:"Budget Carpet Clean", badge:"Cheapest option. Quick refresh.", color:"basic", guardForced:false },
+      deep:    { label:"Deep Clean",          badge:"Best balance of price and results.", color:"deep", guardForced:false, most:true },
+      restore: { label:"Full Restore + Protect", badge:"Best possible job. Long lasting result.", color:"restore", guardForced:true }
+    };
+
+    // Service marketing copy + details popup content
+    const SERVICE_DETAILS = {
+      basic: {
+        heading: "Budget Carpet Clean",
+        sub: "This is the type of clean you see all over the internet. If you can’t beat them, join them. A cheaper option for routine maintenance.",
+        bullets: [
+          "In tank detergent",
+          "Wand only hot water extraction",
+          "No scrubbing or agitation",
+          "Best for routine maintenance"
+        ],
+        pros: [
+          "Most competitive price",
+          "Quick refresh for lightly soiled carpets",
+          "Good for regular upkeep"
+        ],
+        cons: [
+          "Not a deep clean",
+          "Less effective on traffic lanes and heavy soiling",
+          "No agitation step to lift embedded dirt"
+        ],
+        equipment: [
+          { name:"Compact extractor (Airflex Mini style)", img: IMAGES.airflexMini },
+          { name:"Standard carpet cleaning wand", img: IMAGES.wand }
+        ],
+        footer: "Detergent goes into the tank. This method focuses on a quick maintenance refresh rather than a full fibre scrub."
+      },
+      deep: {
+        heading: "Deep Clean",
+        sub: "Proper professional clean. More time, more steps, better results.",
+        bullets: [
+          "In tank rinse agent plus pre spray",
+          "Agitation to scrub fibres",
+          "Dwell time for better results",
+          "Full rinse and extract flush out"
+        ],
+        pros: [
+          "Best balance of price and results",
+          "Agitation lifts embedded dirt and improves appearance",
+          "Full rinse and extract flushes out residue"
+        ],
+        cons: [
+          "More time on site than budget cleans",
+          "Heavily soiled carpets may need extra work"
+        ],
+        equipment: [
+          { name:"Ashbys Enforcer 400 (powerful extraction)", img: IMAGES.enforcer400 },
+          { name:"Counter rotating brush (CRB) agitation", img: IMAGES.crb }
+        ],
+        footer: "You’re not just paying for time. You’re hiring a trained technician and professional equipment that performs on a different level."
+      },
+      restore: {
+        heading: "Full Restore + Protect",
+        sub: "Deep clean plus protection on every selected item for a longer lasting result.",
+        bullets: [
+          "Everything in Deep Clean",
+          "Stain guard on every selected item",
+          "Helps resist spills and slows resoiling",
+          "Best long lasting result"
+        ],
+        pros: [
+          "Best possible finish",
+          "Protection helps spills bead and buys you time",
+          "Slows resoiling and helps maintenance"
+        ],
+        cons: [
+          "Higher price due to protectant and extra steps",
+          "Not suitable for every fibre type in every situation"
+        ],
+        equipment: [
+          { name:"Ashbys Enforcer 400 (powerful extraction)", img: IMAGES.enforcer400 },
+          { name:"Counter rotating brush (CRB) agitation", img: IMAGES.crb }
+        ],
+        footer: "Restore includes stain guard automatically on every item you add in the quote builder."
+      }
+    };
+
+    // Items (your current list)
     const ITEMS = {
       carpets: [
         { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
@@ -1129,25 +1089,23 @@
       ]
     };
 
-    // ===== STATE =====
     const state = {
       qty: {},
       extras: { guard:false, deodorise:false, insecticide:false },
-      service: "deep"
+      service: "deep",
+      hasChosenService: false
     };
 
     const fmt = n => "£" + (Math.round((Number(n)||0)*100)/100).toFixed(2);
 
-    // ===== HELPERS =====
     function itemsCountTotal(){
       return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
     }
     const getCount = group => group.reduce((sum,it)=> sum + (state.qty[it.id]||0), 0);
 
     function unitPrice(groupName, basePrice){
-      // Basic: carpets only are £30 per carpet item
+      // Budget: carpets are £30 per room/item
       if (state.service === "basic" && groupName === "Carpets") return 30;
-      // Deep and Restore use your normal prices
       return Number(basePrice) || 0;
     }
 
@@ -1178,7 +1136,6 @@
       }
 
       const ex = extrasPerItemTotal();
-
       const extrasLines = ex.enabled.map(([k]) => ({
         label: k === "guard" ? "Stain guard" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
         group: "Extras",
@@ -1218,45 +1175,18 @@
       return d;
     }
 
-    function applyBasicRestrictions(){
-      const rugsAcc = document.getElementById("rugsAcc");
-      const upAcc = document.getElementById("upAcc");
-      const basicRugNote = document.getElementById("basicRugNote");
-      const basicUpNote = document.getElementById("basicUpNote");
-
-      if (state.service === "basic"){
-        rugsAcc.classList.add("disabledGroup");
-        upAcc.classList.add("disabledGroup");
-        basicRugNote.style.display = "block";
-        basicUpNote.style.display = "block";
-      } else {
-        rugsAcc.classList.remove("disabledGroup");
-        upAcc.classList.remove("disabledGroup");
-        basicRugNote.style.display = "none";
-        basicUpNote.style.display = "none";
-      }
-    }
-
     function applyServiceRules(){
       const s = SERVICE[state.service];
       document.getElementById("serviceBadge").textContent = s.label;
       document.getElementById("serviceLevel").value = state.service;
 
-      // Strip text
-      const stripText = document.getElementById("svcStripText");
-      const miniBadge = document.getElementById("svcMiniBadge");
-      miniBadge.textContent = s.label;
-
       const note = document.getElementById("serviceNote");
       if (state.service === "basic"){
-        note.textContent = "Basic selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Routine maintenance refresh.";
-        stripText.textContent = "Basic Clean selected. Cheapest option. Click Change service if you want a deeper clean.";
+        note.textContent = "Budget Carpet Clean selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Best for routine maintenance.";
       } else if (state.service === "deep"){
-        note.textContent = "Deep selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
-        stripText.textContent = "Deep Clean selected. Best balance of price and results. Click Change service to switch.";
+        note.textContent = "Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
       } else {
-        note.textContent = "Restore selected. Deep clean plus stain guard protection on every selected item automatically.";
-        stripText.textContent = "Full Restore + Protect selected. Best possible job plus protection. Click Change service to switch.";
+        note.textContent = "Full Restore + Protect selected. Deep clean plus stain guard protection on every selected item automatically.";
       }
 
       const guard = document.getElementById("x_guard");
@@ -1273,8 +1203,6 @@
         guard.disabled = true;
         wrap.classList.add("disabled");
       }
-
-      applyBasicRestrictions();
     }
 
     function renderSelected(){
@@ -1331,10 +1259,8 @@
       document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
 
-      // Update modal "From" numbers based on carpet minimum
-      const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
-      document.getElementById("deepFrom").textContent = "From " + fmt(deepMin).replace(".00","");
-      document.getElementById("restoreFrom").textContent = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
+      // Helpful: nudge notes when service changes
+      document.getElementById("notes").placeholder = "Parking, access, stains, pets, preferred days. (You can also ask about the chosen package here.)";
     }
 
     function attachQtyHandlers(container){
@@ -1355,70 +1281,190 @@
       });
     }
 
-    // ===== MODAL CONTROL =====
-    const svcModal = document.getElementById("svcModal");
-    const svcBackdrop = document.getElementById("svcBackdrop");
-    const svcCloseBtn = document.getElementById("svcCloseBtn");
-    const openSvcBtn = document.getElementById("openSvcModalBtn");
-    const openSvcBtn2 = document.getElementById("openSvcModalBtn2");
+    // -------- MODAL CONTROL --------
+    const serviceOverlay = document.getElementById("serviceOverlay");
+    const svcClose = document.getElementById("svcClose");
+    const detailOverlay = document.getElementById("detailOverlay");
+    const detailClose = document.getElementById("detailClose");
 
-    function openServiceModal(){
-      svcModal.hidden = false;
-      document.body.style.overflow = "hidden";
+    function openServiceModal(force=false){
+      // if not chosen yet, modal is effectively mandatory
+      serviceOverlay.classList.add("show");
+      document.body.classList.add("lock");
+      serviceOverlay.setAttribute("aria-hidden", "false");
+      // Close button disabled until they choose at least once (unless forced open after)
+      svcClose.disabled = !state.hasChosenService && !force;
     }
+
     function closeServiceModal(){
-      svcModal.hidden = true;
-      document.body.style.overflow = "";
+      serviceOverlay.classList.remove("show");
+      document.body.classList.remove("lock");
+      serviceOverlay.setAttribute("aria-hidden", "true");
     }
 
-    // Close behaviours
-    svcCloseBtn.addEventListener("click", closeServiceModal);
-    svcBackdrop.addEventListener("click", closeServiceModal);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !svcModal.hidden) closeServiceModal();
-    });
+    function openDetailModal(level){
+      const d = SERVICE_DETAILS[level];
+      document.getElementById("detailTitle").textContent = d.heading;
+      document.getElementById("detailSub").textContent = "Pros, cons, and the equipment used.";
 
-    openSvcBtn.addEventListener("click", openServiceModal);
-    openSvcBtn2.addEventListener("click", openServiceModal);
+      const priceLine = (level === "basic")
+        ? `${fmt(30).replace(".00","")} per room (carpet items)`
+        : `Prices shown in the quote builder (varies by room)`;
 
-    // Choosing a service
-    document.getElementById("svcGrid").addEventListener("click", (e) => {
-      const card = e.target.closest(".svcCard");
-      if (!card) return;
-      const level = card.getAttribute("data-level");
-      setService(level);
-      closeServiceModal();
-      // move them to the calculator
-      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
-    });
+      document.getElementById("detailBody").innerHTML = `
+        <div class="detailGrid">
+          <div class="detailCard">
+            <div class="h">What you get</div>
+            <div class="b">
+              <div class="mutebox" style="margin:0 0 10px 0;">${d.sub}</div>
+              <div class="line" style="margin-bottom:10px;">
+                <div>
+                  <b>Pricing</b>
+                  <small>${priceLine}</small>
+                </div>
+                <div class="money">${SERVICE[level].label}</div>
+              </div>
+              <div class="pc" style="margin-bottom:10px;">
+                <b>Included steps</b>
+                <ul>${d.bullets.map(x=>`<li>${x}</li>`).join("")}</ul>
+              </div>
+
+              <div class="proscons">
+                <div class="pc">
+                  <b>Pros</b>
+                  <ul>${d.pros.map(x=>`<li>${x}</li>`).join("")}</ul>
+                </div>
+                <div class="pc">
+                  <b>Cons</b>
+                  <ul>${d.cons.map(x=>`<li>${x}</li>`).join("")}</ul>
+                </div>
+              </div>
+
+              <div class="mutebox" style="margin-top:10px;">${d.footer}</div>
+
+              <div class="detailCtas">
+                <button class="svcBtn ${SERVICE[level].color}" type="button" data-choose="${level}">Choose this service</button>
+                ${level !== "deep" ? `<button class="svcLink" type="button" data-compare="deep">Compare Deep Clean</button>` : ""}
+                <a class="svcLink" href="#callback" data-message="1">Message us about this package</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="detailCard">
+            <div class="h">Equipment used</div>
+            <div class="b">
+              <div class="equip">
+                ${d.equipment.map(e => `
+                  <div class="equipTile">
+                    <img src="${e.img}" alt="${e.name}" loading="lazy" />
+                    <div class="cap">${e.name}</div>
+                  </div>
+                `).join("")}
+              </div>
+              <div class="mutebox" style="margin-top:10px;">
+                You’re hiring professional equipment and the technician using it. Capability varies massively between setups, and that’s why prices vary.
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      detailOverlay.classList.add("show");
+      document.body.classList.add("lock");
+      detailOverlay.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDetailModal(){
+      detailOverlay.classList.remove("show");
+      document.body.classList.remove("lock");
+      detailOverlay.setAttribute("aria-hidden", "true");
+    }
 
     function setService(level){
       state.service = level;
+      state.hasChosenService = true;
+
+      // Close mandatory modal once chosen
+      closeServiceModal();
+      closeDetailModal();
+
       renderSelected();
+
+      // Jump to calculator after choosing
+      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
+      // Ensure close button becomes available next time
+      svcClose.disabled = false;
     }
 
-    // ===== RESET =====
-    document.getElementById("resetBtn").addEventListener("click", () => {
-      state.qty = {};
-      state.extras.deodorise = false;
-      state.extras.insecticide = false;
-      // guard handled by service rules
-      document.getElementById("x_deo").checked = false;
-      document.getElementById("x_insect").checked = false;
-      renderSelected();
-      openServiceModal();
-    });
+    // Render service picker cards
+    function renderServiceCards(){
+      const grid = document.getElementById("svcGrid");
+      const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
+      const fromDeep = "From " + fmt(deepMin).replace(".00","");
+      const fromRestore = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
 
-    // ===== EXTRAS LISTENERS =====
-    document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
-    document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
+      const cards = [
+        {
+          level:"basic",
+          title: SERVICE.basic.label,
+          sub: SERVICE.basic.badge,
+          bullets: SERVICE_DETAILS.basic.bullets.slice(0,3),
+          price: "£30",
+          small: "per room (carpet item)"
+        },
+        {
+          level:"deep",
+          title: SERVICE.deep.label,
+          sub: SERVICE.deep.badge,
+          bullets: SERVICE_DETAILS.deep.bullets.slice(0,3),
+          price: fromDeep,
+          small: "per item"
+        },
+        {
+          level:"restore",
+          title: SERVICE.restore.label,
+          sub: SERVICE.restore.badge,
+          bullets: SERVICE_DETAILS.restore.bullets.slice(0,3),
+          price: fromRestore,
+          small: "per item"
+        }
+      ];
 
-    // Init extras labels
+      grid.innerHTML = cards.map(c => `
+        <div class="svcCard" data-level="${c.level}">
+          <div class="svcTop">
+            <div style="min-width:0">
+              <div class="svcTitle">${c.title}</div>
+              <div class="svcSub">${c.sub}</div>
+            </div>
+            ${c.level === "deep" ? `<div class="svcMost" style="margin-left:auto;">Most popular</div>` : ``}
+          </div>
+          <div class="svcMid">
+            <ul>${c.bullets.map(x=>`<li>${x}</li>`).join("")}</ul>
+          </div>
+          <div class="svcFoot">
+            <div class="svcPrice">
+              <b>${c.price}</b>
+              <span>${c.small}</span>
+            </div>
+            <div class="svcBtns">
+              <button class="svcLink" type="button" data-details="${c.level}">Pros and cons</button>
+              <button class="svcBtn ${SERVICE[c.level].color}" type="button" data-choose="${c.level}">
+                Choose ${c.level === "basic" ? "Budget" : (c.level === "deep" ? "Deep" : "Restore")}
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // -------- INIT / EVENTS --------
+    // Init prices text
     document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    // Render groups + handlers
+    // Render groups
     renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
     renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
     renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
@@ -1427,13 +1473,82 @@
     attachQtyHandlers(document.getElementById("rugs"));
     attachQtyHandlers(document.getElementById("upholstery"));
 
-    // First load
+    // Extras listeners
+    document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
+    document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
+
+    // Open service modal buttons (make it VERY obvious)
+    const openers = ["changeServiceTop","changeServiceWhy","changeServiceCard","changeServiceSticky"];
+    openers.forEach(id => document.getElementById(id).addEventListener("click", ()=> openServiceModal(true)));
+
+    // Close buttons
+    svcClose.addEventListener("click", () => {
+      if (!state.hasChosenService) return; // mandatory until chosen at least once
+      closeServiceModal();
+    });
+    detailClose.addEventListener("click", closeDetailModal);
+
+    // Clicking outside modal closes (only if allowed)
+    serviceOverlay.addEventListener("click", (e) => {
+      if (e.target !== serviceOverlay) return;
+      if (!state.hasChosenService) return;
+      closeServiceModal();
+    });
+    detailOverlay.addEventListener("click", (e) => {
+      if (e.target !== detailOverlay) return;
+      closeDetailModal();
+    });
+
+    // Delegate clicks inside service modal
+    document.getElementById("svcGrid").addEventListener("click", (e) => {
+      const choose = e.target.closest("[data-choose]");
+      const details = e.target.closest("[data-details]");
+      if (details){
+        openDetailModal(details.getAttribute("data-details"));
+        return;
+      }
+      if (choose){
+        setService(choose.getAttribute("data-choose"));
+        return;
+      }
+    });
+
+    // Delegate clicks inside detail modal
+    document.getElementById("detailBody").addEventListener("click", (e) => {
+      const choose = e.target.closest("[data-choose]");
+      const compare = e.target.closest("[data-compare]");
+      const msg = e.target.closest("[data-message]");
+
+      if (msg){
+        // Prefill notes a bit
+        const n = document.getElementById("notes");
+        const label = SERVICE[state.service]?.label || "Chosen service";
+        n.value = (n.value || "").trim();
+        const add = `\n\nQuestion about package: ${label}\n`;
+        if (!n.value.includes("Question about package")) n.value += add;
+        closeDetailModal();
+        return;
+      }
+
+      if (compare){
+        openDetailModal(compare.getAttribute("data-compare"));
+        return;
+      }
+
+      if (choose){
+        setService(choose.getAttribute("data-choose"));
+        return;
+      }
+    });
+
+    // First load render
+    renderServiceCards();
     renderSelected();
-    // Auto-open once per session
-    if (!sessionStorage.getItem("svcPicked")){
-      openServiceModal();
-      sessionStorage.setItem("svcPicked","1");
-    }
+
+    // Force service choice on load (but NOT “stuck” anymore because once chosen, they can close/reopen)
+    window.addEventListener("load", () => {
+      openServiceModal(false);
+    });
 
     function handleSubmit(event){
       event.preventDefault();
@@ -1445,3 +1560,5 @@
 </body>
 </html>
 ```
+
+If you want, I can also wire the “Message us about this package” button so it auto selects the package name into the form (and scrolls to the callback) even if they haven’t typed anything.
