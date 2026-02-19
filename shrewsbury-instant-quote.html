@@ -627,18 +627,39 @@
     .svcBtns{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
 
     /* “Pros and cons” button becomes a coloured tab */
-    .tabBtn{
-      border:1px solid rgba(12,24,40,.14);
-      padding:10px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      font-weight:980;
-      background: linear-gradient(135deg, rgba(43,123,255,.10), rgba(255,191,60,.10));
-      color: var(--ink2);
-      box-shadow: 0 10px 20px rgba(10,18,32,.08);
-      transition: transform .10s ease, box-shadow .10s ease, filter .10s ease;
-      white-space:nowrap;
-    }
+/* PROS & CONS BUTTONS — COLOUR CODED */
+.tabBtn{
+  border:0;
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.01em;
+  box-shadow:0 12px 26px rgba(0,0,0,.18);
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.tabBtn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 18px 36px rgba(0,0,0,.25);
+  filter:brightness(1.05);
+}
+
+/* Match service colours */
+.svcCard[data-level="basic"] .tabBtn{
+  background:linear-gradient(135deg,#ffcc4a,#f2a91e);
+  color:#3a2a00;
+}
+
+.svcCard[data-level="deep"] .tabBtn{
+  background:linear-gradient(135deg,#2b7bff,#1b4fd6);
+}
+
+.svcCard[data-level="restore"] .tabBtn{
+  background:linear-gradient(135deg,#13b46a,#0b7b44);
+}
+
     .tabBtn:hover{transform: translateY(-1px); box-shadow: 0 14px 26px rgba(10,18,32,.12); filter:saturate(1.05);}
 
     .svcBtn{
@@ -1582,7 +1603,7 @@
               <span>${c.small}</span>
             </div>
             <div class="svcBtns">
-              <button class="tabBtn" type="button" data-details="${c.level}">Pros and cons</button>
+             <button class="tabBtn" type="button" data-details="${c.level}">ⓘ Pros & cons</button>
               <button class="svcBtn ${SERVICE[c.level].color}" type="button" data-choose="${c.level}">
                 Choose ${c.level === "basic" ? "Budget" : (c.level === "deep" ? "Deep" : "Restore")}
               </button>
