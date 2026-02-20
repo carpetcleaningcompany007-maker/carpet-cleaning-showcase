@@ -1,37 +1,39 @@
-```html
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Instant Carpet Cleaning Quote Shrewsbury | The Carpet Cleaning Company</title>
-  <meta name="description" content="Instant carpet cleaning quote for Shrewsbury and Shropshire. Tap plus and minus to build your quote. VAT included. Fast booking and call back." />
+  <title>The Carpet Cleaning Company Instant Quote</title>
+  <meta name="description" content="Stop guessing the price. Choose the level of clean you actually want, then build your quote instantly." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/shrewsbury-instant-quote.html" />
-
-  <meta property="og:title" content="Instant Carpet Cleaning Quote in Shrewsbury" />
-  <meta property="og:description" content="Build your carpet cleaning quote instantly. Add rooms and optional extras. Request a call back to book." />
-  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/instant-quote.html" />
 
   <style>
     :root{
-      --bg1:#eef3fb;
-      --bg2:#f7f9fe;
-      --card:#ffffff;
+      --bg0:#070b14;
+      --bg1:#0b1630;
+
       --ink:#0b1220;
-      --muted:#5b677a;
-      --line:#dbe3ef;
+      --ink2:#0f1b33;
+      --muted:#667690;
 
-      --brand:#0b4aa2;
-      --brand2:#0a3a7e;
-      --good:#0ea35a;
+      --brand:#2b7bff;
+      --brand2:#1b4fd6;
 
-      --shadow: 0 18px 50px rgba(10, 18, 32, .12);
-      --shadow2: 0 10px 26px rgba(10, 18, 32, .10);
-      --r: 18px;
-      --r2: 22px;
-      --max: 1220px;
+      --gold:#ffbf3c;
+      --green:#13b46a;
+      --red:#ef4444;
+
+      --card:#ffffff;
+      --line: rgba(12,24,40,.12);
+
+      --shadow: 0 28px 70px rgba(0,0,0,.35);
+      --shadow2: 0 12px 26px rgba(10,18,32,.12);
+
+      --r: 22px;
+      --max: 1180px;
+
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
 
@@ -41,85 +43,171 @@
       font-family: var(--font);
       color: var(--ink);
       background:
-        radial-gradient(1200px 600px at 10% 10%, #e6efff 0%, transparent 60%),
-        radial-gradient(900px 520px at 90% 30%, #ffe8ee 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
+        radial-gradient(900px 520px at 12% 10%, rgba(43,123,255,.22) 0%, transparent 60%),
+        radial-gradient(700px 520px at 86% 16%, rgba(255,191,60,.18) 0%, transparent 60%),
+        radial-gradient(900px 640px at 50% 105%, rgba(19,180,106,.12) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 58%, #f4f7ff 100%);
+      min-height:100vh;
       overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width: var(--max); margin:0 auto; padding: 18px 16px 40px}
+    body.lock{overflow:hidden; height:100vh;}
 
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width: var(--max); margin:0 auto; padding: 14px 14px 120px}
+
+    /* Top bar */
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding: 10px 0 16px;
+      gap:12px; padding: 10px 0 14px;
+      position:relative; z-index:5;
     }
-    .brand{display:flex; flex-direction:column; gap:4px;}
-    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; color:#1e2b40;}
-    .brand span{font-size:13px; color: var(--muted)}
+    .brand{display:flex; flex-direction:column; gap:4px; color:#fff;}
+    .brand b{letter-spacing:.16em; text-transform:uppercase; font-size:12px; opacity:.92;}
+    .brand span{font-size:13px; opacity:.80; max-width:58ch;}
+
     .top-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
+      color:#fff; font-weight:900; font-size:13px;
+      cursor:pointer; white-space:nowrap;
+      box-shadow: 0 12px 28px rgba(0,0,0,.18);
+      backdrop-filter: blur(12px);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.26)}
+    .btn.primary{background: linear-gradient(135deg, var(--brand), var(--brand2));}
+    .btn.call{background: rgba(255,255,255,.14);}
+    .btn.ghost{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn.green{
+      background: linear-gradient(135deg, #13b46a, #0b7b44);
+      color:#fff;
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      backdrop-filter:none;
+    }
 
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.75);
-      border:1px solid rgba(219,227,239,.9);
-      box-shadow: 0 10px 22px rgba(10, 18, 32, .07);
-      color:#21314b; font-size:13px;
-      backdrop-filter: blur(10px);
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:10px 14px; border-radius:999px; border:1px solid rgba(219,227,239,.95);
-      background:#fff; box-shadow: 0 12px 28px rgba(10,18,32,.08);
-      font-weight:800; font-size:13px; cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+      font-size:13px; font-weight:850;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
       white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 40px rgba(10,18,32,.12)}
-    .btn.primary{
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#fff; border-color: rgba(255,255,255,.18);
-    }
-    .btn.call{background:#fff; color:#111; border-color: rgba(219,227,239,.95);}
 
+    /* HERO */
     .hero{
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 18px;
-      background: linear-gradient(135deg, #0a2f66 0%, #0b4aa2 55%, #133c74 100%);
+      background:
+        radial-gradient(900px 520px at 15% 15%, rgba(43,123,255,.22), transparent 55%),
+        radial-gradient(700px 420px at 85% 20%, rgba(255,191,60,.18), transparent 55%),
+        linear-gradient(135deg, #0b2d5e 0%, #0a1f42 55%, #08152c 100%);
       color:#fff;
       box-shadow: var(--shadow);
-      overflow:hidden;
       position:relative;
+      overflow:hidden;
     }
     .hero::after{
       content:"";
-      position:absolute; inset:-120px -120px auto auto;
-      width:380px; height:380px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 55%);
-      transform: rotate(20deg);
+      position:absolute; inset:-140px -140px auto auto;
+      width:420px; height:420px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.20), transparent 58%);
+      transform: rotate(18deg);
       pointer-events:none;
     }
-    .hero-grid{
+
+    .hero-top{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:14px;
       align-items:start;
       position:relative;
       z-index:1;
     }
-    .hero h1{margin:0; font-size:28px; line-height:1.15}
-    .hero p{margin:8px 0 0; color: rgba(255,255,255,.88); font-size:14px; max-width: 70ch}
-    .hero-badges{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .hero h1{margin:0; font-size:34px; line-height:1.05; letter-spacing:-.02em}
+    .hero h1 span{color: var(--gold)}
+    .hero p{
+      margin:10px 0 0;
+      color: rgba(255,255,255,.86);
+      font-size:14px;
+      line-height:1.55;
+      max-width: 75ch;
+    }
+    .hero-badges{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; align-content:flex-start;
+    }
     .tag{
       display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.22);
-      font-size:12px;
+      padding:9px 12px; border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:12px; font-weight:900;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.16);
+      white-space:nowrap;
     }
 
-    .grid{
+    /* Why prices vary block */
+    .why{
       margin-top: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .why .h{
+      padding: 14px 16px;
+      border-bottom:1px solid rgba(12,24,40,.08);
+      background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .why .h b{color: var(--ink2); font-size:16px}
+    .why .b{padding: 14px 16px 16px}
+    .whyGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap:12px;
+    }
+    .whyTile{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      padding: 12px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+    }
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:980;
+      color:#fff;
+      flex:0 0 auto;
+      box-shadow: 0 12px 24px rgba(10,18,32,.12);
+    }
+    .i1{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .i2{background: linear-gradient(135deg, #2b7bff, #1b4fd6);}
+    .i3{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .whyTile b{display:block; color: var(--ink2); font-size:14px}
+    .whyTile span{display:block; margin-top:6px; color: var(--muted); font-weight:800; font-size:12.5px; line-height:1.4}
+
+    /* Main grid for calculator */
+    .grid{
+      margin-top: 14px;
       display:grid;
       grid-template-columns: 1.05fr .95fr;
       gap:14px;
@@ -128,19 +216,20 @@
 
     .card{
       background: rgba(255,255,255,.92);
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: var(--r2);
+      border:1px solid var(--line);
+      border-radius: 22px;
       box-shadow: var(--shadow2);
-      backdrop-filter: blur(12px);
       overflow: visible;
     }
     .card-h{
       padding: 14px 16px;
-      border-bottom:1px solid rgba(219,227,239,.9);
+      border-bottom:1px solid rgba(12,24,40,.08);
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      background: linear-gradient(135deg, rgba(43,123,255,.07), rgba(255,191,60,.06));
+      border-radius: 22px 22px 0 0;
     }
-    .card-h h2{margin:0; font-size:16px;}
-    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:600}
+    .card-h h2{margin:0; font-size:16px; color: var(--ink2)}
+    .card-h small{display:block; margin-top:4px; color: var(--muted); font-weight:800}
     .card-b{padding: 14px 16px 16px}
 
     .summary-row{
@@ -150,70 +239,78 @@
       margin-bottom: 10px;
     }
     .total-box{
-      background: linear-gradient(135deg, #e9f0ff, #f7fbff);
-      border:1px solid rgba(160,186,230,.55);
-      border-radius: 16px;
+      background:
+        radial-gradient(600px 220px at 0% 0%, rgba(43,123,255,.12), transparent 55%),
+        radial-gradient(520px 220px at 100% 0%, rgba(255,191,60,.10), transparent 60%),
+        linear-gradient(135deg, #ffffff, #f4f7ff);
+      border:1px solid rgba(43,123,255,.18);
+      border-radius: 18px;
       padding: 12px;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
-    .total-box b{font-size:26px}
-    .total-box span{font-size:12px; color: var(--muted)}
-    .vat-box{
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
+    .total-box b{
+      font-size:28px;
+      color: var(--ink2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing:-.02em;
+    }
+    .total-box span{font-size:12px; color: var(--muted); font-weight:950; white-space:nowrap}
+    .info-box{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
       padding: 12px;
       background:#fff;
     }
-    .vat-chip{
+    .chip{
       display:inline-flex; align-items:center; gap:8px;
-      background: rgba(14,163,90,.12);
-      color: #0a7a43;
-      border:1px solid rgba(14,163,90,.25);
+      background: rgba(255,191,60,.18);
+      color: #6b4b00;
+      border:1px solid rgba(255,191,60,.34);
       border-radius:999px;
       padding:6px 10px;
-      font-weight:900;
+      font-weight:950;
       font-size:12px;
       margin-right:8px;
+      white-space:nowrap;
     }
-    .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45}
+    .note{margin: 10px 0 0; color: var(--muted); font-size:12px; line-height:1.45; font-weight:700}
 
     .extras{display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 4px;}
     .toggle{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 12px;
       border-radius: 999px;
-      background:#fff;
-      border:1px solid rgba(219,227,239,.95);
+      background: linear-gradient(135deg, #ffffff, #f7f9ff);
+      border:1px solid rgba(12,24,40,.10);
       cursor:pointer;
       user-select:none;
       font-size:13px;
-      font-weight:800;
+      font-weight:900;
+      box-shadow: 0 10px 20px rgba(10,18,32,.06);
     }
     .toggle input{width:16px; height:16px}
-    .toggle small{font-weight:900; color: var(--good)}
-    .toggle .mut{font-weight:700; color: var(--muted)}
+    .toggle small{font-weight:950; color: var(--green)}
+    .toggle .mut{font-weight:850; color: var(--muted)}
+    .toggle.disabled{opacity:.55; cursor:not-allowed}
 
     .section-head{
       display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top:1px dashed rgba(219,227,239,.95);
+      gap:10px; margin-top: 14px; padding-top: 10px;
+      border-top:1px dashed rgba(12,24,40,.12);
     }
-    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:950;}
+    .section-head .left{display:flex; align-items:center; gap:10px; font-weight:980; color: var(--ink2);}
     .plus-dot{
       width:28px; height:28px; border-radius:10px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
       color:#fff; display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 10px 22px rgba(11,74,162,.25);
-      font-weight:950; flex:0 0 auto;
+      box-shadow: 0 10px 22px rgba(43,123,255,.25);
+      font-weight:980; flex:0 0 auto;
     }
     .section-head .right{
       color: var(--muted);
       font-size:12px;
       display:flex; align-items:center; gap:10px;
-      white-space:nowrap;
-      font-weight:700;
+      white-space:nowrap; font-weight:950;
     }
 
     .items{
@@ -221,113 +318,43 @@
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 12px;
-      max-width: 100%;
     }
     .item{
-      min-width:0;
-      background: linear-gradient(135deg, #fff, #fff7fb);
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
+      background:
+        radial-gradient(420px 220px at 0% 0%, rgba(43,123,255,.08), transparent 55%),
+        radial-gradient(420px 220px at 100% 0%, rgba(255,191,60,.06), transparent 60%),
+        linear-gradient(135deg, #ffffff, #fbfcff);
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
       padding: 12px;
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-      box-shadow: 0 10px 22px rgba(10,18,32,.06);
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
     }
-    .item h3{margin:0; font-size:14px; line-height:1.2;}
-    .item p{margin:6px 0 0; font-size:12px; color: var(--muted)}
-    .price{
-      margin-top:8px;
-      font-weight:950;
-      color: var(--good);
-      font-size:14px;
-      letter-spacing:.02em;
-    }
-    .qty{display:flex; align-items:center; gap:8px; flex:0 0 auto;}
+    .item h3{margin:0; font-size:14px; line-height:1.2; color: var(--ink2)}
+    .item p{margin:6px 0 0; font-size:12px; color: var(--muted); font-weight:800}
+    .price{margin-top:8px; font-weight:980; color: var(--green); font-size:14px; letter-spacing:.02em}
+    .qty{display:flex; align-items:center; gap:8px;}
     .qbtn{
-      width:34px; height:34px; border-radius: 10px;
-      border:1px solid rgba(219,227,239,.95);
-      background:#fff;
+      width:34px; height:34px; border-radius: 12px;
+      border:1px solid rgba(12,24,40,.10);
+      background: #fff;
       display:flex; align-items:center; justify-content:center;
-      font-weight:950;
-      cursor:pointer;
-      box-shadow: 0 10px 22px rgba(10,18,32,.06);
+      font-weight:980; cursor:pointer;
+      box-shadow: 0 10px 18px rgba(10,18,32,.08);
     }
     .qnum{
-      width:34px;
-      text-align:center;
-      font-weight:950;
+      width:34px; text-align:center;
+      font-weight:980;
       font-variant-numeric: tabular-nums;
+      color: var(--ink2);
     }
 
-    .list{display:flex; flex-direction:column; gap:10px;}
-    .line{
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 14px;
-      background:#fff;
-    }
-    .line b{font-size:13px}
-    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:650}
-    .money{font-weight:950; font-variant-numeric: tabular-nums; color: var(--good);}
-    .hr{height:1px; background: rgba(219,227,239,.9); margin: 10px 0}
-
-    .form-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top: 10px;
-    }
-    .field{display:flex; flex-direction:column; gap:6px;}
-    label{font-size:12px; color: var(--muted); font-weight:800}
-    input, select, textarea{
-      width:100%;
-      padding:11px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(219,227,239,.98);
-      background:#fff;
-      outline:none;
-      font: inherit;
-      font-size:13px;
-    }
-    textarea{min-height:110px; resize:vertical}
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(11,74,162,.45);
-      box-shadow: 0 0 0 4px rgba(11,74,162,.10);
-    }
-
-    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
-    .btn.danger{
-      background: linear-gradient(135deg, #0ea35a, #0b7b44);
-      color:#fff;
-      border-color: rgba(255,255,255,.18);
-    }
-
-    .mutebox{
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #f3f6ff, #ffffff);
-      border:1px solid rgba(219,227,239,.95);
-      color: var(--muted);
-      font-size:12.5px;
-      line-height:1.5;
-    }
-
-    footer{
-      text-align:center;
-      color: var(--muted);
-      font-size:12px;
-      margin-top: 18px;
-      padding: 10px 0 0;
-    }
-
-    /* Collapsible sections */
     details.acc{
       margin-top: 10px;
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 18px;
       background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 26px rgba(10, 18, 32, .08);
+      box-shadow: 0 12px 26px rgba(10, 18, 32, .08);
       overflow:hidden;
     }
     details.acc > summary{
@@ -338,101 +365,423 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      font-weight:950;
-      color:#14223a;
+      font-weight:980;
+      color: var(--ink2);
       user-select:none;
+      background: linear-gradient(135deg, rgba(43,123,255,.06), rgba(255,191,60,.05));
     }
     details.acc > summary::-webkit-details-marker{display:none}
-    .acc-meta{color:var(--muted); font-weight:800; font-size:12px; white-space:nowrap;}
-    .acc-body{padding: 12px 14px 14px; border-top:1px solid rgba(219,227,239,.9);}
+    .acc-meta{color:var(--muted); font-weight:980; font-size:12px; white-space:nowrap;}
+    .acc-body{padding: 12px 14px 14px; border-top:1px solid rgba(12,24,40,.08);}
 
-    /* Commercial tiles + calculator */
-    .rate-tiles{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap:12px;
-      margin: 10px 0 0;
-    }
-    .tile{
-      background:#fff;
-      border:1px solid rgba(219,227,239,.95);
-      border-radius: 16px;
-      padding: 12px 12px;
-      box-shadow: 0 10px 22px rgba(10,18,32,.06);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
+    .list{display:flex; flex-direction:column; gap:10px;}
+    .line{
+      display:flex; align-items:flex-start; justify-content:space-between;
       gap:10px;
-      min-width:0;
+      padding:10px 12px;
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ffffff, #f8faff);
     }
-    .tile b{font-size:14px}
-    .tile small{display:block; color:var(--muted); margin-top:6px; font-weight:700}
-    .bubble{
-      flex:0 0 auto;
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-weight:950;
-      color:#fff;
-      background: linear-gradient(135deg, var(--good), #0b7b44);
-      box-shadow: 0 10px 22px rgba(14,163,90,.22);
-      font-size:12px;
-      white-space:nowrap;
+    .line b{font-size:13px; color: var(--ink2)}
+    .line small{display:block; color: var(--muted); margin-top:4px; font-weight:850}
+    .money{font-weight:980; font-variant-numeric: tabular-nums; color: var(--green);}
+    .hr{height:1px; background: rgba(12,24,40,.10); margin: 10px 0}
+
+    .mutebox{
+      padding: 12px 14px;
+      border-radius: 18px;
+      background:
+        radial-gradient(520px 240px at 0% 0%, rgba(43,123,255,.08), transparent 55%),
+        linear-gradient(135deg, #ffffff, #f7f9ff);
+      border:1px solid rgba(12,24,40,.10);
+      color: var(--muted);
+      font-size:12.5px;
+      line-height:1.5;
+      box-shadow: 0 12px 24px rgba(10,18,32,.05);
+      font-weight:700;
     }
 
-    .calc-row{
+    .form-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:10px;
       margin-top: 10px;
     }
-    .big-total{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-    }
-    .big-pill{
-      flex: 1 1 220px;
-      background: #0b4aa2;
-      color:#fff;
+    .field{display:flex; flex-direction:column; gap:6px;}
+    label{font-size:12px; color: var(--muted); font-weight:980}
+    input, select, textarea{
+      width:100%;
+      padding:11px 12px;
       border-radius: 14px;
-      padding: 12px 12px;
-      font-weight:950;
+      border:1px solid rgba(12,24,40,.12);
+      background:#fff;
+      outline:none;
+      font: inherit;
+      font-size:13px;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(43,123,255,.50);
+      box-shadow: 0 0 0 4px rgba(43,123,255,.12);
+    }
+    .cta{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+
+    footer{
+      text-align:center;
+      color: rgba(12,24,40,.62);
+      font-size:12px;
+      margin-top: 18px;
+      padding: 14px 0 0;
+      font-weight:700;
+    }
+
+    /* Sticky bar */
+    .sticky-bar{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      padding: 10px 12px;
+      background: linear-gradient(135deg, rgba(11,22,48,.94), rgba(7,11,20,.92));
+      border-top: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 -18px 50px rgba(0,0,0,.30);
+      display:none;
+    }
+    .sticky-inner{
+      max-width: var(--max);
+      margin:0 auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      box-shadow: 0 14px 34px rgba(11,74,162,.18);
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .big-pill span{opacity:.9; font-weight:850}
-    .big-pill b{font-variant-numeric: tabular-nums; font-size:18px}
+    .sticky-total{color:#fff; display:flex; flex-direction:column; gap:2px;}
+    .sticky-total span{font-size:11px; opacity:.78; font-weight:980; letter-spacing:.02em}
+    .sticky-total b{font-size:18px; font-variant-numeric: tabular-nums}
 
+    /* Floating chosen badge (always visible) */
+    .floatingBadge{
+      position: fixed;
+      left: 12px;
+      bottom: 88px;
+      z-index: 60;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(12,24,40,.12);
+      box-shadow: 0 16px 36px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+      max-width: calc(100vw - 24px);
+    }
+    .floatingBadge .dot{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 22px rgba(43,123,255,.25);
+      flex:0 0 auto;
+    }
+    .floatingBadge b{font-size:12.5px; color: var(--ink2); font-weight:980; white-space:nowrap;}
+    .floatingBadge span{font-size:12px; color: var(--muted); font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .floatingBadge .mini{
+      margin-left:auto;
+      border:0;
+      padding:8px 10px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight:980;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      box-shadow: 0 12px 26px rgba(10,18,32,.12);
+      white-space:nowrap;
+    }
+    .floatingBadge.hide{display:none;}
+
+    /* ---------- MODALS ---------- */
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index: 999;
+      padding: 16px;
+      overflow:auto;
+    }
+    .overlay.show{display:block;}
+
+    .modal{
+      width:min(980px, 100%);
+      margin: 22px auto;
+      border-radius: 22px;
+      background:
+        radial-gradient(900px 520px at 15% 15%, rgba(43,123,255,.10), transparent 55%),
+        radial-gradient(700px 420px at 85% 15%, rgba(255,191,60,.08), transparent 55%),
+        linear-gradient(135deg, #ffffff, #f7f9ff);
+      border:1px solid rgba(255,255,255,.50);
+      box-shadow: 0 28px 70px rgba(0,0,0,.38);
+      overflow:hidden;
+    }
+    .modalHead{
+      padding: 14px 16px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      background: linear-gradient(135deg, rgba(43,123,255,.12), rgba(255,191,60,.10));
+      border-bottom:1px solid rgba(12,24,40,.10);
+    }
+    .modalHead b{display:block; font-size:16px; color: var(--ink2); letter-spacing:-.01em}
+    .modalHead span{display:block; margin-top:6px; font-size:13px; color: var(--muted); font-weight:800; line-height:1.45}
+    .xbtn{
+      border:0;
+      width:38px; height:38px;
+      border-radius: 14px;
+      cursor:pointer;
+      background: rgba(255,255,255,.85);
+      border:1px solid rgba(12,24,40,.12);
+      box-shadow: 0 10px 22px rgba(10,18,32,.10);
+      font-weight:980;
+      color: var(--ink2);
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 auto;
+    }
+    .xbtn[disabled]{opacity:.45; cursor:not-allowed;}
+
+    .modalBody{padding: 14px 16px 16px;}
+
+    .svcGrid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap:12px;
+    }
+
+    /* Make the service tiles stand out more */
+    .svcCard{
+      border-radius: 18px;
+      border:1px solid rgba(12,24,40,.12);
+      background: linear-gradient(135deg, #ffffff, #fbfcff);
+      box-shadow: 0 14px 30px rgba(10,18,32,.12);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 260px;
+      position:relative;
+      transform: translateY(0);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    }
+    .svcCard:hover{transform: translateY(-2px); box-shadow: 0 18px 44px rgba(10,18,32,.16); filter: saturate(1.02);}
+    .svcCard[data-level="basic"]{
+      background:
+        radial-gradient(500px 240px at 0% 0%, rgba(255,191,60,.20), transparent 55%),
+        linear-gradient(135deg, #ffffff, #fff8e6);
+      border-color: rgba(255,191,60,.35);
+    }
+    .svcCard[data-level="deep"]{
+      background:
+        radial-gradient(500px 240px at 0% 0%, rgba(43,123,255,.18), transparent 55%),
+        linear-gradient(135deg, #ffffff, #eef4ff);
+      border-color: rgba(43,123,255,.28);
+    }
+    .svcCard[data-level="restore"]{
+      background:
+        radial-gradient(500px 240px at 0% 0%, rgba(19,180,106,.16), transparent 55%),
+        linear-gradient(135deg, #ffffff, #eafff5);
+      border-color: rgba(19,180,106,.26);
+    }
+
+    .svcTop{
+      padding: 12px 12px 10px;
+      border-bottom:1px solid rgba(12,24,40,.10);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .svcTitle{font-weight:980; font-size:16px; color: var(--ink2); letter-spacing:-.01em; line-height:1.15}
+    .svcSub{margin-top:6px; font-size:12.5px; color: var(--muted); font-weight:850; line-height:1.35}
+    .svcMost{
+      background: linear-gradient(135deg, rgba(255,191,60,.92), rgba(255,122,89,.92));
+      color:#2b1b00;
+      font-weight:980;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.45);
+      box-shadow: 0 12px 26px rgba(0,0,0,.14);
+      white-space:nowrap;
+      margin-top: 2px;
+      transform: translateX(8px); /* moved right so it’s not in the way */
+    }
+    .svcMid{padding: 10px 12px 10px; flex:1; background: rgba(255,255,255,.82);}
+    .svcMid ul{margin:0; padding:0 0 0 16px; color:#2a3a55; font-size:13px; line-height:1.5}
+    .svcMid li{margin:7px 0}
+    .svcFoot{
+      padding: 12px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-top:1px solid rgba(12,24,40,.10);
+      background: rgba(255,255,255,.72);
+      flex-wrap:wrap;
+    }
+    .svcPrice b{display:block; font-size:18px; color: var(--ink2); letter-spacing:-.01em}
+    .svcPrice span{display:block; font-size:12px; color: var(--muted); font-weight:900}
+    .svcBtns{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+
+    /* “Pros and cons” button becomes a coloured tab */
+    .tabBtn{
+      border:1px solid rgba(12,24,40,.14);
+      padding:10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      font-weight:980;
+      background: linear-gradient(135deg, rgba(43,123,255,.10), rgba(255,191,60,.10));
+      color: var(--ink2);
+      box-shadow: 0 10px 20px rgba(10,18,32,.08);
+      transition: transform .10s ease, box-shadow .10s ease, filter .10s ease;
+      white-space:nowrap;
+    }
+    .tabBtn:hover{transform: translateY(-1px); box-shadow: 0 14px 26px rgba(10,18,32,.12); filter:saturate(1.05);}
+
+    .svcBtn{
+      border:0;
+      padding:10px 12px;
+      border-radius: 14px;
+      font-weight:980;
+      cursor:pointer;
+      box-shadow: 0 12px 26px rgba(10,18,32,.12);
+      color:#fff;
+      white-space:nowrap;
+    }
+    .svcBtn.basic{background: linear-gradient(135deg, #ffcc4a, #f2a91e); color:#3a2a00;}
+    .svcBtn.deep{background: linear-gradient(135deg, #1d4ed8, #1239a7);}
+    .svcBtn.restore{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+
+    .svcLink{
+      background: transparent;
+      border:1px solid rgba(12,24,40,.14);
+      color: var(--ink2);
+      font-weight:980;
+      padding:10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+    }
+
+    .detailGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+      align-items:start;
+    }
+    .detailCard{
+      border:1px solid rgba(12,24,40,.12);
+      border-radius: 18px;
+      background:#fff;
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+      overflow:hidden;
+    }
+    .detailCard .h{
+      padding: 12px 14px;
+      background: linear-gradient(135deg, rgba(43,123,255,.10), rgba(255,191,60,.08));
+      border-bottom:1px solid rgba(12,24,40,.10);
+      font-weight:980;
+      color: var(--ink2);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .detailCard .b{padding: 12px 14px;}
+
+    /* NEW Pros/Cons: simplified, more attractive, easier to read */
+    .pcWrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top: 10px;
+    }
+    .pcBox{
+      border-radius: 18px;
+      border:1px solid rgba(12,24,40,.10);
+      box-shadow: 0 12px 24px rgba(10,18,32,.06);
+      overflow:hidden;
+    }
+    .pcHead{
+      padding: 10px 12px;
+      display:flex; align-items:center; gap:10px;
+      font-weight:980;
+      color:#fff;
+      letter-spacing:-.01em;
+    }
+    .pcHead .iconDot{
+      width:26px; height:26px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.22);
+      border:1px solid rgba(255,255,255,.22);
+      font-weight:980;
+    }
+    .pcBody{
+      padding: 10px 12px 12px;
+      background:#fff;
+    }
+    .pcBody ul{margin:0; padding:0 0 0 16px; font-size:12.8px; line-height:1.5; color:#2a3a55;}
+    .pcBody li{margin:7px 0}
+    .pcBox.pro .pcHead{background: linear-gradient(135deg, #13b46a, #0b7b44);}
+    .pcBox.con .pcHead{background: linear-gradient(135deg, #ef4444, #b91c1c);}
+
+    .equip{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:10px;
+    }
+    .equipTile{
+      border:1px solid rgba(12,24,40,.10);
+      border-radius: 16px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 10px 20px rgba(10,18,32,.06);
+    }
+    .equipTile img{
+      width:100%;
+      height: 150px;
+      object-fit: cover;
+      display:block;
+      background:#f2f4ff;
+    }
+    .equipTile .cap{
+      padding: 10px 10px 10px;
+      font-weight:980;
+      font-size:12.5px;
+      color: var(--ink2);
+      line-height:1.25;
+    }
+    .detailCtas{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+      padding-top: 10px;
+      border-top:1px solid rgba(12,24,40,.10);
+      margin-top: 10px;
+    }
+
+    /* Mobile */
     @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
+      .hero-top{grid-template-columns:1fr}
       .hero-badges{justify-content:flex-start}
       .grid{grid-template-columns:1fr}
       .form-grid{grid-template-columns:1fr}
-      .calc-row{grid-template-columns:1fr}
+      .whyGrid{grid-template-columns:1fr}
+      .detailGrid{grid-template-columns:1fr}
+      .pcWrap{grid-template-columns:1fr}
+    }
+    @media (max-width: 860px){
+      .pill{display:none}
+      .sticky-bar{display:block}
+      .wrap{padding-bottom: 128px}
+
+      .svcGrid{grid-template-columns: 1fr;}
+      .equip{grid-template-columns: 1fr;}
+      .equipTile img{height: 170px;}
+
+      .floatingBadge{bottom: 92px;}
     }
     @media (max-width: 420px){
-      .item{padding: 12px 10px}
-      .qbtn{width:32px; height:32px}
-      .qnum{width:30px}
+      .hero h1{font-size:26px}
       .total-box b{font-size:24px}
-      .hero h1{font-size:24px}
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"The Carpet Cleaning Company",
-    "areaServed":["Shrewsbury","Shropshire"],
-    "telephone":"07802563213",
-    "url":"https://www.thecarpetcleaningcrew.co.uk",
-    "description":"Professional carpet and upholstery cleaning in Shrewsbury and Shropshire. Instant quote calculator and fast booking."
-  }
-  </script>
 </head>
 
 <body>
@@ -440,37 +789,77 @@
     <div class="topbar">
       <div class="brand">
         <b>Instant Quote</b>
-        <span>Carpet cleaning in Shrewsbury and surrounding areas. VAT included.</span>
+        <span>The Carpet Cleaning Company. Choose the level of clean first, then add rooms.</span>
       </div>
 
       <div class="top-actions">
-        <span class="pill">Tap plus and minus to build your quote</span>
+        <span class="pill">Choose your clean level, then build your quote</span>
+        <button class="btn ghost" type="button" id="changeServiceTop">Change service level</button>
         <a class="btn primary" href="#callback">Request callback</a>
         <a class="btn call" href="tel:07802563213">Call</a>
       </div>
     </div>
 
-    <section class="hero" aria-label="Instant quote hero">
-      <div class="hero-grid">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-top">
         <div>
-          <h1>Instant Carpet Cleaning Quote in Shrewsbury</h1>
-          <p>Select rooms, add optional extras, and see your total instantly. Then request a callback to confirm availability and get your clean booked in.</p>
+          <h1>Stop guessing the <span>price</span> of carpet cleaning</h1>
+          <p>
+            Choose the level of clean you actually want, then add rooms.
+            Your choice sets the pricing, the process, and the end result.
+          </p>
         </div>
+
         <div class="hero-badges">
-          <span class="tag">VAT included</span>
-          <span class="tag">Professional equipment</span>
-          <span class="tag">Fast booking</span>
+          <span class="tag">Choose level first</span>
+          <span class="tag">Then add rooms</span>
+          <span class="tag">Request callback to book</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" aria-label="Why prices vary">
+      <div class="h">
+        <b>Why prices vary between carpet cleaners</b>
+        <button class="btn primary" type="button" id="changeServiceWhy">Choose service level</button>
+      </div>
+      <div class="b">
+        <div class="whyGrid">
+          <div class="whyTile">
+            <div class="icon i1">£</div>
+            <div>
+              <b>Cheap machines</b>
+              <span>Basic setups and quick wand only cleans. Limited soil removal.</span>
+            </div>
+          </div>
+          <div class="whyTile">
+            <div class="icon i2">HP</div>
+            <div>
+              <b>Professional systems</b>
+              <span>Better heat, better extraction, better agitation and better results.</span>
+            </div>
+          </div>
+          <div class="whyTile">
+            <div class="icon i3">✓</div>
+            <div>
+              <b>Long lasting results</b>
+              <span>Proper rinse and extract plus optional protection treatments.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="grid">
-      <!-- LEFT: BUILDER -->
-      <section class="card" aria-label="Build your quote">
+      <!-- LEFT -->
+      <section class="card" aria-label="Build quote">
         <div class="card-h">
           <div>
             <h2>Build your quote</h2>
-            <small>Choose items below. Extras apply per item selected.</small>
+            <small>Add items below. Restore adds stain guard automatically.</small>
+          </div>
+          <div>
+            <button class="btn primary" type="button" id="changeServiceCard">Change service</button>
           </div>
         </div>
 
@@ -478,52 +867,50 @@
           <div class="summary-row">
             <div class="total-box">
               <div>
-                <div style="font-size:12px; color:var(--muted); font-weight:900;">Total cost</div>
+                <div style="font-size:12px; color:var(--muted); font-weight:980;">Total estimate</div>
                 <b id="total">£0.00</b>
               </div>
               <div style="text-align:right;">
-                <span>Instant estimate</span>
+                <span id="serviceBadge">Deep Clean</span>
               </div>
             </div>
 
-            <div class="vat-box">
+            <div class="info-box">
               <div>
-                <span class="vat-chip">VAT included</span>
-                <span class="note" style="display:inline; color:var(--muted);">
-                  No hidden extras. Total may vary if rooms are unusually large, heavily soiled, or access is difficult.
+                <span class="chip">No VAT charged</span>
+                <span class="note" style="display:inline;">
+                  Estimate may vary if rooms are unusually large, heavily soiled, or access is difficult.
                 </span>
               </div>
             </div>
           </div>
 
-          <p class="note">
-            Scotchgard is protection. Deodorise is an odour neutraliser. Insecticide is textile pest treatment where needed.
-          </p>
+          <p class="note" id="serviceNote">Choose your service level to begin.</p>
 
-          <div class="extras" role="group" aria-label="Optional extras">
-            <label class="toggle" title="Adds per selected item">
-              <input type="checkbox" id="x_scotch" />
-              Scotchgard <span class="mut">(+</span><small id="scotchPriceTxt">£15</small><span class="mut"> per item)</span>
+          <div class="extras" role="group" aria-label="Extras">
+            <label class="toggle disabled" id="tg_guard" title="Restore only">
+              <input type="checkbox" id="x_guard" disabled />
+              Stain guard <span class="mut">(</span><small id="guardPriceTxt">£15</small><span class="mut"> per item, Restore only)</span>
             </label>
+
             <label class="toggle" title="Adds per selected item">
               <input type="checkbox" id="x_deo" />
               Deodorise <span class="mut">(+</span><small id="deoPriceTxt">£10</small><span class="mut"> per item)</span>
             </label>
+
             <label class="toggle" title="Adds per selected item">
               <input type="checkbox" id="x_insect" />
               Insecticide <span class="mut">(+</span><small id="insectPriceTxt">£20</small><span class="mut"> per item)</span>
             </label>
           </div>
 
-          <!-- CARPETS -->
           <div class="section-head">
             <div class="left"><div class="plus-dot">+</div> Carpets</div>
             <div class="right"><span><b id="carpetCount">0</b> items</span></div>
           </div>
           <div class="items" id="carpets"></div>
 
-          <!-- RUGS (collapsible) -->
-          <details class="acc" id="accRugs">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -536,8 +923,7 @@
             </div>
           </details>
 
-          <!-- UPHOLSTERY (collapsible) -->
-          <details class="acc" id="accUp">
+          <details class="acc">
             <summary>
               <span style="display:flex;align-items:center;gap:10px;">
                 <span class="plus-dot" aria-hidden="true">+</span>
@@ -550,146 +936,19 @@
             </div>
           </details>
 
-          <!-- COMMERCIAL (hidden dropdown section) -->
-          <details class="acc" id="accCommercial">
-            <summary>
-              <span style="display:flex;align-items:center;gap:10px;">
-                <span class="plus-dot" aria-hidden="true">+</span>
-                <span>Commercial quote calculator</span>
-              </span>
-              <span class="acc-meta">Optional</span>
-            </summary>
-
-            <div class="acc-body">
-              <div class="mutebox" style="margin-bottom:10px;">
-                Enter total square metres for an instant commercial estimate. It auto picks the correct £ per m2 band. Add chairs and optional Scotchgard per m2 if needed.
-              </div>
-
-              <div class="rate-tiles" aria-label="Commercial price bands">
-                <div class="tile">
-                  <div>
-                    <b>Up to 150</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandA">£3.50 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>151 to 499</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandB">£3.00 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>500 to 999</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandC">£2.50 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>1,000 plus</b>
-                    <small>Square metres</small>
-                  </div>
-                  <div class="bubble" id="bandD">£2.00 per m2</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>Office chairs</b>
-                    <small>Fabric or leather</small>
-                  </div>
-                  <div class="bubble" id="chairRate">£5.00 each</div>
-                </div>
-                <div class="tile">
-                  <div>
-                    <b>Scotchgard</b>
-                    <small>Protector</small>
-                  </div>
-                  <div class="bubble" id="commScotchRate">£1.00 per m2</div>
-                </div>
-              </div>
-
-              <div class="calc-row">
-                <div class="field">
-                  <label for="commSqm">Total in square metres</label>
-                  <input id="commSqm" type="number" min="0" step="0.01" value="0" />
-                </div>
-                <div class="field">
-                  <label for="commSteps">Stairs number of steps</label>
-                  <input id="commSteps" type="number" min="0" step="1" value="0" />
-                </div>
-
-                <div class="field">
-                  <label for="commChairs">Office chairs quantity</label>
-                  <input id="commChairs" type="number" min="0" step="1" value="0" />
-                </div>
-
-                <div class="field">
-                  <label for="commStairRate">Stairs price per step (£)</label>
-                  <input id="commStairRate" type="number" min="0" step="0.01" value="0" />
-                </div>
-              </div>
-
-              <div class="extras" style="margin-top:10px;">
-                <label class="toggle" title="Commercial scotchgard is per m2">
-                  <input type="checkbox" id="commScotch" />
-                  Scotchgard <span class="mut">(+</span><small>£1</small><span class="mut"> per m2)</span>
-                </label>
-
-                <label class="toggle" title="Show VAT split">
-                  <input type="checkbox" id="commVatOn" />
-                  Include VAT split <span class="mut">(</span><small>20%</small><span class="mut">)</span>
-                </label>
-              </div>
-
-              <div class="big-total" aria-label="Commercial totals">
-                <div class="big-pill">
-                  <span>Net</span>
-                  <b id="commNet">£0.00</b>
-                </div>
-                <div class="big-pill" style="background:#0a3a7e;">
-                  <span>VAT</span>
-                  <b id="commVat">£0.00</b>
-                </div>
-                <div class="big-pill" style="background:#0ea35a;">
-                  <span>Total</span>
-                  <b id="commTotal">£0.00</b>
-                </div>
-              </div>
-
-              <div class="hr"></div>
-
-              <div class="calc-row">
-                <div class="field">
-                  <label for="convFt">Convert square ft to m2</label>
-                  <input id="convFt" type="number" min="0" step="0.01" value="0" />
-                </div>
-                <div class="field">
-                  <label for="convM2">Convert m2 to square ft</label>
-                  <input id="convM2" type="number" min="0" step="0.01" value="0" />
-                </div>
-              </div>
-
-              <div class="mutebox" style="margin-top:10px;">
-                Commercial rates are banded by total area. If you want different bands or chair pricing, tell me and I’ll edit them.
-              </div>
-            </div>
-          </details>
-
           <div class="hr"></div>
           <div class="mutebox">
-            Tip: if you have hall, stairs and landing together, add each item you need and the breakdown will show on the right.
+            Tip: Add hall, stairs and landing as separate items and the breakdown will show on the right.
           </div>
         </div>
       </section>
 
-      <!-- RIGHT: SELECTED + CALLBACK -->
-      <aside class="card" aria-label="Your selected items and callback form">
+      <!-- RIGHT -->
+      <aside class="card" aria-label="Selected and callback">
         <div class="card-h">
           <div>
             <h2>Your selected items</h2>
-            <small>Line items update as you add rooms.</small>
+            <small>Updates instantly as you add rooms.</small>
           </div>
         </div>
 
@@ -698,11 +957,11 @@
 
           <div class="hr"></div>
 
-          <div class="card" style="box-shadow:none; border-radius:16px; overflow:visible;">
-            <div class="card-h" style="border-radius:16px 16px 0 0;">
+          <div class="card" style="box-shadow:none; border-radius:18px; overflow:visible; border:1px solid rgba(12,24,40,.10);">
+            <div class="card-h" style="border-radius:18px 18px 0 0;">
               <div>
                 <h2 id="callback">Arranging the clean is easy</h2>
-                <small>Enter your details and we will call you to arrange a date. If you prefer, call now on <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>.</small>
+                <small>Enter your details and we will call you to arrange a date. Or call <a href="tel:07802563213" style="text-decoration:underline;">07802 563213</a>.</small>
               </div>
             </div>
             <div class="card-b">
@@ -710,25 +969,26 @@
                 <div class="form-grid">
                   <div class="field">
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text" placeholder="Your name" required />
+                    <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
                   </div>
                   <div class="field">
                     <label for="phone">Phone</label>
-                    <input id="phone" name="phone" type="tel" placeholder="Best number" required />
+                    <input id="phone" name="phone" type="tel" placeholder="Best number" inputmode="tel" autocomplete="tel" required />
                   </div>
-
                   <div class="field">
                     <label for="email">Email (optional)</label>
-                    <input id="email" name="email" type="email" placeholder="Optional email address" />
+                    <input id="email" name="email" type="email" placeholder="Optional email" autocomplete="email" />
                   </div>
-
                   <div class="field">
                     <label for="postcode">Postcode starts with</label>
-                    <select id="postcode" name="postcode">
+                    <select id="postcode" name="postcode" autocomplete="postal-code">
                       <option value="">Select</option>
-                      <option>SY1</option><option>SY2</option><option>SY3</option><option>SY4</option>
-                      <option>SY5</option><option>SY6</option><option>SY7</option><option>SY8</option>
-                      <option>TF</option><option>WV</option><option>Other</option>
+                      <option>SY</option>
+                      <option>TF</option>
+                      <option>WV</option>
+                      <option>WR</option>
+                      <option>HR</option>
+                      <option>Other</option>
                     </select>
                   </div>
                 </div>
@@ -738,37 +998,24 @@
                   <textarea id="notes" name="notes" placeholder="Parking, access, stains, pets, preferred days"></textarea>
                 </div>
 
+                <input type="hidden" id="serviceLevel" name="serviceLevel" value="deep" />
                 <input type="hidden" id="breakdown" name="breakdown" />
                 <input type="hidden" id="totalHidden" name="total" />
 
                 <div class="cta">
-                  <button class="btn danger" type="submit">Request callback</button>
-                  <a class="btn" href="tel:07802563213">Call now</a>
+                  <button class="btn green" type="submit">Request callback</button>
+                  <a class="btn call" href="tel:07802563213">Call now</a>
                 </div>
 
-                <p class="note" style="margin-top:10px;">
-                  Submitting sends your selected items and total with your message.
-                </p>
+                <p class="note" style="margin-top:10px;">Submitting sends your selected items and total.</p>
               </form>
             </div>
           </div>
 
           <div class="hr"></div>
-
-          <div class="card" style="box-shadow:none; border-radius:16px;">
-            <div class="card-h" style="border-radius:16px 16px 0 0;">
-              <div>
-                <h2>Carpet cleaning Shrewsbury</h2>
-                <small>Local carpet and upholstery cleaning for Shrewsbury and Shropshire. Fast quotes, clear pricing, simple booking.</small>
-              </div>
-            </div>
-            <div class="card-b">
-              <div class="mutebox">
-                This page is built specifically for local searches in Shrewsbury and Shropshire, with instant pricing, fast loading and clear booking steps.
-              </div>
-            </div>
+          <div class="mutebox">
+            Need to change the clean level? Tap “Change service level” at the top of the page.
           </div>
-
         </div>
       </aside>
     </div>
@@ -782,19 +1029,162 @@
     </footer>
   </div>
 
+  <!-- Floating chosen service badge -->
+  <div class="floatingBadge" id="floatingBadge" aria-live="polite">
+    <div class="dot" id="badgeDot"></div>
+    <div style="min-width:0">
+      <b id="badgeTitle">Service</b>
+      <span id="badgeSub">Choose a service level</span>
+    </div>
+    <button class="mini" type="button" id="badgeChange">Change</button>
+  </div>
+
+  <div class="sticky-bar" role="region" aria-label="Quick actions">
+    <div class="sticky-inner">
+      <div class="sticky-total">
+        <span>Total estimate</span>
+        <b id="totalSticky">£0.00</b>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn ghost" type="button" id="changeServiceSticky">Change service</button>
+        <a class="btn primary" href="#callback">Request callback</a>
+        <a class="btn call" href="tel:07802563213">Call</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE PICKER MODAL -->
+  <div class="overlay" id="serviceOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="svcTitle">
+      <div class="modalHead">
+        <div>
+          <b id="svcTitle">What’s most important to you?</b>
+          <span>Are you looking for the cheapest quote, or the best possible job? We do both. Choose your clean level below.</span>
+        </div>
+        <button class="xbtn" type="button" id="svcClose" title="Close">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="svcGrid" id="svcGrid"></div>
+        <div class="mutebox" style="margin-top:12px;">
+          You can change the service level anytime using “Change service level” at the top of the page.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAILS MODAL -->
+  <div class="overlay" id="detailOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modalHead">
+        <div>
+          <b id="detailTitle">Service details</b>
+          <span id="detailSub">Pros, cons, and the equipment used.</span>
+        </div>
+        <button class="xbtn" type="button" id="detailClose" title="Close">✕</button>
+      </div>
+      <div class="modalBody" id="detailBody"></div>
+    </div>
+  </div>
+
   <script>
-    // =============================
-    // CONFIG (Scotchgard is HALF PRICE: £15)
-    // =============================
-    const EXTRAS = {
-      scotchgard: 15,     // was 30, now 15
-      deodorise: 10,
-      insecticide: 20
+    // Extras
+    const EXTRAS = { guard: 15, deodorise: 10, insecticide: 20 };
+
+    // Images (direct links)
+    const IMAGES = {
+      airflexMini: "https://www.clean-smart.co.uk/wp-content/uploads/2019/10/miniflex.jpg",
+      wand:       "https://www.prestigesupplies.co.uk/wp-content/uploads/2019/05/Prestige-supplies-stainless-steel-carpet-cleaning-wand.jpg",
+      enforcer400: "https://www.carpet-cleaning-equipment.co.uk/cdn/shop/files/Ashbys_Enforcer_400_Psi_machine.jpg?v=1715170570",
+      crb:        "https://www.smart-cleaning-solutions.com/cdn/shop/products/Pro35_SQ.jpg?v=1720532618&width=1445"
     };
 
+    // Service levels
+    const SERVICE = {
+      basic:   { label:"Budget Carpet Clean", badge:"Cheapest option. Quick refresh.", color:"basic", guardForced:false },
+      deep:    { label:"Deep Clean",          badge:"Best balance of price and results.", color:"deep", guardForced:false, most:true },
+      restore: { label:"Full Restore + Protect", badge:"Best possible job. Long lasting result.", color:"restore", guardForced:true }
+    };
+
+    const SERVICE_DETAILS = {
+      basic: {
+        heading: "Budget Carpet Clean",
+        sub: "This is the type of clean you see all over the internet. A cheaper option for routine maintenance.",
+        bullets: [
+          "In tank detergent",
+          "Wand only hot water extraction",
+          "No scrubbing or agitation",
+          "Best for routine maintenance"
+        ],
+        pros: [
+          "Most competitive price",
+          "Quick refresh for lightly soiled carpets",
+          "Good for regular upkeep"
+        ],
+        cons: [
+          "Not a deep clean",
+          "Less effective on traffic lanes and heavy soiling",
+          "No agitation step to lift embedded dirt"
+        ],
+        equipment: [
+          { name:"Compact extractor (Airflex Mini style)", img: IMAGES.airflexMini },
+          { name:"Standard carpet cleaning wand", img: IMAGES.wand }
+        ],
+        footer: "Detergent goes into the tank. This method focuses on a quick maintenance refresh rather than a full fibre scrub."
+      },
+      deep: {
+        heading: "Deep Clean",
+        sub: "Proper professional clean. More steps, better results.",
+        bullets: [
+          "In tank rinse agent plus pre spray",
+          "Agitation to scrub fibres",
+          "Dwell time for better results",
+          "Full rinse and extract flush out"
+        ],
+        pros: [
+          "Best balance of price and results",
+          "Agitation lifts embedded dirt and improves appearance",
+          "Full rinse and extract flushes out residue"
+        ],
+        cons: [
+          "More time on site than budget cleans",
+          "Heavily soiled carpets may need extra work"
+        ],
+        equipment: [
+          { name:"Ashbys Enforcer 400 (powerful extraction)", img: IMAGES.enforcer400 },
+          { name:"Counter rotating brush (CRB) agitation", img: IMAGES.crb }
+        ],
+        footer: "You’re not just paying for time. You’re hiring a trained technician and professional equipment that performs on a different level."
+      },
+      restore: {
+        heading: "Full Restore + Protect",
+        sub: "Deep clean plus protection on every selected item for a longer lasting result.",
+        bullets: [
+          "Everything in Deep Clean",
+          "Stain guard on every selected item",
+          "Helps resist spills and slows resoiling",
+          "Best long lasting result"
+        ],
+        pros: [
+          "Best possible finish",
+          "Protection helps spills bead and buys you time",
+          "Slows resoiling and helps maintenance"
+        ],
+        cons: [
+          "Higher price due to protectant and extra steps",
+          "Not suitable for every fibre type in every situation"
+        ],
+        equipment: [
+          { name:"Ashbys Enforcer 400 (powerful extraction)", img: IMAGES.enforcer400 },
+          { name:"Counter rotating brush (CRB) agitation", img: IMAGES.crb }
+        ],
+        footer: "Restore includes stain guard automatically on every item you add in the quote builder."
+      }
+    };
+
+    // Items
     const ITEMS = {
       carpets: [
-        { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:42 },
+        { id:"staircase",  name:"Staircase",   desc:"Per flight",              price:35 },
         { id:"hallway",    name:"Hallway",     desc:"Downstairs corridor",     price:22 },
         { id:"landing",    name:"Landing",     desc:"Upstairs passage",        price:22 },
         { id:"living",     name:"Living Room", desc:"Family room",             price:79 },
@@ -811,86 +1201,85 @@
         { id:"rug_large",  name:"Rug (Large)",  desc:"Steam clean", price:49 }
       ],
       upholstery: [
-        { id:"sofa_2",   name:"2 Seat Sofa",  desc:"Fabric or leather", price:65 },
-        { id:"sofa_3",   name:"3 Seat Sofa",  desc:"Fabric or leather", price:85 },
-        { id:"corner",   name:"Corner Sofa",  desc:"Standard size",      price:120 },
-        { id:"armchair", name:"Armchair",     desc:"Single seat",        price:45 }
+        { id:"sofa_2",   name:"2 Seat Sofa",    desc:"Fabric or leather", price:80 },
+        { id:"sofa_3",   name:"3 Seat Sofa",    desc:"Fabric or leather", price:120 },
+        { id:"corner",   name:"Sofa Per Seat",  desc:"Standard size",      price:40 },
+        { id:"armchair", name:"Armchair",       desc:"Single seat",        price:30 }
       ]
     };
 
-    // =============================
-    // STATE
-    // =============================
     const state = {
-      qty: {}, // id -> count
-      extras: { scotchgard:false, deodorise:false, insecticide:false } // start unticked
+      qty: {},
+      extras: { guard:false, deodorise:false, insecticide:false },
+      service: "deep",
+      hasChosenService: false
     };
 
-    // =============================
-    // HELPERS
-    // =============================
-    const fmt = n => "£" + (Math.round((Number(n) || 0) * 100) / 100).toFixed(2);
-
-    const getCount = (group) =>
-      group.reduce((sum, it) => sum + (state.qty[it.id] || 0), 0);
+    const fmt = n => "£" + (Math.round((Number(n)||0)*100)/100).toFixed(2);
+    const getCount = group => group.reduce((sum,it)=> sum + (state.qty[it.id]||0), 0);
 
     function itemsCountTotal(){
       return Object.values(state.qty).reduce((s,v)=> s + (Number(v)||0), 0);
+    }
+
+    function unitPrice(groupName, basePrice){
+      if (state.service === "basic" && groupName === "Carpets") return 30;
+      return Number(basePrice) || 0;
     }
 
     function extrasPerItemTotal(){
       const enabled = Object.entries(state.extras).filter(([,on]) => !!on);
       const perItem = enabled.reduce((s,[k]) => s + (EXTRAS[k] || 0), 0);
       const itemsCount = itemsCountTotal();
-      return { enabled, perItem, itemsCount, total: perItem * itemsCount };
+      return { enabled, itemsCount, total: perItem * itemsCount };
     }
 
     function calc(){
       let subtotal = 0;
       const lines = [];
 
-      const allGroups = [
+      const all = [
         ...ITEMS.carpets.map(it => ({...it, group:"Carpets"})),
         ...ITEMS.rugs.map(it => ({...it, group:"Rugs"})),
         ...ITEMS.upholstery.map(it => ({...it, group:"Sofas and Upholstery"}))
       ];
 
-      for (const it of allGroups){
+      for (const it of all){
         const q = Number(state.qty[it.id] || 0);
         if (!q) continue;
-        const lineTotal = (Number(it.price) || 0) * q;
-        subtotal += lineTotal;
-        lines.push({ label: it.name, group: it.group, qty: q, unit: Number(it.price)||0, total: lineTotal });
+        const unit = unitPrice(it.group, it.price);
+        const total = unit * q;
+        subtotal += total;
+        lines.push({ label: it.name, group: it.group, qty: q, unit, total });
       }
 
       const ex = extrasPerItemTotal();
-
       const extrasLines = ex.enabled.map(([k]) => ({
-        label: k === "scotchgard" ? "Scotchgard protection" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
+        label: k === "guard" ? "Stain guard" : (k === "deodorise" ? "Deodorise" : "Insecticide"),
         group: "Extras",
         qty: ex.itemsCount,
         unit: Number(EXTRAS[k] || 0),
         total: Number(EXTRAS[k] || 0) * ex.itemsCount
       })).filter(x => x.qty > 0 && x.unit > 0);
 
-      const grand = subtotal + ex.total;
-      return { lines, extrasLines, subtotal, extrasTotal: ex.total, grand, itemsCount: ex.itemsCount };
+      return { lines, extrasLines, grand: subtotal + ex.total };
     }
 
-    function renderGroup(el, groupItems){
+    function renderGroup(el, groupName, groupItems){
       el.innerHTML = groupItems.map(it => {
         const q = state.qty[it.id] || 0;
+        const unitNow = unitPrice(groupName, it.price);
         return `
           <article class="item" data-id="${it.id}">
             <div style="min-width:0">
               <h3>${it.name}</h3>
               <p>${it.desc}</p>
-              <div class="price">${fmt(it.price)}</div>
+              <div class="price">${fmt(unitNow)}</div>
             </div>
-            <div class="qty" aria-label="Quantity controls for ${it.name}">
-              <button class="qbtn" data-act="dec" type="button" aria-label="Decrease ${it.name}">−</button>
-              <div class="qnum" aria-label="Quantity">${q}</div>
-              <button class="qbtn" data-act="inc" type="button" aria-label="Increase ${it.name}">+</button>
+            <div class="qty">
+              <button class="qbtn" data-act="dec" type="button" aria-label="Decrease">−</button>
+              <div class="qnum">${q}</div>
+              <button class="qbtn" data-act="inc" type="button" aria-label="Increase">+</button>
             </div>
           </article>
         `;
@@ -904,45 +1293,103 @@
       return d;
     }
 
-    function renderSelected(){
-      const r = calc();
+    function applyServiceRules(){
+      const s = SERVICE[state.service];
+      document.getElementById("serviceBadge").textContent = s.label;
+      document.getElementById("serviceLevel").value = state.service;
 
+      const note = document.getElementById("serviceNote");
+      if (state.service === "basic"){
+        note.textContent = "Budget Carpet Clean selected. In tank detergent and wand only hot water extraction. No scrubbing or agitation. Best for routine maintenance.";
+      } else if (state.service === "deep"){
+        note.textContent = "Deep Clean selected. Pre spray, agitation, dwell time, then full rinse and extract for a proper professional clean.";
+      } else {
+        note.textContent = "Full Restore + Protect selected. Deep clean plus stain guard protection on every selected item automatically.";
+      }
+
+      const guard = document.getElementById("x_guard");
+      const wrap = document.getElementById("tg_guard");
+
+      if (s.guardForced){
+        state.extras.guard = true;
+        guard.checked = true;
+        guard.disabled = true;
+        wrap.classList.remove("disabled");
+      } else {
+        state.extras.guard = false;
+        guard.checked = false;
+        guard.disabled = true;
+        wrap.classList.add("disabled");
+      }
+
+      // Floating badge update
+      const badge = document.getElementById("floatingBadge");
+      const dot = document.getElementById("badgeDot");
+      const title = document.getElementById("badgeTitle");
+      const sub = document.getElementById("badgeSub");
+
+      title.textContent = s.label;
+      sub.textContent = s.badge;
+
+      if (state.service === "basic") dot.style.background = "linear-gradient(135deg, #ffcc4a, #f2a91e)";
+      if (state.service === "deep") dot.style.background = "linear-gradient(135deg, #2b7bff, #1b4fd6)";
+      if (state.service === "restore") dot.style.background = "linear-gradient(135deg, #13b46a, #0b7b44)";
+
+      badge.classList.remove("hide");
+    }
+
+    function renderSelected(){
+      applyServiceRules();
+
+      renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
+      renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
+      renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
+
+      const r = calc();
       document.getElementById("total").textContent = fmt(r.grand);
+      document.getElementById("totalSticky").textContent = fmt(r.grand);
 
       document.getElementById("carpetCount").textContent = getCount(ITEMS.carpets);
       document.getElementById("rugCount").textContent = getCount(ITEMS.rugs);
       document.getElementById("upCount").textContent = getCount(ITEMS.upholstery);
 
       const list = document.getElementById("selectedList");
-      const all = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
+      const allLines = [...r.lines, ...r.extrasLines].filter(x => (Number(x.total)||0) > 0);
 
       list.innerHTML = "";
-
-      if (!all.length){
+      if (!allLines.length){
         list.appendChild(makeEmptyState());
       } else {
-        list.innerHTML = all.map(x => `
-          <div class="line">
+        list.innerHTML =
+          `<div class="line" style="border-color: rgba(43,123,255,.22);">
             <div>
-              <b>${x.label}</b>
-              <small>${x.group} · ${x.qty} × ${fmt(x.unit)}</small>
+              <b>Service level</b>
+              <small>${SERVICE[state.service].label}</small>
             </div>
-            <div class="money">${fmt(x.total)}</div>
-          </div>
-        `).join("") + `
-          <div class="hr"></div>
-          <div class="line" style="background:linear-gradient(135deg,#f3f6ff,#ffffff);">
-            <div>
-              <b>Total</b>
-              <small>Instant estimate</small>
+            <div></div>
+          </div>` +
+          allLines.map(x => `
+            <div class="line">
+              <div>
+                <b>${x.label}</b>
+                <small>${x.group} · ${x.qty} × ${fmt(x.unit)}</small>
+              </div>
+              <div class="money">${fmt(x.total)}</div>
             </div>
-            <div class="money">${fmt(r.grand)}</div>
-          </div>
-        `;
+          `).join("") +
+          `<div class="hr"></div>
+           <div class="line" style="background:linear-gradient(135deg,#f3f6ff,#ffffff);">
+             <div><b>Total</b><small>Instant estimate</small></div>
+             <div class="money">${fmt(r.grand)}</div>
+           </div>`;
       }
 
-      const breakdownText = all.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`).join("\n");
-      document.getElementById("breakdown").value = breakdownText;
+      const breakdown = [
+        `Service level: ${SERVICE[state.service].label}`,
+        ...allLines.map(x => `${x.label} (${x.group}): ${x.qty} × ${fmt(x.unit)} = ${fmt(x.total)}`)
+      ].join("\n");
+
+      document.getElementById("breakdown").value = breakdown;
       document.getElementById("totalHidden").value = fmt(r.grand);
     }
 
@@ -950,7 +1397,6 @@
       container.addEventListener("click", (e) => {
         const btn = e.target.closest("button.qbtn");
         if (!btn) return;
-
         const card = btn.closest(".item");
         if (!card) return;
 
@@ -961,117 +1407,281 @@
         if (act === "inc") state.qty[id] = cur + 1;
         if (act === "dec") state.qty[id] = Math.max(0, cur - 1);
 
-        card.querySelector(".qnum").textContent = state.qty[id];
         renderSelected();
       });
     }
 
-    // =============================
-    // COMMERCIAL CALC
-    // =============================
-    const COMM = {
-      bands: [
-        { max: 150, rate: 3.50 },
-        { max: 499, rate: 3.00 },
-        { max: 999, rate: 2.50 },
-        { max: Infinity, rate: 2.00 }
-      ],
-      chairEach: 5.00,
-      scotchPerM2: 1.00,
-      vatRate: 0.20
-    };
+    // -------- MODAL CONTROL --------
+    const serviceOverlay = document.getElementById("serviceOverlay");
+    const svcClose = document.getElementById("svcClose");
+    const detailOverlay = document.getElementById("detailOverlay");
+    const detailClose = document.getElementById("detailClose");
 
-    function pickCommRate(sqm){
-      const x = Number(sqm || 0);
-      for (const b of COMM.bands){
-        if (x <= b.max) return b.rate;
-      }
-      return COMM.bands[COMM.bands.length-1].rate;
+    function openServiceModal(force=false){
+      serviceOverlay.classList.add("show");
+      document.body.classList.add("lock");
+      serviceOverlay.setAttribute("aria-hidden", "false");
+      svcClose.disabled = !state.hasChosenService && !force;
     }
 
-    function calcCommercial(){
-      const sqm = Number(document.getElementById("commSqm").value || 0);
-      const steps = Number(document.getElementById("commSteps").value || 0);
-      const chairs = Number(document.getElementById("commChairs").value || 0);
-      const stairRate = Number(document.getElementById("commStairRate").value || 0);
-
-      const rate = pickCommRate(sqm);
-
-      const areaNet = sqm * rate;
-      const stairNet = steps * stairRate;
-      const chairNet = chairs * COMM.chairEach;
-      const scotchOn = document.getElementById("commScotch").checked;
-      const scotchNet = scotchOn ? (sqm * COMM.scotchPerM2) : 0;
-
-      const net = areaNet + stairNet + chairNet + scotchNet;
-
-      const vatOn = document.getElementById("commVatOn").checked;
-      const vat = vatOn ? (net * COMM.vatRate) : 0;
-      const total = net + vat;
-
-      document.getElementById("commNet").textContent = fmt(net);
-      document.getElementById("commVat").textContent = fmt(vat);
-      document.getElementById("commTotal").textContent = fmt(total);
+    function closeServiceModal(){
+      serviceOverlay.classList.remove("show");
+      document.body.classList.remove("lock");
+      serviceOverlay.setAttribute("aria-hidden", "true");
     }
 
-    // =============================
-    // INIT
-    // =============================
-    document.getElementById("scotchPriceTxt").textContent = fmt(EXTRAS.scotchgard).replace(".00","");
+    function openDetailModal(level){
+      const d = SERVICE_DETAILS[level];
+      document.getElementById("detailTitle").textContent = d.heading;
+      document.getElementById("detailSub").textContent = "Simple pros and cons plus the equipment used.";
+
+      const priceLine = (level === "basic")
+        ? `£30 per room (carpet items)`
+        : `Prices shown in the quote builder (varies by room)`;
+
+      document.getElementById("detailBody").innerHTML = `
+        <div class="detailGrid">
+          <div class="detailCard">
+            <div class="h">Summary</div>
+            <div class="b">
+              <div class="mutebox" style="margin:0 0 10px 0;">${d.sub}</div>
+
+              <div class="line" style="margin-bottom:10px;">
+                <div>
+                  <b>Pricing</b>
+                  <small>${priceLine}</small>
+                </div>
+                <div class="money">${SERVICE[level].label}</div>
+              </div>
+
+              <div class="pcBox" style="border-radius:18px; border:1px solid rgba(12,24,40,.10); overflow:hidden;">
+                <div class="pcBody" style="background:linear-gradient(135deg,#ffffff,#f8faff);">
+                  <b style="display:block; color:var(--ink2); font-size:13px; font-weight:980; margin-bottom:8px;">What’s included</b>
+                  <ul style="margin:0; padding:0 0 0 16px; font-size:12.8px; line-height:1.5; color:#2a3a55;">
+                    ${d.bullets.map(x=>`<li style="margin:7px 0;">${x}</li>`).join("")}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="pcWrap">
+                <div class="pcBox pro">
+                  <div class="pcHead"><span class="iconDot">✓</span> Pros</div>
+                  <div class="pcBody">
+                    <ul>${d.pros.map(x=>`<li>${x}</li>`).join("")}</ul>
+                  </div>
+                </div>
+                <div class="pcBox con">
+                  <div class="pcHead"><span class="iconDot">!</span> Cons</div>
+                  <div class="pcBody">
+                    <ul>${d.cons.map(x=>`<li>${x}</li>`).join("")}</ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mutebox" style="margin-top:10px;">${d.footer}</div>
+
+              <div class="detailCtas">
+                <button class="svcBtn ${SERVICE[level].color}" type="button" data-choose="${level}">Choose this service</button>
+                ${level !== "deep" ? `<button class="svcLink" type="button" data-compare="deep">Compare Deep Clean</button>` : ""}
+                <a class="svcLink" href="#callback" data-message="1">Message us about this package</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="detailCard">
+            <div class="h">Equipment used</div>
+            <div class="b">
+              <div class="equip">
+                ${d.equipment.map(e => `
+                  <div class="equipTile">
+                    <img src="${e.img}" alt="${e.name}" loading="lazy" />
+                    <div class="cap">${e.name}</div>
+                  </div>
+                `).join("")}
+              </div>
+              <div class="mutebox" style="margin-top:10px;">
+                You’re hiring professional equipment and the technician using it. Capability varies massively between setups, and that’s why prices vary.
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      detailOverlay.classList.add("show");
+      document.body.classList.add("lock");
+      detailOverlay.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDetailModal(){
+      detailOverlay.classList.remove("show");
+      document.body.classList.remove("lock");
+      detailOverlay.setAttribute("aria-hidden", "true");
+    }
+
+    function setService(level){
+      state.service = level;
+      state.hasChosenService = true;
+
+      closeServiceModal();
+      closeDetailModal();
+
+      renderSelected();
+      document.querySelector(".grid").scrollIntoView({behavior:"smooth", block:"start"});
+      svcClose.disabled = false;
+    }
+
+    function renderServiceCards(){
+      const grid = document.getElementById("svcGrid");
+      const deepMin = Math.min(...ITEMS.carpets.map(x => x.price));
+      const fromDeep = "From " + fmt(deepMin).replace(".00","");
+      const fromRestore = "From " + fmt(deepMin + EXTRAS.guard).replace(".00","");
+
+      const cards = [
+        {
+          level:"basic",
+          title: SERVICE.basic.label,
+          sub: SERVICE.basic.badge,
+          bullets: SERVICE_DETAILS.basic.bullets.slice(0,3),
+          price: "£30",
+          small: "per room (carpet item)"
+        },
+        {
+          level:"deep",
+          title: SERVICE.deep.label,
+          sub: SERVICE.deep.badge,
+          bullets: SERVICE_DETAILS.deep.bullets.slice(0,3),
+          price: fromDeep,
+          small: "per item"
+        },
+        {
+          level:"restore",
+          title: SERVICE.restore.label,
+          sub: SERVICE.restore.badge,
+          bullets: SERVICE_DETAILS.restore.bullets.slice(0,3),
+          price: fromRestore,
+          small: "per item"
+        }
+      ];
+
+      grid.innerHTML = cards.map(c => `
+        <div class="svcCard" data-level="${c.level}">
+          <div class="svcTop">
+            <div style="min-width:0">
+              <div class="svcTitle">${c.title}</div>
+              <div class="svcSub">${c.sub}</div>
+            </div>
+            ${c.level === "deep" ? `<div class="svcMost">Most popular</div>` : ``}
+          </div>
+          <div class="svcMid">
+            <ul>${c.bullets.map(x=>`<li>${x}</li>`).join("")}</ul>
+          </div>
+          <div class="svcFoot">
+            <div class="svcPrice">
+              <b>${c.price}</b>
+              <span>${c.small}</span>
+            </div>
+            <div class="svcBtns">
+              <button class="tabBtn" type="button" data-details="${c.level}">Pros and cons</button>
+              <button class="svcBtn ${SERVICE[c.level].color}" type="button" data-choose="${c.level}">
+                Choose ${c.level === "basic" ? "Budget" : (c.level === "deep" ? "Deep" : "Restore")}
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // Init prices text
+    document.getElementById("guardPriceTxt").textContent = fmt(EXTRAS.guard).replace(".00","");
     document.getElementById("deoPriceTxt").textContent = fmt(EXTRAS.deodorise).replace(".00","");
     document.getElementById("insectPriceTxt").textContent = fmt(EXTRAS.insecticide).replace(".00","");
 
-    const carpetsEl = document.getElementById("carpets");
-    const rugsEl = document.getElementById("rugs");
-    const upEl = document.getElementById("upholstery");
+    // Render groups and handlers
+    renderGroup(document.getElementById("carpets"), "Carpets", ITEMS.carpets);
+    renderGroup(document.getElementById("rugs"), "Rugs", ITEMS.rugs);
+    renderGroup(document.getElementById("upholstery"), "Sofas and Upholstery", ITEMS.upholstery);
 
-    renderGroup(carpetsEl, ITEMS.carpets);
-    renderGroup(rugsEl, ITEMS.rugs);
-    renderGroup(upEl, ITEMS.upholstery);
+    attachQtyHandlers(document.getElementById("carpets"));
+    attachQtyHandlers(document.getElementById("rugs"));
+    attachQtyHandlers(document.getElementById("upholstery"));
 
-    attachQtyHandlers(carpetsEl);
-    attachQtyHandlers(rugsEl);
-    attachQtyHandlers(upEl);
-
-    document.getElementById("x_scotch").addEventListener("change", (e)=>{ state.extras.scotchgard = e.target.checked; renderSelected(); });
+    // Extras listeners
     document.getElementById("x_deo").addEventListener("change", (e)=>{ state.extras.deodorise = e.target.checked; renderSelected(); });
     document.getElementById("x_insect").addEventListener("change", (e)=>{ state.extras.insecticide = e.target.checked; renderSelected(); });
 
+    // Openers
+    ["changeServiceTop","changeServiceWhy","changeServiceCard","changeServiceSticky"].forEach(id => {
+      document.getElementById(id).addEventListener("click", ()=> openServiceModal(true));
+    });
+    document.getElementById("badgeChange").addEventListener("click", ()=> openServiceModal(true));
+
+    // Close buttons
+    svcClose.addEventListener("click", () => {
+      if (!state.hasChosenService) return;
+      closeServiceModal();
+    });
+    detailClose.addEventListener("click", closeDetailModal);
+
+    // Outside click closes (only if allowed)
+    serviceOverlay.addEventListener("click", (e) => {
+      if (e.target !== serviceOverlay) return;
+      if (!state.hasChosenService) return;
+      closeServiceModal();
+    });
+    detailOverlay.addEventListener("click", (e) => {
+      if (e.target !== detailOverlay) return;
+      closeDetailModal();
+    });
+
+    // Service modal clicks
+    document.getElementById("svcGrid").addEventListener("click", (e) => {
+      const choose = e.target.closest("[data-choose]");
+      const details = e.target.closest("[data-details]");
+      if (details){
+        openDetailModal(details.getAttribute("data-details"));
+        return;
+      }
+      if (choose){
+        setService(choose.getAttribute("data-choose"));
+        return;
+      }
+    });
+
+    // Detail modal clicks
+    document.getElementById("detailBody").addEventListener("click", (e) => {
+      const choose = e.target.closest("[data-choose]");
+      const compare = e.target.closest("[data-compare]");
+      const msg = e.target.closest("[data-message]");
+
+      if (msg){
+        const n = document.getElementById("notes");
+        const label = SERVICE[state.service]?.label || "Chosen service";
+        n.value = (n.value || "").trim();
+        const add = `\n\nQuestion about package: ${label}\n`;
+        if (!n.value.includes("Question about package")) n.value += add;
+        closeDetailModal();
+        return;
+      }
+
+      if (compare){
+        openDetailModal(compare.getAttribute("data-compare"));
+        return;
+      }
+
+      if (choose){
+        setService(choose.getAttribute("data-choose"));
+        return;
+      }
+    });
+
+    // First load
+    renderServiceCards();
     renderSelected();
 
-    // Commercial listeners
-    ["commSqm","commSteps","commChairs","commStairRate"].forEach(id=>{
-      document.getElementById(id).addEventListener("input", calcCommercial);
-    });
-    document.getElementById("commScotch").addEventListener("change", calcCommercial);
-    document.getElementById("commVatOn").addEventListener("change", calcCommercial);
-
-    // Converters (live)
-    const FT_PER_M2 = 10.763910416709722;
-    const convFt = document.getElementById("convFt");
-    const convM2 = document.getElementById("convM2");
-
-    let lock = false;
-    convFt.addEventListener("input", () => {
-      if (lock) return;
-      lock = true;
-      const ft = Number(convFt.value || 0);
-      convM2.value = (ft / FT_PER_M2).toFixed(2);
-      lock = false;
-    });
-    convM2.addEventListener("input", () => {
-      if (lock) return;
-      lock = true;
-      const m2 = Number(convM2.value || 0);
-      convFt.value = (m2 * FT_PER_M2).toFixed(2);
-      lock = false;
+    window.addEventListener("load", () => {
+      openServiceModal(false);
     });
 
-    calcCommercial();
-
-    // =============================
-    // FORM SUBMIT (demo)
-    // =============================
     function handleSubmit(event){
       event.preventDefault();
       alert("Callback request captured on this page. If you want it to email you, send me your Formspree endpoint and I will wire it in.");
@@ -1081,4 +1691,3 @@
   </script>
 </body>
 </html>
-```
