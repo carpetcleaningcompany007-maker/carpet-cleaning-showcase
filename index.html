@@ -25,33 +25,7 @@
     gtag('config', 'AW-17385772946');
   </script>
 
-<script>
-  async function submitQuote(e, form) {
-    e.preventDefault();
-
-    const btn = document.getElementById("submitBtn");
-    if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      });
-
-      if (!res.ok) throw new Error("Formspree submit failed");
-
-      // go to thank you page (must exist in repo as thank-you.html)
-      window.location.href = "thank-you.html";
-      return;
-
-    } catch (err) {
-      alert("Sorry, it didn’t send. Please try again, or call 07802 563213.");
-      if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
-    }
-  }
-</script>
-
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -737,6 +711,8 @@
       e.preventDefault();
 
       const btn = document.getElementById("submitBtn");
+      const oldText = btn ? btn.textContent : "";
+
       if (btn) { btn.disabled = true; btn.textContent = "Sending..."; }
 
       try {
@@ -746,17 +722,19 @@
           headers: { "Accept": "application/json" }
         });
 
-        if (!res.ok) throw new Error("Formspree submit failed");
+        if (!res.ok) {
+          let msg = "";
+          try { msg = await res.text(); } catch(e){}
+          throw new Error("Formspree submit failed: " + res.status + " " + msg);
+        }
 
-        alert("Thank you. Your quote request has been received.");
-        form.reset();
+        window.location.href = "./thank-you.html";
+        return;
 
-        const wrap = document.getElementById("extraFields");
-        if (wrap) wrap.classList.remove("is-open");
       } catch (err) {
         alert("Sorry, it didn’t send. Please try again, or call 07802 563213.");
-      } finally {
-        if (btn) { btn.disabled = false; btn.textContent = "Get my quote"; }
+        console.error(err);
+        if (btn) { btn.disabled = false; btn.textContent = oldText || "Get my quote"; }
       }
     }
 
