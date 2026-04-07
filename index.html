@@ -10,8 +10,8 @@
   <meta property="og:type" content="website" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.thecarpetcleaningcrew.co.uk/" />
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R9CFDLD03L"></script>
+<<<<<<< HEAD
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -60,53 +60,32 @@
     };
   </script>
 
+=======
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-R9CFDLD03L');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17385772946"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17385772946');</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{50:"#f5f3ff",100:"#ede9fe",600:"#7c3aed",700:"#6d28d9",900:"#3b1b8a"},ink:{900:"#070b14",800:"#0b1220",700:"#0f172a"}},boxShadow:{soft:"0 12px 30px rgba(2,6,23,0.18)",card:"0 24px 70px rgba(2,6,23,0.38)"}}}};</script>
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
     html, body { width: 100%; max-width: 100%; overflow-x: clip; }
-    body { position: relative; background:#08111f; }
+    body { position: relative; }
     * { min-width: 0; }
     img, video, svg { max-width: 100%; height: auto; }
     :root { scroll-padding-top: 74px; }
-
     .glass { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
     input, select, textarea { font-size: 16px; }
-
     .lift { transition: transform .18s ease, box-shadow .18s ease; }
     .lift:hover { transform: translateY(-2px); }
-
-    .premium-field:focus {
-      outline: none;
-      box-shadow: 0 0 0 4px rgba(31,111,255,.18);
-      border-color: rgba(31,111,255,.9);
-    }
-
+    .premium-field:focus { outline: none; box-shadow: 0 0 0 4px rgba(52,211,153,.25); border-color: rgba(16,185,129,.9); }
     .shimmer { position: relative; overflow: hidden; }
-    .shimmer:after {
-      content:"";
-      position:absolute;
-      inset:-40% -60%;
-      transform: rotate(20deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-      animation: shimmer 3.5s infinite;
-      pointer-events:none;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-40%) rotate(20deg); opacity:0; }
-      10% { opacity:1; }
-      50% { transform: translateX(40%) rotate(20deg); opacity:0; }
-      100% { opacity:0; }
-    }
-
-    @keyframes fadeUp {
-      0% { opacity:0; transform: translateY(16px); }
-      100% { opacity:1; transform: translateY(0); }
-    }
-
+    .shimmer:after{content:"";position:absolute;inset:-40% -60%;transform: rotate(20deg);background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);animation: shimmer 3.5s infinite;pointer-events:none;}
+    @keyframes shimmer {0% { transform: translateX(-40%) rotate(20deg); opacity:0; }10% { opacity:1; }50% { transform: translateX(40%) rotate(20deg); opacity:0; }100% { opacity:0; }}
+    @keyframes fadeUp {0% { opacity:0; transform: translateY(16px); }100% { opacity:1; transform: translateY(0); }}
     [data-anim] { opacity: 0; transform: translateY(14px); }
     .is-ready [data-anim="hero-title"] { animation: fadeUp 800ms ease-out forwards; }
     .is-ready [data-anim="hero-copy"]  { animation: fadeUp 820ms ease-out 120ms forwards; }
@@ -114,9 +93,36 @@
     .is-ready [data-anim="hero-cta"]   { animation: fadeUp 880ms ease-out 240ms forwards; }
     .is-ready [data-anim="hero-card"]  { animation: fadeUp 900ms ease-out 200ms forwards; }
     .in-view[data-anim="reveal"] { animation: fadeUp 750ms ease-out forwards; }
-
     #heroGlow { will-change: transform; transition: transform .15s ease-out; }
+    .reveal-wrap {max-height:0;opacity:0;transform:translateY(-6px);overflow:hidden;transition:max-height .35s ease, opacity .25s ease, transform .25s ease;}
+    .reveal-wrap.is-open {max-height:560px;opacity:1;transform:translateY(0);}
+    
+.copy p{margin:0 0 16px;line-height:1.85;color:#334155}
+.copy h2,.copy h3{margin:0 0 14px}
+.copy ul{margin:0 0 16px;padding-left:18px;color:#334155}
+.copy li{margin:0 0 8px}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;min-width:280px;background:rgba(7,11,20,.98);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:14px;box-shadow:0 24px 70px rgba(2,6,23,.45)}
+.dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{display:grid;grid-template-columns:1fr;gap:8px}
+.dropdown.open .dropdown-menu{display:grid;grid-template-columns:1fr;gap:8px}
+.dropdown-menu a{padding:10px 12px;border-radius:12px;color:#e2e8f0;font-size:14px}
+.dropdown-menu a:hover{background:rgba(255,255,255,.08)}
+.nav-link{display:inline-flex;align-items:center;gap:6px;color:#e5e7eb;font-weight:600;font-size:14px}
+.hero-town-image{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);border-radius:24px;overflow:hidden;box-shadow:0 24px 70px rgba(2,6,23,.38)}
+.town-photo{width:100%;height:260px;object-fit:cover}
+.gallery-card{overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05)}
+.gallery-card img{width:100%;height:280px;object-fit:cover;display:block;transition:transform .25s ease}
+.gallery-card:hover img{transform:scale(1.04)}
+.quick-grid a{display:block;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #d1fae5;font-weight:700;color:#0f172a;box-shadow:0 12px 30px rgba(2,6,23,0.08)}
+.quick-grid a:hover{transform:translateY(-2px)}
+.town-cta{background:linear-gradient(135deg, rgba(16,185,129,.15), rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.25)}
+.map-frame{border:0;width:100%;height:320px;border-radius:24px;box-shadow:0 12px 30px rgba(2,6,23,.18)}
+.service-list a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(15,23,42,.08);color:#0f172a;font-weight:700}
+.service-list a span:last-child{color:#059669;font-weight:800}
+.subtle-card{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.4)}
+@media (max-width:1023px){.desktop-nav{display:none}}
+@media (min-width:1024px){.mobile-nav{display:none}}
 
+<<<<<<< HEAD
     .reveal-wrap {
       max-height:0;
       opacity:0;
@@ -265,25 +271,32 @@
 
     @media (max-width:1023px){ .desktop-nav{display:none} }
     @media (min-width:1024px){ .mobile-nav{display:none} }
+=======
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
   </style>
 </head>
-
 <body class="bg-ink-900 text-slate-100 overflow-x-hidden">
+<<<<<<< HEAD
   <div class="pointer-events-none fixed inset-0 z-[1] opacity-[0.05] mix-blend-overlay" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.25%22/%3E%3C/svg%3E');"></div>
 
   <header class="fixed top-0 left-0 right-0 z-50 site-header-theme glass">
     <div class="mx-auto max-w-6xl px-4 py-1.5 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3 min-w-0">
         <img src="assets/img/logo.webp" class="h-14 sm:h-20 w-auto object-contain shrink-0 rounded-2xl bg-white/95 p-1.5" alt="The Carpet Cleaning Company" />
+=======
+  <div class="pointer-events-none fixed inset-0 z-[1] opacity-[0.06] mix-blend-overlay" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22400%22 height=%22400%22 filter=%22url(%23n)%22 opacity=%220.25%22/%3E%3C/svg%3E');"></div>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-emerald-900/90 glass border-b border-emerald-800/35">
+    <div class="mx-auto max-w-6xl px-4 py-1.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+        <img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/ChatGPT%20Image%20Feb%204,%202026,%2012_51_48%20AM.png" class="h-14 sm:h-20 w-auto object-contain shrink-0" alt="The Carpet Cleaning Company" />
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
         <div class="leading-tight min-w-0">
           <div class="font-extrabold text-base sm:text-lg truncate">The Carpet Cleaning Company</div>
-          <div class="text-[11px] sm:text-xs text-slate-200/90">Carpet and upholstery cleaning for homes and businesses</div>
+          <div class="text-[11px] sm:text-xs text-emerald-100/90">Carpet and upholstery cleaning for homes and businesses</div>
         </div>
       </div>
-
       <nav class="desktop-nav flex items-center gap-5 relative">
         <a class="nav-link" href="index.html">Home</a>
-
         <div class="dropdown relative">
           <button type="button" class="nav-link" data-nav-toggle>Services <span>▾</span></button>
           <div class="dropdown-menu">
@@ -296,7 +309,6 @@
             <a href="pages/services.html">View all services</a>
           </div>
         </div>
-
         <div class="dropdown relative">
           <button type="button" class="nav-link" data-nav-toggle>Areas <span>▾</span></button>
           <div class="dropdown-menu">
@@ -309,14 +321,16 @@
             <a href="pages/areas.html">Browse all areas</a>
           </div>
         </div>
-
         <a class="nav-link" href="pages/gallery.html">Gallery</a>
         <a class="nav-link" href="fibrelife.html">FibreLife</a>
+<<<<<<< HEAD
         <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-sm font-semibold lift shadow-soft">
           <span class="inline-block h-2 w-2 rounded-full bg-blue-100"></span>07802 563213
         </a>
+=======
+        <a href="tel:07802563213" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold lift"><span class="inline-block h-2 w-2 rounded-full bg-emerald-300"></span>07802 563213</a>
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
       </nav>
-
       <div class="mobile-nav dropdown relative">
         <button type="button" class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm font-semibold" data-nav-toggle>Menu ▾</button>
         <div class="dropdown-menu right-0 left-auto min-w-[280px]">
@@ -344,40 +358,36 @@
 
   <section class="relative pt-24 md:pt-28 pb-14 md:pb-20 overflow-hidden overflow-x-clip isolate">
     <div class="absolute inset-0">
+<<<<<<< HEAD
       <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-65" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/img/hero-carpet-cleaning.png">
+=======
+      <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-70" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/James%20Van%20Image%20PM.png">
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
         <source src="istockphoto-2158195023-640_adpp_is.mp4" type="video/mp4" />
       </video>
-      <div class="absolute inset-0 bg-gradient-to-b from-ink-900/35 via-ink-900/72 to-ink-900"></div>
-      <div id="heroGlow" class="absolute inset-0 bg-[radial-gradient(1200px_700px_at_25%_20%,rgba(31,111,255,0.14),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-ink-900/40 via-ink-900/70 to-ink-900"></div>
+      <div id="heroGlow" class="absolute inset-0 bg-[radial-gradient(1200px_700px_at_25%_20%,rgba(34,197,94,0.14),transparent_60%)]"></div>
     </div>
-
     <div class="relative mx-auto max-w-6xl px-4">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <div class="pt-2">
           <h1 data-anim="hero-title" class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">Carpet cleaning, upholstery cleaning and rug cleaning across Shropshire, Herefordshire and Worcestershire<span class="block text-slate-200 mt-2">Fast quotes. Proper deep cleaning. Guaranteed results.</span></h1>
-
           <p data-anim="hero-copy" class="mt-4 text-base md:text-lg text-slate-200 max-w-xl">The Carpet Cleaning Company provides residential carpet cleaning, sofa and upholstery cleaning, rug cleaning, specialist stain removal, certified moth treatment and commercial carpet cleaning across Ludlow, Shrewsbury, Hereford, Worcester and the surrounding towns we cover.</p>
-
           <div data-anim="hero-points" class="mt-5 space-y-2 text-sm text-slate-200">
-            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-white font-extrabold">✓</span><span>CRB agitation lifts embedded soil before extraction</span></div>
-            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-white font-extrabold">✓</span><span>Hot water extraction up to 120 degrees for strong restorative cleaning</span></div>
-            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-white font-extrabold">✓</span><span>Certified moth treatment, stain removal and commercial care available</span></div>
-            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-white font-extrabold">✓</span><span>Fully insured, with clear pricing and a satisfaction guarantee</span></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span><span>CRB agitation lifts embedded soil before extraction</span></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span><span>Hot water extraction up to 120 degrees for strong restorative cleaning</span></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span><span>Certified moth treatment, stain removal and commercial care available</span></div>
+            <div class="flex items-start gap-3"><span class="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-emerald-950 font-extrabold">✓</span><span>Fully insured, with clear pricing and a satisfaction guarantee</span></div>
           </div>
-
           <div data-anim="hero-cta" class="mt-6 flex flex-wrap gap-3">
-            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">Get my quote</a>
+            <a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">Get my quote</a>
             <a href="#services" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">Browse services</a>
             <a href="#reviews" class="inline-flex items-center justify-center rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">Read reviews first</a>
           </div>
-
-          <div class="mt-6 inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 lift">
-            <span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-brand-500 text-white text-sm font-extrabold">✓</span>
-            <span class="text-sm font-semibold">100 percent satisfaction guarantee</span>
-          </div>
+          <div class="mt-6 inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 lift"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-emerald-400 text-emerald-950 text-sm font-extrabold">✓</span><span class="text-sm font-semibold">100 percent satisfaction guarantee</span></div>
         </div>
-
         <div class="lg:pt-2">
+<<<<<<< HEAD
           <div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift max-w-full">
             <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-brand-50 via-white to-brand-50"></div>
             <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-blue-200 blur-3xl opacity-70"></div>
@@ -454,11 +464,44 @@
               </form>
             </div>
           </div>
+=======
+<div data-anim="hero-card" class="relative rounded-3xl bg-white text-slate-900 shadow-card border border-white/40 overflow-hidden lift max-w-full">
+  <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-emerald-50 via-white to-emerald-50"></div>
+  <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-200 blur-3xl opacity-70"></div>
+  <div class="relative p-6 md:p-7">
+    <div class="flex items-start justify-between gap-4">
+      <div class="min-w-0">
+        <div class="text-xl font-extrabold">Instant Quote Request</div>
+        <p class="mt-1 text-sm text-slate-600">Fast fixed price quote and earliest available dates</p>
+      </div>
+      <img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/satisfaction_badge_transparent.png" alt="100% Satisfaction Guaranteed" class="h-24 w-24 sm:h-36 sm:w-36 object-contain drop-shadow-xl" />
+    </div>
+    <form id="heroQuoteForm" class="mt-5" action="https://formspree.io/f/mblnzwpv" method="POST" onsubmit="submitQuote(event, this);">
+      <input type="hidden" name="_subject" value="New Quote Request - The Carpet Cleaning Company" />
+      <input type="hidden" name="_format" value="plain" />
+      <div class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block"><span class="text-sm font-semibold text-slate-700">Postcode <span class="text-rose-500">*</span></span><input required name="postcode" autocomplete="postal-code" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="e.g. SY8 1AA" /></label>
+          <label class="block"><span class="text-sm font-semibold text-slate-700">Rooms or areas</span><select name="areas" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label>
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
         </div>
+        <label class="block"><span class="text-sm font-semibold text-slate-700">What do you need <span class="text-rose-500">*</span></span><select required name="service" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white"><option value="" selected disabled>Select a service</option><option>Carpet cleaning</option><option>Upholstery cleaning</option><option>Rug cleaning</option><option>Stain removal</option><option>Moth treatment</option><option>Commercial cleaning</option></select></label>
+        <label class="block"><span class="text-sm font-semibold text-slate-700">Full name <span class="text-rose-500">*</span></span><input required name="name" autocomplete="name" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="Your name" /></label>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block"><span class="text-sm font-semibold text-slate-700">Phone <span class="text-rose-500">*</span></span><input required id="phoneField" name="phone" inputmode="tel" autocomplete="tel" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="07..." /></label>
+          <label class="block"><span class="text-sm font-semibold text-slate-700">Email <span class="text-rose-500">*</span></span><input required id="emailField" name="email" type="email" autocomplete="email" class="premium-field mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="you@example.com" /></label>
+        </div>
+        <div id="extraFields" class="reveal-wrap"><div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-4 shadow-soft"><div class="text-sm font-extrabold text-emerald-950">Anything we should know</div><div class="text-xs text-emerald-900/80 mt-1">Stains, pets, parking, access, ideal days</div><textarea name="notes" rows="3" class="premium-field mt-3 w-full rounded-xl border border-emerald-200 bg-white px-3 py-2.5 text-sm" placeholder="Type here..."></textarea></div></div>
+        <button id="submitBtn" type="submit" class="w-full rounded-2xl bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-4 py-3.5 text-sm font-extrabold shadow-soft lift shimmer">Get my quote</button>
+        <p class="text-xs text-slate-500 text-center">We will contact you from 07802 563213. No obligation.</p>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
       </div>
     </div>
   </section>
-
   <section class="py-14 bg-white text-slate-900 copy">
     <div class="mx-auto max-w-6xl px-4 grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-start">
       <div>
@@ -467,71 +510,34 @@
         <p data-anim="reveal">Our cleaning process is designed for people who want more than a quick rinse over. We begin with inspection and dry soil removal, apply a fibre safe pre treatment chosen for the carpet or upholstery, use counter rotating brush agitation where appropriate and then carry out hot water extraction to remove suspended soil, residues and odours. This helps restore the look and feel of the fibres and can often save carpets, rugs or suites that people assumed needed replacing.</p>
         <p data-anim="reveal">Because customers search in different ways, the site is structured around both services and places. That means someone looking for carpet cleaning in Ludlow, upholstery cleaning in Shrewsbury, rug cleaning in Hereford, stain removal in Worcester or moth treatment near Tenbury Wells can land on a page that actually talks about that service in that area. This makes the site much more useful for customers and far more relevant for local search.</p>
       </div>
-
-      <div class="hero-town-image overflow-hidden">
-        <img src="assets/img/hero-carpet-cleaning.png" alt="Professional carpet cleaning wand in use" class="town-photo" />
-        <div class="p-6 bg-brand-900 text-white">
-          <div class="text-xs uppercase tracking-[.28em] text-blue-200">Our process</div>
-          <h3 class="text-2xl font-extrabold mt-2">CRB agitation, hot water extraction and a clean, residue free finish</h3>
-          <p class="mt-3 text-slate-200 text-sm">We use a proper multi stage process so the result looks better, feels cleaner and dries without sticky detergent left behind in the pile.</p>
-        </div>
-      </div>
+      <div class="hero-town-image overflow-hidden"><img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/Wand_4748.png" alt="Professional carpet cleaning wand in use" class="town-photo" /><div class="p-6 bg-slate-950/95 text-white"><div class="text-xs uppercase tracking-[.28em] text-emerald-300">Our process</div><h3 class="text-2xl font-extrabold mt-2">CRB agitation, hot water extraction and a clean, residue free finish</h3><p class="mt-3 text-slate-300 text-sm">We use a proper multi stage process so the result looks better, feels cleaner and dries without sticky detergent left behind in the pile.</p></div></div>
     </div>
   </section>
-
-  <section id="services" class="py-14 bg-brand-50 text-slate-900">
+  <section id="services" class="py-14 bg-emerald-50 text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <h2 data-anim="reveal" class="text-3xl font-extrabold">Our services</h2>
       <p data-anim="reveal" class="mt-2 text-slate-600 max-w-3xl">Browse the core services below. Each page is written for customers and built around the actual service, not filler headings.</p>
       <div class="mt-8 service-list">
-        <a href="pages/carpet-cleaning.html"><span>Carpet Cleaning</span><span>→</span></a>
-        <a href="pages/upholstery-cleaning.html"><span>Upholstery Cleaning</span><span>→</span></a>
-        <a href="pages/rug-cleaning.html"><span>Rug Cleaning</span><span>→</span></a>
-        <a href="pages/stain-removal.html"><span>Stain Removal</span><span>→</span></a>
-        <a href="pages/moth-treatment.html"><span>Moth Treatment</span><span>→</span></a>
-        <a href="pages/commercial-carpet-cleaning.html"><span>Commercial Carpet Cleaning</span><span>→</span></a>
+      <a href="pages/carpet-cleaning.html"><span>Carpet Cleaning</span><span>→</span></a><a href="pages/upholstery-cleaning.html"><span>Upholstery Cleaning</span><span>→</span></a><a href="pages/rug-cleaning.html"><span>Rug Cleaning</span><span>→</span></a><a href="pages/stain-removal.html"><span>Stain Removal</span><span>→</span></a><a href="pages/moth-treatment.html"><span>Moth Treatment</span><span>→</span></a><a href="pages/commercial-carpet-cleaning.html"><span>Commercial Carpet Cleaning</span><span>→</span></a>
       </div>
     </div>
   </section>
-
   <section class="py-14 bg-white text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <h2 data-anim="reveal" class="text-3xl font-extrabold">Areas we cover</h2>
-          <p data-anim="reveal" class="mt-2 text-slate-600 max-w-3xl">Browse the town pages for local carpet cleaning, upholstery cleaning, rug cleaning, stain removal, moth treatment and commercial cleaning coverage.</p>
-        </div>
-        <a href="pages/areas.html" class="rounded-full bg-brand-600 hover:bg-brand-700 text-white px-5 py-3 text-sm font-extrabold lift">Browse all areas</a>
+        <div><h2 data-anim="reveal" class="text-3xl font-extrabold">Areas we cover</h2><p data-anim="reveal" class="mt-2 text-slate-600 max-w-3xl">Browse the town pages for local carpet cleaning, upholstery cleaning, rug cleaning, stain removal, moth treatment and commercial cleaning coverage.</p></div>
+        <a href="pages/areas.html" class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 text-sm font-extrabold lift">Browse all areas</a>
       </div>
-
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 quick-grid">
-        <a href="areas/ludlow.html">Ludlow</a>
-        <a href="areas/shrewsbury.html">Shrewsbury</a>
-        <a href="areas/hereford.html">Hereford</a>
-        <a href="areas/worcester.html">Worcester</a>
-        <a href="areas/tenbury-wells.html">Tenbury Wells</a>
-        <a href="areas/church-stretton.html">Church Stretton</a>
-        <a href="areas/craven-arms.html">Craven Arms</a>
-        <a href="areas/leominster.html">Leominster</a>
-        <a href="areas/ledbury.html">Ledbury</a>
-        <a href="areas/ross-on-wye.html">Ross on Wye</a>
-        <a href="areas/bromyard.html">Bromyard</a>
-        <a href="areas/bridgnorth.html">Bridgnorth</a>
+      <a href="areas/ludlow.html">Ludlow</a><a href="areas/shrewsbury.html">Shrewsbury</a><a href="areas/hereford.html">Hereford</a><a href="areas/worcester.html">Worcester</a><a href="areas/tenbury-wells.html">Tenbury Wells</a><a href="areas/church-stretton.html">Church Stretton</a><a href="areas/craven-arms.html">Craven Arms</a><a href="areas/leominster.html">Leominster</a><a href="areas/ledbury.html">Ledbury</a><a href="areas/ross-on-wye.html">Ross on Wye</a><a href="areas/bromyard.html">Bromyard</a><a href="areas/bridgnorth.html">Bridgnorth</a>
       </div>
     </div>
   </section>
-
-  <section id="gallery" class="py-14 bg-brand-50 text-slate-900">
+  <section id="gallery" class="py-14 bg-emerald-50 text-slate-900">
     <div class="mx-auto max-w-6xl px-4">
-      <div class="flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <h2 data-anim="reveal" class="text-3xl font-extrabold">Before and after gallery</h2>
-          <p data-anim="reveal" class="mt-2 text-slate-600">A dedicated gallery page is built in so your photos can sit in one proper place instead of being scattered around the site.</p>
-        </div>
-        <a href="pages/gallery.html" class="rounded-full bg-brand-900 hover:bg-brand-800 text-white px-5 py-3 text-sm font-extrabold lift">Open gallery</a>
-      </div>
-
+      <div class="flex items-end justify-between gap-4 flex-wrap"><div><h2 data-anim="reveal" class="text-3xl font-extrabold">Before and after gallery</h2><p data-anim="reveal" class="mt-2 text-slate-600">A dedicated gallery page is built in so your photos can sit in one proper place instead of being scattered around the site.</p></div><a href="pages/gallery.html" class="rounded-full bg-slate-900 hover:bg-slate-800 text-white px-5 py-3 text-sm font-extrabold lift">Open gallery</a></div>
       <div class="mt-8 grid md:grid-cols-3 gap-6">
+<<<<<<< HEAD
         <div class="gallery-card"><img src="assets/img/hero-carpet-cleaning.png" alt="The Carpet Cleaning Company van" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Mobile friendly gallery layout</h3><p class="mt-2 text-sm text-slate-600">Before and after images can be grouped by carpets, upholstery, rugs and commercial work.</p></div></div>
         <div class="gallery-card"><img src="assets/img/hero-carpet-cleaning.png" alt="Wand cleaning carpet" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Perfect for proof and trust</h3><p class="mt-2 text-sm text-slate-600">Before and after imagery is one of the strongest conversion tools a cleaning website can use.</p></div></div>
         <div class="gallery-card"><img src="assets/img/logo.webp" alt="Satisfaction guarantee badge" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Built to support SEO and conversions</h3><p class="mt-2 text-sm text-slate-600">The gallery links naturally from service pages and area pages so visitors can check your work before enquiring.</p></div></div>
@@ -550,11 +556,31 @@
         <div class="rounded-3xl border border-blue-100 bg-white px-5 py-4 shadow-soft w-full md:w-auto lift"><div class="flex items-center gap-3"><div class="text-3xl font-extrabold">5.0</div><div><div class="text-amber-500 text-sm leading-none">★★★★★</div><div class="text-xs text-slate-500 mt-1">30 plus Google reviews</div></div></div><div class="mt-3 flex flex-wrap gap-2"><a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">Get a quick quote</a></div></div>
       </div>
       <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6"><article class="rev-card relative rounded-3xl border border-blue-100 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Diana Roach</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">From first contact through to completion Paul was highly professional and clear on pricing. He removed incredibly stubborn stains and saved us a fortune on replacement carpets.</div></article><article class="rev-card relative rounded-3xl border border-blue-100 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Carolyn Mills</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Very thorough, moved all the furniture and left no stone unturned. Pleasant, hard working and reasonably priced for the work involved.</div></article><article class="rev-card relative rounded-3xl border border-blue-100 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">James Wilson</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">I had my carpets cleaned in Shrewsbury and was really pleased with the results. Excellent job, very polite and professional throughout.</div></article><article class="rev-card relative rounded-3xl border border-blue-100 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Gourmet Vanilla</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Paul finished dry cleaning our big sofa and two armchairs in Ludlow and did a brilliant job. A pleasure to deal with.</div></article><article class="rev-card relative rounded-3xl border border-blue-100 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Anne Douthwaite</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Excellent service. Two rugs cleaned and they look brand new again. Very reasonably priced and we will definitely use again.</div></article></div>
+=======
+        <div class="gallery-card"><img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/James%20Van%20Image%20PM.png" alt="The Carpet Cleaning Company van" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Mobile friendly gallery layout</h3><p class="mt-2 text-sm text-slate-600">Before and after images can be grouped by carpets, upholstery, rugs and commercial work.</p></div></div>
+        <div class="gallery-card"><img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/Wand_4748.png" alt="Wand cleaning carpet" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Perfect for proof and trust</h3><p class="mt-2 text-sm text-slate-600">Before and after imagery is one of the strongest conversion tools a cleaning website can use.</p></div></div>
+        <div class="gallery-card"><img src="https://raw.githubusercontent.com/carpetcleaningcompany007-maker/carpet-cleaning-showcase/main/satisfaction_badge_transparent.png" alt="Satisfaction guarantee badge" /><div class="p-5 bg-white"><h3 class="text-lg font-extrabold">Built to support SEO and conversions</h3><p class="mt-2 text-sm text-slate-600">The gallery links naturally from service pages and area pages so visitors can check your work before enquiring.</p></div></div>
+      </div>
     </div>
   </section>
+  
+<section id="reviews" class="py-14 bg-emerald-50 text-slate-900">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div><div class="inline-flex items-center gap-2 rounded-full bg-white border border-emerald-200 px-3 py-1 text-xs font-semibold text-emerald-800 lift">Google Reviews</div><h2 class="mt-3 text-3xl font-extrabold">Look at our amazing 5 star Google reviews</h2><p class="mt-2 text-sm md:text-base text-slate-700 max-w-2xl">Real reviews help customers trust the work before they enquire.</p></div>
+      <div class="rounded-3xl border border-emerald-200 bg-white px-5 py-4 shadow-soft w-full md:w-auto lift"><div class="flex items-center gap-3"><div class="text-3xl font-extrabold">5.0</div><div><div class="text-amber-500 text-sm leading-none">★★★★★</div><div class="text-xs text-slate-500 mt-1">30 plus Google reviews</div></div></div><div class="mt-3 flex flex-wrap gap-2"><a href="#heroQuoteForm" class="inline-flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-extrabold lift shimmer">Get a quick quote</a></div></div>
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
+    </div>
+    <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6"><article class="rev-card relative rounded-3xl border border-emerald-200 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Diana Roach</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">From first contact through to completion Paul was highly professional and clear on pricing. He removed incredibly stubborn stains and saved us a fortune on replacement carpets.</div></article><article class="rev-card relative rounded-3xl border border-emerald-200 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Carolyn Mills</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Very thorough, moved all the furniture and left no stone unturned. Pleasant, hard working and reasonably priced for the work involved.</div></article><article class="rev-card relative rounded-3xl border border-emerald-200 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">James Wilson</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">I had my carpets cleaned in Shrewsbury and was really pleased with the results. Excellent job, very polite and professional throughout.</div></article><article class="rev-card relative rounded-3xl border border-emerald-200 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Gourmet Vanilla</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Paul finished dry cleaning our big sofa and two armchairs in Ludlow and did a brilliant job. A pleasure to deal with.</div></article><article class="rev-card relative rounded-3xl border border-emerald-200 bg-white shadow-soft p-6 lift"><div class="flex items-start justify-between gap-4 relative"><div><div class="font-extrabold text-slate-900">Anne Douthwaite</div><div class="text-xs text-slate-500 mt-0.5">Google review</div></div><div class="text-amber-500 text-sm">★★★★★</div></div><div class="mt-3 text-sm text-slate-700 relative">Excellent service. Two rugs cleaned and they look brand new again. Very reasonably priced and we will definitely use again.</div></article></div>
+  </div>
+</section>
 
   <section id="quote" class="py-14 bg-ink-900">
+<<<<<<< HEAD
     <div class="mx-auto max-w-6xl px-4"><div data-anim="reveal" class="rounded-3xl town-cta p-6 md:p-8 lift"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"><div><h2 class="text-2xl md:text-3xl font-extrabold">Need a fixed price quote</h2><p class="mt-1 text-slate-200 text-sm md:text-base">Use the form above and we will reply with a clear quote and next available dates.</p></div><div class="flex gap-3 flex-wrap"><a href="#heroQuoteForm" class="rounded-full bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">Get a fast quote</a><a href="tel:07802563213" class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">Call 07802 563213</a></div></div></div></div>
+=======
+    <div class="mx-auto max-w-6xl px-4"><div data-anim="reveal" class="rounded-3xl town-cta p-6 md:p-8 lift"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"><div><h2 class="text-2xl md:text-3xl font-extrabold">Need a fixed price quote</h2><p class="mt-1 text-slate-200 text-sm md:text-base">Use the form above and we will reply with a clear quote and next available dates.</p></div><div class="flex gap-3 flex-wrap"><a href="#heroQuoteForm" class="rounded-full bg-emerald-400 hover:bg-emerald-300 text-emerald-950 px-6 py-3 text-sm font-extrabold shadow-soft lift shimmer">Get a fast quote</a><a href="tel:07802563213" class="rounded-full bg-white/10 border border-white/15 hover:bg-white/15 px-6 py-3 text-sm font-semibold lift">Call 07802 563213</a></div></div></div></div>
+>>>>>>> c91b8afc6f24e284befb76f90efa994f2f66167e
   </section>
 
   <footer class="py-10 bg-ink-900 border-t border-white/10">
@@ -566,49 +592,9 @@
       <div class="text-xs text-slate-500">© <span id="year"></span> The Carpet Cleaning Company. All rights reserved.</div>
     </div>
   </footer>
-
   <div class="fixed z-[90] flex flex-col gap-3" style="right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); max-width: 100vw;">
     <a href="https://wa.me/447802563213?text=Hi%20Paul%2C%20I%E2%80%99d%20like%20a%20quote%20please." target="_blank" rel="noopener" class="h-14 w-14 rounded-full shadow-card bg-[#25D366] grid place-items-center text-white text-2xl lift" aria-label="WhatsApp">💬</a>
-    <a href="tel:07802563213" class="h-14 w-14 rounded-full shadow-card bg-brand-600 grid place-items-center text-white text-2xl lift" aria-label="Call">☎</a>
+    <a href="tel:07802563213" class="h-14 w-14 rounded-full shadow-card bg-emerald-400 grid place-items-center text-emerald-950 text-2xl lift" aria-label="Call">☎</a>
   </div>
-
-  <script>
-    document.body.classList.add('is-ready');
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('in-view');
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('[data-anim="reveal"]').forEach(el => observer.observe(el));
-
-    document.querySelectorAll('[data-nav-toggle]').forEach(btn => {
-      btn.addEventListener('click', function(e){
-        const dropdown = this.closest('.dropdown');
-        if (!dropdown) return;
-        const isOpen = dropdown.classList.contains('open');
-        document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
-        if (!isOpen) dropdown.classList.add('open');
-        e.stopPropagation();
-      });
-    });
-
-    document.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
-    });
-
-    const video = document.getElementById('heroVideo');
-    if (video) {
-      video.addEventListener('error', () => {
-        video.style.display = 'none';
-      });
-    }
-
-    function submitQuote(event, form){
-      if (!form) return;
-    }
-  </script>
-</body>
-</html>
+  <script src="assets/site.js"></script>
+</body></html>
