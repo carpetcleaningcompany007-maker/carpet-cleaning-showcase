@@ -659,6 +659,14 @@ svg {
   object-fit: cover;
 }
 
+.photo-strip img[src*="pre-spray-preferred"] {
+  object-position: 70% center;
+}
+
+.photo-strip img[src*="rotary-bonnet-cleaning"] {
+  object-position: 58% center;
+}
+
 .photo-strip figure::after {
   content: "";
   position: absolute;
