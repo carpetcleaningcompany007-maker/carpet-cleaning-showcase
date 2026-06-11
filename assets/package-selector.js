@@ -2,7 +2,7 @@ const packageCards = document.querySelectorAll(".package-card");
 const packageSelect = document.querySelector("#selected-package");
 const quoteLinks = document.querySelectorAll(".quote-link");
 const revealItems = document.querySelectorAll(
-  ".package-card, .review-steps article, .review-copy, .notice, .question-grid p, .quote-shell"
+  ".package-card, .before-after-section, .review-steps article, .review-copy, .notice, .question-grid p, .quote-shell"
 );
 
 function syncSelectedCard(packageValue) {
