@@ -4054,3 +4054,126 @@ body {
     min-height: 260px;
   }
 }
+
+/* Show the full photos instead of cropping the process */
+.package-card .photo-strip,
+.package-card[data-package="professional-deep-clean"] .photo-strip,
+.package-card[data-package="stain-guard"] .photo-strip,
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+  height: auto;
+  min-height: 0;
+  align-self: start !important;
+  align-items: start !important;
+}
+
+.package-card .photo-strip figure,
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure,
+.package-card[data-package="stain-guard"] .photo-strip.single figure {
+  min-height: 0;
+}
+
+.package-card .photo-strip img,
+.package-card .photo-strip img[src*="pre-spray-action"],
+.package-card .photo-strip img[src*="rotary-bonnet-action"],
+.package-card .photo-strip img[src*="extraction-wand-action"] {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+  background: #f4f8fb;
+}
+
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages {
+  align-items: start;
+}
+
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+  background: #f4f8fb;
+}
+
+.package-card[data-package="stain-guard"] .photo-strip.single figure {
+  background: #f4f8fb;
+}
+
+@media (min-width: 1121px) {
+  .package-card[data-package="targeted-pre-spray"] {
+    align-items: start;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    max-width: 620px;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+    min-height: 0;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages {
+    min-height: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images,
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages {
+    gap: 12px;
+  }
+}
+
+/* Remove forced photo frames so the whole image is visible */
+.package-card .photo-strip figure,
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure,
+.package-card[data-package="stain-guard"] .photo-strip.single figure {
+  height: auto !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  background: #ffffff;
+}
+
+.package-card .photo-strip figure::after {
+  display: none !important;
+}
+
+.package-card .photo-strip img,
+.package-card .photo-strip img[src*="pre-spray-action"],
+.package-card .photo-strip img[src*="rotary-bonnet-action"],
+.package-card .photo-strip img[src*="extraction-wand-action"] {
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.package-card .photo-strip figcaption {
+  position: static !important;
+  width: auto;
+  display: block;
+  padding: 14px 16px;
+  color: #ffffff;
+  background: var(--premium-navy);
+  border-radius: 0;
+  backdrop-filter: none;
+  font-size: .8rem;
+  line-height: 1.15;
+}
+
+.package-card .photo-strip figure > span {
+  top: 14px;
+  left: 14px;
+}
