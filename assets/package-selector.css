@@ -2065,6 +2065,49 @@ h1 {
   color: rgba(255, 255, 255, .78);
 }
 
+.offer-stack {
+  display: grid;
+  gap: 12px;
+  margin: 6px 0 8px;
+}
+
+.offer-stack p {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 14px;
+  align-items: center;
+  padding: 16px 18px;
+  color: var(--blue-950);
+  background: var(--gold);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, .18);
+}
+
+.offer-stack p:last-child {
+  background: #9ff0c7;
+}
+
+.offer-stack span {
+  grid-row: span 2;
+  min-width: 86px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  color: var(--white);
+  background: var(--blue-950);
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.offer-stack strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
 .muted,
 .detail-block.included {
   padding: 22px;
@@ -2374,12 +2417,13 @@ h1 {
   }
 
   .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
-    grid-template-columns: 1fr 1fr;
-    min-height: 500px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    min-height: 560px;
   }
 
   .package-card[data-package="targeted-pre-spray"] .photo-strip figure {
-    min-height: 500px;
+    min-height: 270px;
   }
 
   .package-card[data-package="professional-deep-clean"] {
@@ -2394,6 +2438,29 @@ h1 {
 
   .package-card[data-package="professional-deep-clean"] .photo-strip figure:nth-child(2) {
     transform: none;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .offer-stack {
+    max-width: 920px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .package-card[data-package="professional-deep-clean"] .deep-process {
+    max-width: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .deep-process article {
+    padding: 18px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .detail-block.included {
+    max-width: 920px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .detail-block.included ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .package-card h3 {
@@ -2476,6 +2543,23 @@ h1 {
 
   .process-points article {
     padding: 12px 13px;
+  }
+
+  .offer-stack {
+    gap: 8px;
+  }
+
+  .offer-stack p {
+    padding: 12px;
+    grid-template-columns: 76px minmax(0, 1fr);
+    font-size: .86rem;
+  }
+
+  .offer-stack span {
+    min-width: 0;
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: .68rem;
   }
 
   .process-points strong {
