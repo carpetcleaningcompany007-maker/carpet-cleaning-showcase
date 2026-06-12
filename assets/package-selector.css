@@ -659,12 +659,16 @@ svg {
   object-fit: cover;
 }
 
-.photo-strip img[src*="pre-spray-preferred"] {
-  object-position: 70% center;
+.photo-strip img[src*="pre-spray-action"] {
+  object-position: center bottom;
 }
 
-.photo-strip img[src*="rotary-bonnet-cleaning"] {
-  object-position: 58% center;
+.photo-strip img[src*="rotary-bonnet-action"] {
+  object-position: center bottom;
+}
+
+.photo-strip img[src*="extraction-wand-action"] {
+  object-position: center bottom;
 }
 
 .photo-strip figure::after {
@@ -2327,5 +2331,199 @@ h1 {
 
   .final-section {
     padding: 72px 18px;
+  }
+}
+
+/* Final layout tightening pass */
+.price small {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.package-card.recommended .price small {
+  color: rgba(255, 255, 255, .72);
+}
+
+.hero-process-image img {
+  object-position: center bottom;
+}
+
+@media (min-width: 1121px) {
+  .package-card {
+    grid-template-columns: minmax(360px, .72fr) minmax(0, 1.28fr);
+    gap: 18px 58px;
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .package-card .photo-strip {
+    min-height: 500px;
+  }
+
+  .package-card:nth-child(even) {
+    grid-template-columns: minmax(0, 1.08fr) minmax(390px, .92fr);
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .photo-strip {
+    min-height: 560px;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .photo-strip figure {
+    min-height: 560px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] {
+    padding-top: 104px;
+    padding-bottom: 104px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip {
+    min-height: 520px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip figure:nth-child(2) {
+    transform: none;
+  }
+
+  .package-card h3 {
+    font-size: clamp(2.4rem, 3.6vw, 4.8rem);
+  }
+
+  .package-card[data-package="professional-deep-clean"] h3 {
+    font-size: clamp(3.2rem, 5vw, 6.2rem);
+  }
+
+  .before-after-section {
+    padding-top: 86px;
+    padding-bottom: 86px;
+  }
+
+  .before-after-pair figure,
+  .before-after-pair img {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-inner {
+    padding-bottom: 70px;
+  }
+
+  .section {
+    padding: 48px 0;
+  }
+
+  .packages-section {
+    padding-top: 54px;
+  }
+
+  .packages-section > .section-heading {
+    margin-bottom: 34px;
+  }
+
+  .package-card,
+  .package-card.recommended {
+    padding: 38px 18px;
+    gap: 12px;
+  }
+
+  .package-card h3 {
+    font-size: 1.72rem;
+    line-height: 1;
+  }
+
+  .package-card.recommended h3 {
+    font-size: 2rem;
+  }
+
+  .price {
+    font-size: 2.3rem;
+  }
+
+  .price small {
+    margin-bottom: 5px;
+    font-size: .68rem;
+  }
+
+  .photo-strip,
+  .photo-strip.two,
+  .photo-strip.stages,
+  .photo-strip.single {
+    gap: 10px;
+  }
+
+  .photo-strip figure,
+  .package-card[data-package="professional-deep-clean"] .photo-strip figure {
+    min-height: 210px;
+  }
+
+  .photo-strip img[src*="pre-spray-action"],
+  .photo-strip img[src*="rotary-bonnet-action"],
+  .photo-strip img[src*="extraction-wand-action"] {
+    object-position: center bottom;
+  }
+
+  .process-points article {
+    padding: 12px 13px;
+  }
+
+  .process-points strong {
+    font-size: .86rem;
+  }
+
+  .process-points span,
+  .description,
+  .truth-note,
+  .detail-block li,
+  .detail-block p {
+    font-size: .9rem;
+    line-height: 1.48;
+  }
+
+  .before-after-section {
+    padding: 44px 18px;
+    gap: 24px;
+  }
+
+  .before-after-copy h3 {
+    font-size: 2.15rem;
+  }
+
+  .before-after-copy p:not(.eyebrow) {
+    margin-top: 18px;
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .before-after-pair {
+    gap: 10px;
+  }
+
+  .before-after-pair figure,
+  .before-after-pair img {
+    min-height: 260px;
+  }
+
+  .review-steps {
+    gap: 12px;
+  }
+
+  .notice {
+    padding: 22px;
+  }
+
+  .question-grid p {
+    min-height: 54px;
+    padding: 14px;
+  }
+
+  .quote-shell {
+    gap: 18px;
   }
 }
