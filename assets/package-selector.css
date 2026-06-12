@@ -1808,7 +1808,7 @@ body {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(4, 27, 48, .94) 0%, rgba(4, 27, 48, .78) 44%, rgba(4, 27, 48, .2) 100%),
-    url("https://www.thecarpetcleaningcrew.co.uk/assets/img/hero-carpet-cleaning.webp") center right / cover no-repeat;
+    url("img/extraction-wand-action.jpg") center right / cover no-repeat;
 }
 
 .hero::after {
@@ -2261,7 +2261,7 @@ h1 {
     min-height: auto;
     background:
       linear-gradient(180deg, rgba(4, 27, 48, .9), rgba(4, 27, 48, .78)),
-      url("https://www.thecarpetcleaningcrew.co.uk/assets/img/hero-carpet-cleaning.webp") center / cover no-repeat;
+      url("img/extraction-wand-action.jpg") center / cover no-repeat;
   }
 
   .hero-inner {
