@@ -2373,8 +2373,13 @@ h1 {
     min-height: 560px;
   }
 
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+
   .package-card[data-package="targeted-pre-spray"] .photo-strip figure {
-    min-height: 560px;
+    min-height: 500px;
   }
 
   .package-card[data-package="professional-deep-clean"] {
