@@ -4136,6 +4136,80 @@ body {
   }
 }
 
+/* Level process image cards while keeping the whole image visible */
+.package-card .photo-strip figure {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.package-card .photo-strip img,
+.package-card .photo-strip img[src*="pre-spray-action"],
+.package-card .photo-strip img[src*="rotary-bonnet-action"],
+.package-card .photo-strip img[src*="extraction-wand-action"] {
+  width: 100%;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #edf3f7;
+}
+
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+  min-height: 430px !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+  min-height: 360px !important;
+}
+
+@media (min-width: 1121px) {
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+    min-height: 430px !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    min-height: 360px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure,
+  .package-card[data-package="stain-guard"] .photo-strip.single figure {
+    min-height: 250px !important;
+  }
+}
+
+/* Final level image enforcement */
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+  height: 430px !important;
+  min-height: 430px !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+  height: 360px !important;
+  min-height: 360px !important;
+}
+
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images img,
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 760px) {
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+}
+
 /* Remove forced photo frames so the whole image is visible */
 .package-card .photo-strip figure,
 .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
@@ -4176,4 +4250,35 @@ body {
 .package-card .photo-strip figure > span {
   top: 14px;
   left: 14px;
+}
+
+/* True final image level pass */
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+  height: 430px !important;
+  min-height: 430px !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+  height: 360px !important;
+  min-height: 360px !important;
+  display: grid !important;
+  grid-template-rows: 1fr auto !important;
+}
+
+.package-card[data-package="targeted-pre-spray"] .targeted-process-images img,
+.package-card[data-package="professional-deep-clean"] .photo-strip.stages img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (max-width: 760px) {
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
 }
