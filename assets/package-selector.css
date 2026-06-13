@@ -4470,6 +4470,341 @@ body {
   }
 }
 
+/* Stronger colour direction: less white, more premium contrast */
+body {
+  background:
+    radial-gradient(circle at 10% 4%, rgba(10, 102, 178, .18), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(215, 166, 63, .2), transparent 24rem),
+    linear-gradient(180deg, #eaf4fb 0%, #f7fbff 18%, #e7f1f8 52%, #f6f9fc 100%) !important;
+}
+
+main {
+  background:
+    linear-gradient(180deg, rgba(234, 244, 251, .95), rgba(255, 255, 255, .25) 18%, rgba(231, 241, 248, .9) 100%);
+}
+
+.intro-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-left: max(24px, calc((100vw - 1320px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1320px) / 2)) !important;
+  background:
+    radial-gradient(circle at 86% 22%, rgba(244, 198, 79, .2), transparent 22rem),
+    linear-gradient(135deg, #f3f9fe 0%, #e3f1fa 100%) !important;
+}
+
+.intro-copy {
+  padding: 34px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  border: 1px solid rgba(10, 102, 178, .13) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 70px rgba(3, 29, 51, .1) !important;
+}
+
+.packages-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-left: max(24px, calc((100vw - 1320px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1320px) / 2)) !important;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(10, 102, 178, .16), transparent 26rem),
+    radial-gradient(circle at 88% 36%, rgba(215, 166, 63, .16), transparent 24rem),
+    linear-gradient(180deg, #e7f2fa 0%, #f6fbff 42%, #dcebf5 100%) !important;
+}
+
+.packages-section > .section-heading {
+  padding: 42px !important;
+  background: linear-gradient(135deg, rgba(3, 29, 51, .96), rgba(6, 57, 95, .92)) !important;
+  border: 1px solid rgba(244, 198, 79, .24) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 28px 80px rgba(3, 29, 51, .18) !important;
+}
+
+.packages-section > .section-heading h2,
+.packages-section > .section-heading p {
+  color: #ffffff !important;
+}
+
+.packages-section > .section-heading .eyebrow {
+  color: #f4c64f !important;
+}
+
+.package-card {
+  border-radius: 26px !important;
+}
+
+.package-card[data-package="standard-clean"] {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(10, 102, 178, .16), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #edf7ff 100%) !important;
+}
+
+article.package-card.targeted-paired-card {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(10, 102, 178, .2), transparent 22rem),
+    linear-gradient(135deg, #eff8ff 0%, #ffffff 56%, #fff7df 100%) !important;
+}
+
+.package-card[data-package="professional-deep-clean"] {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(244, 198, 79, .28), transparent 24rem),
+    linear-gradient(135deg, #061f36 0%, #073a61 38%, #0a4f82 100%) !important;
+  border-top: 0 !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .badge-row,
+.package-card[data-package="professional-deep-clean"] h3,
+.package-card[data-package="professional-deep-clean"] .price,
+.package-card[data-package="professional-deep-clean"] .sub-price,
+.package-card[data-package="professional-deep-clean"] .process-kicker,
+.package-card[data-package="professional-deep-clean"] .detail-block h4 {
+  color: #ffffff !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .price small,
+.package-card[data-package="professional-deep-clean"] .sub-price {
+  color: rgba(255, 255, 255, .78) !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .offer-stack p {
+  background: rgba(255, 255, 255, .12) !important;
+  border-color: rgba(244, 198, 79, .42) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(8px);
+}
+
+.package-card[data-package="professional-deep-clean"] .offer-stack strong {
+  color: #ffffff !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .deep-process article,
+.package-card[data-package="professional-deep-clean"] .detail-block.included {
+  background: rgba(255, 255, 255, .1) !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .deep-process strong,
+.package-card[data-package="professional-deep-clean"] .detail-block.included h4 {
+  color: #fff6d8 !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .deep-process span,
+.package-card[data-package="professional-deep-clean"] .detail-block.included li {
+  color: rgba(255, 255, 255, .86) !important;
+}
+
+.package-card[data-package="stain-guard"] {
+  background:
+    radial-gradient(circle at 72% 24%, rgba(215, 166, 63, .22), transparent 20rem),
+    linear-gradient(135deg, #fff8e8 0%, #ffffff 48%, #edf8ff 100%) !important;
+}
+
+.targeted-pair-photo,
+.photo-strip figure,
+.before-after-pair figure {
+  border: 1px solid rgba(3, 29, 51, .12) !important;
+}
+
+.review-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-left: max(24px, calc((100vw - 1320px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1320px) / 2)) !important;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(10, 102, 178, .12), transparent 24rem),
+    linear-gradient(180deg, #f7fbff 0%, #e5f0f8 100%) !important;
+}
+
+.review-steps article,
+.question-grid p,
+.mini-screen {
+  background: linear-gradient(180deg, #ffffff, #eef7ff) !important;
+}
+
+.notice-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-left: max(24px, calc((100vw - 1320px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1320px) / 2)) !important;
+  background: linear-gradient(135deg, #072b49, #0a66b2) !important;
+}
+
+.notice {
+  background: rgba(255, 255, 255, .1) !important;
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  color: #ffffff !important;
+}
+
+.notice h2,
+.notice p,
+.notice .eyebrow,
+.notice-callout {
+  color: #ffffff !important;
+}
+
+.questions-section {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-left: max(24px, calc((100vw - 1320px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1320px) / 2)) !important;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(244, 198, 79, .18), transparent 22rem),
+    linear-gradient(180deg, #eaf4fb, #f8fbff) !important;
+}
+
+@media (max-width: 760px) {
+  .intro-section,
+  .packages-section,
+  .review-section,
+  .notice-section,
+  .questions-section {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .packages-section > .section-heading {
+    padding: 24px !important;
+    border-radius: 18px !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] {
+    background:
+      radial-gradient(circle at 82% 6%, rgba(244, 198, 79, .22), transparent 18rem),
+      linear-gradient(180deg, #062846 0%, #073a61 100%) !important;
+  }
+}
+
+/* Cohesive overall colour pass */
+:root {
+  --brand-navy: #062846;
+  --brand-blue: #075da8;
+  --brand-teal: #0f9f82;
+  --brand-gold: #f2c14e;
+  --brand-cream: #fff8e8;
+  --brand-sky: #e7f3fb;
+  --brand-ice: #f4f9fc;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 5%, rgba(7, 93, 168, .2), transparent 24rem),
+    radial-gradient(circle at 88% 10%, rgba(242, 193, 78, .22), transparent 26rem),
+    linear-gradient(180deg, #dcecf6 0%, #eef6fb 20%, #dbeaf4 48%, #eef5f8 100%) !important;
+}
+
+main {
+  background:
+    linear-gradient(180deg, rgba(220, 236, 246, .88), rgba(238, 246, 251, .72) 26%, rgba(219, 234, 244, .9)) !important;
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(6, 40, 70, .94), rgba(6, 40, 70, .78) 46%, rgba(6, 40, 70, .18)),
+    radial-gradient(circle at 75% 70%, rgba(242, 193, 78, .24), transparent 24rem),
+    url("img/extraction-wand-action.jpg") center right / cover no-repeat !important;
+}
+
+.trust-strip {
+  background: linear-gradient(135deg, #ffffff 0%, var(--brand-sky) 55%, var(--brand-cream) 100%) !important;
+}
+
+.intro-section {
+  background:
+    radial-gradient(circle at 86% 22%, rgba(242, 193, 78, .18), transparent 24rem),
+    linear-gradient(135deg, #dfeff8 0%, #eef7fc 100%) !important;
+}
+
+.intro-copy,
+.package-card,
+.question-grid p,
+.review-copy > div,
+.trust-box,
+.quote-form {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(244, 249, 252, .92)) !important;
+}
+
+.packages-section {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(7, 93, 168, .18), transparent 24rem),
+    radial-gradient(circle at 92% 38%, rgba(242, 193, 78, .2), transparent 26rem),
+    linear-gradient(180deg, #dbeaf4 0%, #edf6fb 40%, #d6e8f3 100%) !important;
+}
+
+.packages-section > .section-heading {
+  background:
+    radial-gradient(circle at 92% 18%, rgba(242, 193, 78, .16), transparent 18rem),
+    linear-gradient(135deg, #062846 0%, #07518a 100%) !important;
+}
+
+.package-card[data-package="standard-clean"] {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(7, 93, 168, .16), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #e9f5fc 100%) !important;
+}
+
+article.package-card.targeted-paired-card {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(7, 93, 168, .2), transparent 22rem),
+    radial-gradient(circle at 88% 20%, rgba(242, 193, 78, .16), transparent 22rem),
+    linear-gradient(135deg, #e9f5fc 0%, #ffffff 58%, #fff6dc 100%) !important;
+}
+
+.package-card[data-package="professional-deep-clean"] {
+  background:
+    radial-gradient(circle at 82% 12%, rgba(242, 193, 78, .24), transparent 24rem),
+    linear-gradient(135deg, #062846 0%, #074a78 58%, #075da8 100%) !important;
+}
+
+.package-card[data-package="stain-guard"] {
+  background:
+    radial-gradient(circle at 72% 24%, rgba(242, 193, 78, .26), transparent 20rem),
+    linear-gradient(135deg, #fff4d7 0%, #ffffff 50%, #e7f3fb 100%) !important;
+}
+
+.real-results-section {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(242, 193, 78, .18), transparent 30rem),
+    linear-gradient(135deg, #031d33 0%, #064270 64%, #075da8 100%) !important;
+}
+
+.review-section {
+  background:
+    radial-gradient(circle at 14% 20%, rgba(7, 93, 168, .16), transparent 24rem),
+    linear-gradient(180deg, #edf6fb 0%, #dcecf6 100%) !important;
+}
+
+.notice-section {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(242, 193, 78, .24), transparent 22rem),
+    linear-gradient(135deg, #062846, #075da8) !important;
+}
+
+.questions-section {
+  background:
+    radial-gradient(circle at 84% 16%, rgba(242, 193, 78, .22), transparent 22rem),
+    linear-gradient(180deg, #dcecf6, #eef6fb) !important;
+}
+
+.final-section {
+  background:
+    linear-gradient(90deg, rgba(6, 40, 70, .95), rgba(7, 93, 168, .84)),
+    radial-gradient(circle at 82% 18%, rgba(242, 193, 78, .2), transparent 26rem),
+    url("img/extraction-wand-action.jpg") center / cover no-repeat !important;
+}
+
+.button-primary,
+.package-button {
+  background: linear-gradient(135deg, #f7d873, var(--brand-gold)) !important;
+}
+
+.button-call {
+  background: linear-gradient(135deg, #0b8e74, var(--brand-teal)) !important;
+}
+
+.button-whatsapp {
+  background: linear-gradient(135deg, #c8f5dc, #8ee5bb) !important;
+}
+
 /* Pair targeted photos with their matching explanation rows */
 @media (min-width: 1121px) {
   .package-card[data-package="targeted-pre-spray"] {
