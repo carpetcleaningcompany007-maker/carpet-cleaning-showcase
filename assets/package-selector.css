@@ -4210,6 +4210,266 @@ body {
   }
 }
 
+/* Site visual refresh: richer, cleaner, less flat */
+:root {
+  --navy-ink: #031d33;
+  --navy-rich: #062f52;
+  --blue-action: #0a66b2;
+  --blue-soft: #eaf6ff;
+  --teal-action: #13a67a;
+  --mint-soft: #9ee8c1;
+  --gold-rich: #d7a63f;
+  --gold-bright: #f4c64f;
+  --paper: #fbfdff;
+  --warm-panel: #fffaf0;
+}
+
+body {
+  color: var(--navy-ink);
+  background:
+    radial-gradient(circle at 8% 8%, rgba(10, 102, 178, .08), transparent 30rem),
+    radial-gradient(circle at 92% 18%, rgba(215, 166, 63, .11), transparent 28rem),
+    linear-gradient(180deg, #f7fbff 0%, #ffffff 28%, #f5f9fd 100%) !important;
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(3, 29, 51, .93) 0%, rgba(3, 29, 51, .78) 44%, rgba(3, 29, 51, .22) 76%, rgba(3, 29, 51, .1) 100%),
+    radial-gradient(circle at 72% 68%, rgba(244, 198, 79, .2), transparent 22rem),
+    url("img/extraction-wand-action.jpg") center right / cover no-repeat !important;
+}
+
+.nav-cta,
+.hero-proof span {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(244, 198, 79, .5) !important;
+}
+
+.brand-logo,
+.trust-strip,
+.package-card,
+.review-copy > div,
+.trust-box,
+.notice,
+.quote-form,
+.mini-screen {
+  box-shadow: 0 24px 70px rgba(3, 29, 51, .12) !important;
+}
+
+.trust-strip {
+  background: linear-gradient(135deg, #ffffff 0%, #f7fbff 62%, #fff7de 100%) !important;
+  border: 1px solid rgba(215, 166, 63, .28) !important;
+}
+
+.trust-strip span {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--navy-rich), var(--blue-action)) !important;
+}
+
+.eyebrow,
+.section-heading .eyebrow {
+  color: var(--blue-action) !important;
+}
+
+.button-primary,
+.package-button {
+  color: #061d32 !important;
+  background: linear-gradient(135deg, #f7d66b, var(--gold-bright)) !important;
+  box-shadow: 0 16px 34px rgba(215, 166, 63, .28) !important;
+}
+
+.button-secondary {
+  color: var(--navy-ink) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 102, 178, .2) !important;
+}
+
+.button-call {
+  background: linear-gradient(135deg, #0d8e6e, var(--teal-action)) !important;
+}
+
+.button-whatsapp {
+  color: var(--navy-ink) !important;
+  background: linear-gradient(135deg, #c7f6df, var(--mint-soft)) !important;
+}
+
+.badge {
+  color: #06304f !important;
+  background: linear-gradient(135deg, #e1f4ff, #cdeeff) !important;
+}
+
+.badge-secondary,
+.tier-pill,
+.tier-pill.gold,
+.tier-pill.protection {
+  color: #061d32 !important;
+  background: linear-gradient(135deg, #ffe18a, var(--gold-bright)) !important;
+}
+
+.package-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(247, 251, 255, .98)) !important;
+  border: 1px solid rgba(10, 102, 178, .12) !important;
+}
+
+.package-card:nth-of-type(odd) {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(244, 198, 79, .1), transparent 20rem),
+    linear-gradient(135deg, #ffffff, #f4faff) !important;
+}
+
+.process-points article,
+.question-grid p,
+.detail-block.included,
+.review-copy > div,
+.trust-box {
+  background: linear-gradient(180deg, #ffffff, #f6fbff) !important;
+  border: 1px solid rgba(10, 102, 178, .13) !important;
+}
+
+.price {
+  color: var(--blue-action) !important;
+}
+
+.price small,
+.sub-price {
+  color: #596a7f !important;
+}
+
+.package-card[data-package="professional-deep-clean"] {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(244, 198, 79, .16), transparent 25rem),
+    linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%) !important;
+  border-top: 10px solid var(--navy-rich) !important;
+}
+
+.package-card[data-package="professional-deep-clean"] .offer-stack p {
+  background: linear-gradient(135deg, #fff9e9, #ffffff) !important;
+  border-color: rgba(215, 166, 63, .42) !important;
+}
+
+.real-results-section {
+  background:
+    radial-gradient(circle at 78% 12%, rgba(244, 198, 79, .16), transparent 30rem),
+    linear-gradient(135deg, #031d33 0%, #06395f 62%, #0a66b2 100%) !important;
+}
+
+.review-section,
+.questions-section,
+.notice-section {
+  background: transparent !important;
+}
+
+.final-section {
+  background:
+    linear-gradient(90deg, rgba(3, 29, 51, .95), rgba(6, 57, 95, .88)),
+    radial-gradient(circle at 82% 18%, rgba(244, 198, 79, .18), transparent 26rem),
+    url("img/extraction-wand-action.jpg") center / cover no-repeat !important;
+}
+
+/* Final targeted pre-spray layout: image and copy paired cleanly */
+@media (min-width: 1121px) {
+  article.package-card.targeted-paired-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: min(1320px, calc(100vw - 48px)) !important;
+    padding: 92px 72px !important;
+    gap: 70px !important;
+  }
+
+  article.package-card.targeted-paired-card > .targeted-pair {
+    display: grid !important;
+    grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr) !important;
+    gap: 82px !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo {
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    background: #eef4f8 !important;
+    border: 1px solid rgba(10, 102, 178, .13) !important;
+    box-shadow: 0 26px 70px rgba(3, 29, 51, .13) !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo img {
+    width: 100% !important;
+    height: 420px !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair:first-child .targeted-pair-photo img {
+    object-position: center 58% !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair:nth-child(2) .targeted-pair-photo img {
+    object-position: center 54% !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo figcaption {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--navy-ink), var(--navy-rich)) !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-copy {
+    max-width: 700px !important;
+    display: grid !important;
+    gap: 18px !important;
+    align-content: center !important;
+  }
+
+  article.package-card.targeted-paired-card h3 {
+    font-size: clamp(3.4rem, 4.6vw, 5.4rem) !important;
+    line-height: .94 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    height: 390px !important;
+    min-height: 390px !important;
+    display: grid !important;
+    grid-template-rows: 1fr auto !important;
+    background: #ffffff !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages {
+    gap: 30px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  article.package-card.targeted-paired-card {
+    display: grid !important;
+    gap: 32px !important;
+  }
+
+  article.package-card.targeted-paired-card > .targeted-pair {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
+
 /* Pair targeted photos with their matching explanation rows */
 @media (min-width: 1121px) {
   .package-card[data-package="targeted-pre-spray"] {
