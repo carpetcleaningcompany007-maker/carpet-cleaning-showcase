@@ -4210,6 +4210,390 @@ body {
   }
 }
 
+/* Pair targeted photos with their matching explanation rows */
+@media (min-width: 1121px) {
+  .package-card[data-package="targeted-pre-spray"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 72px !important;
+    row-gap: 18px !important;
+    align-items: start !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] > * {
+    grid-column: 2 !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+    grid-column: 1 !important;
+    grid-row: 1 / span 8 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 320px 320px !important;
+    gap: 58px !important;
+    max-width: none !important;
+    margin: 0 !important;
+    align-self: start !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+    height: 320px !important;
+    min-height: 320px !important;
+    display: grid !important;
+    grid-template-rows: 1fr auto !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-copy {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "pre"
+      "dwell"
+      "extract" !important;
+    gap: 14px !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-copy article[data-step="pre-spray"] {
+    grid-area: pre;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-copy article[data-step="dwell"] {
+    grid-area: dwell;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-copy article[data-step="extraction"] {
+    grid-area: extract;
+    margin-top: 172px;
+  }
+}
+
+/* Targeted package: true top/bottom paired rows */
+.targeted-paired-card {
+  display: grid !important;
+  gap: 64px !important;
+}
+
+.targeted-paired-card > * {
+  max-width: none !important;
+}
+
+.targeted-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.targeted-pair-photo {
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(7, 93, 168, .12);
+  border-radius: 14px;
+  box-shadow: 0 24px 58px rgba(6, 40, 70, .12);
+}
+
+.targeted-pair-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.targeted-pair-photo figcaption {
+  display: block;
+  padding: 14px 16px;
+  color: #ffffff;
+  background: var(--premium-navy);
+  font-size: .82rem;
+  font-weight: 900;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.targeted-pair-copy {
+  display: grid;
+  gap: 18px;
+  align-content: center;
+}
+
+.targeted-pair-copy .process-points {
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+
+.targeted-pair-copy .package-actions {
+  margin-top: 6px;
+}
+
+@media (max-width: 760px) {
+  .targeted-paired-card {
+    gap: 32px !important;
+  }
+
+  .targeted-pair {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* Override old targeted package grid after restructuring */
+.package-card.targeted-paired-card {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 78px !important;
+}
+
+.package-card.targeted-paired-card > .targeted-pair {
+  grid-column: 1 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 76px !important;
+  align-items: center !important;
+  max-width: none !important;
+}
+
+.package-card.targeted-paired-card .targeted-pair-photo,
+.package-card.targeted-paired-card .targeted-pair-copy {
+  min-width: 0;
+  max-width: none !important;
+}
+
+.package-card.targeted-paired-card .targeted-pair-photo img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: contain !important;
+}
+
+.package-card.targeted-paired-card .targeted-pair-copy h3 {
+  max-width: 720px;
+}
+
+.package-card.targeted-paired-card .targeted-pair-copy .process-points {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+
+@media (max-width: 760px) {
+  .package-card.targeted-paired-card {
+    gap: 34px !important;
+  }
+
+  .package-card.targeted-paired-card > .targeted-pair {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+}
+
+/* Hard reset for the targeted pre spray section */
+@media (min-width: 1121px) {
+  article.package-card.targeted-paired-card {
+    display: block !important;
+    width: min(1320px, calc(100vw - 48px)) !important;
+    padding: 96px 72px !important;
+    background: #ffffff !important;
+  }
+
+  article.package-card.targeted-paired-card > .targeted-pair {
+    display: grid !important;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important;
+    gap: 78px !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 68px !important;
+  }
+
+  article.package-card.targeted-paired-card > .targeted-pair:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    background: #eef4f8 !important;
+    border: 1px solid rgba(7, 93, 168, .12) !important;
+    box-shadow: 0 28px 70px rgba(6, 40, 70, .14) !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo img {
+    width: 100% !important;
+    height: 420px !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    background: #eef4f8 !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair:first-child .targeted-pair-photo img {
+    object-position: center 58% !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair:nth-child(2) .targeted-pair-photo img {
+    object-position: center 54% !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo figcaption {
+    display: block !important;
+    padding: 16px 18px !important;
+    color: #ffffff !important;
+    background: var(--premium-navy) !important;
+    font-size: .86rem !important;
+    font-weight: 900 !important;
+    line-height: 1.15 !important;
+    text-transform: uppercase !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-copy {
+    display: grid !important;
+    align-content: center !important;
+    gap: 18px !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    min-width: 0 !important;
+  }
+
+  article.package-card.targeted-paired-card h3 {
+    max-width: 680px !important;
+    font-size: clamp(3.3rem, 5vw, 5.8rem) !important;
+    line-height: .94 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  article.package-card.targeted-paired-card .process-points {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  article.package-card.targeted-paired-card .process-points article {
+    min-height: 0 !important;
+    padding: 22px 24px !important;
+  }
+
+  article.package-card.targeted-paired-card .detail-block {
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  article.package-card.targeted-paired-card .package-actions {
+    margin-top: 12px !important;
+    max-width: 620px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  article.package-card.targeted-paired-card {
+    display: grid !important;
+    gap: 32px !important;
+  }
+
+  article.package-card.targeted-paired-card > .targeted-pair {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    margin: 0 !important;
+  }
+
+  article.package-card.targeted-paired-card .targeted-pair-photo img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  article.package-card.targeted-paired-card h3 {
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+}
+
+/* Final photo presentation: large panels, not cramped inline thumbnails */
+@media (min-width: 1121px) {
+  .package-card[data-package="targeted-pre-spray"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    column-gap: 80px !important;
+    row-gap: 18px !important;
+    align-items: center !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] > * {
+    grid-column: 2 !important;
+    max-width: none;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images,
+  .package-card[data-package="targeted-pre-spray"] .photo-strip {
+    grid-column: 1 !important;
+    grid-row: 1 / span 9 !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+    max-width: none !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    margin: 0;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
+    height: 330px !important;
+    min-height: 330px !important;
+    display: grid !important;
+    grid-template-rows: 1fr auto !important;
+    background: #ffffff !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: contain !important;
+    background: #ffffff !important;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .process-points {
+    grid-template-columns: 1fr;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .detail-block,
+  .package-card[data-package="targeted-pre-spray"] .package-actions {
+    max-width: none;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages figure {
+    height: 390px !important;
+    min-height: 390px !important;
+    background: #ffffff !important;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages {
+    gap: 34px !important;
+    margin-top: 34px;
+    margin-bottom: 42px;
+  }
+
+  .package-card[data-package="professional-deep-clean"] .photo-strip.stages img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    background: #ffffff !important;
+  }
+}
+
 /* Remove forced photo frames so the whole image is visible */
 .package-card .photo-strip figure,
 .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure,
@@ -4254,8 +4638,8 @@ body {
 
 /* True final image level pass */
 .package-card[data-package="targeted-pre-spray"] .targeted-process-images figure {
-  height: 430px !important;
-  min-height: 430px !important;
+  height: 360px !important;
+  min-height: 360px !important;
   display: grid !important;
   grid-template-rows: 1fr auto !important;
 }
@@ -4273,6 +4657,19 @@ body {
   height: 100% !important;
   object-fit: contain !important;
   object-position: center !important;
+}
+
+@media (min-width: 1121px) {
+  .package-card[data-package="targeted-pre-spray"] {
+    grid-template-columns: minmax(430px, .82fr) minmax(0, 1.18fr);
+    column-gap: 86px;
+    align-items: center;
+  }
+
+  .package-card[data-package="targeted-pre-spray"] .targeted-process-images {
+    max-width: 560px;
+    gap: 24px;
+  }
 }
 
 @media (max-width: 760px) {
