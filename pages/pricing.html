@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/package-selector.css">
+  <link rel="stylesheet" href="../assets/package-selector.css?v=checkbox-builder-1">
 </head>
 <body>
   <header class="hero">
@@ -83,12 +83,12 @@
 
     <section class="section packages-section" id="packages">
       <div class="section-heading">
-        <p class="eyebrow">Interactive Package Selector</p>
-        <h2>Which Clean Would You Like?</h2>
-        <p>Pick by carpet condition, budget and the result you want. Our two main options are the Standard Clean and the Professional Deep Clean. End-of-tenancy options may differ slightly.</p>
+        <p class="eyebrow">Interactive Service Builder</p>
+        <h2>Build Your Carpet Clean</h2>
+        <p>Start with the £30 Standard Clean, then tick only the additional treatment stages your carpet needs. The name and price update automatically.</p>
       </div>
 
-      <div class="package-grid" role="list">
+      <div class="package-grid" role="list" hidden>
         <article class="package-card" role="listitem" data-package="standard-clean">
           <div class="badge-row">
             <div class="badge">Most Affordable Option</div>
@@ -315,9 +315,87 @@
         </article>
       </div>
 
+      <article class="clean-builder package-card selected" data-package="standard-clean" aria-current="true">
+        <div class="builder-intro">
+          <div>
+            <div class="badge-row">
+              <div class="badge">Start With The Basics</div>
+              <div class="tier-pill bronze" data-build-tier>Standard Clean</div>
+              <div class="builder-recommended" data-build-recommended hidden>Most Recommended</div>
+            </div>
+            <h3 data-build-name>Standard Clean</h3>
+            <p class="price"><small>Your price</small> <span data-build-price>£30</span> <span data-build-price-suffix>for 1 room</span></p>
+            <p class="description" data-build-description>This uses a generic in-tank detergent and a rinse with the wand. It is ideal for a basic freshen-up.</p>
+          </div>
+          <div class="builder-summary" aria-live="polite">
+            <span>Your selected clean</span>
+            <strong data-build-summary>Standard Clean</strong>
+            <p data-build-summary-copy>A straightforward maintenance clean for lightly soiled carpet.</p>
+            <div class="builder-total"><span>Total</span><strong data-build-total>£30</strong></div>
+            <p data-build-rate>£30 per room</p>
+          </div>
+        </div>
+
+        <div class="builder-layout">
+          <div class="builder-options-panel" aria-label="Build your carpet clean">
+            <h4>Build your clean</h4>
+            <label class="room-control" for="builder-rooms-simple">
+              <span><b>Rooms</b><small>Choose how many rooms need cleaning.</small></span>
+              <input id="builder-rooms-simple" data-build-rooms type="number" min="1" max="12" value="1">
+            </label>
+
+            <label class="builder-check">
+              <input class="build-option" type="checkbox" data-build-option="pre-spray">
+              <span><strong>Add targeted pre-spray</strong><small>Applied separately and allowed to dwell so it can soften grease, body oils and traffic-lane soil before extraction.</small><b class="option-price">Upgrades to £50 first room, £35 additional rooms</b></span>
+            </label>
+
+            <label class="builder-check">
+              <input class="build-option" type="checkbox" data-build-option="agitation">
+              <span><strong>Add deep mechanical agitation <em>Recommended</em></strong><small>CRB or rotary agitation scrubs the treatment through the fibres, lifts the pile and loosens trapped dirt. Pre-spray is included automatically.</small><b class="option-price">Creates the Deep Clean: £75 first room, £45 additional rooms</b></span>
+            </label>
+
+            <label class="builder-check">
+              <input class="build-option" type="checkbox" data-build-option="stain-guard">
+              <span><strong>Add stain guard protection</strong><small>Applied after cleaning to help spills remain on the surface longer and make routine vacuuming more effective.</small><b class="option-price">£30 per room, or £15 per room with the Professional Deep Clean</b></span>
+            </label>
+          </div>
+
+          <div class="builder-stage-list" aria-live="polite">
+            <article class="build-stage is-visible" data-stage="standard">
+              <figure><img src="../assets/img/extraction-wand-action.jpg" alt="Hot water extraction wand cleaning carpet"><figcaption>Included from the start</figcaption></figure>
+              <div><span>Base service</span><h4>Standard spray and extract</h4><p>Generic in-tank detergent is applied and rinsed with the extraction wand for a quick general freshen-up.</p></div>
+            </article>
+            <article class="build-stage" data-stage="pre-spray" hidden>
+              <figure><img src="../assets/img/pre-spray-action.jpg" alt="Targeted pre-spray being applied to carpet"><figcaption>Added preparation</figcaption></figure>
+              <div><span>Selected add-on</span><h4>Targeted pre-spray and dwell time</h4><p>The solution is applied directly to the carpet and given time to soften attached soil before extraction.</p></div>
+            </article>
+            <article class="build-stage" data-stage="agitation" hidden>
+              <figure><img src="../assets/img/rotary-bonnet-action.jpg" alt="Professional mechanical agitation scrubbing carpet"><figcaption>Added deep-clean stage</figcaption></figure>
+              <div><span>Selected add-on</span><h4>Mechanical agitation</h4><p>The machine scrubs deep into the fibres, lifts flattened pile and helps break dirt away before the 220&deg; extraction rinse.</p></div>
+            </article>
+            <article class="build-stage" data-stage="stain-guard" hidden>
+              <figure><img src="../assets/img/stain-guard-coffee-beading.png" alt="Coffee beading on protected carpet"><figcaption>Optional protection</figcaption></figure>
+              <div><span>Selected add-on</span><h4>Stain guard protection</h4><p>Applied after cleaning to help the carpet resist dry soil and give you more time to blot fresh spills.</p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="builder-offers" data-build-offers hidden>
+          <strong>Professional Deep Clean offers</strong>
+          <span>Free landing when the stairs are cleaned</span>
+          <span>Half-price stain guard if selected</span>
+        </div>
+
+        <div class="package-actions">
+          <a class="button package-button quote-link" href="#quote" data-build-quote data-package="standard-clean">Get This Clean Quoted</a>
+          <a class="button button-call" href="tel:07802563213">Call Now</a>
+          <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
+        </div>
+      </article>
+
     </section>
 
-    <section class="section build-clean-section" id="build-your-clean">
+    <section class="section build-clean-section" id="build-your-clean" hidden>
       <div class="build-clean-hero">
         <div>
           <p class="eyebrow">Interactive Cleaning Package Builder</p>
@@ -633,14 +711,14 @@
           <input name="_redirect" type="hidden" value="https://www.thecarpetcleaningcrew.co.uk/thank-you.html">
           <input name="_subject" type="hidden" value="New Package Quote Request">
           <input name="_format" type="hidden" value="plain">
+          <input id="selected-options" name="selected_options" type="hidden" value="Standard Clean">
           <label>
-            <span>Selected package</span>
+            <span>Selected clean</span>
             <select id="selected-package" name="package" required>
               <option value="not-sure">Not sure yet - please advise</option>
               <option value="standard-clean">Standard Clean - prices start at £30 per room</option>
               <option value="targeted-pre-spray">Targeted Pre Spray Treatment - prices start at £50 first room, £35 additional rooms</option>
               <option value="professional-deep-clean">Professional Deep Clean - prices start at £75 first room, £45 additional rooms</option>
-              <option value="stain-guard">Elite Stain Guard - prices start at £30 per room add on</option>
             </select>
           </label>
           <div class="form-grid">
@@ -671,7 +749,7 @@
     </section>
   </main>
 
-  <script src="../assets/package-selector.js"></script>
+  <script src="../assets/package-selector.js?v=checkbox-builder-1"></script>
 </body>
 </html>
 

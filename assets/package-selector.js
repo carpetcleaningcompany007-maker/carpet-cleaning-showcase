@@ -1,51 +1,145 @@
-const packageCards = document.querySelectorAll(".package-card");
 const packageSelect = document.querySelector("#selected-package");
+const selectedOptionsInput = document.querySelector("#selected-options");
 const quoteLinks = document.querySelectorAll(".quote-link");
-const revealItems = document.querySelectorAll(
-  ".package-card, .before-after-section, .build-clean-section, .review-steps article, .review-copy, .notice, .question-grid p, .quote-shell"
-);
+const buildOptions = document.querySelectorAll(".build-option");
+const buildStages = document.querySelectorAll(".build-stage");
+const buildRooms = document.querySelector("[data-build-rooms]");
 
-function syncSelectedCard(packageValue) {
-  packageCards.forEach((card) => {
-    const isSelected = card.dataset.package === packageValue;
-    card.classList.toggle("selected", isSelected);
-    card.setAttribute("aria-current", isSelected ? "true" : "false");
-  });
+const cleanTypes = {
+  standard: {
+    value: "standard-clean",
+    name: "Standard Clean",
+    tier: "Standard Clean",
+    firstRoom: 30,
+    additionalRoom: 30,
+    description: "This uses a generic in-tank detergent and a rinse with the wand. It is ideal for a basic freshen-up.",
+    summary: "A straightforward maintenance clean for lightly soiled carpet.",
+    rate: "£30 per room"
+  },
+  targeted: {
+    value: "targeted-pre-spray",
+    name: "Targeted Pre-Spray Clean",
+    tier: "Pre-Spray Clean",
+    firstRoom: 50,
+    additionalRoom: 35,
+    description: "Targeted pre-spray is applied separately and allowed to dwell before the carpet is rinsed with hot water extraction.",
+    summary: "Extra preparation for carpets needing more than a basic freshen-up.",
+    rate: "£50 first room, £35 each additional room"
+  },
+  professional: {
+    value: "professional-deep-clean",
+    name: "Professional Deep Clean",
+    tier: "Professional Deep Clean",
+    firstRoom: 75,
+    additionalRoom: 45,
+    recommended: true,
+    description: "The complete process: targeted pre-spray, dwell time, deep mechanical agitation and 220° superheated hot water extraction.",
+    summary: "The most thorough clean and our recommendation for lived-in carpets.",
+    rate: "£75 first room, £45 each additional room"
+  }
+};
+
+function setText(selector, value) {
+  document.querySelector(selector)?.replaceChildren(document.createTextNode(value));
 }
 
-packageCards.forEach((card) => {
-  const button = card.querySelector(".package-button");
+function selectedAddOns() {
+  return Array.from(buildOptions).filter((option) => option.checked).map((option) => option.dataset.buildOption);
+}
 
-  button.addEventListener("click", () => {
-    syncSelectedCard(card.dataset.package);
-    card.animate(
-      [
-        { transform: "translateY(-6px) scale(1)" },
-        { transform: "translateY(-6px) scale(1.018)" },
-        { transform: "translateY(-6px) scale(1)" }
-      ],
-      {
-        duration: 260,
-        easing: "ease-out"
-      }
-    );
+function normaliseOptions(changedOption) {
+  const preSpray = document.querySelector('[data-build-option="pre-spray"]');
+  const agitation = document.querySelector('[data-build-option="agitation"]');
+
+  if (changedOption?.dataset.buildOption === "pre-spray" && !changedOption.checked && agitation) {
+    agitation.checked = false;
+    return;
+  }
+  if (agitation?.checked && preSpray) preSpray.checked = true;
+}
+
+function roomCount() {
+  const parsed = Number.parseInt(buildRooms?.value || "1", 10);
+  return Number.isFinite(parsed) ? Math.min(Math.max(parsed, 1), 12) : 1;
+}
+
+function currentClean() {
+  const addOns = selectedAddOns();
+  if (addOns.includes("agitation")) return { ...cleanTypes.professional, addOns };
+  if (addOns.includes("pre-spray")) return { ...cleanTypes.targeted, addOns };
+  return { ...cleanTypes.standard, addOns };
+}
+
+function cleanTotal(clean, rooms) {
+  const cleaningPrice = clean.firstRoom + (rooms - 1) * clean.additionalRoom;
+  if (!clean.addOns.includes("stain-guard")) return cleaningPrice;
+  const protectionRate = clean.value === "professional-deep-clean" ? 15 : 30;
+  return cleaningPrice + protectionRate * rooms;
+}
+
+function updateBuilder() {
+  const clean = currentClean();
+  const rooms = roomCount();
+  const total = cleanTotal(clean, rooms);
+  const roomLabel = rooms === 1 ? "1 room" : `${rooms} rooms`;
+  const hasProtection = clean.addOns.includes("stain-guard");
+
+  if (buildRooms) buildRooms.value = String(rooms);
+  if (packageSelect) packageSelect.value = clean.value;
+
+  setText("[data-build-name]", clean.name);
+  setText("[data-build-tier]", clean.tier);
+  setText("[data-build-price]", `£${total}`);
+  setText("[data-build-price-suffix]", `for ${roomLabel}`);
+  setText("[data-build-description]", clean.description);
+  setText("[data-build-summary]", clean.name);
+  setText("[data-build-summary-copy]", clean.summary);
+  setText("[data-build-total]", `£${total}`);
+  setText("[data-build-rate]", clean.rate);
+
+  const recommended = document.querySelector("[data-build-recommended]");
+  if (recommended) recommended.hidden = !clean.recommended;
+
+  const offers = document.querySelector("[data-build-offers]");
+  if (offers) offers.hidden = clean.value !== "professional-deep-clean";
+
+  let visibleStageCount = 0;
+  buildStages.forEach((stage) => {
+    const show = stage.dataset.stage === "standard" || clean.addOns.includes(stage.dataset.stage);
+    stage.hidden = !show;
+    stage.classList.toggle("is-visible", show);
+    if (show) visibleStageCount += 1;
+  });
+  const stageList = document.querySelector(".builder-stage-list");
+  if (stageList) stageList.className = `builder-stage-list stage-count-${visibleStageCount}`;
+
+  const labels = [];
+  if (clean.addOns.includes("pre-spray")) labels.push("Targeted pre-spray and dwell time");
+  if (clean.addOns.includes("agitation")) labels.push("Deep mechanical agitation");
+  if (hasProtection) labels.push(`Stain guard at £${clean.value === "professional-deep-clean" ? 15 : 30} per room`);
+  if (selectedOptionsInput) selectedOptionsInput.value = `${clean.name}; ${roomLabel}; ${labels.join("; ") || "no add-ons"}; estimated total £${total}`;
+
+  document.querySelector("[data-build-quote]")?.setAttribute("data-package", clean.value);
+}
+
+buildOptions.forEach((option) => {
+  option.addEventListener("change", () => {
+    normaliseOptions(option);
+    updateBuilder();
   });
 });
 
-function selectPackage(packageValue) {
-  if (!packageSelect || !packageValue) return;
-
-  packageSelect.value = packageValue;
-  syncSelectedCard(packageValue);
-}
+buildRooms?.addEventListener("input", updateBuilder);
 
 quoteLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
-    selectPackage(link.dataset.package);
-    if (link.dataset.package) {
+    const packageValue = link.dataset.buildQuote !== undefined ? currentClean().value : link.dataset.package;
+    if (packageSelect && packageValue) packageSelect.value = packageValue;
+
+    if (packageValue) {
       const url = new URL(window.location.href);
-      url.searchParams.set("package", link.dataset.package);
+      url.searchParams.set("package", packageValue);
       url.hash = "quote";
       history.replaceState(null, "", url);
     }
@@ -55,143 +149,24 @@ quoteLinks.forEach((link) => {
 });
 
 const packageFromUrl = new URLSearchParams(window.location.search).get("package");
-selectPackage(packageFromUrl || packageSelect?.value);
-
-const builder = document.querySelector("[data-clean-builder]");
-const builderOptions = document.querySelectorAll("[data-builder-option]");
-const builderRooms = document.querySelector("[data-builder-rooms]");
-const roomButtons = document.querySelectorAll("[data-room-step]");
-
-const builderState = {
-  machine: "Enforcer 400",
-  solution: "Targeted Pre Spray",
-  agitation: "Mechanical Agitation",
-  heat: "Fusion Heat Bomb Steam System"
-};
-
-const baseFirstRoom = 75;
-const additionalRoom = 45;
-
-function formatCurrency(value) {
-  return `£${Math.max(value, 0).toFixed(0)}`;
+if (packageFromUrl === "targeted-pre-spray") document.querySelector('[data-build-option="pre-spray"]')?.setAttribute("checked", "");
+if (packageFromUrl === "professional-deep-clean") {
+  document.querySelector('[data-build-option="pre-spray"]')?.setAttribute("checked", "");
+  document.querySelector('[data-build-option="agitation"]')?.setAttribute("checked", "");
 }
 
-function getRooms() {
-  if (!builderRooms) return 1;
-  const value = Number.parseInt(builderRooms.value, 10);
-  return Number.isFinite(value) ? Math.min(Math.max(value, 1), 12) : 1;
-}
+normaliseOptions();
+updateBuilder();
 
-function getBuilderAdjustment() {
-  return Array.from(builderOptions).reduce((total, option) => {
-    return option.classList.contains("is-selected") ? total + Number(option.dataset.price || 0) : total;
-  }, 0);
-}
-
-function getBuilderTotal() {
-  const rooms = getRooms();
-  const calculatedTotal = baseFirstRoom + (rooms - 1) * additionalRoom + getBuilderAdjustment();
-  const minimumTotal = rooms * 30;
-  return Math.max(calculatedTotal, minimumTotal);
-}
-
-function getCleanName() {
-  const hasFullSpec = builderState.machine === "Enforcer 400"
-    && builderState.solution === "Targeted Pre Spray"
-    && builderState.agitation === "Mechanical Agitation"
-    && builderState.heat === "Fusion Heat Bomb Steam System";
-
-  return hasFullSpec ? "Professional Deep Clean" : "Custom Clean";
-}
-
-function updateBuilderDisplay(activeOption) {
-  if (!builder) return;
-
-  const rooms = getRooms();
-  const total = formatCurrency(getBuilderTotal());
-  const roomsLabel = rooms === 1 ? "1 room" : `${rooms} rooms`;
-
-  document.querySelectorAll("[data-clean-total], [data-clean-total-bottom]").forEach((node) => {
-    node.textContent = total;
-  });
-
-  document.querySelector("[data-clean-rooms-label]")?.replaceChildren(document.createTextNode(roomsLabel));
-  document.querySelector("[data-clean-name]")?.replaceChildren(document.createTextNode(getCleanName()));
-
-  document.querySelector("[data-summary-machine]")?.replaceChildren(document.createTextNode(builderState.machine));
-  document.querySelector("[data-summary-solution]")?.replaceChildren(document.createTextNode(builderState.solution));
-  document.querySelector("[data-summary-agitation]")?.replaceChildren(document.createTextNode(builderState.agitation));
-  document.querySelector("[data-summary-heat]")?.replaceChildren(document.createTextNode(builderState.heat.replace(" Steam System", "")));
-
-  document.querySelector("[data-selected-machine]")?.replaceChildren(document.createTextNode(builderState.machine));
-  document.querySelector("[data-selected-solution]")?.replaceChildren(document.createTextNode(builderState.solution));
-  document.querySelector("[data-selected-agitation]")?.replaceChildren(document.createTextNode(builderState.agitation));
-  document.querySelector("[data-selected-heat]")?.replaceChildren(document.createTextNode(builderState.heat));
-
-  if (activeOption?.dataset.image) {
-    const image = document.querySelector("[data-builder-image]");
-    const caption = document.querySelector("[data-builder-caption]");
-    const stage = document.querySelector("[data-builder-stage]");
-    const stepNumber = activeOption.closest(".builder-step")?.querySelector(".builder-step-heading span")?.textContent?.replace("Step ", "");
-
-    if (image) {
-      image.classList.add("is-changing");
-      window.setTimeout(() => {
-        image.src = activeOption.dataset.image;
-        image.alt = activeOption.querySelector("strong")?.textContent || "Selected cleaning option";
-        image.classList.remove("is-changing");
-      }, 120);
-    }
-    if (caption) caption.textContent = activeOption.dataset.caption || "";
-    if (stage && stepNumber) stage.textContent = `Step ${stepNumber} of 4`;
-  }
-}
-
-builderOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    const group = option.dataset.group;
-    if (!group) return;
-
-    document.querySelectorAll(`[data-builder-option][data-group="${group}"]`).forEach((groupOption) => {
-      const isSelected = groupOption === option;
-      groupOption.classList.toggle("is-selected", isSelected);
-      groupOption.setAttribute("aria-pressed", isSelected ? "true" : "false");
-    });
-
-    builderState[group] = option.dataset.value;
-    updateBuilderDisplay(option);
-  });
-});
-
-builderRooms?.addEventListener("input", () => {
-  builderRooms.value = String(getRooms());
-  updateBuilderDisplay();
-});
-
-roomButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!builderRooms) return;
-    const nextValue = getRooms() + Number(button.dataset.roomStep || 0);
-    builderRooms.value = String(Math.min(Math.max(nextValue, 1), 12));
-    updateBuilderDisplay();
-  });
-});
-
-updateBuilderDisplay(document.querySelector("[data-builder-option].is-selected"));
-
+const revealItems = document.querySelectorAll(".clean-builder, .review-steps article, .review-copy, .notice, .question-grid p, .quote-shell");
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.16 }
-  );
-
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
   revealItems.forEach((item) => {
     item.classList.add("reveal");
     observer.observe(item);
