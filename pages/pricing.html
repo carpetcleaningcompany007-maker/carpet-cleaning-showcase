@@ -3,753 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Choose Your Carpet Cleaning Package | The Carpet Cleaning Company</title>
+  <meta name="description" content="Build a clear, personalised carpet cleaning quote in three simple steps.">
+  <title>Build Your Carpet Cleaning Quote | The Carpet Cleaning Company</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/package-selector.css?v=checkbox-builder-1">
+  <link rel="stylesheet" href="../assets/package-selector.css?v=guided-modal-7">
 </head>
 <body>
-  <header class="hero">
-    <nav class="topbar" aria-label="Page navigation">
-      <a class="brand" href="#">
-        <img class="brand-logo" src="../assets/img/logo.webp" alt="The Carpet Cleaning Company logo">
-        <span>The Carpet Cleaning Company</span>
-      </a>
-        <a class="nav-cta quote-link" href="#quote" data-package="not-sure">Start Your Quote</a>
+  <header class="page-hero">
+    <nav class="topbar">
+      <a class="brand" href="../index.html"><img src="../assets/img/logo.webp" alt="The Carpet Cleaning Company logo"><span>The Carpet Cleaning Company</span></a>
+      <a href="tel:07802563213">07802 563213</a>
     </nav>
-
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">Carpet cleaning in Ludlow, Shrewsbury and nearby areas</p>
-        <h1>Choose Your Carpet Cleaning Package</h1>
-        <div class="promise-lines" aria-label="Service promises">
-          <span>No hidden upgrades.</span>
-          <span>No surprise charges at the door.</span>
-          <span>No bait and switch sales tactics.</span>
-        </div>
-        <p class="hero-lede">
-          We show you exactly what you are getting before you book. Every package below clearly shows the equipment used,
-          the cleaning process involved, and the results you can realistically expect from a professional carpet cleaning company.
-        </p>
-        <a class="button button-primary quote-link" href="#quote" data-package="not-sure">Start Your Quote</a>
-        <div class="hero-proof" aria-label="Service highlights">
-          <span>Clear package choice</span>
-          <span>Professional equipment</span>
-          <span>Quote form remembers your selection</span>
-        </div>
-      </div>
+    <div class="hero-content">
+      <p class="eyebrow">A professional clean, explained clearly</p>
+      <h1>Build Your Clean</h1>
+      <p>Choose your rooms, add only the cleaning stages you value and see exactly where your money goes.</p>
+      <button class="primary-button" type="button" data-open-builder>Build My Quote</button>
+      <div class="hero-points"><span>Three simple steps</span><span>Live pricing</span><span>No pressure</span></div>
     </div>
   </header>
 
   <main>
-    <section class="trust-strip" aria-label="Why customers trust us">
-      <article>
-        <span aria-hidden="true">5★</span>
-        <strong>5 Star Rated</strong>
-      </article>
-      <article>
-        <span aria-hidden="true">INS</span>
-        <strong>Fully Insured</strong>
-      </article>
-      <article>
-        <span aria-hidden="true">PRO</span>
-        <strong>Professional Equipment</strong>
-      </article>
-      <article>
-        <span aria-hidden="true">OWN</span>
-        <strong>Direct Contact With The Owner</strong>
-      </article>
-      <article>
-        <span aria-hidden="true">LOC</span>
-        <strong>Shropshire, Herefordshire & Worcestershire</strong>
-      </article>
+    <section class="intro-band">
+      <p class="eyebrow">Tailored to your budget</p>
+      <h2>We show the process. You choose the depth of clean.</h2>
+      <p>Start with a basic spray and extract clean, then add preparation, mechanical agitation and protection. Nothing is hidden and every upgrade is explained before you decide.</p>
+      <button class="secondary-button" type="button" data-open-builder>Start Guided Quote</button>
     </section>
 
-    <section class="section intro-section">
-      <div class="section-grid">
-        <div>
-          <p class="eyebrow">Why We Created This Page</p>
-          <h2>Know exactly what you are buying before you book.</h2>
-        </div>
-        <div class="intro-copy">
-          <p>Most carpet cleaning companies advertise a low price but don’t explain what is actually included.</p>
-          <p>When customers compare quotes, they often have no idea whether they are comparing like for like. A £30 carpet clean and a professional deep clean are not the same service.</p>
-          <p>We believe customers deserve complete transparency. You can see every stage of the cleaning process, understand exactly what happens, and choose the service that is right for you.</p>
-          <p class="assurance">Our prices do not change when we arrive. What you choose here is what you receive.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section packages-section" id="packages">
-      <div class="section-heading">
-        <p class="eyebrow">Interactive Service Builder</p>
-        <h2>Build Your Carpet Clean</h2>
-        <p>Start with the £30 Standard Clean, then tick only the additional treatment stages your carpet needs. The name and price update automatically.</p>
-      </div>
-
-      <div class="package-grid" role="list" hidden>
-        <article class="package-card" role="listitem" data-package="standard-clean">
-          <div class="badge-row">
-            <div class="badge">Most Affordable Option</div>
-            <div class="tier-pill bronze">Bronze Style</div>
-          </div>
-          <h3>Standard Clean</h3>
-          <p class="price"><small>Prices start at</small> £30 <span>Per Room</span></p>
-          <div class="photo-strip single">
-            <figure>
-              <img src="../assets/img/extraction-wand-action.jpg" alt="Hot water extraction wand cleaning carpet with no face visible">
-              <figcaption>Hot water extraction wand clean</figcaption>
-            </figure>
-          </div>
-          <p class="description">This uses a generic in-tank detergent and a rinse with the wand.</p>
-          <p class="description">It is ideal for a basic freshen-up and is the type of carpet clean you often see advertised online at around £30 per room.</p>
-          <p class="truth-note">We tell you exactly what is included before you book, so you can make a fair comparison and choose the clean that suits your expectations.</p>
-          <div class="detail-block">
-            <h4>Good For</h4>
-            <ul>
-              <li>Lightly soiled carpets</li>
-              <li>Budget conscious customers</li>
-              <li>General freshen up</li>
-              <li>Customers who want a £30 clean</li>
-            </ul>
-          </div>
-          <div class="detail-block muted">
-            <h4>Limitations</h4>
-            <ul>
-              <li>The detergent is designed to remain in the carpet. It is not a full rinse out process.</li>
-              <li>There is no targeted pre spray.</li>
-              <li>There is no dwell time.</li>
-              <li>There is no machine agitation.</li>
-              <li>Flattened fibres and stubborn soil may not release fully with this method.</li>
-            </ul>
-          </div>
-          <div class="package-actions">
-            <a class="button package-button quote-link" href="#quote" data-package="standard-clean">Choose This Package</a>
-            <a class="button button-secondary quote-link" href="#quote" data-package="standard-clean">Get My Quote</a>
-            <a class="button button-call" href="tel:07802563213">Call Now</a>
-            <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
-          </div>
-        </article>
-
-        <article class="package-card targeted-paired-card" role="listitem" data-package="targeted-pre-spray">
-          <div class="targeted-pair">
-            <figure class="targeted-pair-photo">
-              <img src="../assets/img/pre-spray-action.jpg" alt="Professional pre spray being applied to carpet with no face visible">
-              <figcaption>Professional pre spray application</figcaption>
-            </figure>
-            <div class="targeted-pair-copy">
-              <div class="badge-row">
-                <div class="badge">Pre Treatment Option</div>
-                <div class="tier-pill silver">Step Up</div>
-              </div>
-              <h3>Targeted Pre Spray Treatment</h3>
-              <p class="price"><small>Prices start at</small> £50 <span>First Room</span></p>
-              <p class="sub-price">£35 Additional Rooms</p>
-              <div class="process-points targeted-process-copy">
-                <article data-step="pre-spray">
-                  <strong>1. Pre spray applied</strong>
-                  <span>A targeted professional cleaning solution is applied directly to the carpet.</span>
-                </article>
-                <article data-step="dwell">
-                  <strong>2. Dwell time</strong>
-                  <span>The solution is given time to soften dirt, grease and general soil.</span>
-                </article>
-              </div>
-            </div>
-          </div>
-
-          <div class="targeted-pair">
-            <figure class="targeted-pair-photo">
-              <img src="../assets/img/extraction-wand-action.jpg" alt="Hot water extraction wand rinsing carpet with no face visible">
-              <figcaption>Hot water extraction rinse</figcaption>
-            </figure>
-            <div class="targeted-pair-copy">
-              <div class="process-points targeted-process-copy">
-                <article data-step="extraction">
-                  <strong>3. Wand extraction</strong>
-                  <span>The carpet is rinsed and extracted with hot water extraction.</span>
-                </article>
-              </div>
-              <div class="detail-block">
-                <h4>Why It Works Better</h4>
-                <p>This gives a better result than detergent in the tank only because the cleaning solution has time to work before it is rinsed away.</p>
-              </div>
-              <div class="detail-block">
-                <h4>Good For</h4>
-                <ul>
-                  <li>Carpets needing more than a basic clean</li>
-                  <li>Moderate soiling</li>
-                  <li>Traffic areas</li>
-                  <li>Customers who want a better clean without the full deep clean process</li>
-                </ul>
-              </div>
-              <div class="package-actions">
-                <a class="button package-button quote-link" href="#quote" data-package="targeted-pre-spray">Choose This Package</a>
-                <a class="button button-secondary quote-link" href="#quote" data-package="targeted-pre-spray">Get My Quote</a>
-                <a class="button button-call" href="tel:07802563213">Call Now</a>
-                <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="package-card recommended selected" role="listitem" data-package="professional-deep-clean">
-          <div class="badge-row">
-            <div class="badge">Most Recommended</div>
-            <div class="badge badge-secondary">Best Value</div>
-            <div class="tier-pill gold">Silver Deep Clean</div>
-          </div>
-          <h3>Professional Deep Clean</h3>
-          <p class="price"><small>Prices start at</small> £75 <span>First Room</span></p>
-          <p class="sub-price">£45 Additional Rooms</p>
-          <p class="description deep-clean-lede">This is our complete professional cleaning process for customers who want a much deeper clean and the strongest possible result.</p>
-          <div class="offer-stack" aria-label="Professional deep clean offers">
-            <p><span>Free</span><strong>Stairs and landing</strong> when you have the stairs cleaned.</p>
-            <p><span>Half Price</span><strong>Stain guard add on</strong> with Professional Deep Clean if wanted.</p>
-          </div>
-          <p class="process-kicker">The preparation, agitation and extraction stages make this a very different clean from the £30 Standard option.</p>
-          <div class="photo-strip stages">
-            <figure>
-              <span>1</span>
-              <img src="../assets/img/pre-spray-action.jpg" alt="Targeted professional pre spray being applied to carpet with no face visible">
-              <figcaption>Pre spray</figcaption>
-            </figure>
-            <figure>
-              <span>2</span>
-              <img src="../assets/img/rotary-bonnet-action.jpg" alt="Rotary bonnet machine scrubbing carpet with no face visible">
-              <figcaption>Rotary bonnet agitation</figcaption>
-            </figure>
-            <figure>
-              <span>3</span>
-              <img src="../assets/img/extraction-wand-action.jpg" alt="Hot water extraction wand rinsing carpet with no face visible">
-              <figcaption>Hot water extraction</figcaption>
-            </figure>
-          </div>
-          <div class="process-points deep-process">
-            <article>
-              <strong>Pre spray</strong>
-              <span>Softens dirt, grease and traffic lane soil before cleaning begins.</span>
-            </article>
-            <article>
-              <strong>Rotary bonnet agitation</strong>
-              <span>Scrubs the fibres, lifts flattened areas and loosens attached soil.</span>
-            </article>
-            <article>
-              <strong>Hot water extraction</strong>
-              <span>Rinses and removes the loosened contamination from the carpet.</span>
-            </article>
-            <article>
-              <strong>Finished result</strong>
-              <span>The carpet looks cleaner, fresher and properly reset rather than just quickly freshened up.</span>
-            </article>
-          </div>
-          <div class="detail-block included">
-            <h4>Included</h4>
-            <ul>
-              <li>Full vacuum</li>
-              <li>Targeted pre spray treatment</li>
-              <li>Specialist spotters and enzyme treatments where required</li>
-              <li>CRB counter rotating brush machine treatment to scrub deep into the carpet fibres - this is where the clean really happens</li>
-              <li>220&deg; superheated high-pressure hot water extraction</li>
-              <li>Odour neutralising treatment</li>
-            </ul>
-          </div>
-          <p class="truth-note deep-value-note">The two cleans are very different and produce very different results. The Professional Deep Clean costs a little more, but you get a lot more for your money and a much deeper clean.</p>
-          <div class="package-actions">
-            <a class="button package-button quote-link" href="#quote" data-package="professional-deep-clean">Choose This Package</a>
-            <a class="button button-secondary quote-link" href="#quote" data-package="professional-deep-clean">Get My Quote</a>
-            <a class="button button-call" href="tel:07802563213">Call Now</a>
-            <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
-          </div>
-        </article>
-
-        <section class="before-after-section real-results-section" aria-labelledby="before-after-heading">
-          <div class="before-after-copy">
-            <p class="eyebrow">Real Results</p>
-            <h3 id="before-after-heading">The photos should do the selling.</h3>
-            <p>After the pre spray and rotary bonnet stage has loosened the soil, hot water extraction can remove far more contamination from the carpet. This is why the Professional Deep Clean is the package customers usually choose when they want a real transformation rather than a quick freshen up.</p>
-            <a class="button button-primary quote-link" href="#quote" data-package="professional-deep-clean">Get A Deep Clean Quote</a>
-          </div>
-          <div class="before-after-pair result-gallery" aria-label="Real before and after carpet cleaning photos">
-            <figure>
-              <img src="../assets/img/facebook-before-after-1.jpg" alt="Before carpet cleaning showing a heavily soiled carpet">
-              <figcaption>Before</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/img/facebook-before-after-2.jpg" alt="After carpet cleaning showing a brighter cleaned carpet">
-              <figcaption>After</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <article class="package-card" role="listitem" data-package="stain-guard">
-          <div class="badge-row">
-            <div class="badge">Protection Add On</div>
-            <div class="tier-pill protection">Gold Add On</div>
-          </div>
-          <h3>Elite Stain Guard Package</h3>
-          <p class="price"><small>Prices start at</small> £30 <span>Per Room Add On</span></p>
-          <div class="photo-strip single">
-            <figure>
-              <img src="../assets/img/stain-guard-coffee-beading.png" alt="Coffee droplets beading on protected carpet fibres">
-              <figcaption>Spills sit on the surface for longer</figcaption>
-            </figure>
-          </div>
-          <p class="description">This is applied after cleaning.</p>
-          <div class="detail-block">
-            <h4>Included Points</h4>
-            <ul>
-              <li>It helps coat the carpet fibres.</li>
-              <li>It helps spills sit on the surface for longer.</li>
-              <li>It helps dirt release more easily when vacuuming.</li>
-              <li>It helps carpets stay cleaner for longer.</li>
-            </ul>
-          </div>
-          <div class="package-actions">
-            <a class="button package-button quote-link" href="#quote" data-package="stain-guard">Choose This Package</a>
-            <a class="button button-secondary quote-link" href="#quote" data-package="stain-guard">Get My Quote</a>
-            <a class="button button-call" href="tel:07802563213">Call Now</a>
-            <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
-          </div>
-        </article>
-      </div>
-
-      <article class="clean-builder package-card selected" data-package="standard-clean" aria-current="true">
-        <div class="builder-intro">
-          <div>
-            <div class="badge-row">
-              <div class="badge">Start With The Basics</div>
-              <div class="tier-pill bronze" data-build-tier>Standard Clean</div>
-              <div class="builder-recommended" data-build-recommended hidden>Most Recommended</div>
-            </div>
-            <h3 data-build-name>Standard Clean</h3>
-            <p class="price"><small>Your price</small> <span data-build-price>£30</span> <span data-build-price-suffix>for 1 room</span></p>
-            <p class="description" data-build-description>This uses a generic in-tank detergent and a rinse with the wand. It is ideal for a basic freshen-up.</p>
-          </div>
-          <div class="builder-summary" aria-live="polite">
-            <span>Your selected clean</span>
-            <strong data-build-summary>Standard Clean</strong>
-            <p data-build-summary-copy>A straightforward maintenance clean for lightly soiled carpet.</p>
-            <div class="builder-total"><span>Total</span><strong data-build-total>£30</strong></div>
-            <p data-build-rate>£30 per room</p>
-          </div>
-        </div>
-
-        <div class="builder-layout">
-          <div class="builder-options-panel" aria-label="Build your carpet clean">
-            <h4>Build your clean</h4>
-            <label class="room-control" for="builder-rooms-simple">
-              <span><b>Rooms</b><small>Choose how many rooms need cleaning.</small></span>
-              <input id="builder-rooms-simple" data-build-rooms type="number" min="1" max="12" value="1">
-            </label>
-
-            <label class="builder-check">
-              <input class="build-option" type="checkbox" data-build-option="pre-spray">
-              <span><strong>Add targeted pre-spray</strong><small>Applied separately and allowed to dwell so it can soften grease, body oils and traffic-lane soil before extraction.</small><b class="option-price">Upgrades to £50 first room, £35 additional rooms</b></span>
-            </label>
-
-            <label class="builder-check">
-              <input class="build-option" type="checkbox" data-build-option="agitation">
-              <span><strong>Add deep mechanical agitation <em>Recommended</em></strong><small>CRB or rotary agitation scrubs the treatment through the fibres, lifts the pile and loosens trapped dirt. Pre-spray is included automatically.</small><b class="option-price">Creates the Deep Clean: £75 first room, £45 additional rooms</b></span>
-            </label>
-
-            <label class="builder-check">
-              <input class="build-option" type="checkbox" data-build-option="stain-guard">
-              <span><strong>Add stain guard protection</strong><small>Applied after cleaning to help spills remain on the surface longer and make routine vacuuming more effective.</small><b class="option-price">£30 per room, or £15 per room with the Professional Deep Clean</b></span>
-            </label>
-          </div>
-
-          <div class="builder-stage-list" aria-live="polite">
-            <article class="build-stage is-visible" data-stage="standard">
-              <figure><img src="../assets/img/extraction-wand-action.jpg" alt="Hot water extraction wand cleaning carpet"><figcaption>Included from the start</figcaption></figure>
-              <div><span>Base service</span><h4>Standard spray and extract</h4><p>Generic in-tank detergent is applied and rinsed with the extraction wand for a quick general freshen-up.</p></div>
-            </article>
-            <article class="build-stage" data-stage="pre-spray" hidden>
-              <figure><img src="../assets/img/pre-spray-action.jpg" alt="Targeted pre-spray being applied to carpet"><figcaption>Added preparation</figcaption></figure>
-              <div><span>Selected add-on</span><h4>Targeted pre-spray and dwell time</h4><p>The solution is applied directly to the carpet and given time to soften attached soil before extraction.</p></div>
-            </article>
-            <article class="build-stage" data-stage="agitation" hidden>
-              <figure><img src="../assets/img/rotary-bonnet-action.jpg" alt="Professional mechanical agitation scrubbing carpet"><figcaption>Added deep-clean stage</figcaption></figure>
-              <div><span>Selected add-on</span><h4>Mechanical agitation</h4><p>The machine scrubs deep into the fibres, lifts flattened pile and helps break dirt away before the 220&deg; extraction rinse.</p></div>
-            </article>
-            <article class="build-stage" data-stage="stain-guard" hidden>
-              <figure><img src="../assets/img/stain-guard-coffee-beading.png" alt="Coffee beading on protected carpet"><figcaption>Optional protection</figcaption></figure>
-              <div><span>Selected add-on</span><h4>Stain guard protection</h4><p>Applied after cleaning to help the carpet resist dry soil and give you more time to blot fresh spills.</p></div>
-            </article>
-          </div>
-        </div>
-
-        <div class="builder-offers" data-build-offers hidden>
-          <strong>Professional Deep Clean offers</strong>
-          <span>Free landing when the stairs are cleaned</span>
-          <span>Half-price stain guard if selected</span>
-        </div>
-
-        <div class="package-actions">
-          <a class="button package-button quote-link" href="#quote" data-build-quote data-package="standard-clean">Get This Clean Quoted</a>
-          <a class="button button-call" href="tel:07802563213">Call Now</a>
-          <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Us</a>
-        </div>
-      </article>
-
-    </section>
-
-    <section class="section build-clean-section" id="build-your-clean" hidden>
-      <div class="build-clean-hero">
-        <div>
-          <p class="eyebrow">Interactive Cleaning Package Builder</p>
-          <h2>Build Your Clean</h2>
-          <p>Start with the full Professional Deep Clean, then remove parts of the process only if you want a lighter clean or a lower price.</p>
-        </div>
-        <div class="builder-price-card" aria-live="polite">
-          <span>Live total</span>
-          <strong data-clean-total>£75</strong>
-          <p><span data-clean-rooms-label>1 room</span> selected</p>
-        </div>
-      </div>
-
-      <div class="builder-shell" data-clean-builder>
-        <aside class="builder-visual-panel" aria-live="polite">
-          <div class="builder-stage-label" data-builder-stage>Step 1 of 4</div>
-          <figure class="builder-main-visual">
-            <img data-builder-image src="../assets/img/enforcer-400-real.png" alt="Enforcer 400 professional carpet extraction machine">
-            <figcaption data-builder-caption>Enforcer 400 selected: flagship extraction power for the deepest clean.</figcaption>
-          </figure>
-          <div class="builder-mini-summary">
-            <span data-summary-machine>Enforcer 400</span>
-            <span data-summary-solution>Targeted Pre Spray</span>
-            <span data-summary-agitation>Mechanical Agitation</span>
-            <span data-summary-heat>Fusion Heat Bomb</span>
-          </div>
-        </aside>
-
-        <div class="builder-controls">
-          <article class="builder-step" data-step="machine">
-            <div class="builder-step-heading">
-              <span>Step 1</span>
-              <h3>Choose your extraction machine</h3>
-            </div>
-            <div class="builder-options">
-              <button class="builder-option is-selected" type="button" data-builder-option data-group="machine" data-value="Enforcer 400" data-price="0" data-image="../assets/img/enforcer-400-real.png" data-caption="Enforcer 400 selected: flagship extraction power for the deepest clean." aria-pressed="true">
-                <img src="../assets/img/enforcer-400-real.png" alt="Enforcer 400 professional extraction machine">
-                <span class="option-kicker">Selected by default</span>
-                <strong>Enforcer 400</strong>
-                <ul>
-                  <li>400 PSI extraction</li>
-                  <li>Built in heating to 60°C</li>
-                  <li>More powerful vacuum motors</li>
-                  <li>Greater extraction performance</li>
-                  <li>Faster drying</li>
-                  <li>Professional flagship machine</li>
-                </ul>
-              </button>
-              <button class="builder-option" type="button" data-builder-option data-group="machine" data-value="Airflex Mini" data-price="-15" data-image="../assets/img/airflex-mini-real.png" data-caption="Airflex Mini selected: a lighter extraction setup for lighter cleaning." aria-pressed="false">
-                <img src="../assets/img/airflex-mini-real.png" alt="Airflex Mini lighter cleaning extraction machine">
-                <span class="option-kicker">Lower price</span>
-                <strong>Airflex Mini</strong>
-                <ul>
-                  <li>220 PSI extraction</li>
-                  <li>No built in heater</li>
-                  <li>Smaller machine</li>
-                  <li>Less powerful vacuum motors</li>
-                  <li>Suitable for lighter cleaning</li>
-                </ul>
-              </button>
-            </div>
-          </article>
-
-          <article class="builder-step" data-step="solution">
-            <div class="builder-step-heading">
-              <span>Step 2</span>
-              <h3>Choose your cleaning solution</h3>
-            </div>
-            <div class="builder-options">
-              <button class="builder-option is-selected" type="button" data-builder-option data-group="solution" data-value="Targeted Pre Spray" data-price="0" data-image="../assets/img/pre-spray-action.jpg" data-caption="Targeted Pre Spray selected: applied separately so it has time to break down soil." aria-pressed="true">
-                <img src="../assets/img/pre-spray-action.jpg" alt="Technician spraying carpet with pump sprayer">
-                <span class="option-kicker recommended-choice">Recommended</span>
-                <strong>Targeted Pre Spray</strong>
-                <ul>
-                  <li>Professional pre treatment</li>
-                  <li>Applied separately</li>
-                  <li>Allows dwell time</li>
-                  <li>Higher performance chemistry</li>
-                  <li>Better stain and soil removal</li>
-                  <li>More labour intensive</li>
-                  <li>More expensive chemicals</li>
-                </ul>
-              </button>
-              <button class="builder-option" type="button" data-builder-option data-group="solution" data-value="In Tank Detergent" data-price="-15" data-image="../assets/img/airflex-mini-real.png" data-caption="In Tank Detergent selected: faster maintenance clean with lower chemical cost." aria-pressed="false">
-                <img src="../assets/img/airflex-mini-real.png" alt="Machine tank detergent cleaning method">
-                <span class="option-kicker">Lower price</span>
-                <strong>In Tank Detergent</strong>
-                <ul>
-                  <li>Added directly to rinse tank</li>
-                  <li>Faster cleaning process</li>
-                  <li>Lower chemical cost</li>
-                  <li>No dwell time</li>
-                  <li>Designed to self neutralise in the carpet</li>
-                  <li>Suitable for maintenance cleaning</li>
-                </ul>
-              </button>
-            </div>
-          </article>
-
-          <article class="builder-step" data-step="agitation">
-            <div class="builder-step-heading">
-              <span>Step 3</span>
-              <h3>Choose agitation</h3>
-            </div>
-            <div class="builder-options">
-              <button class="builder-option is-selected" type="button" data-builder-option data-group="agitation" data-value="Mechanical Agitation" data-price="0" data-image="../assets/img/rotary-bonnet-action.jpg" data-caption="Mechanical Agitation selected: scrubs deeper and helps release trapped dirt." aria-pressed="true">
-                <img src="../assets/img/rotary-bonnet-action.jpg" alt="CRB or rotary machine working carpet fibres">
-                <span class="option-kicker recommended-choice">Deep clean stage</span>
-                <strong>Mechanical Agitation</strong>
-                <ul>
-                  <li>Scrubs deep into carpet fibres</li>
-                  <li>Lifts pile</li>
-                  <li>Releases trapped dirt</li>
-                  <li>Improves final results</li>
-                </ul>
-              </button>
-              <button class="builder-option" type="button" data-builder-option data-group="agitation" data-value="No Mechanical Agitation" data-price="-10" data-image="../Wand_4748.png" data-caption="No Mechanical Agitation selected: wand extraction only for lighter soiling." aria-pressed="false">
-                <img src="../Wand_4748.png" alt="Wand extraction only cleaning option">
-                <span class="option-kicker">Quicker process</span>
-                <strong>No Mechanical Agitation</strong>
-                <ul>
-                  <li>Wand extraction only</li>
-                  <li>Quicker process</li>
-                  <li>Suitable for lighter soiling</li>
-                </ul>
-              </button>
-            </div>
-          </article>
-
-          <article class="builder-step" data-step="heat">
-            <div class="builder-step-heading">
-              <span>Step 4</span>
-              <h3>Choose heat level</h3>
-            </div>
-            <div class="builder-options">
-              <button class="builder-option is-selected" type="button" data-builder-option data-group="heat" data-value="Fusion Heat Bomb Steam System" data-price="0" data-image="../assets/img/fusion-heat-bomb-real.png" data-caption="Fusion Heat Bomb selected: the hottest and most powerful clean in this builder." aria-pressed="true">
-                <img src="../assets/img/fusion-heat-bomb-real.png" alt="Fusion Heat Bomb steam cleaning upgrade">
-                <span class="option-kicker recommended-choice">Deepest clean</span>
-                <strong>Fusion Heat Bomb Steam System</strong>
-                <ul>
-                  <li>Superheated hot water and steam</li>
-                  <li>Approximately 220°F</li>
-                  <li>Cuts through grease and grime</li>
-                  <li>Commercial upgrade equipment</li>
-                  <li>Equipment value approximately £1,600</li>
-                  <li>Produces the deepest clean</li>
-                </ul>
-              </button>
-              <button class="builder-option" type="button" data-builder-option data-group="heat" data-value="Standard Heated Extraction" data-price="-10" data-image="../assets/img/extraction-wand-action.jpg" data-caption="Standard Heated Extraction selected: standard extraction temperatures without the Fusion Heat Bomb." aria-pressed="false">
-                <img src="../assets/img/extraction-wand-action.jpg" alt="Standard heated extraction cleaning">
-                <span class="option-kicker">Lower price</span>
-                <strong>Standard Heated Extraction</strong>
-                <ul>
-                  <li>Standard extraction temperatures</li>
-                  <li>No Fusion Heat Bomb attached</li>
-                </ul>
-              </button>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="builder-live-panel">
-        <div class="room-calculator">
-          <label for="builder-rooms">Number of rooms</label>
-          <div class="room-input-row">
-            <button type="button" data-room-step="-1" aria-label="Reduce number of rooms">−</button>
-            <input id="builder-rooms" data-builder-rooms type="number" min="1" max="12" value="1">
-            <button type="button" data-room-step="1" aria-label="Increase number of rooms">+</button>
-          </div>
-          <p>Professional Deep Clean starts at £75 for the first room and £45 for each additional room. Every downgrade reduces the total automatically.</p>
-        </div>
-
-        <div class="selected-clean-panel">
-          <p class="eyebrow">Your Selected Clean</p>
-          <h3 data-clean-name>Professional Deep Clean</h3>
-          <dl>
-            <div><dt>Machine selected</dt><dd data-selected-machine>Enforcer 400</dd></div>
-            <div><dt>Cleaning solution selected</dt><dd data-selected-solution>Targeted Pre Spray</dd></div>
-            <div><dt>Agitation selected</dt><dd data-selected-agitation>Mechanical Agitation</dd></div>
-            <div><dt>Heat system selected</dt><dd data-selected-heat>Fusion Heat Bomb Steam System</dd></div>
-          </dl>
-          <div class="selected-total">
-            <span>Total price</span>
-            <strong data-clean-total-bottom>£75</strong>
-          </div>
-          <a class="button button-primary quote-link" href="#quote" data-package="professional-deep-clean">Get This Clean Quoted</a>
-        </div>
-      </div>
-
-      <div class="builder-klarna">
-        <div>
-          <p class="eyebrow">Klarna Available</p>
-          <h3>Want the best clean but need to spread the cost?</h3>
-          <p>We offer Klarna on qualifying bookings so you can choose the full Professional Deep Clean and spread the cost rather than reducing the quality of the clean.</p>
-        </div>
-        <a class="button button-primary quote-link" href="#quote" data-package="professional-deep-clean">Keep The Full Professional Deep Clean</a>
-      </div>
-    </section>
-
-    <section class="section review-section">
-      <div class="section-heading compact">
-        <p class="eyebrow">Review Checks</p>
-        <h2>How To Check Carpet Cleaning Reviews Properly</h2>
-        <p>The best way to understand a company is not just to read the five star reviews. Always check the lowest reviews as well.</p>
-      </div>
-
-      <div class="review-steps">
-        <article>
-          <span aria-hidden="true">01</span>
-          <div class="mini-screen">
-            <div class="search-bar">Company name</div>
-            <div class="search-result"></div>
-            <div class="search-result short"></div>
-          </div>
-          <h3>Search the company name on Google.</h3>
-        </article>
-        <article>
-          <span aria-hidden="true">02</span>
-          <div class="mini-screen reviews-ui">
-            <strong>Google Reviews</strong>
-            <div class="stars">★★★★★</div>
-            <div class="review-line"></div>
-            <div class="review-line"></div>
-          </div>
-          <h3>Open Google reviews.</h3>
-        </article>
-        <article>
-          <span aria-hidden="true">03</span>
-          <div class="mini-screen filter-ui">
-            <button type="button">Sort</button>
-            <button type="button">Lowest</button>
-            <div class="review-line warning"></div>
-          </div>
-          <h3>Sort or filter the reviews to find the lowest reviews.</h3>
-        </article>
-        <article>
-          <span aria-hidden="true">04</span>
-          <div class="mini-screen read-ui">
-            <div class="review-line warning"></div>
-            <div class="review-line"></div>
-            <div class="review-line short"></div>
-          </div>
-          <h3>Read the lowest reviews carefully.</h3>
-        </article>
-      </div>
-
-      <div class="review-copy">
-        <div>
-          <p>Every business can occasionally get a difficult customer. One poor review on its own does not always tell the full story. But if you see repeated complaints about price changes, poor workmanship, missed appointments, pressure selling or customers being dismissed, that is a warning sign.</p>
-          <p>Be careful if a company repeatedly replies to bad reviews by saying they have no record of the customer or do not recognise the job. Sometimes this may be genuine, but if it appears again and again, it can be a red flag.</p>
-        </div>
-        <aside class="trust-box">
-          <h3>Our promise</h3>
-          <ul>
-            <li>Our prices do not change at the door unless the customer asks for extra work or important information was missing before booking.</li>
-            <li>We explain what is included before you book.</li>
-            <li>We use professional equipment.</li>
-            <li>We aim to treat customers properly and professionally.</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="notice-section section">
-      <div class="notice">
-        <div>
-          <p class="eyebrow">Special Stains Notice</p>
-          <h2>Important Information</h2>
-          <p>Pet urine, vomit contamination, heavy odour issues, dye stains, bleach damage and permanent staining require specialist treatment and are not included within standard cleaning packages.</p>
-        </div>
-        <p class="notice-callout">If you have any of these issues, please tell us before booking so we can recommend the correct treatment.</p>
-      </div>
-    </section>
-
-    <section class="section questions-section">
-      <div class="section-heading compact">
-        <p class="eyebrow">Buyer’s Guide</p>
-        <h2>Questions To Ask Before Booking A Carpet Cleaner</h2>
-        <p>A professional company should be happy to explain the process clearly before you book.</p>
-      </div>
-      <div class="question-grid">
-        <p>What exactly is included in the price?</p>
-        <p>Will the price change when you arrive?</p>
-        <p>What equipment do you use?</p>
-        <p>Do you use detergent in the tank only, or do you pre spray?</p>
-        <p>Do you use a rotary bonnet machine or agitation stage?</p>
-        <p>Who will actually be coming to my home?</p>
-        <p>Is the person I am speaking to the person doing the work?</p>
-        <p>Are you insured?</p>
-        <p>Can I see real reviews?</p>
-      </div>
-    </section>
-
-    <section class="final-section" id="quote">
-      <div class="quote-shell">
-        <div class="final-inner">
-          <p class="eyebrow">Premium Consultation</p>
-          <h2>Get Your Personal Quote</h2>
-          <p>Tell us what needs cleaning and we’ll personally recommend the most suitable option.</p>
-          <div class="quote-trust">
-            <span>5 Star Rated</span>
-            <span>Direct advice</span>
-            <span>No pressure</span>
-          </div>
-          <div class="final-actions contact-actions">
-            <a class="button button-call" href="tel:07802563213">Call 07802 563213</a>
-            <a class="button button-whatsapp" href="https://wa.me/447802563213?text=Hi%2C%20I%20would%20like%20a%20carpet%20cleaning%20quote.">WhatsApp Quote</a>
-          </div>
-        </div>
-
-        <form class="quote-form" action="https://formspree.io/f/mblnzwpv" method="POST">
-          <input name="_redirect" type="hidden" value="https://www.thecarpetcleaningcrew.co.uk/thank-you.html">
-          <input name="_subject" type="hidden" value="New Package Quote Request">
-          <input name="_format" type="hidden" value="plain">
-          <input id="selected-options" name="selected_options" type="hidden" value="Standard Clean">
-          <label>
-            <span>Selected clean</span>
-            <select id="selected-package" name="package" required>
-              <option value="not-sure">Not sure yet - please advise</option>
-              <option value="standard-clean">Standard Clean - prices start at £30 per room</option>
-              <option value="targeted-pre-spray">Targeted Pre Spray Treatment - prices start at £50 first room, £35 additional rooms</option>
-              <option value="professional-deep-clean">Professional Deep Clean - prices start at £75 first room, £45 additional rooms</option>
-            </select>
-          </label>
-          <div class="form-grid">
-            <label>
-              <span>Name</span>
-              <input name="name" type="text" autocomplete="name" required>
-            </label>
-            <label>
-              <span>Phone</span>
-              <input name="phone" type="tel" autocomplete="tel" required>
-            </label>
-            <label>
-              <span>Email</span>
-              <input name="email" type="email" autocomplete="email">
-            </label>
-            <label>
-              <span>Postcode</span>
-              <input name="postcode" type="text" autocomplete="postal-code" required>
-            </label>
-          </div>
-          <label>
-            <span>Rooms, stains, pets, parking or anything useful</span>
-            <textarea name="message" rows="5"></textarea>
-          </label>
-          <button class="button button-primary" type="submit">Submit Enquiry</button>
-        </form>
+    <section class="results-band">
+      <div><p class="eyebrow">Real results</p><h2>Professional preparation changes what extraction can remove.</h2></div>
+      <div class="result-images">
+        <figure><img src="../assets/img/facebook-before-after-1.jpg" alt="Carpet before professional cleaning"><figcaption>Before</figcaption></figure>
+        <figure><img src="../assets/img/facebook-before-after-2.jpg" alt="Carpet after professional cleaning"><figcaption>After</figcaption></figure>
       </div>
     </section>
   </main>
 
-  <script src="../assets/package-selector.js?v=checkbox-builder-1"></script>
+  <footer><img src="../assets/img/logo.webp" alt=""><span>The Carpet Cleaning Company</span><a href="tel:07802563213">Call 07802 563213</a></footer>
+
+  <dialog class="quote-dialog" data-quote-dialog aria-labelledby="builder-title">
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <div class="dialog-brand"><img src="../assets/img/logo.webp" alt=""><div><span>Guided Quote Builder</span><strong id="builder-title">Build Your Clean</strong></div></div>
+        <button class="icon-button" type="button" data-close-builder aria-label="Close quote builder">&times;</button>
+      </header>
+
+      <ol class="progress-track" aria-label="Quote progress">
+        <li class="is-current" data-progress="1"><span>1</span><b>Choose everything</b></li>
+        <li data-progress="2"><span>2</span><b>Review quote</b></li>
+        <li data-progress="3"><span>3</span><b>Finish</b></li>
+      </ol>
+
+      <div class="dialog-content">
+        <div class="step-area">
+          <section class="builder-step is-active" data-step="1">
+            <div class="step-heading"><span>Step 1 of 3</span><h2>Choose your rooms and cleaning stages.</h2><p>All potential selections are visible. Tick exactly what you want and watch the live quote update.</p></div>
+            <div class="room-question">
+              <div><strong>Number of rooms</strong><small>Bedrooms, lounge, dining room or study</small></div>
+              <div class="stepper"><button type="button" data-room-change="-1" aria-label="Remove room">&minus;</button><input data-room-count type="number" min="0" max="12" value="0" aria-label="Number of rooms"><button type="button" data-room-change="1" aria-label="Add room">+</button></div>
+            </div>
+            <label class="large-check">
+              <input type="checkbox" data-hsl-toggle>
+              <span><strong>Hall, Stairs &amp; Landing</strong><small>Counts as three areas on Standard Clean. Hall and Landing become free with the Professional Deep Clean.</small></span>
+            </label>
+            <p class="validation-message" data-room-validation hidden>Please choose at least one room or Hall, Stairs &amp; Landing to continue.</p>
+            <div class="selection-divider"><span>Included starting service</span></div>
+            <article class="standard-selection">
+              <img class="selection-photo" src="../assets/img/extraction-wand-action.jpg" alt="Professional extraction wand cleaning a carpet">
+              <div class="service-copy"><span class="tag">Always included</span><strong>Standard Spray &amp; Extract</strong><p>Our budget, internet-style clean. Detergent is placed in the machine tank, sprayed through the wand and extracted in the same pass.</p><ul class="service-points"><li>Best for lightly soiled carpets and a basic freshen-up</li><li>Some detergent residue remains in the fibres by design</li><li>This is not our deep-cleaning process</li></ul></div>
+              <div><span>Current Standard price</span><b data-standard-total>&pound;0</b><small data-standard-minimum hidden>3-area minimum: &pound;90</small></div>
+            </article>
+            <div class="selection-divider"><span>Tick the upgrades you want</span></div>
+            <div class="upgrade-list">
+              <label class="upgrade-card" data-upgrade-card="pre-spray">
+                <img src="../assets/img/pre-spray-action.jpg" alt="Targeted pre-spray being applied to carpet"><input type="checkbox" data-upgrade="pre-spray">
+                <span><b class="check-mark">&#10003;</b><span class="service-copy"><span class="recommend-badge">Recommended</span><strong>Add Targeted Pre-Spray</strong><small>A specialist solution is applied directly to the carpet and given time to work. Like soaking dishes before washing, dwell time loosens contamination before extraction.</small><ul class="service-points"><li>Enzyme, oxygenated or solvent treatments used where appropriate</li><li>Individual stain treatments included where suitable</li><li>Stain removal cannot be guaranteed, but every reasonable effort is made</li></ul></span><em data-upgrade-price="pre-spray">Add &pound;20</em></span>
+              </label>
+              <label class="upgrade-card" data-upgrade-card="agitation">
+                <img src="../assets/img/rotary-bonnet-action.jpg" alt="Professional mechanical agitation machine working on carpet"><input type="checkbox" data-upgrade="agitation">
+                <span><b class="check-mark">&#10003;</b><span class="service-copy"><span class="recommend-badge">Recommended</span><strong>Add Mechanical Agitation With CRB</strong><small><b>This is where the deep clean happens.</b> There is no substitute for mechanical scrubbing. The CRB gently lifts and separates the pile while brushing every side of the fibres.</small><ul class="service-points"><li>Breaks away deep dirt, dust and embedded contamination</li><li>Helps remove pet hair, allergens and dust mites</li><li>Turns the service into our Professional Deep Clean when combined with pre-spray</li></ul></span><em data-upgrade-price="agitation">Add &pound;25</em></span>
+              </label>
+              <label class="upgrade-card" data-upgrade-card="protection">
+                <img src="../assets/img/stain-guard-coffee-beading.png" alt="Coffee beading on protected carpet fibres"><input type="checkbox" data-upgrade="protection">
+                <span><b class="check-mark">&#10003;</b><span class="service-copy"><strong>Add Carpet Protection</strong><small>An invisible fluoropolymer-style treatment bonds to the fibres, working in a similar principle to a non-stick coating.</small><ul class="service-points"><li>Helps prevent dirt attaching and makes vacuuming more effective</li><li>Adds resistance to spillages and staining</li><li>We can demonstrate the effect before you decide</li></ul></span><em data-upgrade-price="protection">Add &pound;30 per area</em></span>
+              </label>
+            </div>
+            <article class="professional-message" data-professional-message hidden>
+              <span>Professional Deep Clean selected</span><h3>Excellent choice.</h3><p>This is our flagship clean and the service we are best known for.</p>
+              <ul><li>Free Hall &amp; Landing when booking a full stairs clean</li><li>Complimentary odour neutraliser</li><li>Carpet protection available at 50% off</li></ul>
+            </article>
+          </section>
+
+          <section class="builder-step" data-step="2" hidden>
+            <div class="step-heading"><span>Step 2 of 3</span><h2>Your live quote</h2><p>Every selected stage is shown separately so you can see exactly where the money goes.</p></div>
+            <div class="full-breakdown">
+              <div><span>Standard Spray &amp; Extract</span><strong data-line-base>&pound;0</strong></div>
+              <div data-line="pre-spray" hidden><span>Targeted Pre-Spray &amp; Dwell Time</span><strong data-line-pre>&plus;&pound;0</strong></div>
+              <div data-line="agitation" hidden><span>Mechanical Agitation (CRB)</span><strong data-line-agitation>&plus;&pound;0</strong></div>
+              <div class="saving-line" data-line="hsl-saving" hidden><span>Free Hall &amp; Landing Promotion</span><strong data-line-saving>&minus;&pound;90</strong></div>
+              <div data-line="protection" hidden><span>Carpet Protection</span><strong data-line-protection>&plus;&pound;0</strong></div>
+              <div class="total-line"><span>Estimated Total</span><strong data-final-total>&pound;0</strong></div>
+            </div>
+            <article class="saving-offer" data-saving-offer hidden><span>Hall, Stairs &amp; Landing selected</span><div><p>Normal Professional Price<strong data-normal-price>&pound;165</strong></p><p>Today's Saving<strong>&minus;&pound;90</strong></p><p>You Pay<strong data-promo-pay>&pound;75</strong></p></div><b>Hall &amp; Landing Included Free</b></article>
+          </section>
+
+          <section class="builder-step" data-step="3" hidden>
+            <div class="step-heading"><span>Step 3 of 3</span><h2>What you are getting</h2><p>Your selected process, professional equipment and quote details are ready to send.</p></div>
+            <article class="equipment-panel">
+              <div><span class="tag">Professional-grade equipment</span><h3>Genuine professional cleaning machinery</h3><p>We use professional-grade equipment including the Enforcer 400 and mechanical agitation machines. This is not a cheap domestic cleaner or a hire machine. You are getting a genuine professional cleaning process backed by thousands of pounds worth of equipment.</p></div>
+              <div class="equipment-images"><figure><img src="../assets/img/enforcer-400-real.png" alt="Enforcer 400 professional extraction machine"><figcaption>Enforcer 400</figcaption></figure><figure><img src="../assets/img/airflex-mini-real.png" alt="Airflex Mini professional carpet cleaning machine"><figcaption>Airflex Mini</figcaption></figure><figure><img src="../assets/img/fusion-heat-bomb-real.png" alt="Professional Heat-Bomb inline heater"><figcaption>Heat-Bomb</figcaption></figure><figure><img src="../assets/img/rotary-bonnet-action.jpg" alt="Mechanical carpet agitation machine"><figcaption>Mechanical agitation</figcaption></figure></div>
+            </article>
+            <div class="included-summary"><h3>Your selected clean includes</h3><ul data-included-list><li>Standard Spray &amp; Extract</li></ul></div>
+            <form class="contact-form" action="https://formspree.io/f/mblnzwpv" method="POST">
+              <input name="_redirect" type="hidden" value="https://www.thecarpetcleaningcrew.co.uk/thank-you.html"><input name="_subject" type="hidden" value="New Guided Quote Request"><input name="_format" type="hidden" value="plain"><input name="package" data-form-package type="hidden" value="standard-clean"><input name="selected_options" data-form-options type="hidden" value="No rooms selected">
+              <div class="form-heading"><span>Request confirmation</span><h3>Where should we contact you?</h3></div>
+              <div class="form-grid"><label><span>Name</span><input name="name" type="text" autocomplete="name" required></label><label><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label><label><span>Email</span><input name="email" type="email" autocomplete="email"></label><label><span>Postcode</span><input name="postcode" type="text" autocomplete="postal-code" required></label></div>
+              <label><span>Stains, pets or anything useful</span><textarea name="message" rows="3"></textarea></label>
+              <button class="primary-button" type="submit">Request My Confirmed Quote</button><p>Submitting requests a confirmed quotation. It does not commit you to a booking.</p>
+            </form>
+          </section>
+        </div>
+
+        <aside class="live-panel" aria-live="polite">
+          <span>Your Live Quote</span><strong data-live-total>&pound;0</strong><p data-live-name>Standard Spray &amp; Extract</p>
+          <dl><div><dt>Areas</dt><dd data-live-areas>None selected</dd></div><div><dt>Services</dt><dd data-live-services>Standard Spray &amp; Extract</dd></div><div><dt>Savings</dt><dd data-live-savings>No savings yet</dd></div><div><dt>Extras</dt><dd data-live-extras>No extras unlocked</dd></div></dl>
+          <p class="average-note">Prices use average room sizes. Large or unusually sized areas may change the confirmed quotation.</p>
+        </aside>
+      </div>
+
+      <footer class="dialog-footer"><button class="back-button" type="button" data-builder-back disabled>Back</button><span data-step-status>Step 1 of 3</span><button class="primary-button" type="button" data-builder-next>Review Quote</button></footer>
+    </div>
+  </dialog>
+
+  <script src="../assets/package-selector.js?v=guided-modal-3"></script>
 </body>
 </html>
-
