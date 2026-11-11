@@ -8,7 +8,7 @@
       area: 'Commercial carpet cleaning',
       hero: '../assets/img/commercial-office-hero.png',
       section: 'Professional care for every commercial space',
-      cards: ['Office carpet cleaning', 'Hotels and managed buildings', 'Communal areas and reception spaces']
+      cards: ['Office carpet cleaning', 'Hotel carpet and floor cleaning', 'Communal spaces and reception areas']
     },
     shrewsbury: {
       eyebrow: 'PROFESSIONAL LOCAL CLEANING · SHREWSBURY',
@@ -66,6 +66,15 @@
     if (page === 'commercial') {
       const cards = [...document.querySelectorAll('h3')].filter(h3 => ['Carpet cleaning','Upholstery cleaning','Commercial cleaning'].includes(h3.textContent.trim()));
       cards.slice(0, 3).forEach((card, i) => card.textContent = content.cards[i]);
+      const cardCopy = [
+        'Professional carpet and floor cleaning for offices, meeting rooms and workspaces.',
+        'Commercial carpet and floor cleaning for hotels, reception areas and managed buildings.',
+        'Professional cleaning for communal carpets, corridors, entrances and customer-facing spaces.'
+      ];
+      cards.slice(0, 3).forEach((card, index) => {
+        const copy = card.parentElement?.querySelector('p');
+        if (copy) copy.textContent = cardCopy[index];
+      });
       const imageSources = [
         '../assets/img/commercial-office-hero.png',
         '../assets/img/hotel-reception-carpet-cleaning.png',
