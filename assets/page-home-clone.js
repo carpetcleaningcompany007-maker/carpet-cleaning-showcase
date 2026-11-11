@@ -15,9 +15,9 @@
       heading: 'Carpet cleaning in Shrewsbury',
       lead: 'Professional carpet, upholstery and hard-floor cleaning for homes and businesses across Shrewsbury, with honest advice and a clear quotation.',
       area: 'Shrewsbury',
-      hero: '../../assets/img/shrewsbury-english-bridge-background.jpg',
+      hero: '../../assets/img/professional-cleaning-hero.png',
       section: 'Professional care for every Shrewsbury home and business',
-      cards: ['Carpet cleaning in Shrewsbury', 'Upholstery cleaning in Shrewsbury', 'Professional local stain treatment']
+      cards: []
     },
     telford: {
       eyebrow: 'PROFESSIONAL LOCAL CLEANING · TELFORD',
@@ -26,7 +26,7 @@
       area: 'Telford',
       hero: '../assets/img/professional-cleaning-hero.png',
       section: 'Professional care for every Telford home and business',
-      cards: ['Carpet cleaning in Telford', 'Upholstery cleaning in Telford', 'Professional local stain treatment']
+      cards: []
     }
   }[page];
   if (!content) return;
@@ -63,13 +63,13 @@
     [...document.querySelectorAll('h2')].forEach(h2 => {
       if (h2.textContent.includes('Professional care for every room')) h2.textContent = content.section;
     });
-    const cards = [...document.querySelectorAll('h3')].filter(h3 => ['Carpet cleaning','Upholstery cleaning','Commercial cleaning'].includes(h3.textContent.trim()));
-    cards.slice(0, 3).forEach((card, i) => card.textContent = content.cards[i]);
     if (page === 'commercial') {
+      const cards = [...document.querySelectorAll('h3')].filter(h3 => ['Carpet cleaning','Upholstery cleaning','Commercial cleaning'].includes(h3.textContent.trim()));
+      cards.slice(0, 3).forEach((card, i) => card.textContent = content.cards[i]);
       const imageSources = [
-        '../assets/img/commercial-carpet-cleaning.webp',
-        '../assets/img/home-commercial-carpet-cleaning.webp',
-        '../assets/img/ludlow-feathers-hotel-background.jpg'
+        '../assets/img/commercial-office-hero.png',
+        '../assets/img/hotel-reception-carpet-cleaning.png',
+        '../assets/img/hotel-reception-carpet-cleaning.png'
       ];
       [...document.querySelectorAll('img[alt="Carpet cleaning"], img[alt="Upholstery cleaning"], img[alt="Commercial cleaning"]')]
         .forEach((image, index) => {
